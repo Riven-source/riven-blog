@@ -1,6 +1,6 @@
 // src/app/api/auth/login/route.ts
 import { NextRequest, NextResponse } from 'next/server'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import { prisma } from '@/lib/prisma'
 import { isEmailAllowed } from '@/lib/permissions'
 
