@@ -4,6 +4,7 @@ import { prisma } from '@/lib/prisma'
 import { MarkdownViewer } from '@/components/MarkdownViewer'
 import { ShareButton } from '@/components/ShareButton'
 import { Comments } from '@/components/Comments'
+import { getImageUrl } from '@/lib/blob'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 
@@ -14,13 +15,14 @@ interface PostPageProps {
 export async function generateMetadata({ params }: PostPageProps): Promise<Metadata> {
   const post = await prisma.post.findUnique({ where: { slug: params.slug, published: true } })
   if (!post) return {}
+  const coverImageUrl = getImageUrl(post.coverImage)
   return {
     title: post.title,
     description: post.excerpt || post.content.substring(0, 160),
     openGraph: {
       title: post.title,
       description: post.excerpt || undefined,
-      images: post.coverImage ? [post.coverImage] : [],
+      images: coverImageUrl ? [coverImageUrl] : [],
     },
   }
 }

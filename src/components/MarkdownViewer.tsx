@@ -4,12 +4,38 @@ import remarkGfm from 'remark-gfm'
 import rehypeHighlight from 'rehype-highlight'
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import { isPrivateBlobUrl, extractBlobFilename } from '@/lib/blob'
+import { visit } from 'unist-util-visit'
+import type { Node, Element } from 'hast'
 
 interface MarkdownViewerProps {
   content: string
 }
 
+/**
+ * 将 Markdown 中的私有 blob 图片 URL 转换为代理 URL
+ */
+function transformBlobUrls(content: string): string {
+  // 匹配 markdown 图片语法: ![alt](url)
+  return content.replace(
+    /!\[([^\]]*)\]\(([^)]+)\)/g,
+    (match, alt, url) => {
+      if (isPrivateBlobUrl(url)) {
+        const filename = extractBlobFilename(url)
+        if (filename) {
+          const proxyUrl = `/api/blob/${encodeURIComponent(filename)}?url=${encodeURIComponent(url)}`
+          return `![${alt}](${proxyUrl})`
+        }
+      }
+      return match
+    }
+  )
+}
+
 export function MarkdownViewer({ content }: MarkdownViewerProps) {
+  // 预处理：转换私有 blob URL
+  const processedContent = transformBlobUrls(content)
+
   return (
     <div className="prose prose-lg max-w-none
       prose-headings:font-serif
@@ -29,7 +55,7 @@ export function MarkdownViewer({ content }: MarkdownViewerProps) {
         remarkPlugins={[remarkGfm]}
         rehypePlugins={[rehypeHighlight, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
       >
-        {content}
+        {processedContent}
       </ReactMarkdown>
     </div>
   )
