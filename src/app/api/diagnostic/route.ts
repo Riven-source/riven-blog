@@ -49,11 +49,11 @@ export async function GET() {
 
     // 识别特定错误
     if (result.prismaConnection.error.includes('P1001')) {
-      result.prismaConnection.error += ' (数据库服务器无法访问，请检查: 1) Neon 数据库是否暂停 2) 网络访问限制)"
+      result.prismaConnection.error += ' (database server unreachable: check if Neon is paused or has network restrictions)'
     } else if (result.prismaConnection.error.includes('P1003')) {
-      result.prismaConnection.error += ' (数据库不存在，请检查 DATABASE_URL 中的数据库名称)"
+      result.prismaConnection.error += ' (database not found: check DATABASE_URL database name)'
     } else if (result.prismaConnection.error.includes('authentication failed')) {
-      result.prismaConnection.error += ' (认证失败，请检查用户名和密码)"
+      result.prismaConnection.error += ' (authentication failed: check username and password)'
     }
   } finally {
     await prisma.$disconnect()
