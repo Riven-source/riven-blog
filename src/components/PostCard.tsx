@@ -2,7 +2,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { formatDate, estimateReadingTime } from '@/lib/utils'
-import { getImageUrl } from '@/lib/blob'
 
 interface Post {
   title: string
@@ -15,14 +14,12 @@ interface Post {
 }
 
 export function PostCard({ post }: { post: Post }) {
-  const coverImageUrl = getImageUrl(post.coverImage)
-
   return (
     <Link href={`/posts/${post.slug}`} className="card group block">
-      {coverImageUrl && (
+      {post.coverImage && (
         <div className="overflow-hidden aspect-video bg-paper-200">
           <Image
-            src={coverImageUrl}
+            src={post.coverImage}
             alt={post.title}
             width={600}
             height={340}
