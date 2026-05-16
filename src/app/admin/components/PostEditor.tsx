@@ -48,46 +48,120 @@ export function PostEditor({ postId, initialData }: PostEditorProps) {
   const handleImageUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
+
+    // 前端预校验
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+    if (!allowedTypes.includes(file.type)) {
+      setError('不支持的文件格式，仅支持 JPEG、PNG、GIF、WebP')
+      return
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      setError('文件大小不能超过 10MB')
+      return
+    }
+
     setUploading(true)
     setError('')
-    try {
-      const fd = new FormData()
-      fd.append('file', file)
-      const res = await fetch('/api/upload', { method: 'POST', body: fd })
-      const data = await res.json()
-      if (data.url) {
-        update('coverImage', data.url)
-      } else {
-        setError(data.error || '图片上传失败')
+
+    const uploadWithRetry = async (retries = 3): Promise<{ url?: string; error?: string }> => {
+      try {
+        const fd = new FormData()
+        fd.append('file', file)
+
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 30000) // 30s 超时
+
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: fd,
+          signal: controller.signal,
+        })
+        clearTimeout(timeoutId)
+
+        const data = await res.json()
+        if (data.url) {
+          return { url: data.url }
+        }
+        return { error: data.error || '上传失败' }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          return { error: '上传超时，请检查网络后重试' }
+        }
+        if (retries > 0) {
+          await new Promise((r) => setTimeout(r, 1000))
+          return uploadWithRetry(retries - 1)
+        }
+        return { error: '网络错误，请稍后重试' }
       }
-    } catch {
-      setError('图片上传失败，请稍后重试')
-    } finally {
-      setUploading(false)
     }
+
+    const result = await uploadWithRetry()
+    if (result.url) {
+      update('coverImage', result.url)
+    } else {
+      setError(result.error || '图片上传失败')
+    }
+    setUploading(false)
   }, [])
 
   const handleInsertImage = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
+
+    // 前端预校验
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
+    if (!allowedTypes.includes(file.type)) {
+      setError('不支持的文件格式，仅支持 JPEG、PNG、GIF、WebP')
+      return
+    }
+    if (file.size > 10 * 1024 * 1024) {
+      setError('文件大小不能超过 10MB')
+      return
+    }
+
     setUploading(true)
     setError('')
-    try {
-      const fd = new FormData()
-      fd.append('file', file)
-      const res = await fetch('/api/upload', { method: 'POST', body: fd })
-      const data = await res.json()
-      if (data.url) {
-        const markdown = `\n![${file.name}](${data.url})\n`
-        update('content', form.content + markdown)
-      } else {
-        setError(data.error || '图片上传失败')
+
+    const uploadWithRetry = async (retries = 3): Promise<{ url?: string; error?: string }> => {
+      try {
+        const fd = new FormData()
+        fd.append('file', file)
+
+        const controller = new AbortController()
+        const timeoutId = setTimeout(() => controller.abort(), 30000)
+
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          body: fd,
+          signal: controller.signal,
+        })
+        clearTimeout(timeoutId)
+
+        const data = await res.json()
+        if (data.url) {
+          return { url: data.url }
+        }
+        return { error: data.error || '上传失败' }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          return { error: '上传超时，请检查网络后重试' }
+        }
+        if (retries > 0) {
+          await new Promise((r) => setTimeout(r, 1000))
+          return uploadWithRetry(retries - 1)
+        }
+        return { error: '网络错误，请稍后重试' }
       }
-    } catch {
-      setError('图片上传失败，请稍后重试')
-    } finally {
-      setUploading(false)
     }
+
+    const result = await uploadWithRetry()
+    if (result.url) {
+      const markdown = `\n![${file.name}](${result.url})\n`
+      update('content', form.content + markdown)
+    } else {
+      setError(result.error || '图片上传失败')
+    }
+    setUploading(false)
   }, [form.content])
 
   const handleSubmit = async (published: boolean) => {
