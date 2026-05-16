@@ -5,157 +5,6 @@ import { createPost, updatePost } from '@/app/actions/post'
 import { generateSlug } from '@/lib/utils'
 import { MarkdownViewer } from '@/components/MarkdownViewer'
 
-// 生成请求 ID 用于日志追踪
-function generateRequestId(): string {
-  return `client_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`
-}
-
-// 前端日志输出
-function logUpload(
-  level: 'info' | 'warn' | 'error' | 'debug',
-  requestId: string,
-  stage: string,
-  message: string,
-  data?: Record<string, unknown>
-) {
-  const timestamp = new Date().toISOString()
-  const logData = { timestamp, requestId, stage, message, ...data }
-  const logMessage = `[${timestamp}] [${level.toUpperCase()}] [${requestId}] [${stage}] ${message}`
-
-  if (level === 'error') {
-    console.error(logMessage, data)
-  } else if (level === 'warn') {
-    console.warn(logMessage, data)
-  } else {
-    console.log(logMessage, data || '')
-  }
-}
-
-// 封装的文件上传函数（带详细日志）
-async function uploadFileWithLogging(
-  file: File,
-  requestId: string
-): Promise<{ url?: string; error?: string }> {
-  const uploadUrl = '/api/upload'
-  const maxRetries = 3
-  const timeout = 30000
-
-  logUpload('info', requestId, 'UPLOAD_START', '开始上传文件', {
-    fileName: file.name,
-    fileType: file.type,
-    fileSize: file.size,
-    fileSizeMB: (file.size / 1024 / 1024).toFixed(2),
-    uploadUrl,
-  })
-
-  for (let attempt = 1; attempt <= maxRetries; attempt++) {
-    logUpload('info', requestId, 'UPLOAD_ATTEMPT', `第 ${attempt} 次上传尝试`, {
-      attempt,
-      maxRetries,
-    })
-
-    try {
-      const fd = new FormData()
-      fd.append('file', file)
-
-      logUpload('debug', requestId, 'REQUEST_SEND', '发送上传请求', {
-        attempt,
-        timeout,
-        hasFile: fd.has('file'),
-      })
-
-      const controller = new AbortController()
-      const timeoutId = setTimeout(() => {
-        logUpload('warn', requestId, 'REQUEST_TIMEOUT', '请求超时，自动中止', { attempt })
-        controller.abort()
-      }, timeout)
-
-      const startTime = Date.now()
-      const res = await fetch(uploadUrl, {
-        method: 'POST',
-        body: fd,
-        signal: controller.signal,
-      })
-      const duration = Date.now() - startTime
-
-      clearTimeout(timeoutId)
-
-      logUpload('info', requestId, 'RESPONSE_RECEIVED', '收到服务器响应', {
-        attempt,
-        status: res.status,
-        statusText: res.statusText,
-        duration: `${duration}ms`,
-      })
-
-      if (!res.ok) {
-        logUpload('warn', requestId, 'RESPONSE_ERROR', '服务器返回错误状态码', {
-          attempt,
-          status: res.status,
-          statusText: res.statusText,
-        })
-        continue // 重试
-      }
-
-      const data = await res.json()
-      logUpload('debug', requestId, 'RESPONSE_PARSE', '响应数据解析完成', {
-        attempt,
-        hasUrl: !!data.url,
-        hasError: !!data.error,
-        code: data.code,
-        requestId: data.requestId,
-      })
-
-      if (data.url) {
-        logUpload('info', requestId, 'UPLOAD_SUCCESS', '文件上传成功', {
-          attempt,
-          url: data.url,
-          filename: data.filename,
-          size: data.size,
-          duration: `${duration}ms`,
-        })
-        return { url: data.url }
-      }
-
-      logUpload('warn', requestId, 'UPLOAD_FAILED', '服务器返回失败响应', {
-        attempt,
-        error: data.error,
-        code: data.code,
-      })
-
-      if (attempt === maxRetries) {
-        return { error: data.error || '图片上传失败' }
-      }
-    } catch (err) {
-      const errorName = err instanceof Error ? err.name : 'Unknown'
-      const errorMessage = err instanceof Error ? err.message : String(err)
-
-      logUpload('error', requestId, 'UPLOAD_ERROR', '上传过程发生异常', {
-        attempt,
-        errorName,
-        errorMessage,
-        isAbort: errorName === 'AbortError',
-      })
-
-      if (errorName === 'AbortError') {
-        logUpload('warn', requestId, 'UPLOAD_ABORT', '请求被中止（超时）', { attempt })
-        return { error: '上传超时，请检查网络后重试' }
-      }
-
-      if (attempt < maxRetries) {
-        logUpload('info', requestId, 'UPLOAD_RETRY', `等待 1 秒后重试...`, {
-          remainingRetries: maxRetries - attempt,
-        })
-        await new Promise((r) => setTimeout(r, 1000))
-      }
-    }
-  }
-
-  logUpload('error', requestId, 'UPLOAD_EXHAUSTED', '所有重试次数已用完，上传失败', {
-    maxRetries,
-  })
-  return { error: '图片上传失败，请稍后重试' }
-}
-
 interface PostEditorProps {
   postId?: string
   initialData?: {
@@ -196,107 +45,106 @@ export function PostEditor({ postId, initialData }: PostEditorProps) {
     if (!postId) update('slug', generateSlug(title))
   }
 
-  const handleImageUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (!file) return
-
-    const requestId = generateRequestId()
+  // 统一的上传函数
+  const doUpload = useCallback(async (
+    file: File,
+    mode: 'cover' | 'insert'
+  ): Promise<void> => {
+    console.log('[UPLOAD_START]', { fileName: file.name, fileType: file.type, fileSize: file.size, mode })
 
     // 前端预校验
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
-    if (!allowedTypes.includes(file.type)) {
-      logUpload('warn', requestId, 'VALIDATION', '文件类型不合法', {
-        fileType: file.type,
-        allowedTypes,
-      })
-      setError('不支持的文件格式，仅支持 JPEG、PNG、GIF、WebP')
+    if (!file.type.match(/^image\/(jpeg|png|gif|webp)$/)) {
+      setError(`不支持的文件格式 "${file.type}"，仅支持 JPEG、PNG、GIF、WebP`)
       return
     }
     if (file.size > 10 * 1024 * 1024) {
-      logUpload('warn', requestId, 'VALIDATION', '文件大小超限', {
-        fileSize: file.size,
-        maxSize: 10 * 1024 * 1024,
-      })
-      setError('文件大小不能超过 10MB')
+      setError(`文件过大 ${(file.size / 1024 / 1024).toFixed(1)}MB，不能超过 10MB`)
       return
     }
 
-    logUpload('info', requestId, 'UI_STATE', '开始上传，设置上传状态', {})
     setUploading(true)
     setError('')
+    let retryCount = 0
+    const maxRetries = 3
 
-    const result = await uploadFileWithLogging(file, requestId)
+    while (retryCount <= maxRetries) {
+      try {
+        console.log(`[UPLOAD_ATTEMPT] 第 ${retryCount + 1} 次...`)
+        const fd = new FormData()
+        fd.append('file', file)
 
-    logUpload('info', requestId, 'UI_UPDATE', '上传完成，更新UI状态', {
-      success: !!result.url,
-      hasError: !!result.error,
-    })
+        const res = await fetch('/api/upload', { method: 'POST', body: fd })
+        console.log('[RESPONSE]', { status: res.status, statusText: res.statusText })
 
-    if (result.url) {
-      update('coverImage', result.url)
-      logUpload('info', requestId, 'UPLOAD_COMPLETE', '封面图上传成功并更新', {
-        url: result.url,
-      })
-    } else {
-      setError(result.error || '图片上传失败')
-      logUpload('error', requestId, 'UPLOAD_COMPLETE', '封面上传失败', {
-        error: result.error,
-      })
+        if (!res.ok) {
+          const body = await res.text()
+          console.error('[RESPONSE_ERROR]', { status: res.status, body: body.substring(0, 500) })
+          retryCount++
+          continue
+        }
+
+        const data = await res.json() as Record<string, unknown>
+        console.log('[RESPONSE_DATA]', data)
+
+        if (data.url && typeof data.url === 'string') {
+          if (mode === 'cover') {
+            update('coverImage', data.url as string)
+            setError('')
+          } else {
+            update('content', form.content + `\n![${file.name}](${data.url})\n`)
+            setError('')
+          }
+          return // 成功退出
+        }
+
+        // 服务器返回了非 URL 响应
+        const serverError = typeof data.error === 'string' ? data.error : '服务器返回异常'
+        setError(serverError)
+        retryCount++
+      } catch (err) {
+        const errMsg = err instanceof Error ? err.message : String(err)
+        console.error('[UPLOAD_EXCEPTION]', { attempt: retryCount + 1, error: errMsg, name: err instanceof Error ? err.name : 'unknown' })
+
+        if ((err as Error).name === 'AbortError') {
+          setError('上传超时，请稍后重试')
+          return
+        }
+        retryCount++
+        if (retryCount <= maxRetries) {
+          await new Promise((r) => setTimeout(r, 1000))
+        }
+      }
     }
-    setUploading(false)
-  }, [])
+
+    // 所有重试都失败
+    setError(`图片上传失败（已尝试 ${maxRetries} 次），请检查网络后重试`)
+  }, [form.content])
+
+  const handleImageUpload = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    try {
+      await doUpload(file, 'cover')
+    } catch (err) {
+      console.error('[HANDLE_UPLOAD_ERROR]', err)
+      setError('上传过程发生未知错误')
+    } finally {
+      setUploading(false)
+    }
+  }, [doUpload])
 
   const handleInsertImage = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
     if (!file) return
-
-    const requestId = generateRequestId()
-
-    // 前端预校验
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp']
-    if (!allowedTypes.includes(file.type)) {
-      logUpload('warn', requestId, 'VALIDATION', '文件类型不合法', {
-        fileType: file.type,
-        allowedTypes,
-      })
-      setError('不支持的文件格式，仅支持 JPEG、PNG、GIF、WebP')
-      return
+    try {
+      await doUpload(file, 'insert')
+    } catch (err) {
+      console.error('[HANDLE_INSERT_ERROR]', err)
+      setError('插入图片时发生未知错误')
+    } finally {
+      setUploading(false)
     }
-    if (file.size > 10 * 1024 * 1024) {
-      logUpload('warn', requestId, 'VALIDATION', '文件大小超限', {
-        fileSize: file.size,
-        maxSize: 10 * 1024 * 1024,
-      })
-      setError('文件大小不能超过 10MB')
-      return
-    }
-
-    logUpload('info', requestId, 'UI_STATE', '开始上传，设置上传状态', {})
-    setUploading(true)
-    setError('')
-
-    const result = await uploadFileWithLogging(file, requestId)
-
-    logUpload('info', requestId, 'UI_UPDATE', '上传完成，更新UI状态', {
-      success: !!result.url,
-      hasError: !!result.error,
-    })
-
-    if (result.url) {
-      const markdown = `\n![${file.name}](${result.url})\n`
-      update('content', form.content + markdown)
-      logUpload('info', requestId, 'UPLOAD_COMPLETE', '图片插入Markdown成功', {
-        url: result.url,
-        markdownPreview: markdown.substring(0, 50),
-      })
-    } else {
-      setError(result.error || '图片上传失败')
-      logUpload('error', requestId, 'UPLOAD_COMPLETE', '图片插入失败', {
-        error: result.error,
-      })
-    }
-    setUploading(false)
-  }, [form.content])
+  }, [doUpload])
 
   const handleSubmit = async (published: boolean) => {
     if (!form.title.trim()) {
@@ -314,7 +162,6 @@ export function PostEditor({ postId, initialData }: PostEditorProps) {
     const tags = form.tags.split(',').map((t) => t.trim()).filter(Boolean)
     const input = { ...form, published, tags }
 
-    // 设置对应的加载状态
     if (published) {
       setIsPublishing(true)
     } else {
@@ -328,7 +175,6 @@ export function PostEditor({ postId, initialData }: PostEditorProps) {
 
       if (result.success) {
         setSuccess(published ? '文章已发布！' : '草稿已保存！')
-        // 保存成功后跳转到管理页面
         setTimeout(() => {
           window.location.href = '/admin'
         }, 1000)
@@ -346,13 +192,13 @@ export function PostEditor({ postId, initialData }: PostEditorProps) {
   return (
     <div className="space-y-6">
       {error && (
-        <div className="p-4 bg-red-50 border border-red-200 rounded-sm text-red-700 text-sm">
+        <div role="alert" className="p-4 bg-red-50 border border-red-200 rounded-sm text-red-700 text-sm">
           {error}
         </div>
       )}
 
       {success && (
-        <div className="p-4 bg-green-50 border border-green-200 rounded-sm text-green-700 text-sm">
+        <div role="status" className="p-4 bg-green-50 border border-green-200 rounded-sm text-green-700 text-sm">
           {success}
         </div>
       )}
@@ -425,7 +271,11 @@ export function PostEditor({ postId, initialData }: PostEditorProps) {
             <input
               type="file"
               accept="image/*"
-              onChange={handleImageUpload}
+              onChange={(e) => {
+                void handleImageUpload(e)
+                // 重置 input 以允许重复选择同一文件
+                e.target.value = ''
+              }}
               className="hidden"
               disabled={uploading || isSavingDraft || isPublishing}
             />
@@ -456,7 +306,10 @@ export function PostEditor({ postId, initialData }: PostEditorProps) {
               <input
                 type="file"
                 accept="image/*"
-                onChange={handleInsertImage}
+                onChange={(e) => {
+                  void handleInsertImage(e)
+                  e.target.value = ''
+                }}
                 className="hidden"
                 disabled={uploading || isSavingDraft || isPublishing}
               />
