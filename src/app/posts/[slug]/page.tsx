@@ -25,12 +25,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   }
 }
 
-export async function generateStaticParams() {
-  const posts = await prisma.post.findMany({ where: { published: true }, select: { slug: true } })
-  return posts.map((p) => ({ slug: p.slug }))
-}
-
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
 
 export default async function PostPage({ params }: PostPageProps) {
   const post = await prisma.post.findUnique({
