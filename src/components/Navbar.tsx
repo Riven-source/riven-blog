@@ -66,7 +66,7 @@ export function Navbar() {
                         <p className="font-medium text-ink-800 text-sm">{session.user?.name}</p>
                         <p className="text-xs text-ink-400 truncate">{session.user?.email}</p>
                       </div>
-                      {(session.user as Record<string, unknown>).isAdmin && (
+                      !!(session.user as any)?.isAdmin && (
                         <Link
                           href="/admin"
                           className="block px-4 py-2 text-sm text-ink-600 hover:bg-paper-100 transition-colors"
