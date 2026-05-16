@@ -10,6 +10,11 @@ declare global {
 function createPrismaClient() {
   return new PrismaClient({
     log: process.env.NODE_ENV === 'development' ? ['query', 'error', 'warn'] : ['error'],
+    datasources: {
+      db: {
+        url: process.env.DATABASE_URL,
+      },
+    },
   })
 }
 
@@ -18,4 +23,11 @@ export const prisma = globalThis.__prisma ?? createPrismaClient()
 
 if (process.env.NODE_ENV !== 'production') {
   globalThis.__prisma = prisma
+}
+
+// 处理 Vercel 无服务器环境的连接关闭
+if (process.env.NODE_ENV === 'production') {
+  prisma.$on('beforeExit', async () => {
+    await prisma.$disconnect()
+  })
 }
