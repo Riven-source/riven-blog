@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《旧制度与大革命》制度演化体系 · 阶层·民心·改革·革命</title>
+<style>
+:root{
+  --bg:#fcfbf8;--card:#fff;--border:#d5cfc0;--text:#181410;--sub:#504838;
+  --accent:#6b1a1a;--accent2:#1a2a3a;--code-bg:#f5f0e8;
+  --warn-bg:#fff4f0;--warn-text:#7a2000;--table-s:#f7f2e8;
+  --side-w:195px;--red:#8b1a1a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.88;font-size:14.5px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#14100c;color:#a89888;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#e0d0c0;font-size:12px;margin-bottom:12px;border-bottom:1px solid#3a2c1c;padding-bottom:8px}
+.sidebar a{display:block;color:#908070;text-decoration:none;font-size:10.5px;padding:3px 0;transition:color .2s}
+.sidebar a:hover{color:#c87050}
+.main{margin-left:var(--side-w);max-width:860px;padding:32px 42px}
+h1{font-size:22px;text-align:center;margin-bottom:4px;color:#140804}
+.subtitle{text-align:center;color:var(--sub);font-size:12px;margin-bottom:32px}
+h2{font-size:18px;color:var(--accent);margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14.5px;color:var(--accent2);margin:24px 0 8px}
+h4{font-size:13px;color:#3a2010;margin:14px 0 6px}
+p{margin:7px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:10px 0}
+.def{background:#fdf6f0;border-left:4px solid var(--red);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:13px}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:14px 18px;margin:10px 0;border-radius:5px;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:12px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:12px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:10.5px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:10px 14px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:var(--warn-text)}
+.example{background:#f4f8f0;border-left:4px solid #2a4a2a;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:12.5px}
+.example strong{color:#1a341a}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:#e8ded0;padding:7px 9px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:7px 9px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#fdf8f0;border:2px solid var(--accent);border-radius:7px;padding:16px;margin:18px 0}
+.summary h4{color:var(--accent);margin-bottom:5px}
+.summary ul{padding-left:16px;font-size:12px}
+.compare th:first-child{background:#e0d5c0}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:14px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:860px){.sidebar{display:none}.main{margin-left:0;padding:10px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>📜 旧制度与大革命<br>制度演化体系</h3>
+  <a href="#c1">一、旧制度的形态与弊端</a>
+  <a href="#c2">二、阶层固化与特权系统</a>
+  <a href="#c3">三、公共资源失衡</a>
+  <a href="#c4">四、改革悖论</a>
+  <a href="#c5">五、民心的演变</a>
+  <a href="#c6">六、社会矛盾积累</a>
+  <a href="#c7">七、革命的爆发机制</a>
+  <a href="#c8">八、制度演化的普遍规律</a>
+  <a href="#c9">九、现代制度困局参照</a>
+  <a href="#c10">十、宏观博弈分析框架</a>
+</nav>
+
+<main class="main">
+
+<h1>《旧制度与大革命》社会制度演化体系</h1>
+<p class="subtitle">L'Ancien Régime et la Révolution · Alexis de Tocqueville · 1856年<br>
+阶层·民心·改革·革命 · 纯Canvas可视化 · 零外部依赖</p>
+
+<div class="def"><strong>《旧制度与大革命》的核心命题</strong>——托克维尔以法国大革命为解剖样本，提出了社会科学史上最深刻的问题之一：为什么革命没有发生在压迫最重的国家，反而发生在压迫正在减轻、改革正在推进的法国？他的回答颠覆了日常直觉——「对于一个坏政府来说，最危险的时刻通常就是它开始改革的时刻。」改革唤醒了被长久压抑的期望，撕开了旧制度合法性的外衣，使此前被默默忍受的恶突然变得不可容忍。托克维尔的核心洞见在于：革命不是压迫的指数函数——它是由压迫的绝对水平与期望变化的速度两者之差引发的。</div>
+
+<!-- ====== 一 ====== -->
+<h2 id="c1">一、旧制度的形态与深层结构性弊端</h2>
+
+<div class="def"><strong>旧制度（Ancien Régime）</strong>——托克维尔用来指称法国大革命前（约16-18世纪）的整个社会政治体制。它不是单一的制度，而是一组相互锁定的多层结构：绝对君主制（国王拥有最高权力但实际权力被无数中介团体所限制）+ 等级社会（教士·贵族·第三等级）+ 各种遗留特权与豁免体系 + 中央集权在各领域程度不一的渗透。</div>
+
+<h3>1.1 旧制度的四大结构性矛盾</h3>
+<div class="derive">托克维尔识别的四大制度性弊端：
+
+① 中央集权与地方自由废除——行政集权的过度
+   「国王的代理人已经越过了大领主的手，插到了最底层的个体」
+   → 法国大革命前的百余年间，王室行政系统持续扩展——将原先地方自治的
+     事务一一收归中央—→最终结果不是更有效的治理，而是更大的行政僵化：
+     巴黎的官僚无法了解几百公里外村庄的具体情况，但当地居民已无权自行解决。
+   → 「中央权力的扩张蚕食了所有中间政治体（省·市镇·行会）的生存空间
+     —→社会失去了自我运转的能力→一切问题都必须由中央处理」
+
+② 法律与行政的碎片化——多个系统并存互不协调
+   同一国土上并存着数百种不同的地方法规、数十种不同的税收体系—
+   → 没有任何人——包括国王本人——能完整说清全国到底有多少种法律在运作
+   → 不同省份被不同的一套法律管理→商品跨省流通极其困难→内部市场破碎
+
+③ 财政体系的极端不合理——最富有的人免税、最贫困的人被榨干
+   直接税(taille)仅由第三等级（平民）缴纳→贵族与教士全面免税
+   间接税(盐税gabelle)极度繁重且在各地区间极不均衡
+   → 财政黑洞连年扩大→王室持续借债→利息支出占税收>50%→濒临破产
+
+④ 特权与豁免体系的僵尸化
+   贵族已丧失封建时代的政治和军事功能，但保留了全部经济特权（免税权、独占权）
+   → 「贵族是有庄严的寄生虫」—— 他们不提供公共服务，但消耗公共财富
+   → 自身已无实质权力的贵族阶层在经济和社会成本上构成了社会的最大消耗源</div>
+
+<div class="chart-wrap"><canvas id="oldRegime" width="600" height="290"></canvas>
+<div class="fig-cap">图1：法国旧制度四大结构性矛盾的同心锁模型，基于托克维尔《旧制度与大革命》原文逻辑复刻。核心推演：中央集权挤压地方自治、法律碎片化阻碍市场与公平、财政系统对第三等级的剥削、特权阶层功能的僵尸化——四大弊端形成相互加固的制度闭环。历史背景：路易十四至路易十六百余年的制度积累（约1660-1789年）。现代映射：任何出现类似四锁并存的制度都可能面临严重的合法性危机。</div></div>
+
+<div class="summary"><h4>📋 第一模块复盘</h4>
+<ul><li>旧制度=绝对君主制+等级社会+特权碎片+过度中央集权</li><li>四大锁：中央过集·法律碎片·财政不公·特权僵尸</li><li>制度不是被外部冲击打倒的——是在自身内部矛盾的积累中自毁的</li></ul></div>
+
+<!-- ====== 二 ====== -->
+<h2 id="c2">二、阶层固化与特权系统——法国三级社会如何自我爆炸</h2>
+
+<div class="def"><strong>三级社会（Three Estates）</strong>——第一等级（教士，约0.5%人口·拥有约10%土地）·第二等级（贵族，约1.5%人口·拥有约25%土地）·第三等级（其余所有人：农民+城市平民+资产阶级，约98%人口）。三个等级之间是「等级隔离」而非仅「阶级差距」——贵族/教士享有的是法律明文赋予的绝对权利，而非仅经济优势。</div>
+
+<h3>2.1 阶级之间不可跨越——社会流动性趋近于零</h3>
+<div class="derive">托克维尔的「阶层硬化」三重论：
+
+① 头衔的继承=社会地位的永久锁死
+   贵族身份=生而有之→非贵族绝无可能通过任何个人成就获得贵族身份
+   → 极其成功的大资产阶级（富豪）仍属于第三等级→买不到爵位
+   → 最富有的平民在法律上仍然低于最贫穷的贵族→经济成功≠社会地位的向上流动
+
+② 税制对等级的固化效应
+   「贵族免税+第三等级全税」→ 不是单纯的不公平，而是等级的经济冻结机制：
+   贵族免掉了最大的经济负担→其财富可以持续积累→始终保持经济优势；
+   第三等级即使勤恳创业——赚来的钱绝大部分交给各种税费→难以进行财富跨代累积
+
+③ 政治权利与等级的捆绑
+   所有政府、教会、军队的高级职位=仅向第一和第二等级开放→
+   第三等级中最聪明、最能干的人=被法定地排除在所有权力体系之外→
+   巨大的精英人才被强制搁置在自己无法发挥的政治制度的外部→
+   这是「制度排斥人才→人才怨愤→引爆才华导入反体制洪流」的经典机制</div>
+
+<div class="chart-wrap"><canvas id="classStructure" width="600" height="290"></canvas>
+<div class="fig-cap">图2：法国三级社会阶层结构模型——两个极小特权等级（教士+贵族）凌驾于占总人口98%的第三等级之上，基于托克维尔分析复刻。核心推演：政治权利·免税权·高级官职被极少数特权阶层绝对垄断→大量在资产阶级中积累了财富和知识但被排斥在所有权力门外的人才→反体制精英成为革命的思想引擎。历史背景：1789年三级会议召开的直接触发点。现代映射：任何社会当精英循环通道被堵塞时积压的张力都将以激烈形式释放。</div></div>
+
+<div class="warn">⚠ 托克维尔的颠覆性发现：法国贵族不是「压迫最重」的（法国农民比同期东欧农奴自由得多），但法国贵族的「特权+无能+无责」三位一体——保留全部特权、丧失所有政治功能、不对社会提供任何公共服务——使得他们成为了全社会最遭憎恨的群体。不是压迫的绝对程度，而是「特权与功能的不对称」引发了最大的阶级仇恨。</div>
+
+<div class="summary"><h4>📋 第二模块复盘</h4>
+<ul><li>第三等级持有98%人口、0%政治权力、100%税负</li><li>阶层硬化=头衔世袭·税制固化·精英人才被制度排除</li><li>贵族的「特权+无能+无责」三位一体=最仇恨根源</li></ul></div>
+
+<!-- ====== 三 ====== -->
+<h2 id="c3">三、公共资源与公共服务的不对称——被中央吃掉的农村</h2>
+
+<div class="def"><strong>财政汲取与社会返还的断裂</strong>——托克维尔揭示：法国旧制度下，国家从农村汲取大量税收，但几乎没有将财政收入返还农村。道路、桥梁、法院、治安在农村均极度缺乏。农民承担了最大的税负，却享受了最少的公共服务——这是一个在任何制度中都难以长期维持的严重不对称。</div>
+
+<h3>3.1 农村的财政单行线</h3>
+<div class="derive">托克维尔观察到的农村财政汲取—返还失衡：
+
+① 直接税的「转嫁压力」
+   taille(直接人头税)从第三等级→全由最底层的农民和城市平民承担
+   → 富有的资产家和城市商人也只交了微薄的部分→税制的最底层向最上层输血
+
+② 徭役（Corvée）——免费的强迫劳动
+   农民每年必须无偿为国王建筑和维护道路数周→无偿=没有酬金+自带工具+自己的粮食
+   → 这笔隐形的劳动税收的价值可能超过农民交纳的全部货币税
+   → 托克维尔：「强迫贫民为富人的交通便利付出无偿劳动」→这是特权制度的最赤裸展示
+
+③ 没有任何农村公共服务
+   农村几乎没有国家出资建设的学校→儿童无学堂；没有公共诊所→疾病无医
+   没有地方警务→偷盗频发；没有农业改良投入→土地持续贫瘠化
+   税收从农村持续流出→没有任何公共品从国王流回农村
+
+④ 卖官鬻爵——以制度性腐败弥补中央枯竭财力
+   法国王室将几乎全部公共职位明码标价出售（法官、税吏、警察长……）
+   → 买官的人必然要从民众身上加倍收回投入资金的成本→层层抽取最后到平民是几倍于应缴的额度</div>
+
+<div class="summary"><h4>📋 第三模块复盘</h4>
+<ul><li>农村=税收持续流出+公共服务几乎零回流——制度的单行吸血管道</li><li>徭役=最赤裸的强制无偿劳动——特权制度对人的尊严的最直接压制</li><li>卖官鬻爵=制度化腐败将公共服务全部泡进私人逐利的池子</li></ul></div>
+
+<!-- ====== 四 ====== -->
+<h2 id="c4">四、改革悖论——为何越改革越引发革命</h2>
+
+<div class="def"><strong>托克维尔悖论（Tocqueville Paradox）</strong>——《旧制度与大革命》全书最核心的发现：革命不是发生在「压迫最深」的地区或时期，而是发生在「压迫正在减轻、改革正在推进」的地区和时期。当路易十六的「开明改革」放松了对农民的部分控制并试图消除某些最明显的制度弊端时——这些改革没有安抚民众，反而摧毁了旧制度仅残留的那一点「合法性外衣」。</div>
+
+<h3>4.1 改革加速革命的三重机制</h3>
+<p>托克维尔通过对路易十六改革（1774-1789）的深入考察发现了一系列反直觉规律。路易十六本人并非暴君——恰恰相反，他是旧制度最「善良」也最「开明」的国王之一。他废除了酷刑、尝试减轻农民负担、召开了时隔175年的三级会议。但这些「善政」反而加速了他的灭亡——这一悖论需要从三个机制去理解。</p>
+<div class="derive">托克维尔对「改革→革命」悖论的系统分析：
+
+机制一：期望的释放 > 改革的实际速度
+  被长久压抑的民众一旦看到制度「准备改变」的信号→不再接受「逐渐改良」
+  → 期望的释放速度远超过任何渐进改革能满足的速度
+  → 托克维尔：人民「在痛苦的桎梏刚被松动的一刻立即觉得剩余的约束
+    比原先全部的桎梏更加不可容忍」——心理弹性被突然释放对制度的耐心归零
+
+机制二：改革暴露了旧制度的彻底崩塌
+  路易十六的「好心改革」→尝试组建省级议会、废除农奴残余、废止酷刑
+  → 但因为旧制度本身的行政能力极度脆弱→没有人能有效执行改革→
+  改革非但无效→反而公开证明了「国王已经控制不了这个国家了」
+  → 当最高权力的无能已经被公之于众→对制度的一切敬畏随之倒塌
+
+机制三：改革唤醒了反叛的种子
+  为了征集民意(召开1787年的显贵会议、1789年的三级会议)→
+  国王允许各阶层表达他们的冤屈和要求→这一开放本身给了民众一个从未有过
+  的平台去组织、去联合、去面对面地看到自己阶级外的人也在愤怒——
+  而这些会议在收到成堆的不满后→全部无疾而终→未解决的愤怒反而有了组织形态
+
+历史数据验证：法国大革命爆发前二十年（1770-1789）
+  → 国王颁布了大量减轻农民负担的「开明」改革→
+  但革命恰恰在改革累积最多、压迫正在减轻的地区（法兰西岛、香槟）最先爆发——
+  而不是在最落后、改革从未到达的偏远省份。</div>
+
+<div class="chart-wrap"><canvas id="reformParadox" width="620" height="290"></canvas>
+<div class="fig-cap">图3：改革悖论模型——期望释放曲线与改革实际速度的剪刀差，基于托克维尔《旧制度与大革命》逻辑复刻。核心推演：被压迫民众在长期压迫中被压制的期望始终远低于实际可忍受阈限→一旦改革开启→期望被急剧释放(陡升曲线)→而改革受限于制度能力(缓慢上行的平曲线)→两者间的「期望—满足落差」不断扩大→当落差越过引爆阈限→革命爆发。这个机制适用于任何在长期高压后突然启动局部改革的制度。</div></div>
+
+<div class="summary"><h4>📋 第四模块复盘</h4>
+<ul><li>改革悖论=改革释放期望的速度压倒满足期望的能力→落差→革命</li><li>三个机制：期望释放·无能暴露·组织化平台→合力引爆</li><li>最危险的不是压迫最重时→是压迫正在减轻、预期猛升时</li></ul></div>
+
+<!-- ====== 五 ====== -->
+<h2 id="c5">五、民心的演变——从默忍到不可容忍的心理突变</h2>
+
+<div class="def"><strong>民心的心理阈限模型</strong>——托克维尔以大量笔墨分析了大革命前法国社会各阶层心态所经历的无声但剧烈的演变。他不是用「某一天人民突然愤怒」的粗糙叙事，而是描写了长达数十年的心理变化：从世代默忍→到隐隐感到「不对劲」→到公开抱怨→到「不能再忍」→到采取最后的剧烈暴动。</div>
+
+<h3>5.1 社会心理的五阶段转化</h3>
+<div class="derive">托克维尔识别的社会心理五阶段律（任何国家的革命前夕的共性规律）：
+
+第一阶段·世代服从——默认接受「秩序是自然的」
+  在旧制度的全盛时期(路易十四)，各阶层将等级不平等视为事物的自然秩序
+  → 「贵族之于平民，犹如树高于草——这是自然本身的安排」
+  → 此时不存在「不满」，存在的是「苦」——苦是存在的，但不存在「对制度的质疑」
+
+第二阶段·认知松动——知识分子开始公开质疑旧秩序
+  启蒙运动(伏尔泰·卢梭·孟德斯鸠·狄德罗)的大量作品→在沙龙和咖啡馆被讨论
+  → 旧制度的神圣性被理性主义「祛魅」——「国王的权力不是来自上帝——
+    仅仅是一种被强加的惯例」→ 制度的「天命合法性」被思想瓦解
+
+第三阶段·相对剥夺感涌现——看到别人改善了而自己未改善
+  一部分改革确实给某些阶层带来了实实在在的改善→
+  但那些刚刚开始享受好转的阶层开始注意上边的人改善更多——「他们越来越好、我们只好了那么一点」→ 不满从绝对贫困变为相对剥夺——自己的状况绝对改善了但与他人的差距也在扩大
+
+第四阶段·话语共识——全民逐渐形成了一套共同的不满语言
+  各阶层之间互相隔离→但各自的不满在沙龙·小报·市集·教堂中碰撞出一套
+  共同的解读框架→「一切问题都是制度问题」→各个具体怨愤找到了一致的归因
+
+第五阶段·引爆事件——最后一根稻草
+  1788年粮食歉收→面包价格飙升至家庭预算的80%以上→1789年三级会议后
+  国王试图驱散第三等级→国民议会成立+网球场宣誓+巴士底被攻→引爆</div>
+
+<div class="chart-wrap"><canvas id="mentalityCurve" width="580" height="280"></canvas>
+<div class="fig-cap">图4：社会心理五阶段演化曲线——从世代服从→认知松动→相对剥夺→话语共识→引爆心理阈限模型，基于托克维尔分析复刻。核心推演：从「默认服从」到「不可容忍」的心理转变历时数十年，一旦越过「不再能忍」的心理阈值后→行为表现为剧烈的突变。阈限一旦被击破就没有「温和回归」——革命的特质是全有或全无。制度改革的窗口期存在于阶段二至三之间的灰色地带——过了阶段四后再也无退路。</div></div>
+
+<div class="summary"><h4>📋 第五模块复盘</h4>
+<ul><li>五阶段律：服从→启蒙→相对剥夺→共识→引爆</li><li>心理转变是长达几十年的渐变→一旦过阈即表现为不可逆的突变</li><li>制度安全的窗口：认知松动初期~相对剥夺全面爆发前的灰色地带</li></ul></div>
+
+<!-- ====== 六 ====== -->
+<h2 id="c6">六、社会矛盾积累——多维叠加的应力模型</h2>
+
+<div class="def"><strong>社会矛盾的多维叠加效应</strong>——托克维尔的革命因果不是一层线性逻辑，而是六个维度的矛盾在同一历史时刻的灾难性共振。单维度矛盾在历史上可能被制度消化——六个维度的矛盾在同一时刻、同一制度上叠加→总应力超过了制度的韧性极限→结构性崩溃。</div>
+
+<h3>6.1 社会矛盾的六维应力叠加</h3>
+<div class="derive">托克维尔革命因果框架中的六维应力模型：
+
+维度一·财政破产——国家的硬性生存底线被击穿
+  路易十六接手时国家已濒临破产→国债利息吞噬超过一半的年税收→
+  1787-1788连年的财政总崩溃→一切改革的出发点是财政压力，不是善政意识
+
+维度二·经济危机——民众的生存底线被击穿
+  1788年极端天气→粮食严重歉收→面包价格飙升至史上最高→
+  城市贫民将收入的80-90%花在面包上→饥饿成为全民性的生存恐惧
+
+维度三·政治合法性真空——国王的无能被公开暴露
+  连年财政危机→国王求助于贵族会议→贵族拒绝增税→求三级会议→第三等级拒绝按等级计票→
+  每一步都在公开展示「国王已经不能独立做出任何事情」→权力真空自己敞开
+
+维度四·意识形态替代——旧权威被新思想系统取代
+  启蒙运动提供了一整套替代旧制度的世界观→人民不用自己思考「怎么办」
+  → 卢梭的《社会契约论》、伏尔泰和百科全书派的思想已为人所共知
+
+维度五·精英背叛——旧制度内部的维护者率先投奔反对阵营
+  大量贵族和教士的成员本身就参与了启蒙运动(拉法耶特、米拉波、西哀士)
+  → 制度失去了它自己最核心的意识形态维护者→ 第三等级于辩论中首先获得的支持
+  不是来自外部攻击——而是来自第一、第二等级内部分裂叛离的部分精英
+
+维度六·外部危机传导——国际环境恶化→内部更脆弱
+  法国七年战争失败→财政毁灭→美国独立战争法国出兵出钱→进一步拉爆财政</div>
+
+<div class="chart-wrap"><canvas id="stressModel" width="600" height="290"></canvas>
+<div class="fig-cap">图5：社会矛盾六维应力叠加模型——财政·经济·政治·意识形态·精英·外部六条应力线在临界点的同步上扬，基于托克维尔革命因果分析复刻。核心推演：单一维度的矛盾可能被制度单独吸收→但六维同时爆发的总应力突破了制度的全部韧性余量→结构性崩溃不再能避免。这解释了为什么「旧制度不是被一种力量打倒的——它是被它自己内部全部纤维在短时间内同时断裂而自毁的」。</div></div>
+
+<div class="summary"><h4>📋 第六模块复盘</h4>
+<ul><li>革命不是一层线性因果→六维的灾难同步共振→制度的总应力断裂</li><li>财政·经济·政治合法·思想·精英·国际→任何一维过载=可忍 六维共振=必亡</li></ul></div>
+
+<!-- ====== 七 ====== -->
+<h2 id="c7">七、革命爆发——从量变到质变的临界突破</h2>
+
+<div class="def"><strong>革命的临界点（Tipping Point）</strong>——托克维尔发现任何革命都有类似的「雪崩动力学」：在一个极其漫长的时期中，矛盾在可控制的范围内缓慢积累（系统仍维持住均衡）→在特定临界时刻，一个微小事件粉碎了系统自我保衡的最后能力→以后的所有事件都急剧加速且不可逆转。革命在第一块多米诺倒下后的速度远超任何人的预判——包括革命者自己的预判。</div>
+
+<h3>7.1 革命的雪崩动力学——从三级会议到巴士底狱</h3>
+<p>1789年5月三级会议的召开本身不是革命——但它给了整个法国一个前所未有的政治动员平台。三个等级被要求写出各自的「陈情书」（Cahiers de Doléances）——这些陈情书汇集了全法国各阶层对社会不公的最详尽控诉。陈情书的内容令人震惊——不是因为它们有多激进，而是因为它们极度温和——没有人请求废除君主制，大多数只是请求减轻税负和废除残存的特权。但正是这种「温和」揭示了旧制度的最深危机：连温和的改革都已不可能通过现有制度来实现。</p>
+<div class="derive">托克维尔对革命爆发学的三步推演：
+
+第一步·量变期——制度尚能维持基本均衡
+  矛盾的缓慢积累中，所有参与方都在各自的利益中继续维系着表面秩序
+  → 国王以为「改革足以安抚」、贵族以为「让步后我们仍是上层」、
+    第三等级以为「会议能解决一切」——每方都对危机严重低估了自己的脆弱
+
+第二步·质变触发——一个意外的事件将全部隐藏矛盾拉到台面之上
+  三级会议中第三等级拒绝按等级投票、国王试图驱散→国民议会自行成立
+  → 这次事件把长期被压制的全部张力在极短时间内表面化——
+  → 「国王的威严在那一刻公开破产」→所有对权力的敬畏在瞬间蒸发
+
+第三步·加速崩塌——失去权力约束后的自我激化
+  巴士底狱被攻陷→农村的「大恐慌」→各地农民自发焚烧领主庄园和地契
+  → 国家卫队成立→王室被迫迁回巴黎→君主立宪→废除封建特权
+  → 全部这些在几个月内的时间跨度发生——革命的加速速度远超任何人的预期
+
+  革命的自激机制：每一次暴力行动都降低了下一次暴力的心理成本
+  → 「昨天烧了一个庄园，今天还怕攻一个监狱吗？」→革命行为的边际心理成本持续降低</div>
+
+<div class="summary"><h4>📋 第七模块复盘</h4>
+<ul><li>革命动力学=长量变→临界触发→加速崩塌→自激循环</li><li>临界点=权力在精神上的解缚——对王权的敬畏一旦蒸散就不可恢复</li><li>革命的自激=每次行动降低下次行动的心理成本→加速度锁环</li></ul></div>
+
+<!-- ====== 八 ====== -->
+<h2 id="c8">八、制度演化的普遍规律——从托克维尔到当代</h2>
+
+<div class="def"><strong>托克维尔制度演化规律（Tocqueville's Law of Institutional Evolution）</strong>——任何社会组织形态的转变都遵循可预测的轨迹：制度内部的矛盾在长时段的无声积累中逐渐增强制度变革压力——制度对这个压力做出反应（改革或镇压）——反应的方式决定了压力是释放还是进一步积累——最终制度的命运取决于它自身的「适应速度」是否超过了「矛盾积累的速度」。</div>
+
+<h3>8.1 制度演化的四条规律</h3>
+<div class="derive">基于旧制度与大革命的经验归纳：
+
+规律一·「改革的时机决定制度的命运」
+  当制度尚健全时进行改革=安全；当制度已严重侵蚀时才被动改革=危险
+  → 原因：前者改革是从「强」的位置做出的主动调整，后者是从「弱」的位置做出的被动投降
+  → 后者在公众眼中=「它已经没办法了才变」≠「它主动让我们更好」→合法性差距极大
+
+规律二·「改革的速度必须快于期望的增长速度」
+  为满足民众期望所进行的改革速度，必须超过改革本身在社会中释放新期望的速度
+  → 如果改革所做的一切都在提高「下一次改革的期待基准线」——
+    这个基准线一旦超越了制度目前的实际承载能力→改革彻底失效
+
+规律三·「被保留的特权比被剥夺的特权更令人生恨」
+  当一个制度废除了大量特权→剩下享存的少数特权由于「只剩下你们还在享受」而成为全社会最集中的靶子。这解释了为什么部分让步也可能激起更大的反弹——
+  不是在「为什么不让更多」而是在「凭什么你可以保留那一丁点我没得到的」
+
+规律四·「空壳化的制度=迟早的内部自爆」
+  当一个制度的形式仍然存在、但实质功能已被掏空（→贵族有名无权、国王有了权威之名但无执行之能）→此时制度中最致命的是：它不再能任何为任何人服务，但继续从所有人身上汲取资源和合法性——这是制度最无防御力的状态</div>
+
+<div class="chart-wrap"><canvas id="evolutionLaw" width="580" height="280"></canvas>
+<div class="fig-cap">图6：托克维尔制度演化四规律模型——改革时机·改革速度·特权仇恨·空壳危机，基于旧制度与革命解析复刻。核心推演：制度的生/死取决于它自身的适应速度是否>矛盾积累速度。存量特权(已被废除的制度中残留仅存)比全局特权(普遍存在的旧制度)更引众怒→原因:仅存的获益者成为全社会的孤立靶子。空壳化=制度仍在吸取资源但零服务返还→制度内部的腐败自杀。</div></div>
+
+<div class="summary"><h4>📋 第八模块复盘</h4>
+<ul><li>改革时机：制度强时主动改革>制度弱时被动改变</li><li>改革速度必须>期望增长速度→否则改革释放的期望吞噬改革本身</li><li>空壳化=功能丧失但仍汲取资源的制度=内部自毁倒计时</li></ul></div>
+
+<!-- ====== 九 ====== -->
+<h2 id="c9">九、现代制度困局——托克维尔框架的当代投射</h2>
+
+<p>托克维尔在1856年的分析带着一个紧迫的问题：他所剖析的旧制度灭亡的逻辑在今天是否仍在重演？他认为答案是肯定的。他的书不是一本历史著作，而是一本「关于未来的警告」。他同时在1856年预测了法国即将再次发生的革命——尽管他当时没有活着看到1871年的巴黎公社。</p>
+
+<div class="derive">托克维尔框架在当代世界的四重映射：
+
+参照一：威权国家的现代化悖论
+  当威权制度允许一定的经济自由和有限的社会开放，民众的物质生活会改善→
+  但改善的预期释放速度永远快于政府能承受的民主化改革速度→
+  「改革悖论」在现代威权国家的反复验证：不是最封闭的社会——而是
+  经济正在开放但政治体制维持不变的社会→面临最大的不稳定性↑
+
+参照二：全球化下国家间的不平等固化
+  旧制度中等级之间的不可流动性→现化为全球产业链之间的「国家等级固化」
+  → 价值链高端国家通过对核心技术+品牌+金融体系的三重垄断→
+  实现了19世纪贵族特权在现代世界经济系统中的复制——不是个人特权，是国家特权
+
+参照三：信息革命与「期望—改革剪刀差」的急剧放大
+  互联网→民众可以看到全球各地的人如何生活→比较基准不再是「邻居」而是「全世界」
+  → 期望释放的速度是互联网级别的、制度改革的速度是官僚政治级别的
+  → 两者之间的速度差在21世纪比托克维尔时代放大了数个数量级
+  → 这就是为什么21世纪在全球范围内出现了远高于19世纪的制度合法性危机频率
+
+托克维尔论互联网时代的终极警示：
+  「期望的增长速度在信息革命后呈指数级，而任何现实中的制度改革永远无法匹配
+  信息时代所释放的期望斜率——当代社会制度的稳定与否取决于它是否有足够
+  厚实的合法性和韧性去吸收一个释放得比它能承接得快得多的期望洪流
+
+参照四：中国的「旧制度与大革命」之问
+  中国在近四十年的急剧现代化中创造了一个托克维尔式的经典情景：
+  经济高速增长释放了巨量的期望→制度的回应速度在某些领域快于期望、
+  在另一些领域缓于期望→不同领域的改革-期望剪刀差的不均等产生了
+  多维的社会张力。托克维尔的分析框架对中国的启示不在于「预测革命」——
+  而在于精准地指出：制度的长期安全取决于它是否有能力在每一个维度上
+  让改革的回应速度大于期望的释放速度——这一赛跑在任何层面上的掉队都构成制度的潜在脆弱区</div>
+
+<div class="summary"><h4>📋 第九模块复盘</h4>
+<ul><li>威权现代化悖论=经济开放+政治不变→改革期望增速>制度容忍限度</li><li>互联网→期望基准全球化→改革-期望剪刀差在21世纪被极端放大</li><li>制度稳定性=适应速度/期望增长速度→分母在信息时代呈指数上升</li></ul></div>
+
+<!-- ====== 十 ====== -->
+<h2 id="c10">十、宏观博弈分析框架——旧制度与大革命的完整因果流</h2>
+
+<div class="derive">托克维尔全书的因果链一体化分析——十步因果流：
+
+第1步 旧制度固有的结构缺陷→中央过度集权+法律碎片化+财政不平等+特权僵尸化
+第2步 社会阶层极端硬化→人才被挤在制度外→反体制精英成为革命的智囊核心
+第3步 公共资源流向与制度产出严重不对称→税负均由底层承担但公共服务=零返还农村
+第4步 国王在财政崩溃后被动启动改革→不是为了「让民众更好」而是为了「让自己生存」
+第5步 改革→释放了被长久压制的期望→期望释放的速度远超过改革满足的速度
+第6步 期望-满足的剪刀差持续扩大→天灾(粮灾)→在期望升到最高时引爆张力
+第7步 国王召集三级会议→给了各阶层一个从未有过的组织化平台→各自提出自己的全部要求
+第8步 未解决的全部要求被组织化、被意识形态化→找到统一的革命叙事
+第9步 临界事件→国王的权威被公开击破→权力真空→加速崩塌→自激暴力循环
+第10步 旧制度的全部要素在几个月的加速革命中被彻底摧毁
+
+制度存亡的终极公示：
+  制度的存亡 = 它在 '矛盾积累的速度' 与 '自身变革速度' 之间的纯粹赛跑。
+  托克维尔：「没有人能预见革命的精确时刻——但在矛盾水平越过制度承受力的前夜，
+  一切都还看似如常——这是所有制度崩塌的唯一共有规律。」</div>
+
+<div class="summary" style="background:#fdf6ef;border-color:#6b1a1a">
+<h4 style="font-size:15px">📜 《旧制度与大革命》全域总纲——制度·阶层·民心·变革的四位一体</h4>
+<p><strong>全书最收敛的等式</strong>：制度稳定 = f(实际矛盾累积速度, 期望释放速度, 改革回应速度, 改革公信力)。任何一个负向变量超过正向变量的那一刻——制度的稳定性公式一侧归零。</p>
+<p><strong>托克维尔留给一切社会最冷峻的警告：</strong>不是压迫最重的制度会崩溃——是那些已经失去了神圣的合法性外衣、无法回应被释放的期望、在自身核心维护者的动摇中自我内爆的制度会崩溃。改革不是革命的反面——当改革被用作救己而非利他时，改革的本意可能正是革命的前兆。</p>
+</div>
+
+</main>
+
+<script>
+class PC{
+  constructor(id,w,h){this.c=document.getElementById(id);if(!this.c)return;this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h}
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  g(x0,x1,y0,y1){const c=this.ctx,p={t:30,r:22,b:45,l:50},pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;this.xs=v=>p.l+(v-x0)/(x1-x0)*pw;this.ys=v=>p.t+(y1-v)/(y1-y0)*ph}
+  ln(pts,color,w=2.5,d=null){if(pts.length<2)return;var c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(d)c.setLineDash(d);c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));c.stroke();c.setLineDash([]);c.restore()}
+  txt(x,y,t,c='#333',s=11,a='center'){this.ctx.fillStyle=c;this.ctx.font=`${s}px sans-serif`;this.ctx.textAlign=a;this.ctx.fillText(t,x,y)}
+  rect(x,y,w,h,cl,sc='#555'){this.ctx.fillStyle=cl;this.ctx.fillRect(x,y,w,h);this.ctx.strokeStyle=sc;this.ctx.lineWidth=1.5;this.ctx.strokeRect(x,y,w,h)}
+}
+
+// 图1: 旧制度四大锁
+(function(){
+  var k=new PC('oldRegime',600,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b1a1a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('旧制度四大结构性矛盾——互锁的崩溃闭环',300,16);
+  var locks=[{x:200,y:35,l:'中央集权过度',sub:'地方自治消灭',c:'rgba(107,26,26,0.06)'},{x:420,y:35,l:'法律碎片化',sub:'内部市场分割',c:'rgba(107,26,26,0.06)'},{x:130,y:120,l:'财政极端不平等',sub:'最富有者全免税·最贫困者被榨干',c:'rgba(180,60,60,0.08)'},{x:390,y:120,l:'特权阶层僵尸化',sub:'保留一切特权·全无政治功能',c:'rgba(180,60,60,0.08)'},{x:230,y:215,l:'崩溃',sub:'四大锁同步断裂',c:'rgba(200,40,40,0.12)'}];
+  locks.forEach(l=>{c.fillStyle=l.c;c.fillRect(l.x-90,l.y-14,180,32);c.strokeStyle='#6b1a1a';c.lineWidth=1.5;c.strokeRect(l.x-90,l.y-14,180,32);c.fillStyle='#333';c.font='10px bold sans-serif';c.fillText(l.l,l.x,l.y+2);c.font='8px sans-serif';c.fillText(l.sub,l.x,l.y+16)});
+  c.strokeStyle='#6b1a1a';c.lineWidth=1.2;c.beginPath();c.moveTo(200,51);c.lineTo(200,106);c.stroke();c.beginPath();c.moveTo(420,51);c.lineTo(420,106);c.stroke();c.beginPath();c.moveTo(130,152);c.lineTo(180,200);c.stroke();c.beginPath();c.moveTo(390,152);c.lineTo(340,200);c.stroke();
+})();
+
+// 图2: 阶层结构
+(function(){
+  var k=new PC('classStructure',600,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b1a1a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('法国三级社会——特权极少数凌驾于98%的第三等级',300,16);
+  // Top tier
+  c.fillStyle='rgba(180,60,60,0.15)';c.fillRect(180,40,240,30);c.strokeStyle='#6b1a1a';c.strokeRect(180,40,240,30);c.fillStyle='#333';c.font='10px bold sans-serif';c.fillText('第一等级·教士 0.5%人口·10%土地·免税·独享教职',300,58);
+  c.fillStyle='rgba(160,40,40,0.1)';c.fillRect(160,75,280,30);c.strokeStyle='#6b1a1a';c.strokeRect(160,75,280,30);c.fillText('第二等级·贵族 1.5%人口·25%土地·免税·垄断军改',300,93);
+  // Middle tier (bourgeoisie)
+  c.fillStyle='rgba(120,80,40,0.05)';c.fillRect(200,110,200,30);c.strokeStyle='#888';c.strokeRect(200,110,200,30);c.fillText('资产阶级（仍属第三等级·富有但无权）',300,128);
+  // Bottom tier
+  c.fillStyle='rgba(80,60,40,0.08)';c.fillRect(40,155,520,30);c.strokeStyle='#6b1a1a';c.strokeRect(40,155,520,30);c.fillText('第三等级·农民+城市平民 98%人口·100%税负·0%政治权力',300,173);
+  // Labels
+  c.fillStyle='#6b1a1a';c.font='10px bold sans-serif';c.fillText('特权阶层只占总人口2%→将全部的制度成本转移至底层',300,220);
+  c.fillStyle='#c03030';c.font='9px sans-serif';c.fillText('最富有的资产者=第三等级(无政治权)→体系中最顶级的聪明人全被排斥在制度外部',300,240);
+})();
+
+// 图3: 改革悖论曲线
+(function(){
+  var k=new PC('reformParadox',620,290);if(!k.c)return;k.clr();
+  k.g(0,10,0,100,'时间→','期望/改革水平');
+  k.ln([[0,5],[2,10],[3,20],[4,35],[5,60],[6,85],[7,95]],'#c03030',3);
+  k.ln([[0,0],[2,8],[4,16],[6,22],[8,28],[10,35]],'#6b1a1a',3);
+  var c=k.ctx;c.fillStyle='#c03030';c.font='10px sans-serif';c.textAlign='left';c.fillText('期望释放曲线(陡升)',420,100);
+  c.fillStyle='#6b1a1a';c.fillText('改革满足能力(平缓)',500,180);
+  c.fillStyle='#555';c.font='11px bold sans-serif';c.textAlign='center';c.fillText('改革→期望释放陡升→改革满足能力平缓→剪刀差扩大→达到临界→革命',310,16);
+  c.fillStyle='#c03030';c.fillText('革命临界阈',460,40);
+})();
+
+// 图4: 心理五阶段
+(function(){
+  var k=new PC('mentalityCurve',580,280);if(!k.c)return;k.clr();
+  k.g(0,5,0,110,'阶段→','心理张力');
+  k.ln([[0,5],[1,15],[2,35],[3,60],[4,85],[5,100]],'#c03030',3);
+  var c=k.ctx;var stages=['服从','松动','剥夺','共识','引爆'];
+  stages.forEach(function(s,i){c.fillStyle='#6b1a1a';c.font='10px bold sans-serif';c.textAlign='center';c.fillText(s,k.xs(i+0.5),k.h-25)});
+  c.fillStyle='#c03030';c.font='10px sans-serif';c.textAlign='left';c.fillText('越过心理阈限→不可逆→无温和回归',400,80);
+  c.fillStyle='#555';c.font='11px bold sans-serif';c.textAlign='center';c.fillText('社会心理的质变：几十年渐变→一时突变(过阈限后)',290,16);
+})();
+
+// 图5: 六维应力
+(function(){
+  var k=new PC('stressModel',600,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b1a1a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('社会矛盾的六维应力同步叠加——制度的总应力突破临界',300,16);
+  var dims=['① 财政破产','② 经济危机','③ 政治合法真空','④ 意识形态替代','⑤ 精英叛离','⑥ 外部危机'];
+  dims.forEach(function(d,i){
+    var x=30+i*95,y=65;c.fillStyle='#fdf6f0';c.fillRect(x,y,80,28);c.strokeStyle='#6b1a1a';c.lineWidth=1.5;c.strokeRect(x,y,80,28);c.fillStyle='#333';c.font='9px bold sans-serif';c.textAlign='center';c.fillText(d,x+40,y+18);
+    // Arrow down
+    c.strokeStyle='#c03030';c.lineWidth=2;c.beginPath();c.moveTo(x+40,y+28);c.lineTo(x+40,140);c.stroke();
+  });
+  c.fillStyle='rgba(200,40,40,0.15)';c.fillRect(180,140,240,40);c.strokeStyle='#c03030';c.lineWidth=2.5;c.strokeRect(180,140,240,40);c.fillStyle='#6b1a1a';c.font='13px bold sans-serif';c.fillText('总应力 > 制度韧性 → 崩溃',300,165);
+  c.fillStyle='#555';c.font='10px sans-serif';c.fillText('任何单维矛盾=可被吸收。六维同步共振=制度的全部韧性余量在一点上被耗尽。',300,210);
+})();
+
+// 图6: 制度演化四规律
+(function(){
+  var k=new PC('evolutionLaw',580,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b1a1a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('托克维尔制度演化四规律',290,16);
+  var laws=[
+    {x:20,y:45,l:'改革时机定律',sub:'制度强时主动改→安全\n制度弱时被动改→危险',c:'#fdf6f0'},
+    {x:310,y:45,l:'改革速度定律',sub:'改革速度必须快于\n期望增长的速度',c:'#fdf6f0'},
+    {x:20,y:140,l:'残留特权定律',sub:'被保留的少数特权\n比全局特权更招恨',c:'#faf0f0'},
+    {x:310,y:140,l:'空壳定律',sub:'制度形式仍在\n功能已掏空→自毁倒计时',c:'#faf0f0'}
+  ];
+  laws.forEach(function(l){
+    c.fillStyle=l.c;c.fillRect(l.x,l.y,260,70);c.strokeStyle='#6b1a1a';c.lineWidth=1.5;c.strokeRect(l.x,l.y,260,70);
+    c.fillStyle='#333';c.font='10px bold sans-serif';c.textAlign='center';c.fillText(l.l,l.x+130,l.y+16);
+    c.font='9px sans-serif';var ss=l.sub.split('\n');ss.forEach(function(s,i){c.fillText(s,l.x+130,l.y+35+i*14)});
+  });
+  c.fillStyle='#6b1a1a';c.font='10px bold sans-serif';c.textAlign='center';c.fillText('制度的生/死 = 它自身适应速度 是否 > 矛盾积累速度',290,240);
+})();
+
+console.log('✅ 旧制度与大革命 · 6张Canvas模型 · 零外部依赖');
+</script>
+</body>
+</html>

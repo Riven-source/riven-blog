@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>曼昆《经济学原理（微观分册）》完整自学体系 · 供需·弹性·四大市场·市场失灵</title>
+<style>
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#c9d1d9;--gold:#e3b341;--red:#f85149;--green:#3fb950;--blue:#58a6ff;--purple:#bc8cff;--muted:#8b949e;--warn-bg:#2d1a1a;--info-bg:#0d1b2a;--derive-bg:#1a1e24;--case-bg:#14261a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:15.5px}
+main{max-width:940px;margin:0 auto;padding:40px 24px}
+h1{font-size:2em;text-align:center;color:var(--gold);margin:20px 0 6px;letter-spacing:1.5px}
+.subtitle{text-align:center;color:var(--muted);margin-bottom:32px;font-size:0.92em}
+h2{font-size:1.55em;color:var(--gold);border-bottom:2px solid var(--border);padding-bottom:8px;margin:44px 0 18px}
+h3{font-size:1.2em;color:var(--blue);margin:26px 0 12px}
+h4{font-size:1.05em;color:var(--purple);margin:18px 0 8px}
+.chapter{padding:0 0 16px;margin:0 0 12px}
+.def-box{background:var(--info-bg);border:1px solid var(--blue);padding:14px 18px;border-radius:6px;margin:14px 0}
+.def-box strong{color:var(--blue)}
+.derive{background:var(--derive-bg);border:1px solid var(--border);padding:14px 18px;border-radius:6px;margin:12px 0;font-size:0.94em}
+.plain{background:#1a1e1a;border-left:3px solid var(--green);padding:14px 18px;border-radius:0 6px 6px 0;margin:12px 0;font-size:0.94em}
+.plain strong{color:var(--green)}
+.warn{background:var(--warn-bg);border:1px solid var(--red);padding:12px 16px;border-radius:6px;margin:14px 0;color:#fdaeb0}
+.warn strong{color:var(--red)}
+.case-box{background:var(--case-bg);border:1px solid var(--green);padding:14px 18px;border-radius:6px;margin:12px 0}
+.case-box strong{color:var(--green)}
+.case-box p{margin:4px 0}
+.summary{background:var(--surface);border:2px solid var(--gold);padding:16px 20px;border-radius:8px;margin:20px 0}
+.canvas-wrap{margin:18px 0;text-align:center}
+.canvas-wrap canvas{max-width:100%;border:1px solid var(--border);border-radius:6px}
+.fig-cap{font-size:0.84em;color:var(--muted);text-align:center;margin:6px 0 14px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92em}
+th{background:var(--surface);color:var(--gold);padding:10px 12px;border:1px solid var(--border);text-align:left}
+td{padding:8px 12px;border:1px solid var(--border)}
+tr:nth-child(even){background:rgba(255,255,255,0.02)}
+.hl{color:var(--gold);font-weight:bold}
+.rh{color:var(--red);font-weight:bold}
+.bh{color:var(--blue)}
+.gh{color:var(--green)}
+nav.toc{background:var(--surface);padding:16px 20px;border-radius:8px;margin:16px 0;columns:2;column-gap:14px;font-size:0.88em}
+nav.toc a{color:var(--blue);text-decoration:none;display:block;padding:2px 0}
+nav.toc a:hover{color:var(--gold)}
+.formula{background:#0d1117;padding:10px 16px;border-radius:4px;display:inline-block;margin:4px 0;font-family:monospace;font-size:0.94em;color:var(--gold);border:1px solid var(--border)}
+.divider{border:none;border-top:1px dashed var(--border);margin:36px 0}
+@media print{body{background:#fff;color:#000;font-size:12px}main{max-width:100%}.warn{background:#fff5f5}}
+@media(max-width:640px){nav.toc{columns:1}h1{font-size:1.5em}}
+</style>
+</head>
+<body>
+<main>
+
+<h1>曼昆《经济学原理（微观分册）》完整自学体系</h1>
+<p class="subtitle">N. Gregory Mankiw — Principles of Microeconomics<br>供需·弹性·消费者·生产者·四大市场·外部性·信息不对称 · Chart.js矢量图表 · 纯离线</p>
+
+<nav class="toc" id="toc"></nav>
+
+<!-- ====== 绪论 ====== -->
+<h2 id="c0">全书总纲：微观经济学的核心地图</h2>
+<div class="def-box">
+<strong>微观经济学研究什么</strong>——研究个体决策者（家庭、企业）如何在资源稀缺的条件下做出选择，以及这些选择如何在市场中相互作用决定价格和资源配置。一句话概括：<span class="hl">稀缺→选择→成本→激励→交易→均衡→效率→失灵→修正</span>。理解了这个链条，你就掌握了全书的逻辑骨架。
+</div>
+<div class="plain">
+<strong>通俗拆解：</strong>你每个月工资就那么多（稀缺），必须决定花多少、存多少（选择）。花掉的每一块钱都意味着放弃了用它存起来或者做别的事的机会（成本）。商家打折你就会多买、涨价就少买（激励）。千千万万个人和商家在市场上相遇，个人的零散决定被价格汇聚成了一整个市场的供需图景（交易与均衡）。均衡是不是对社会最好？有时候是（有效率），有时候不是（失灵），失灵了就需要动脑筋修正。这就是微观经济学全部的剧情。
+</div>
+
+<!-- ====== 第一章：供给与需求 ====== -->
+<div class="divider"></div>
+<h2 id="c1">第一章 供给与需求——市场运行的底层逻辑</h2>
+<div class="chapter">
+
+<h3>1.1 需求定律与需求曲线</h3>
+<div class="def-box"><strong>需求定律</strong>——在其他条件不变的前提下，一种商品的价格上升→需求量减少；价格下降→需求量增加。需求量与价格负相关。</div>
+<div class="plain"><strong>通俗拆解：</strong>奶茶从15块涨到25块→你从一天一杯变成一周一杯。不是你没钱了，是你在心里盘算了一下：25块还能买一份不错的午餐。这叫替代效应（你用别的商品替代了奶茶）和收入效应（你的实际购买力被涨价侵蚀了）。价格是需求的遥控器——涨价按减少键，降价按增加键。<br><strong>但注意！</strong>整条需求曲线的移动（需求变化）≠沿着需求曲线滑动（需求量变化）。前者是因为你的收入变了、口味变了、别的商品价格变了——这些是「外部因素」推动了整条线。后者是因为这个商品自身的价格变了——这是「内部因素」让你在同一条线上滑到了另一个点。千万分清！</div>
+
+<div class="derive"><strong>需求函数：</strong>Q<sub>d</sub> = a − bP 其中 a=当价格为零时的需求截距（所有人白拿的最大需求量），b=价格每涨1元需求量减少的数量（价格敏感系数）。例：市场日奶茶需求 Q<sub>d</sub> = 1000 − 20P。P=15元时 Q<sub>d</sub>=700杯；P=25元时 Q<sub>d</sub>=500杯。</div>
+
+<h3>1.2 供给定律与供给曲线</h3>
+<div class="def-box"><strong>供给定律</strong>——价格上升→供给量增加（企业愿意多生产）；价格下降→供给量减少。</div>
+<div class="plain"><strong>通俗拆解：</strong>奶茶从15涨到25→奶茶店老板打鸡血进货更多材料加派人手→因为同样的原材料和人工在更高售价下能赚更多钱了。但利润高到一定程度→隔壁卖煎饼的也改行卖奶茶→整个行业供给进一步增多。<strong>供给的真正驱动力是边际成本</strong>——只要价格高于多生产一杯的成本，多生产就是划算的。供给曲线本质上就是企业的边际成本曲线在平均可变成本以上的那一段（第五章会详拆）。</div>
+
+<div class="derive">供给函数：Q<sub>s</sub> = c + dP 其中 c=基础供给（价格为零时也会供的量，通常负值），d=价格每涨1元企业多供的量。例：Q<sub>s</sub> = −200 + 30P。P=15时 Q<sub>s</sub>=250杯；P=25时 Q<sub>s</sub>=550杯。</div>
+
+<h3>1.3 市场均衡——看不见的手的交汇点</h3>
+<div class="def-box"><strong>市场均衡（Market Equilibrium）</strong>：需求量=供给量时的价格P*和数量Q*。在这个点上，所有愿意在这个价格下购买的人都能买到，所有愿意在这个价格下出售的人都能卖掉——既没有短缺也没有过剩。</div>
+<div class="plain"><strong>通俗拆解：</strong>Q<sub>d</sub>=1000−20P 和 Q<sub>s</sub>=−200+30P 令两者相等：1000−20P=−200+30P → 1200=50P → P*=24元，Q*=520杯。当价格低于24元（比如20元），需求量更大→抢不到的人抬价→价格自然被推回24元。当价格高于24元（比如30元），供给过剩→卖不掉的商家降价→价格自然拉回到24元。这就是亚当·斯密说的「看不见的手」——不需要任何政府调价，零散的买卖双方的利己行为自动推送价格到位。</div>
+
+<div class="canvas-wrap"><canvas id="chart1" width="800" height="480"></canvas></div>
+<div class="fig-cap">图1：市场供需均衡模型，复刻曼昆微观经济学原版插图。核心逻辑：需求曲线D与供给曲线S的交点E(P*=24, Q*=520)既是消费者的最优买量也是生产者的最优产量。均衡前提：价格完全弹性、无外部干预。</div>
+
+<h3>1.4 均衡的位移——需求与供给的冲击分析</h3>
+<div class="derive"><strong>三大位移操作（三步法定性分析）：</strong>①事件识别→判断它影响供给曲线、需求曲线还是两者都影响。②方向判断→曲线左移还是右移。③新旧均衡对比→P*和Q*各上升还是下降。<br>需求右移（比如收入增加）→P↑ Q↑。供给右移（比如技术革新降成本）→P↓ Q↑。需求左移+供给右移→P↓↓ Q不确定（取决于两条线谁移得多）。</div>
+
+<div class="case-box"><strong>【日常案例·房价】</strong>某城市的住房需求曲线原本稳定→突然该市大企业入驻带来10万新员工→需求曲线右移（每套住宅在任何价格下都有更多人抢）→但短期内地段好的住宅数量无法增加（供给线近乎垂直）→P暴涨。三年后开发商建的新楼盘竣工→供给右移→价格回落。这就是为什么外来人口涌入初期的城市房租总是一波猛涨然后逐渐趋稳。<br><strong>【商业案例·口罩】</strong>2020年2月口罩需求爆炸式右移（全民恐慌性购买）→现货供给近乎垂直（工厂春节放假库存有限）→价格飞涨至平日五倍。数月后工厂产能扩张完成→供给大幅右移→价格回落至接近常态。</div>
+
+<div class="warn"><strong>⚠ 频发混淆：需求量变化≠需求变化</strong>——「猪肉涨价所以大家买的少了」=需求量沿需求曲线向左上滑，需求线本身没动。「疫情期间收入降了所以大家吃的猪肉整体少了」=需求曲线向左移了。区分口诀：<span class="rh">自身价格→需求量（线上滑）；其他因素→需求（整条线平移）</span>。</div>
+</div>
+
+<!-- ====== 第二章：弹性 ====== -->
+<div class="divider"></div>
+<h2 id="c2">第二章 弹性——价格敏感度的精确测量</h2>
+<div class="chapter">
+
+<h3>2.1 需求价格弹性</h3>
+<div class="def-box"><strong>需求价格弹性（Price Elasticity of Demand）</strong> = 需求量变化的百分比 ÷ 价格变化的百分比。衡量消费者对价格有多敏感。</div>
+<div class="plain"><strong>通俗拆解：</strong>你的手机流量套餐涨了20%→你马上换了一个只贵了10%的小套餐→你的需求量缩减了20%。你在这件事上的弹性=20%/20%=1，属于单位弹性。但如果你离不开的胰岛素涨了20%→你根本不敢少买→需求量降到0%。你的弹性=0%/20%=0，近似完全无弹性。理解弹性就是理解消费者的「反抗程度」——对这个商品你到底有多离不开？<br><strong>决定弹性的四大因素：</strong>①替代品多不多（水电燃气替代少=弹性小）。②是必需品还是奢侈品（食盐弹性小、游艇弹性大）。③花销占总收入的比重（火柴涨价你无所谓、房租涨价你立刻肉疼）。④时间维度（短期弹性小因来不及调整、长期弹性大因可以搬家/换工作）。</div>
+
+<div class="derive"><strong>弹性计算公式（中点法·弧弹性）：</strong><br>E<sub>d</sub> = [(Q₂−Q₁)/((Q₁+Q₂)/2)] ÷ [(P₂−P₁)/((P₁+P₂)/2)]<br>使用中点而非单点作为基数是避免从A到B和从B到A算出不同的弹性值。<br>弹性分级：|E|>1 富有弹性（奢侈品）· |E|=1 单位弹性 · |E|<1 缺乏弹性（必需品）· |E|=0 完全无弹性 · |E|→∞ 完全弹性。</div>
+
+<h3>2.2 弹性与总收益——涨价的利与弊</h3>
+<div class="plain"><strong>核心直觉：</strong>总收益TR = P × Q。你涨价了→每卖出一件赚更多（P↑的好），但卖出的数量少了（Q↓的坏）。到底TR升还是降？→取决于需求弹性<strong>大</strong>于1还是<strong>小</strong>于1。<br>弹性大（消费者很敏感）：涨价→Q暴跌→P↑的收益被Q↓的损失盖过→TR↓。所以<span class="hl">缺乏弹性的商品才该涨价</span>。弹性小（消费者被绑定了）：涨价→Q只微降→TR↑。这就是为什么药品、水电、通信这类低弹性商品在缺乏竞争时容易被动涨价收割消费者。</div>
+
+<div class="case-box"><strong>【商业案例·电影院涨价】</strong>一家影院的票价研究：周一至周四观众价格弹性≈1.3（因为替代娱乐多——可以看视频/玩游戏不来看）。周五至周日弹性≈0.7（情侣约会+朋友聚会没有替代品）。影院的利润最大策略=周中降价揽客（弹性大降价TR增）、周末涨价赚取额外利润（弹性小涨价TR增）。这就是「差别定价」的弹性逻辑基础。<br><strong>【政策案例·烟草税】</strong>青少年吸烟的价格弹性约0.7（有一定弹性但还是会上瘾）→加税100%→需求量约降70%同时税额收入激增。成年老烟民弹性仅0.3→加税对减少他们的消费影响极小但税基稳定。烟草税兼具了「抑制消费+稳定税基」的双重弹性基础。</div>
+
+<h3>2.3 其他弹性类型速览</h3>
+<div class="derive"><strong>需求收入弹性：</strong>E<sub>m</sub> = ΔQ%/ΔY%。正常品E<sub>m</sub>>0（收入增→多买），其中奢侈品E<sub>m</sub>>1、必需品0<E<sub>m</sub><1。低档品E<sub>m</sub><0（收入高了反而不买了，如方便面）。<br>
+<strong>需求交叉弹性：</strong>E<sub>xy</sub> = ΔQ<sub>x</sub>%/ΔP<sub>y</sub>%。E<sub>xy</sub>>0→替代品（可口涨价→百事多卖）。E<sub>xy</sub><0→互补品（汽油涨价→汽车少的人更多→汽车销量跟随降）。<br>
+<strong>供给价格弹性：</strong>短期很小（产能锁定），长期很大（可建新工厂），这是所有供给分析的第一前提假设。</div>
+
+<div class="canvas-wrap"><canvas id="chart2" width="800" height="480"></canvas></div>
+<div class="fig-cap">图2：需求弹性对总收益的影响。左侧缺少弹性的需求（陡峭）涨价→Q降极少→TR↑。右侧富有弹性的需求（平缓）涨价→Q暴跌→TR↓。核心逻辑：TR的变化方向取决于|E|与1的大小关系。</div>
+</div>
+
+<!-- ====== 第三章：消费者选择理论 ====== -->
+<div class="divider"></div>
+<h2 id="c3">第三章 消费者选择——无差异曲线与预算约束</h2>
+<div class="chapter">
+
+<h3>3.1 预算约束线</h3>
+<div class="def-box"><strong>预算约束线（Budget Constraint）</strong>：在给定收入与商品价格下，消费者能够购买的两种商品的全部可能组合。公式：P<sub>x</sub>·X + P<sub>y</sub>·Y = M（收入）。斜率 = −P<sub>x</sub>/P<sub>y</sub>（市场要求你为多消费一单位X必须放弃的Y的数量）。</div>
+<div class="plain"><strong>通俗拆解：</strong>你每月500块买午餐和奶茶。午餐30块一份，奶茶20一杯。你把全部钱花在午餐上能买16.7份→这个点画在横轴。全部花在奶茶上能买25杯→这个点在纵轴。两点连成一条线——这条线上的每个点都是一笔你买得起的不同组合。线外面的点你买不起。线的斜率=−20/30=−2/3，意思是多喝一杯奶茶就要少掉2/3份午餐。这就是机会成本——在你自己的预算约束里，午餐和奶茶的成本是相互的。每次你做一个消费决定，市场已经替你算好了你必须放弃什么。</div>
+
+<h3>3.2 无差异曲线与边际替代率</h3>
+<div class="def-box"><strong>无差异曲线（Indifference Curve）</strong>：消费者心目中带来完全相同满意度（效用水平）的全部两种商品组合。任何两条无差异曲线不会相交。越往右上方效越高。<strong>边际替代率MRS</strong> = 消费者为多一单位X而愿意放弃Y的数量 = 无差异曲线在该点的切线斜率取绝对值。</div>
+<div class="plain"><strong>通俗拆解：</strong>你有自己的口味偏好。对你来说「8份午餐+10杯奶茶」和「10份午餐+6杯奶茶」让你感觉一样开心？如果一样——这两个点就在同一条无差异曲线上。MRS=你愿意用几杯奶茶换一份午餐=你的<strong>主观口感偏好</strong>。MRS递减=午餐吃得太多的话，再多吃一份你觉得不值得用同样多的奶茶去换了——肚子已经有点腻了。这是典型的边际效用递减。</div>
+
+<h3>3.3 消费者最优——当主观偏好碰到客观预算</h3>
+<div class="derive"><strong>最优消费组合的条件：</strong>MRS = P<sub>x</sub>/P<sub>y</sub><br>无差异曲线的切线斜率 = 预算线的斜率。<br>即：你内心愿意的交换率 = 市场实际要求的交换率。当两者恰好相等→你无法通过「多买一样来换取另一样」进一步提升满意度。<br><br>展开为边际效用等价公式：MU<sub>x</sub>/P<sub>x</sub> = MU<sub>y</sub>/P<sub>y</sub><br>花在X上的最后一元的边际效用 = 花在Y上的最后一元的边际效用。<br>如果不等→你把钱从低效用商品撤出→投到高效用商品→直到两者相等→最优停止。</div>
+
+<div class="plain"><strong>这就是为什么打折时你会大量囤货：</strong>P<sub>x</sub>突然降低→MU<sub>x</sub>/P<sub>x</sub>变大了（每元钱在X上买到了更多效用）→你立刻多买X减少花在Y上的钱→直到再次均衡。</div>
+
+<div class="canvas-wrap"><canvas id="chart3" width="800" height="480"></canvas></div>
+<div class="fig-cap">图3：消费者最优选择——无差异曲线与预算线的切点。E点处MRS=P<sub>x</sub>/P<sub>y</sub>达成消费者均衡。如果P<sub>x</sub>下降→预算线向外旋转→新的切点→X消费量上升（价格效应分解为收入效应+替代效应）。</div>
+
+<div class="case-box"><strong>【日常案例·超市折扣】</strong>牛奶原价12元→打对折6元。你预算线在横轴（牛奶）方向向外延伸了一倍→你的最优切点移动→牛奶的消费量从每周两瓶变四瓶。这背后是替代效应（牛奶廉价了所以用牛奶替代了原来喝饮料的那部分预算）加上收入效应（牛奶便宜了你实际购买力上升→所有消费都会微调）。<br><strong>【社会案例·教育补贴】</strong>政府给低收入家庭发放「教育代金券」→他们的预算线在教育横轴上向外弹出→家庭的最优切点移向更高教育的组合。比直接发等额现金对教育消费的刺激更大（因为绕过了一般消费的替代）。</div>
+</div>
+
+<!-- ====== 第四章：生产者成本 ====== -->
+<div class="divider"></div>
+<h2 id="c4">第四章 生产与成本——企业决策的背面</h2>
+<div class="chapter">
+
+<h3>4.1 生产函数：投入如何变为产出</h3>
+<div class="def-box"><strong>生产函数</strong>：Q = f(L, K)——在给定技术下，投入劳动L和资本K所能获得的最大产出量。<strong>边际产量MP</strong> = ΔQ/ΔL（多雇一单位劳动额外产出的增量）。<strong>边际产量递减规律</strong>：在固定资本下持续追加劳动→MP最终必然下降。</div>
+<div class="plain"><strong>通俗拆解：</strong>一个厨房（固定资本=一个灶台）。一个厨师一小时出10道菜。你再加一个厨师→两人共用一灶→总产出18道菜→第二个厨师的MP=8道（小于第一个的10——因为灶台不够用了）。再加第三个→挤不下了互相撞→三人总共出22道→第三个MP=4→这就是边际产量递减。它不是因为工人越来越懒——是固定资本已经被分摊到极限了。</div>
+
+<h3>4.2 七类成本一口清</h3>
+<div class="derive">
+<strong>固定成本FC</strong>：不随产量变化的成本（厂房租金、设备折旧，产量为0时也要支付）。<br>
+<strong>可变成本VC</strong>：随产量变化的成本（原材料、工人工资，多产就多花）。<br>
+<strong>总成本TC</strong> = FC + VC。<br>
+<strong>平均固定成本AFC</strong> = FC/Q。随Q增大持续下降（固定成本被越摊越薄）。<br>
+<strong>平均可变成本AVC</strong> = VC/Q。先降（初期规模效应）后升（边际产量递减开始拖累）。<br>
+<strong>平均总成本ATC</strong> = TC/Q = AFC + AVC。U形曲线——先降后升。<br>
+<strong>边际成本MC</strong> = ΔTC/ΔQ。多生产一单位追加的成本。MC穿越ATC和AVC的最低点——这是纯数学规律（如果你最后一分的成绩低于平均分→平均分被它往下拉）。
+</div>
+
+<h3>4.3 短期与长期——固定成本的松动</h3>
+<div class="plain"><strong>短期</strong>：至少有一种生产要素是固定的（通常K固定），企业只能在「可变成本」上做文章，调整空间很有限。<strong>长期</strong>：所有投入都是可变的（可以建新厂房、买新设备、进入或退出一个行业），长期平均成本LRAC是所有可能的短期ATC的「下边界包络线」。规模经济→LRAC↓；规模不经济→LRAC↑；规模报酬不变→LRAC→。</div>
+
+<div class="canvas-wrap"><canvas id="chart4" width="800" height="480"></canvas></div>
+<div class="fig-cap">图4：短期成本曲线族。MC穿越AVC和ATC的最低点。AFC持续下降拖拽ATC在早期下探、边际产量递减在后期反推ATC上扬形成U形。核心前提：至少一种投入固定。</div>
+
+<div class="case-box"><strong>【日常案例·网约车】</strong>司机的FC=车辆折旧+保险（每月固定）。VC=油费+保养（开得多花得多）。当每天接10单以下→ATC极高（固定成本只摊到极少数单子上）。接30-50单→ATC降到最低（U形谷底）。接70单以上→疲劳导致的油耗增加和事故概率上升→MC陡增→ATC重新反弹。<br><strong>【商业案例·台积电芯片厂】</strong>一座3nm晶圆厂的FC=300亿美元（厂房+光刻机）。但只要开起来→每月产数万片晶圆→AFC急速下降。所以半导体行业极度依赖「产能利用率」——低于70%开工率→AFC的摊销不足→利润可能被AFC完全吞噬。</div>
+</div>
+
+<!-- ====== 第五章：完全竞争 ====== -->
+<div class="divider"></div>
+<h2 id="c5">第五章 完全竞争——理想市场的基准模型</h2>
+<div class="chapter">
+
+<h3>5.1 完全竞争的四大前提</h3>
+<div class="def-box">①市场上买卖双方人数极大→没有任何单方有能力影响价格（<strong>价格接受者</strong>）。②产品完全同质（所有卖家的产品一模一样→买家无品牌偏好）。③企业可自由进入或退出该行业。④信息完全对称（所有人知道所有价格和产品质量）。</div>
+<div class="plain"><strong>通俗拆解：</strong>理想国一样的市场。你作为一个卖菜的小摊贩，菜市场的白菜价格已经由全体卖家和买家的博弈决定了2元一斤——你不可能卖2.5元（因为顾客转身就去隔壁摊位），也没必要卖1.5元（因为2元也就全卖完了）。你唯一需要做的决策是「在2元的价格下，卖多少斤最赚钱」。这就是完全竞争的残酷与纯粹——企业只是产量的选择者，不是价格的决定者。</div>
+
+<h3>5.2 利润最大化：P=MC 的铁律</h3>
+<div class="derive"><strong>完全竞争企业的需求曲线</strong>=一条水平线在P=P<sub>market</sub>处（你卖多少都不影响市价）。边际收益MR恒定=P。<br>利润最大化一阶条件：MR = MC → <strong>P = MC</strong>。<br>多卖一单位额外收益P，额外成本MC。只要P>MC→继续增产（多赚）。P<MC→减产（少亏）。当P=MC→每单位的额外利润=0→增产和减产都不能再改善→最优静止点。</div>
+
+<h3>5.3 停业点与供给曲线</h3>
+<div class="plain"><strong>短期要不要关门？</strong>关键不是看利润是否为负，而是看可变成本能不能被覆盖。如果P < AVC→你连买原材料的钱都赚不回来→每多做一杯都在亏→<span class="rh">立刻停业</span>。如果AVC ≤ P < ATC→每杯奶茶能收回原材料成本并补贴了一部分房租→虽然总账上亏了，但关门你亏得更多（FC要照样付）→<strong>继续开业</strong>。如果P ≥ ATC→盈利→继续且扩大。所以<span class="hl">企业的短期供给曲线=MC在AVC以上的那一段</span>。</div>
+
+<div class="canvas-wrap"><canvas id="chart5" width="800" height="480"></canvas></div>
+<div class="fig-cap">图5：完全竞争企业均衡。市场需求D与供给S决定了P*=24。单个企业面对水平需求线d=MR=P*。P*=MC决定最优产量q*。P*≥ATC→π=(P−ATC)×q*>0（利润为正）=吸引新企业进入→行业供给右移→P*下降→直至π=0长期均衡。</div>
+
+<div class="case-box"><strong>【日常案例·大学城奶茶店】</strong>在大学城刚开业→一共只有三家奶茶店→每家日销400杯日利润约2000元。第三个月周边冒出另外十家→行业供给大幅右移→从20元骤降至12元。原来的三家中有两家因为设备全租的（FC=每天300元，AVC=每杯7元）→此时P=12>AVC=7→继续撑。等到价格跌到6元→P<AVC→三家全关停。最后市场剩五家→供给左移回来→P回升至合理位置。<br><strong>【社会案例·共享单车】</strong>2017年全行业超过20家平台疯狂投放→Q暴增→价格近乎为0→所有平台巨亏→市场出清（倒闭合并）→仅剩三四家→行业供给大幅收缩→每辆单车的利用价值回到可盈利水平。</div>
+</div>
+
+<!-- ====== 第六章：垄断 ====== -->
+<div class="divider"></div>
+<h2 id="c6">第六章 垄断——无竞争者的定价权剖析</h2>
+<div class="chapter">
+
+<h3>6.1 垄断的来源：进入壁垒的四种形态</h3>
+<div class="derive">①<strong>资源独占</strong>：某企业控制了生产所需的唯一关键资源（钻石矿）。<br>②<strong>政府许可</strong>：专利、版权、政府特许经营权创造的法律壁垒。<br>③<strong>自然垄断</strong>：该行业只有一家企业时平均成本最低——因为FC极高MC极低（电网、自来水），新进入者分摊FC后没利润。<br>④<strong>网络效应</strong>：产品价值随用户数量上升→微信/淘宝这类的用户本身就是壁垒。</div>
+
+<h3>6.2 垄断者的决策：MR=MC，但 MR≠P</h3>
+<div class="plain"><strong>与完全竞争的本质区别：</strong>完全竞争企业面对的是水平需求线（卖多少价格不变）。但垄断者就是整个行业——它面对的是<strong>整个市场的向下倾斜的需求曲线D</strong>。每多卖一单位，不仅额外的一单位价格要降，之前所有单位的售价也得跟着降低（价格歧视除外）。所以垄断者的<span class="hl">MR < P</span>（边际收益永远低于售价本身）。当它按MR=MC决定产量Q<sub>m</sub>后→顺着需求曲线向上读对应价格P<sub>m</sub>。</div>
+
+<div class="derive"><strong>垄断定价公式（勒纳指数Lerner Index）：</strong><br>L = (P − MC) / P = 1 / |E<sub>d</sub>|<br>加成比例完全取决于需求弹性：弹性越大→垄断者越不敢加价（消费者很敏感）。弹性越小→加成越高（消费者被锁定了）。这在数学上优美而且残酷——垄断的利润来源不是「坏」，是消费者没有替代品。</div>
+
+<h3>6.3 垄断的无谓损失与价格歧视</h3>
+<div class="plain">垄断者人为地将产量压到Q<sub>m</sub>（< 完全竞争Q<sub>c</sub>），将价格抬到P<sub>m</sub>（> 完全竞争P<sub>c</sub>）。由此产生的<span class="rh">无谓损失DWL（Deadweight Loss）</span> = 完全竞争下消费者剩余+生产者剩余的总和被垄断削减了的那块三角形区域。这是垄断被质疑的根本经济理由——不是它赚了太多，是它消灭了本可以创造的价值。<br><strong>但价格歧视（对学生/老人打折、航空提前票vs临时票）有时反而降低无谓损失——因为企业可以将同一商品按不同人的支付意愿收取不同价格，这样即使支付意愿低的人也买得到，产量反而接近完全竞争。</strong></div>
+
+<div class="canvas-wrap"><canvas id="chart6" width="800" height="480"></canvas></div>
+<div class="fig-cap">图6：垄断均衡vs完全竞争。垄断者选择Q<sub>m</sub>（MR=MC的交点），对应P<sub>m</sub> > P<sub>c</sub>。三角形C+D=无谓损失DWL。矩形P<sub>m</sub>×Q<sub>m</sub>−ATC=垄断利润。</div>
+
+<div class="case-box"><strong>【商业案例·处方药专利】</strong>药企花数十亿美元研发新药→获得20年专利垄断权。专利期内MC=生产成本（极低）但P=数万美元/年→勒纳指数接近0.9。但恰恰是这个垄断利润激励它在之前投入巨额研发——它赌在20年内至少有一些创新能成功。专利到期→仿制药（generic）涌入→供给右移→P下跌90%以上。垄断在这种场景不能被完全否定——它是「激励创新」与「限制定价」之间的一笔全社会性权衡。<br><strong>【日常案例·演唱会门票】</strong>一线歌手演唱会=短期垄断（该艺人无替代品）。票价其实等于垄断定价→但黄牛市场的出现让P在二级市场继续往支付意愿顶端飙升→本质是把原演出商的定价权被黄牛夺了→政府加实名制+限购=对黄牛二次垄断的破除。</div>
+</div>
+
+<!-- ====== 第七章：垄断竞争与寡头 ====== -->
+<div class="divider"></div>
+<h2 id="c7">第七章 垄断竞争与寡头——大部分真实市场的形态</h2>
+<div class="chapter">
+
+<h3>7.1 垄断竞争：差异化中的价格力量</h3>
+<div class="def-box"><strong>垄断竞争</strong>——①多家企业。②产品差异化（品牌、口味、位置等不同）。③自由进入与退出。每家企业对自身品牌有微弱的垄断力（因为顾客对你的口味有偏好）但长期经济利润为零（因为新店会一直开到利润归零）。</div>
+<div class="plain"><strong>通俗拆解：</strong>一条街上开了20家奶茶店。每家配方略不同（芝士味、抹茶味、低糖版）——也就是同一大类里的微小不同。你现在稍微提价1元→一部分顾客离开（因为有19个替代选择）但还有一部分忠实芝士控留下（因为他们的口味跟你绑定了）。你的需求线是略微向下倾斜的——不是完全平（你有点定价权）但也不陡（权力有限）。短期你可能有利润→但隔壁马上开了第21家→把你那批忠实顾客进一步瓜分→你的需求线左移→利润归零。</div>
+
+<h3>7.2 寡头市场与博弈论入门</h3>
+<div class="def-box"><strong>寡头（Oligopoly）</strong>——少数几家企业主导市场，每家企业的决策直接影响其他企业的利润（策略性互动）。进入壁垒高。全世界绝大多数大型产业（电信、航空、汽车、芯片）都是寡头。</div>
+<div class="plain"><strong>核心困局：</strong>两家航空公司都飞同一条航线。如果双方默契保持高价→两家都赚大钱。但每一家都担心对方偷偷降价抢走自己的全部乘客→自己先降价→对方被迫跟进→两家利润全毁=价格战。囚徒困境：个体理性的最优→集体非理性的灾难。</div>
+
+<div class="derive"><strong>古诺双寡头（Cournot Duopoly）——产量竞争经典模型：</strong><br>需求P=a−bQ。MC₁=MC₂=c。<br>企业1：利润π₁=(a−b(q₁+q₂)−c)q₁，对q₁求导→∂π₁/∂q₁=a−c−2bq₁−bq₂=0→q₁*=(a−c−bq₂)/(2b)。<br>由于对称，q₁*=q₂*→古诺均衡q*=(a−c)/(3b)，总Q=2(a−c)/(3b)，P=(a+2c)/3。<br>对比垄断Q<sub>m</sub>=(a−c)/(2b)：双寡头总产量更大、价格更低、利润更薄——竞争即使只有两家也在改善消费者福利。<br><br><strong>纳什均衡（Nash Equilibrium）：</strong>给定所有其他参与者的策略，没有任一参与者有单独改变自己策略的激励。古诺均衡q₁*,q₂*双满足→任何一方单方面移开自己的最优反应线都会损害自身利润。</div>
+
+<div class="canvas-wrap"><canvas id="chart7" width="800" height="480"></canvas></div>
+<div class="fig-cap">图7：古诺双寡头最优反应线（Best Response Functions）。R₁(q₂)与R₂(q₁)的交点N=古诺-纳什均衡。两线交点处任何单独偏离均降自身利润。</div>
+
+<div class="case-box"><strong>【商业案例·国内快递价格战】</strong>四通一达+顺丰=经典寡头。2020年起极兔入局→五寡头变六寡头→每家的最优反应线外移→纳什均衡对应更低的P和更大的Q→全行业单票收入两年内降30%→利润大幅压缩。这就是新增玩家的寡头博弈动态——新进入者改变了全部旧参与者的均衡。<br><strong>【日常案例·手机流量套餐】</strong>三大运营商=三寡头。它们「盯价」行为极为典型：一家先推新套餐→另两家在极短时间内回应（调整自己的最优反应）→最终三家价格收敛至非合作纳什均衡——比垄断低，但仍远高于理论上的完全竞争水平。</div>
+
+<div class="warn"><strong>⚠ 频发混淆：垄断竞争vs寡头</strong>——垄断竞争企业数量多+自由进出+长期利润为零；寡头企业数量极少+高壁垒+长期利润持续为正。大部分日常零售（奶茶/餐馆）=垄断竞争。银行/航空/芯片/通信=寡头。</div>
+</div>
+
+<!-- ====== 第八章：要素市场 ====== -->
+<div class="divider"></div>
+<h2 id="c8">第八章 生产要素市场——劳动力的工资从哪来</h2>
+<div class="chapter">
+
+<h3>8.1 劳动需求：边际产量价值决定雇佣量</h3>
+<div class="derivate"><strong>劳动的边际产量价值VMPL</strong> = P × MP<sub>L</sub>（额外一个工人创造的额外产出的市场价值）。<br>利润最大化雇佣条件：VMPL = W（工资）。<br>继续雇直到额外工人的产出值刚好等于他的工资——再雇就亏了、少雇没赚到。</div>
+<div class="plain"><strong>三个决定工资的根本因素：</strong>①工人生产的产品的市场价格P（餐饮业P低→工资低；金融业P高→工资高）。②工人的生产力MP<sub>L</sub>（受过教育的vs未受过教育的）。③劳动供给（大量农民工涌入→同等技能劳动力增多→W压低）。三者相互作用——没有任何一个因素独立决定工资。</div>
+
+<h3>8.2 收入差别的来源</h3>
+<div class="derive"><strong>补偿性工资差别：</strong>煤矿工资>写字楼工资，不是因为煤矿工人的生产力更高，是因为同样的工资本身必须补偿「高风险+恶劣环境」——否则没人去。这是劳动市场供需的直觉直接应用。<br><strong>人力资本：</strong>教育=对人自身的投资→提高MP<sub>L</sub>→提高VMPL→提高工资。教育回报率在各国约为年化6-10%。<br><strong>效率工资：</strong>企业主动支付高于市场均价的工资（如丰田、谷歌）=工人懈怠的代价变大了（丢了这么好的工作去哪找？）→工人自动更卖力→实际上提高了企业的总利润。</div>
+
+<div class="case-box"><strong>【日常案例·程序员vs快递员】</strong>一个高级程序员的年薪=50万，快递员=8万。差距=程序员的产品（软件）市场价值极高（P极高且可无限拷贝无边际成本），同时MP<sub>L</sub>因多年教育+经验极高。快递员面临的P被外卖平台压到极低、且一天投递量有物理上限（MP<sub>L</sub>天花板）。两者的VMPL相差六倍→工资差五倍合理。<br><strong>【社会案例·最低工资的两难】</strong>设定最低工资W<sub>min</sub> > 自由市场W*→劳动力需求沿着需求线下滑（企业雇更少了）→部分人因此从有收入变成失业——这就是经济学界关于最低工资最激烈的争论：利大于弊取决于劳工市场的弹性。</div>
+</div>
+
+<!-- ====== 第九章：外部性与公共物品 ====== -->
+<div class="divider"></div>
+<h2 id="c9">第九章 外部性与公共物品——市场失灵的第一大类</h2>
+<div class="chapter">
+
+<h3>9.1 负外部性：社会成本>私人成本</h3>
+<div class="def-box"><strong>负外部性</strong>——一项经济活动的成本不仅由决策者本人承担，还溢出到无关的第三方。社会成本=私人成本+外部成本。自由市场下私人只根据私人成本决策→产量>社会最优产量→资源过度配置到该产业。</div>
+<div class="plain"><strong>工厂排烟：</strong>工厂生产成本=10元/件（原材料+人工+厂房）。但周边居民因为烟尘引发的哮喘治疗=额外3元/件→这个3元是外部成本由无辜居民被动承担。老板只看自己的10元→按P=10决定产量为1000件。社会实际成本=13元→最优产量应该是800件。多生产的200件是以无辜邻居的健康为代价——市场自己在价格信号里根本没有暴露这一损害。</div>
+
+<div class="derive"><strong>解决负外部性的四大政策工具：</strong><br>①<strong>庇古税（Pigouvian Tax）</strong>——对每单位产量征收等于外部成本的税（3元/件）→私人MC曲线向上平移3元→企业自动将产量缩减至社会最优。碳税即最典型的庇古税。<br>②<strong>可交易排放许可（Cap-and-Trade）</strong>——政府设定总排放上限，发放许可→企业可在市场上交易许可→减排成本低的企业多卖许可、高的多买→全社会的减排总成本最低。<br>③<strong>直接管制</strong>——强制减产或环保设备安装。粗暴但有时执行成本最低。<br>④<strong>科斯定理</strong>——如果产权清晰+交易成本为零，利益双方会自动协商达到有效解。<span class="rh">但现实中交易成本永远不可能是零</span>（受害者人太多组织不了谈判），科斯定理更多地是一种基准参考框架。</div>
+
+<h3>9.2 正外部性：社会收益>私人收益</h3>
+<div class="plain"><strong>蜜蜂园丁的完美隐喻：</strong>果园种苹果→蜜蜂在果树间采蜜→隔壁的蜂农有了蜜，蜂农还间接帮苹果花授粉→苹果结得更大。果园主的私人收益=苹果销售收入。外部收益=蜜蜂的蜜+额外的授粉效果。社会收益>私人收益。私人果园根据私人收益只种50棵树→但根据社会总收益最优该种80棵→种少了（<span class="gh">正外部性的典型后果：有益的生产投入不足</span>）。<br><strong>教育=终极正外部性案例：</strong>你受教育→你赚更多的工资（私人收益）。但你身边的人生活在一个居民素质更高的社区、你参与的技术传播和创新→这些溢出到你没去主动贡献的地方=外部收益。政府补贴教育=用纳税人的钱去弥补私人与社会之间的教育收益缺口。</div>
+
+<h3>9.3 公共物品与搭便车</h3>
+<div class="def-box"><strong>公共物品的两大属性：</strong>非竞争性（你使用不影响别人使用—比如一座灯塔的指引）和非排他性（无法阻止任何人使用—比如国防的保护）。两者兼备→市场机制必然严重供给不足因为每个人都想搭便车（不花钱坐享其成）。</div>
+
+<div class="case-box"><strong>【日常案例·小区路灯】</strong>楼道灯坏了→每户平摊安装费200元→但有5户坚决不交（我看得见路、楼道灯又没法只排除我去照）。最后愿意交的住户出的200元不足以覆盖成本→灯始终没安装→所有人只能在黑暗中靠手机——这就是搭便车导致的公共物品供给系统性缺位。最终必须由物业=行政力量强制收费解决。<br><strong>【全球案例·碳排放】</strong>大气层对温室气体的容量=全球公共物品。没有任何国家可以被排除在大气之外→每家都有「搭别国减排」的便车激励→《巴黎协定》的每一轮谈判都在对抗这一公地悲剧。</div>
+
+<div class="canvas-wrap"><canvas id="chart8" width="800" height="480"></canvas></div>
+<div class="fig-cap">图8：负外部性与庇古税。S<sub>private</sub>=私人MC曲线。S<sub>social</sub>=私人MC+外部成本。市场自由均衡Q<sub>mkt</sub> > 社会最优Q<sub>opt</sub>。△C=庇古税完美弥补缺口→两条线重回重合。</div>
+</div>
+
+<!-- ====== 第十章：信息不对称 ====== -->
+<div class="divider"></div>
+<h2 id="c10">第十章 信息不对称与市场失灵</h2>
+<div class="chapter">
+
+<h3>10.1 逆向选择——隐藏信息</h3>
+<div class="def-box"><strong>逆向选择（Adverse Selection）</strong>：交易前一方比另一方拥有更多关于商品质量的信息→低质商品驱逐高质商品→市场质量持续恶化→最终市场萎缩或消失。</div>
+<div class="plain"><strong>二手车市场（Akerlof的柠檬问题）：</strong>你想买一辆二手奔驰。市场上好车值20万（诚实卖家要价≥20万不愿贱卖）——破车值5万（无良卖家捡了便宜只要5万以上就卖）。你作为买家根本看不出哪个好哪个坏——你唯一的理性出价=市场平均（假设50%好车50%破车）=12.5万。但好车卖主绝不会接受12.5万→全部撤回不卖→市场里只剩破车→你的合理出价再降到5万→最终好车全部离场。<strong>信息不对称本身不需要一个人故意说谎——仅仅是你不知道+对方知道——已经构成了毁灭性的市场淘汰。</strong></div>
+
+<h3>10.2 道德风险——隐藏行动</h3>
+<div class="def-box"><strong>道德风险（Moral Hazard）</strong>：交易后一方因风险被另一方承担而变得更加冒险（行为扭曲发生在本合同签订之后）。</div>
+<div class="plain"><strong>买了全额车险→你停车比以前随意了→因为撞了也不是你的钱→</strong>你的松懈行为在保险公司统计的碰撞率中上升→保费上涨→全体被保人承受了你一个人的松懈。同理：银行「大到不能倒」→银行的风险押注大于没有政府兜底的正常企业。解决=共保（每次修车你自己必须出500免赔额→你和保险公司共担风险→你的松懈回归自律）。</div>
+
+<h3>10.3 信号与筛选——解决信息不对称的市场机制</h3>
+<div class="derive"><strong>信号传递（Signaling, Spence 1973）：</strong>高质量方主动发出一个低质量方模仿成本极高的信号。典型=大学学历——不是因为你真的在大学里学了工作中要用到的所有东西，是因为<strong>能忍受四年枯燥的系统训练这个事实本身</strong>已经足以把你和高能力值低耐心值的人区分开。<br><strong>筛选（Screening）：</strong>信息劣势方主动设计一个自选方案让另一方按类型自行分开。典型=保险公司设计高自付额低年费vs低自付额高年费的两种套餐→健康者自选前一种、频繁就医者选后一种→公司在不偷看任何病历的情况下完成了高质量筛选。</div>
+
+<div class="case-box"><strong>【日常案例·外卖平台评分】</strong>你不知道一个新店好不好吃→但你可以看它的4.8星评分（店内长期积累的信号）。新店如果正常服务好菜→信号会给出好的分数（高质量信号）；如果偷工减料→评分立刻暴跌（低质量难以长期伪装）→评分作为信号有效将优劣店在事前区分开。<br><strong>【商业案例·企业品牌溢价】</strong>为什么你愿意为同一瓶矿泉水花3元买农夫山泉而不是1元无名水？因为品牌=企业向消费者发出的长期质量信号——农夫山泉花费了二十年的广告和品控作为信号的沉没成本。如果某天它降低水质→多年沉没成本瞬变废纸。</div>
+</div>
+
+<!-- ====== 第十一章：全书跨章对比表格 ====== -->
+<div class="divider"></div>
+<h2 id="c11">第十一章 全书核心对比模块</h2>
+
+<h3>11.1 四大市场结构完整对比</h3>
+<table>
+<tr><th>特征</th><th>完全竞争</th><th>垄断竞争</th><th>寡头</th><th>垄断</th></tr>
+<tr><td>企业数量</td><td>极多</td><td>较多</td><td>少数几家</td><td>一家</td></tr>
+<tr><td>产品类型</td><td>完全同质</td><td>差异化</td><td>同质或差异化</td><td>无替代品</td></tr>
+<tr><td>进入壁垒</td><td>零</td><td>低</td><td>高</td><td>极高</td></tr>
+<tr><td>企业需求线</td><td>水平(P固定)</td><td>略向下斜</td><td>向下斜(策略互动)</td><td>向下斜=市场D</td></tr>
+<tr><td>定价规则</td><td>P=MC</td><td>P>MC(加成有限)</td><td>P>MC(策略博弈)</td><td>P>MC(加成最大)</td></tr>
+<tr><td>长期经济利润</td><td>零</td><td>零</td><td>正</td><td>正</td></tr>
+<tr><td>现实例子</td><td>农产品市场</td><td>餐饮·服装</td><td>电信·航空·芯片</td><td>本地自来水</td></tr>
+</table>
+
+<h3>11.2 全书易混淆高频概念核对表</h3>
+<div class="warn">
+<strong>需求量变化 ≠ 需求变化：</strong>自身价格→需求量（线上滑动）；其他因素→需求（线平移）。<br>
+<strong>会计利润 ≠ 经济利润：</strong>会计利润=总收入−显性成本。经济利润=总收入−(显性+隐性成本=含机会成本)。经济利润为零=企业正在赚取正常的投资回报，并没有亏本。所有「长期零利润」指经济利润为零。<br>
+<strong>固定成本 ≠ 沉没成本：</strong>固定成本在短期内无法变动但仍可回收（卖掉设备）。沉没成本是永远无法回收的那一部分（已经花掉的广告费、定制模具）。理性决策只看边际，沉没成本不应进入任何决策。<br>
+<strong>短期 ≠ 长期：</strong>短期=至少一种投入固定。长期=所有投入可变。两者并非日历时间而是决策视角。<br>
+<strong>比较优势 ≠ 绝对优势：</strong>绝对优势=用更少资源生产同一产品。比较优势=以更低的<em>机会成本</em>生产该产品。贸易的基础是比较优势。即使是生产力全面落后的人，仍然存在比较优势并可通过贸易获益。<br>
+<strong>Giffen商品 ≠ 一般低档品：</strong>Giffen商品是在价格上涨时需求反而上升的极特殊低档品（因为收入效应大到溢出替代效应）。现实中几乎不存在。
+</div>
+
+<h3>11.3 全书公式速查</h3>
+<div class="derive">
+<span class="formula">E<sub>d</sub> = (ΔQ/ΔP)·(P/Q)</span> 需求价格弹性（点弹性）<br>
+<span class="formula">TR = P×Q</span> · <span class="formula">MR = ΔTR/ΔQ</span><br>
+<span class="formula">MRS = MU<sub>x</sub>/MU<sub>y</sub> = P<sub>x</sub>/P<sub>y</sub></span> 消费者均衡<br>
+<span class="formula">MC = ΔTC/ΔQ</span> · <span class="formula">ATC = TC/Q</span> · <span class="formula">π = (P−ATC)×Q</span><br>
+<span class="formula">MR = MC</span> 利润最大化条件（所有市场通用）<br>
+<span class="formula">L = (P−MC)/P = 1/|E<sub>d</sub>|</span> 勒纳垄断指数<br>
+<span class="formula">VMPL = P×MP<sub>L</sub> = W</span> 完全竞争劳动市场雇佣条件<br>
+<span class="formula">社会最优产量：MSB = MSC</span>（边际社会收益=边际社会成本）
+</div>
+
+<!-- ====== 全书总结 ====== -->
+<div class="divider"></div>
+<div class="summary">
+<h4>📋 全书十章完整复盘</h4>
+<p><strong>微观经济学的统一大逻辑链：</strong></p>
+<p>稀缺→选择→价格机制汇聚所有个体的分散决策成为市场均衡（第1章）。价格敏感度的弹性决定了生产者和消费者的博弈空间（第2章）。消费者按主观无差异曲线在客观预算的约束下达成最优解（第3章）。企业在技术固化和成本结构下选择最优产量（第4章）。四大市场结构（完全竞争·垄断·垄断竞争·寡头）是不同壁垒与竞争程度的均衡结果（第5-7章）。劳动力按边际产出价值获得工资（第8章）。外部性与公共物品展示了市场自发的致命盲区（第9章）。信息不对称在交易前淘汰质量、在交易后诱发冒险、最终信号与筛选在修复信息缺陷（第10章）。</p>
+<p><strong>经济学的根本思维工具：</strong>在每一次看到价格变化、企业决策、政策争论时问自己——①这件事影响的是供给线还是需求线？②它的弹性是大还是小？③外部成本或外部收益是否被计入了私人的决策框架？④信息在当事人之间的分布是对称的还是严重不对称？⑤这个市场如果长期自由运行，企业获取的是经济利润还是只覆盖了全部机会成本的正常回报？这五个问题构成微观经济学对现实世界的全部透视镜片。</p>
+<p><strong>理论适用局限性始终铭记：</strong>所有模型都是对复杂现实的简化——均衡分析假设理性人+完全信息+无摩擦，现实中的摩擦、偏差、情绪、制度扭曲随时都可能在压制模型的预测。经济学模型让你能「建模理解现实」，但绝不能替代全面的现实沉浸判断。</p>
+</div>
+
+<!-- ====== Chart.js 所有图表绘制 ====== -->
+<script>
+(function(){
+function C(id,w,h){var c=document.getElementById(id);c.width=w;c.height=h;return{ctx:c.getContext('2d'),w:w,h:h}}
+function bg(c,w,h){c.fillStyle='#0d1117';c.fillRect(0,0,w,h)}
+
+// 图1: 供需均衡
+(function(){
+var {ctx, w, h}=C('chart1',800,480); bg(ctx,w,h);
+var ml=70, mr=40, mt=30, mb=50, pw=w-ml-mr, ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';ctx.textAlign='center';
+ctx.fillText('数量 Q',w/2,h-15);ctx.fillText('价格 P',20,h/2);
+ctx.fillText('0',ml-10,h-mb+16);
+// 需求线 D
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+80,mt+30);ctx.lineTo(ml+650,h-mb-30);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.font='bold 14px sans-serif';ctx.fillText('D',ml+600,h-mb-60);
+// 供给线 S
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+80,h-mb-30);ctx.lineTo(ml+650,mt+30);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('S',ml+600,mt+50);
+// 均衡点 E
+var ex=ml+365, ey=mt+ph/2;
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(ex,ey,6,0,Math.PI*2);ctx.fill();
+ctx.fillText('E(P*=24,Q*=520)',ex+60,ey-10);
+// 虚线
+ctx.setLineDash([4,4]);ctx.strokeStyle='#8b949e';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex,h-mb);ctx.stroke();
+ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ml,ey);ctx.stroke();ctx.setLineDash([]);
+ctx.fillText('520',ex,h-mb+16);ctx.fillText('24',ml-25,ey+4);
+// 过剩区域标注
+ctx.fillStyle='rgba(231,179,65,0.15)';ctx.fillRect(ml+50,mt+30,200,ey-mt-30);
+ctx.fillStyle='#e3b341';ctx.font='11px sans-serif';
+ctx.fillText('过剩→P↓',ml+140,mt+70);
+ctx.fillStyle='rgba(248,81,73,0.15)';ctx.fillRect(ml+350,ey,350,h-mb-ey-30);
+ctx.fillStyle='#f85149';ctx.fillText('短缺→P↑',ml+500,h-mb-60);
+})();
+
+// 图2: 弹性对比
+(function(){
+var {ctx,w,h}=C('chart2',800,480); bg(ctx,w,h);
+var ml=70,mr=40,mt=40,mb=50,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';ctx.textAlign='center';
+ctx.fillText('数量',w/2,h-15);ctx.fillText('价格',20,h/2);
+// 无弹性需求 左
+ctx.strokeStyle='#f85149';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+50,mt+40);ctx.lineTo(ml+280,h-mb-60);ctx.stroke();
+ctx.fillStyle='#f85149';ctx.font='bold 13px sans-serif';ctx.fillText('D缺乏弹性|E|<1',ml+100,mt+110);
+ctx.fillText('涨价→TR↑',ml+120,mt+140);
+// 富有弹性 右
+ctx.strokeStyle='#3fb950';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+380,mt+50);ctx.lineTo(ml+650,h-mb-30);ctx.stroke();
+ctx.fillStyle='#3fb950';ctx.font='bold 13px sans-serif';ctx.fillText('D富有弹性|E|>1',ml+430,mt+80);
+ctx.fillText('涨价→TR↓',ml+450,mt+105);
+// 价格上涨箭头
+ctx.fillStyle='#e3b341';ctx.font='12px sans-serif';
+ctx.beginPath();ctx.moveTo(ml+130,mt+80);ctx.lineTo(ml+130,mt+180);
+ctx.strokeStyle='#e3b341';ctx.lineWidth=1.5;ctx.stroke();
+ctx.fillText('P↑',ml+100,mt+150);
+ctx.fillText('Q↓极微',ml+160,mt+180);
+ctx.beginPath();ctx.moveTo(ml+480,mt+120);ctx.lineTo(ml+480,mt+220);
+ctx.stroke();
+ctx.fillText('P↑',ml+450,mt+190);
+ctx.fillText('Q↓↓↓',ml+510,mt+220);
+})();
+
+// 图3: 消费者选择
+(function(){
+var {ctx,w,h}=C('chart3',800,480); bg(ctx,w,h);
+var ml=70,mr=40,mt=30,mb=50,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.textAlign='center';ctx.fillText('商品X(午餐)',w/2,h-15);ctx.fillText('Y(奶茶)',20,h/2);
+// 预算线
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+30,h-mb-50);ctx.lineTo(ml+500,mt+40);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.font='12px sans-serif';ctx.fillText('预算线',ml+420,mt+70);
+// 无差异曲线
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+80,h-mb-60);ctx.quadraticCurveTo(ml+200,mt+200,ml+480,mt+60);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.fillText('U₂',ml+440,mt+40);
+// 切点
+var ex2=ml+240,ey2=mt+280;
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(ex2,ey2,5,0,Math.PI*2);ctx.fill();
+ctx.setLineDash([4,4]);ctx.strokeStyle='#f85149';
+ctx.beginPath();ctx.moveTo(ex2,ey2);ctx.lineTo(ex2,h-mb);ctx.stroke();
+ctx.beginPath();ctx.moveTo(ex2,ey2);ctx.lineTo(ml,ey2);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#f85149';ctx.font='bold 12px sans-serif';ctx.fillText('E* 最优',ex2,ey2-12);
+})();
+
+// 图4: 成本曲线
+(function(){
+var {ctx,w,h}=C('chart4',800,480); bg(ctx,w,h);
+var ml=80,mr=40,mt=30,mb=60,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.textAlign='center';ctx.fillText('产量 Q',w/2,h-15);ctx.fillText('成本 $',25,h/2);
+ctx.font='12px sans-serif';
+// MC
+ctx.strokeStyle='#f85149';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+50,mt+250);ctx.quadraticCurveTo(ml+200,mt+100,ml+550,mt+20);ctx.stroke();
+ctx.fillStyle='#f85149';ctx.fillText('MC',ml+520,mt+12);
+// ATC
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+80,mt+280);ctx.quadraticCurveTo(ml+200,mt+200,ml+530,mt+40);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.fillText('ATC',ml+500,mt+30);
+// AVC
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2;ctx.setLineDash([5,3]);
+ctx.beginPath();ctx.moveTo(ml+60,mt+300);ctx.quadraticCurveTo(ml+200,mt+230,ml+540,mt+60);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#e3b341';ctx.fillText('AVC',ml+520,mt+70);
+// AFC 虚线下降
+ctx.strokeStyle='#bc8cff';ctx.lineWidth=1.5;ctx.setLineDash([3,3]);
+ctx.beginPath();ctx.moveTo(ml+60,mt+180);ctx.quadraticCurveTo(ml+250,mt+50,ml+600,mt+30);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#bc8cff';ctx.fillText('AFC',ml+580,mt+20);
+// MC穿越ATC最低点
+var mcx=ml+220,mcy=mt+175;
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(mcx,mcy,4,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#f85149';ctx.font='12px sans-serif';ctx.fillText('MC=ATC min',mcx+15,mcy-10);
+})();
+
+// 图5: 完全竞争
+(function(){
+var {ctx,w,h}=C('chart5',800,480); bg(ctx,w,h);
+var ml=70,mr=40,mt=30,mb=50;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.textAlign='center';ctx.fillText('产量',w/2,h-15);ctx.fillText('P,Cost',20,h/2);
+// 行业供需
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+30,mt+40);ctx.lineTo(ml+280,mt+300);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.font='bold 13px sans-serif';ctx.textAlign='right';ctx.fillText('需求D',ml+230,mt+120);
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+50,mt+280);ctx.lineTo(ml+300,mt+80);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('供给S',ml+220,mt+220);
+var ind=ml+190, idy=mt+165;
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(ind,idy,5,0,Math.PI*2);ctx.fill();
+// 水平价格线 右侧
+ctx.strokeStyle='#e3b341';ctx.setLineDash([4,4]);
+ctx.beginPath();ctx.moveTo(ml+360,idy);ctx.lineTo(w-80,idy);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#e3b341';ctx.font='14px sans-serif';ctx.fillText('P*=MC=MR=d',w-150,idy-8);
+ctx.fillStyle='#58a6ff';ctx.fillText('ATC',w-120,idy+40);
+// 长期零利润
+ctx.fillStyle='#f85149';ctx.font='bold 13px sans-serif';ctx.fillText('行业',ml+100,mt-5);
+ctx.fillText('单个企业',ml+550,mt-5);
+ctx.fillText('P=ATC→π=0(长期)',w-200,idy+60);
+})();
+
+// 图6: 垄断
+(function(){
+var {ctx,w,h}=C('chart6',800,480); bg(ctx,w,h);
+var ml=70,mr=40,mt=30,mb=50,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.textAlign='center';ctx.fillText('Q',w/2,h-15);ctx.fillText('P',20,h/2);
+// D
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+30,mt+50);ctx.lineTo(ml+550,h-mb-20);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.font='bold 13px sans-serif';ctx.fillText('D',ml+500,h-mb-40);
+// MR
+ctx.strokeStyle='#bc8cff';ctx.lineWidth=2;ctx.setLineDash([5,3]);
+ctx.beginPath();ctx.moveTo(ml+30,mt+50);ctx.lineTo(ml+350,h-mb-20);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#bc8cff';ctx.fillText('MR',ml+320,h-mb-40);
+// MC水平
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+40,mt+280);ctx.lineTo(ml+600,mt+280);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('MC=ATC',ml+560,mt+270);
+// MC与MR交点
+var mx=ml+200,mmy=mt+280;
+ctx.setLineDash([4,4]);ctx.strokeStyle='#f85149';ctx.beginPath();ctx.moveTo(mx,mmy);ctx.lineTo(mx,h-mb);ctx.stroke();ctx.setLineDash([]);
+// 往上读Pm
+ctx.beginPath();ctx.moveTo(mx,mmy);ctx.lineTo(mx,mt+160);ctx.strokeStyle='#f85149';ctx.stroke();
+var pmx=mx, pmy=mt+160;
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(pmx,pmy,5,0,Math.PI*2);ctx.fill();
+ctx.fillText('Pm',ml+45,mt+165);ctx.fillText('Qm',mx,h-mb+14);
+// DWL阴影
+ctx.fillStyle='rgba(248,81,73,0.2)';
+ctx.beginPath();ctx.moveTo(pmx,pmy);ctx.lineTo(ml+400,mt+175);ctx.lineTo(pmx,mt+220);ctx.closePath();ctx.fill();
+ctx.fillStyle='#f85149';ctx.font='11px sans-serif';ctx.fillText('DWL',ml+300,mt+200);
+})();
+
+// 图7: 古诺最优反应线
+(function(){
+var {ctx,w,h}=C('chart7',800,480); bg(ctx,w,h);
+var ml=80,mr=40,mt=30,mb=60,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.textAlign='center';ctx.fillText('q₂(企业2产量)',w/2,h-15);ctx.fillText('q₁(企业1产量)',20,h/2);
+// R1
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+30,h-mb-30);ctx.lineTo(ml+350,mt+40);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.font='bold 13px sans-serif';ctx.fillText('R₁(q₂)',ml+300,mt+30);
+// R2
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+40,mt+40);ctx.lineTo(ml+350,h-mb-30);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('R₂(q₁)',ml+300,h-mb-20);
+// 纳什交点 N
+var nx=ml+195,ny=mt+180;
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(nx,ny,6,0,Math.PI*2);ctx.fill();
+ctx.fillText('N 纳什均衡',nx+50,ny-10);
+ctx.fillStyle='#f85149';ctx.font='12px sans-serif';
+})();
+
+// 图8: 外部性
+(function(){
+var {ctx,w,h}=C('chart8',800,480); bg(ctx,w,h);
+var ml=70,mr=40,mt=30,mb=50,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.textAlign='center';ctx.fillText('Q',w/2,h-15);ctx.fillText('P,Cost',20,h/2);
+// D=MSB
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+20,mt+40);ctx.lineTo(ml+550,h-mb-30);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.font='bold 12px sans-serif';ctx.fillText('D=MSB',ml+450,h-mb-50);
+// S private
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+30,h-mb-40);ctx.lineTo(ml+500,mt+50);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('S私=MC私',ml+430,mt+80);
+// S social (上移)
+ctx.strokeStyle='#f85149';ctx.lineWidth=2.5;ctx.setLineDash([6,3]);
+ctx.beginPath();ctx.moveTo(ml+30,h-mb-120);ctx.lineTo(ml+500,mt+20);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#f85149';ctx.fillText('S社=MC私+外部成本',ml+350,mt+35);
+// 两均衡点
+ctx.fillStyle='#e3b341';ctx.beginPath();var mktx=ml+260,mkty=mt+230;ctx.arc(mktx,mkty,5,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#e3b341';ctx.font='12px sans-serif';ctx.fillText('Q市场(过多)',mktx+50,mkty-10);
+ctx.fillStyle='#f85149';ctx.beginPath();var optx=ml+180,opty=mt+280;ctx.arc(optx,opty,5,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#f85149';ctx.fillText('Q最优',optx-60,opty-10);
+ctx.fillStyle='#3fb950';ctx.font='bold 12px sans-serif';ctx.fillText('庇古税=外部成本',ml+140,mt+130);
+})();
+
+// TOC 自动生成
+var toc=document.getElementById('toc');
+var hs=document.querySelectorAll('h2[id]');
+hs.forEach(function(h){
+var a=document.createElement('a');
+a.href='#'+h.id;
+a.textContent=h.textContent.trim();
+toc.appendChild(a);
+});
+
+})();
+</script>
+
+</main>
+</body>
+</html>

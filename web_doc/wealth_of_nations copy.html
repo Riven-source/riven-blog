@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>亚当·斯密《国民财富的性质和原因的研究（国富论）》全五卷精读 · 王亚南、郭大力译本</title>
+<style>
+:root{
+  --bg:#fdfbf6;--card:#fff;--border:#d8d2c3;--text:#2a2618;--sub:#6b6552;
+  --accent:#8b4513;--accent2:#1a4a6b;--code-bg:#f5f0e5;
+  --warn-bg:#fff6ea;--warn-text:#8b3a00;--table-s:#f8f4eb;
+  --side-w:200px;--quote-bg:#f9f5eb;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:15px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#1a1812;color:#b0ab9c;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#e8e4d4;font-size:12.5px;margin-bottom:12px;border-bottom:1px solid #3a3628;padding-bottom:8px}
+.sidebar a{display:block;color:#9a9580;text-decoration:none;font-size:11px;padding:3.5px 0;transition:color .2s}
+.sidebar a:hover{color:#c8874a}
+.main{margin-left:var(--side-w);max-width:840px;padding:34px 42px}
+h1{font-size:24px;text-align:center;margin-bottom:4px;color:#1a160c}
+.subtitle{text-align:center;color:var(--sub);font-size:12.5px;margin-bottom:32px}
+h2{font-size:18px;color:var(--accent);margin:42px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14.5px;color:var(--accent2);margin:22px 0 8px}
+h4{font-size:13px;color:#3a3426;margin:14px 0 6px}
+p{margin:8px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:12px 0}
+.quote{background:var(--quote-bg);border-left:4px solid #c8874a;padding:12px 16px;margin:12px 0;border-radius:0 5px 5px 0;font-style:italic;font-size:13.5px;line-height:1.9}
+.quote .src{display:block;text-align:right;color:var(--sub);font-size:11.5px;margin-top:6px;font-style:normal}
+.def{background:#eaf2f5;border-left:4px solid var(--accent2);padding:12px 16px;margin:12px 0;border-radius:0 5px 5px 0;font-size:13.5px}
+.def strong{color:var(--accent2)}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:14px 18px;margin:12px 0;border-radius:5px;font-family:"SF Mono","Menlo",monospace;font-size:12px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:14px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:11px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:12.5px;color:var(--warn-text)}
+table{width:100%;border-collapse:collapse;margin:12px 0;font-size:12px}
+th{background:#e8e3d5;padding:7px 9px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:7px 9px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#fefaf1;border:2px solid var(--accent);border-radius:7px;padding:16px;margin:20px 0}
+.summary h4{color:var(--accent);margin-bottom:6px}
+.summary ul{padding-left:16px;font-size:12.5px}
+.compare th:first-child{background:#e0dbcb}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:16px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:850px){.sidebar{display:none}.main{margin-left:0;padding:12px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>📜 国富论 · 全五卷<br>王亚南、郭大力译</h3>
+  <a href="#b1">卷一 劳动生产力与分配</a>
+  <a href="#b1c1">　§1 论分工·制针厂</a>
+  <a href="#b1c2">　§2 分工原理与市场</a>
+  <a href="#b1c3">　§3 货币的起源</a>
+  <a href="#b1c4">　§4 商品真实价格</a>
+  <a href="#b1c5">　§5 价格构成·工资利润地租</a>
+  <a href="#b1c6">　§6 自然价格与市场价格</a>
+  <a href="#b1c7">　§7-10 工资·利润·地租论</a>
+  <a href="#b2">卷二 资财的性质与蓄积</a>
+  <a href="#b2c1">　§1 资本分类</a>
+  <a href="#b2c2">　§2 货币与银行</a>
+  <a href="#b2c3">　§3 生产性/非生产性劳动</a>
+  <a href="#b3">卷三 各国财富增长路径</a>
+  <a href="#b4">卷四 政治经济学体系</a>
+  <a href="#b4c1">　§1 重商主义批判</a>
+  <a href="#b4c2">　§2 自由贸易理论</a>
+  <a href="#b5">卷五 君主或国家的收入</a>
+  <a href="#b5c1">　§1 国防·司法·公共工程</a>
+  <a href="#b5c2">　§2 税收四原则</a>
+  <a href="#b5c3">　§3 公债论</a>
+</nav>
+
+<main class="main">
+
+<h1>《国民财富的性质和原因的研究》</h1>
+<p class="subtitle">An Inquiry into the Nature and Causes of the Wealth of Nations（1776）<br>
+亚当·斯密（Adam Smith）著 · 王亚南、郭大力 全译本<br>
+完整精读教材 · Canvas可视化 · 五卷全覆盖 · 零外部依赖</p>
+
+<div class="def"><strong>成书背景（1776年3月9日出版）</strong>——斯密在格拉斯哥大学讲授道德哲学期间即开始构思政治经济学体系。1764年辞去教职担任年轻的布克莱奇公爵的旅欧教师，在法国逗留两年间结识了重农学派领袖魁奈与杜尔哥，深受重农学派「经济表」的启发。《国富论》的撰写断断续续持续了十余年，出版当年即引起轰动——初版六个月售罄。休谟称赞：「此书需要读者高度专注才能从中获益，但如此深刻的思想必将最终征服公众。」斯密在世时已出五版。</div>
+
+<!-- ============ 卷一 ============ -->
+<h2 id="b1">卷一 论劳动生产力增进的原因并论劳动生产物自然而然地分配给各阶级人民的顺序</h2>
+
+<div class="def"><strong>卷一核心命题</strong>：国民财富的源泉在于劳动生产力的改进，而劳动生产力的最大改进来自分工。分工→市场交换→货币→价格机制→收入的自然分配（工资、利润、地租），构成斯密经济理论的完整逻辑链条。</div>
+
+<!-- 1.1 分工 -->
+<h3 id="b1c1">§1.1 论分工——制针厂的经典案例</h3>
+
+<div class="quote">"劳动生产力上最大的增进，以及运用劳动时所表现的更大的熟练、技巧和判断力，似乎都是分工的结果。"
+<span class="src">——卷一第一章 论分工</span></div>
+
+<p>斯密以制针业为典型案例展开其分工理论。在没有分工的情况下，一个工人「也许一天也制造不出一枚扣针」。但将制针工序拆分——抽铁线、拉直、切截、削尖、磨光、装圆头、涂白色、包装等——十个工人各司数项工序的制针厂，可日产四万八千枚针，即每人平均日产四千八百枚。与单人工匠相比，分工使劳动生产率提升了数百倍。</p>
+
+<div class="chart-wrap"><canvas id="pinFactory" width="600" height="300"></canvas>
+<div class="fig-cap">图1：制针厂分工效率对比柱状图，基于亚当·斯密原文论证重构，核心论点：分工使同一劳动的产出提高数百倍——十个工人各司其职日产48000枚针，单人工匠日产不足20枚。历史背景：18世纪中叶英国小型手工工场的实际观察。现代经济学延伸：专业化与规模经济是现代生产组织的核心原则。</div></div>
+
+<div class="derive">斯密归纳分工提高劳动生产力的三大原因：
+① 劳动者技巧因专务一业而增进——「熟练程度的增加，势必增加他所能完成的工作量」
+② 免除由一种工作转到另一种工作通常损失的时间——「节省通常在转换地点、工具、动作时丧失的时间」
+③ 机械的发明使一个人能做许多人的工作——「简化劳动和缩减劳动的机械的发明，也是起因于分工」
+  关于原因③的洞见：斯密指出许多机械改良并非出自「机械发明家」，而是出自「普通工人为减轻自身劳动」的临场发明；也有部分来自「哲学家或思想家」——他们的职业本身也是分工的产物。</div>
+
+<h3 id="b1c2">§1.2 分工的原因与市场限制</h3>
+
+<div class="quote">"分工起因于交换能力，因此，分工的程度总要受交换能力大小的限制。换言之，要受市场广狭的限制。"<span class="src">——卷一第三章</span></div>
+
+<p>斯密认为分工不是人类智慧预谋的结果，而是人性中「互通有无、物物交换」倾向的缓慢而必然的产物。市场太小，就无法鼓励人们终身专务一业——「在苏格兰高地荒僻乡村，每个农夫必须同时也是屠夫、面包师、酿酒师」。</p>
+
+<div class="derive">分工→市场规模的辩证关系：
+小市场 → 无法专业化 → 低生产率 → 贫穷（如苏格兰高地）
+大市场 → 深度分工 → 高生产率 → 富裕（如伦敦、阿姆斯特丹）
+历史例证：水路运输(水运)开拓了比陆运更广大的市场→「沿海沿河一带先于内陆发展」
+→ 地中海沿岸(腓尼基、希腊、意大利)先于欧洲内陆成为文明中心
+→ 尼罗河、恒河、长江流域同样因水运便利而成为最早文明地带</div>
+
+<div class="warn">⚠ 常见误读：斯密从未说过「分工是资本家发明的控制工人的手段」（那是马克思的观点）。斯密认为分工是「人类天性中交换倾向」的自发结果，是渐进演化而非刻意设计的产物。二者有根本区别。斯密对分工的负面影响确有关注——他警告工厂制使劳动者变得「愚钝无知」，丧失了「智力、社交能力和尚武精神」——但这恰是斯密的复杂之处：他既赞美分工的效率，又忧虑它对人格的摧残。这一反思延续至卷五「国家必须通过教育纠正分工的精神后果」。</div>
+
+<!-- 货币 -->
+<h3 id="b1c3">§1.3 货币的起源与职能</h3>
+
+<div class="quote">"自分工确立以来，各人自己劳动的生产物只能满足欲望的极小部分……于是，一切人都要依赖交换而生活。"<span class="src">——卷一第四章</span></div>
+
+<p>斯密追溯货币的演进：物物交换的不便→选择某种商品作为交换媒介→各文明不约而同选择金属→为克服称量不便→铸币制度→国家垄断铸币权。古希腊用牛、印度用贝壳、弗吉尼亚用烟草、苏格兰用铁钉——斯密以人类学视野指出货币形式因地而异。贵金属最终胜出的原因：耐久性、可分性、便于携带、价值稳定。</p>
+
+<!-- 真实价格与名义价格 -->
+<h3 id="b1c4">§1.4 商品的真实价格与名义价格</h3>
+
+<div class="def"><strong>劳动价值论（斯密版）</strong>——「只有劳动才是价值的普遍尺度和正确尺度。劳动是第一价格，是一切货物所支付的原始购买货币。」劳动的真实价格是「为获得该商品所付出的辛苦和麻烦」。</div>
+
+<div class="derive">斯密的价值与价格层次分析：
+
+劳动 = 价值的内在尺度（真实价格）：衡量一切商品在一切时代、一切地方的「真实价值」
+谷物 = 价值的代用尺度（长期近似）：因谷物是「人类普遍的食粮」，数世纪间实际价值较稳定
+白银/黄金 = 名义价格的尺度（短期方便）：价值波动大(美洲发现金银后大跌)，不宜测长期价值
+
+名义价格 = 货币价格（用金银表示） —— 短期交易用
+真实价格 = 劳动价格（用劳动量表示）—— 跨时期比较用
+「真实」二字在斯密语境中指「不变的真实价值尺度」，非指经通胀调整</div>
+
+<!-- 价格构成 -->
+<h3 id="b1c5">§1.5 商品价格的构成部分——工资、利润、地租</h3>
+
+<div class="quote">"工资、利润和地租，是一切收入和一切可交换价值的三个根本源泉。一切其他收入归根到底都是来自这三种收入中的一个。"<span class="src">——卷一第六章</span>
+<br><small>注：斯密排除了利息作为独立第四种收入——「利息永远是一种派生的收入，借款者将借入资本用于生产，所获利润必须足够支付利息并有余。」利息是出借者在营业利润中的分成，非原始收入来源。这解释了为何古典经济学长期将利息分析并入利润论。</small>
+</div>
+
+<div class="derive">斯密将商品价格分解为三个组成部分（以谷物价格为例）：
+
+原始社会（土地未私有+资本未积累前）：
+  全部生产物归劳动者 → 价格 = 工资（劳动生产物）
+
+土地私有后：
+  地主拥有土地→要求地租(对土地利用的扣除)：「劳动者要采集土地上的自然生产物就必须付出代价」
+  → 价格 = 工资 + 地租
+
+资本积累后：
+  雇主(资本家)垫付生产资料与工资→要求利润回报：「资本一经在个别人手中积聚，雇主就希望从他投下的资本中获取利润」
+  → 价格 = 工资 + 利润 + 地租
+
+斯密的分配理论核心：
+  工资 = 劳动者所得(劳动的报酬)
+  利润 = 资本所得(垫付资本的报酬——注意：斯密此处将利润与监督工资合并)
+  地租 = 土地所得(地主阶级的独占收入，是「为利用土地而支付的价格」)</div>
+
+<div class="chart-wrap"><canvas id="priceComp" width="560" height="260"></canvas>
+<div class="fig-cap">图2：商品价格构成拆解图——「工资、利润、地租是一切收入的三个根本源泉」。核心论点：一切商品的可交换价值最终分解为这三种收入之一或其组合。历史背景：18世纪英国社会三阶级——劳动者、资本家、地主——的分配格局。现代经济学延伸：与古典三要素分配模型(劳动—工资、资本—利息、土地—地租)一脉相承。</div></div>
+
+<!-- 自然价格/市场价格 -->
+<h3 id="b1c6">§1.6 自然价格与市场价格</h3>
+
+<div class="derive">自然价格（Natural Price）：「一种商品的价格，如果不多不少恰恰等于按自然率支付的地租、工资和利润，这商品就可以说是按自然价格出售。」
+  → 长期均衡价格，由生产成本(地租+工资+利润)决定
+
+市场价格（Market Price）：「商品通常出卖的实际价格」
+  → 短期由供求关系决定的市场实际价格
+
+有效需求（Effectual Demand）：「愿按自然价格支付商品价格的人的需求」
+  → 区别于「绝对需求」(想要但出不起价的需求)
+
+市场调节机制：
+  供给 < 有效需求 → 市价 > 自然价 → 利润↑ → 资本流入 → 供给↑ → 市价回落
+  供给 > 有效需求 → 市价 < 自然价 → 利润↓ → 资本流出 → 供给↓ → 市价回升
+  →「自然价格是中心价格，一切商品价格都不断受其吸引」</div>
+
+<!-- 工资/利润/地租 -->
+<h3 id="b1c7">§1.7-10 工资论、利润论、地租论</h3>
+
+<table>
+<tr><th>收入类型</th><th>斯密的核心观点</th><th>决定因素</th><th>现代延伸</th></tr>
+<tr>
+  <td><strong>劳动工资</strong></td>
+  <td>工资取决于劳资双方契约。雇主人数少且能持久对抗，工人分散且急需维持生计→雇主在争议中占优势。但工资有下限——必须足够劳动者「维持生活并赡养家庭」。工资随国民财富增长而提高(富国比穷国工资高)。</td>
+  <td>劳动供求、国民财富增长速率、生活必需品价格</td>
+  <td>劳动力市场议价权理论(买方垄断)</td>
+</tr>
+<tr>
+  <td><strong>资本利润</strong></td>
+  <td>利润趋近于利息率——二者随国民财富增长而下降(「资本竞争加剧」)。利率是利润的可靠指示器——「法定最高利息率若低于市场率，借款需求得不到满足」，法律反被规避。</td>
+  <td>资本存量、竞争程度、投资机会、风险</td>
+  <td>资本边际效率递减(凯恩斯)</td>
+</tr>
+<tr>
+  <td><strong>土地地租</strong></td>
+  <td>地租是「垄断价格」——地主对土地独占的报偿。与工资利润不同，地租随社会改良而上升(「一国财富与人口增长→对粮食需求上升→地租上涨」)。地租不进入商品自然价格的构成(是价格的结果而非原因)。</td>
+  <td>土地肥沃度、位置、人口、交通</td>
+  <td>级差地租理论(李嘉图扩展)</td>
+</tr>
+</table>
+
+<div class="warn">⚠ 关键区分：斯密认为地租是「垄断价格」，与李嘉图的级差地租理论(边际土地决定地租)本质上不同。李嘉图修正了斯密：地租不由垄断决定，而由土地品质差异决定。另外斯密将「监督利润」与「资本利息」合并在「利润」项下——这是古典经济学的普遍特征，后来才被剥离为企业家才能与资本利息两类。</div>
+
+<div class="summary"><h4>📋 卷一小结：分工→交换→货币→价值→分配</h4>
+<ul>
+<li>分工是劳动生产力改进的根本原因（制针厂为经典实证）</li>
+<li>市场规模限制分工深度（水运先于内陆发展）</li>
+<li>劳动是一切商品真实价值的根本尺度</li>
+<li>「工资、利润、地租」是三种原始收入，构成一切商品价格</li>
+<li>市场价格的引力中心=自然价格（覆盖生产成本+平均利润+地租）</li>
+<li>三类收入分别对应三大阶级：劳动者、资本家、地主</li>
+</ul></div>
+
+<!-- ============ 卷二 ============ -->
+<h2 id="b2">卷二 论资财的性质及其蓄积和用途</h2>
+
+<div class="def"><strong>卷二核心命题</strong>：资本是分工得以深化的物质前提——「分工之前必须预先积累资财」。资本积累→雇佣更多生产性劳动→产出增长→国民财富增进。资本的用途比数量更重要。</div>
+
+<h3 id="b2c1">§2.1 资财的分类——固定资本与流动资本</h3>
+
+<div class="derive">斯密将个人及社会的全部资财划分为：
+
+消费资财：用于直接消费、不产生收入的资财（消费品、住宅等）
+资本：用于投资以获取收入的部分
+
+资本进一步划分为：
+── 流动资本（Circulating Capital）：
+    通过「流通」(交换所有权)和「转手」才产生收入
+    构成：货币、食物/原材料、在制品、待售制成品
+    「必须不断从一种形态转变为另一种形态才产生利润」
+
+── 固定资本（Fixed Capital）：
+    不经「流通」或「易主」即可产生收入
+    构成：(1)有用的机器与工具 (2)产生利润的建筑物(商店、工场、农舍)
+          (3)土地改良(开垦、排水、施肥) (4)社会全体成员获得的有用才能
+    注：(4)「固定资本」包含人力资本——斯密在此写道：
+    「一种费去许多工夫和时间才学会的需要特殊技能的职业，可视为固定资本」
+
+社会总资财结构：
+  总资财 = 消费资财 + 流动资本 + 固定资本
+  一国土地和劳动的年产物全部价格 = (流动资本+固定资本)补偿 + 地租+利润+工资</div>
+
+<div class="chart-wrap"><canvas id="capitalStruct" width="600" height="260"></canvas>
+<div class="fig-cap">图3：资本分类逻辑示意图（Capital Classification），基于亚当·斯密原文论证重构，核心论点：资本分为固定资本(不流通即产生收入)与流动资本(通过流通产生收入)，人力资本(Skill)归于固定资本。历史背景：18世纪制造业与农业资本的实际存在形态。现代经济学延伸：固定资本≈固定资产/长期投资，流动资本≈流动资产/存货/营运资金。</div></div>
+
+<h3 id="b2c2">§2.2 货币与银行流通</h3>
+
+<div class="quote">"慎重的银行活动，可增进一国产业。银行所宜垫借的，不应是资本家营业所需的全部资本，而应仅限于资本家为应不时之需而必须保留的现金部分。"<span class="src">——卷二第二章</span></div>
+
+<p>斯密区分了「货物流通渠道」中的货币与「以纸币代替金银」的银行流通创新。纸币替代金银就像发明了一种「空中轨道」——原先被金银占用的土地（比喻资本）转而用于生产。他推崇苏格兰的「现金信用」（Cash Account）制度：银行以票据贴现和现金账户的形式满足工商业短期资金需求，但严格反对过度投机的「约翰·罗体系」。</p>
+
+<h3 id="b2c3">§2.3 生产性劳动与非生产性劳动</h3>
+
+<div class="derive">斯密的劳动二分法（古典经济学最具争议的论断之一）：
+
+生产性劳动（Productive Labour）：加在物上、能增加物的价值的劳动
+  例：制造业工人的劳动——「可固定并实现在特殊商品或可卖货物上」
+  结果：增加国家资本存量
+
+非生产性劳动（Unproductive Labour）：不固定、不实现在特殊商品上的劳动
+  例：家仆、君主、官吏、牧师、律师、医生、文人、演员、音乐家
+     →「他们的服务随生随灭，不留下任何可交换的商品」
+  结果：消费国家年产物而不增加资本积累
+
+资本积累的斯密公式：
+  年生产物 = 资本补偿 + 剩余(地租+利润)
+  剩余中的生产性劳动部分 → 追加资本 → 明年更多产出(良性循环)
+  剩余中的非生产性消费 → 资本不增 → 财富增长停滞
+→ 节俭是「增加公共资本的最直接方法」，奢侈是「资本的公敌」
+
+斯密对生产性/非生产性劳动划分的真实意图：不是为了贬低服务行业的价值，而是阐明一国资本积累的物理限制——「每年的产物，必先补充资本，然后才能归入消费基金」。如果一国将生产物过多用于供养非生产性人群(家仆、士兵、官员)，可用于追加投资的剩余就减少。这一观点在18世纪的历史语境下有很强的针对性——当时英国王室与贵族豢养大量不事生产的家仆和侍从(据估计伦敦有数万家仆)，斯密认为这是对国民资本的巨大消耗。现代经济学虽然不再采用斯密的二分法(GDP同样计入服务产值)，但斯密的基本直觉——资源投向社会间接资本与基础设施（「固定资本的积累」）是长期增长的关键——与当代发展经济学的共识（基础设施投资→降低交易成本→市场扩张→分工深化）高度一致。</div>
+
+<div class="warn">⚠ 现代视野：斯密将「服务」视为非生产性的观点，今天已被广泛修正。现代GDP核算同样计入服务业产值。但斯密的核心直觉——资源投向「可贸易品的生产」比投向「纯消费性服务」更有利于长期增长——在当代全球分工语境下仍具启发性。另外注意斯密此处更接近「财富积累的物理观」——可保存的实物资本被视为财富载体。</div>
+
+<div class="summary"><h4>📋 卷二小结：资本——分工的物质基础</h4>
+<ul>
+<li>资本≔不用于直接消费而投资求利的部分；分为固定资本与流动资本</li>
+<li>固定资本的革命性概念：含人力资本(技能、教育)</li>
+<li>纸币替代金银→节省流通成本的资本→释放更多实际生产资本</li>
+<li>节俭→资本积累→雇佣更多生产性劳动→国民财富增长的发动机</li>
+<li>非生产性消费(奢侈浪费)是资本的蚕食者→斯密对「奢侈」的道德经济警惕</li>
+</ul></div>
+
+<!-- ============ 卷三 ============ -->
+<h2 id="b3">卷三 论不同国家中财富的不同发展</h2>
+
+<div class="def"><strong>卷三核心命题</strong>：欧洲各国的经济发展路径为何与「自然顺序」相反？罗马帝国崩溃后，欧洲的制度环境（封建土地制度、长子继承法、城市自治）扭曲了财富增长的自然进程。</div>
+
+<div class="derive">斯密的「自然」发展顺序 vs 欧洲实际历史路径：
+
+斯密设想的自然富庶进程：
+  农业 → 制造业(与农业紧密关联的初级加工) → 对外贸易 → 远洋贸易
+  「按照自然趋势，进步社会的资本首先是大部分投在农业上，其次投在工业上，最后投在国外贸易上」
+  逻辑：农业部门是「一切资本投入中最有利于国民财富增长的」→首先满足生存→再发展加工→再扩展贸易
+
+欧洲实际进程(完全倒转):
+  远洋贸易(地中海/波罗的海)先繁荣(11-13世纪威尼斯、热那亚)
+  → 城市制造业因海外市场需求刺激而发展(14-16世纪佛兰德斯、意大利)
+  → 最后才带动农村改良（圈地运动、农业革命，16-18世纪英国）
+  → 斯密称「欧洲的近代史，几乎是一篇反自然的逆序发展史」!
+
+原因分析：
+（一）罗马帝国崩溃后，日耳曼蛮族占领土地→封建领主分封制→大地主无改良土地的动力
+     → 封建法「taille」和「corvée」等劳役使农民无改良激励→农业长期停滞
+（二）长子继承法和限制继承法→土地不可分割→极端集中→大地主「是改良的最大障碍」
+     → 土地不能自由买卖→资本无法流入农业→只有非生产性的奢侈品消费吸收贵族收入
+（三）城市取得自治权+市民自由→工匠聚集于城市→手工业资本从农村逃逸至城市
+     → 国王为对抗封建贵族而扶植城市→城市成为自由与繁荣的「飞地」
+（四）对外贸易首先带来东方奢侈品需求→引导制造业从城市向外延扩展
+     → 海外市场的增长→分工进一步深化→反过来推动农村商业化改良</div>
+
+<table class="compare">
+<tr><th>维度</th><th>自然顺序</th><th>欧洲实际路径</th></tr>
+<tr><td>第一阶段</td><td>农业与农村改良</td><td>远洋贸易(威尼斯、热那亚)</td></tr>
+<tr><td>第二阶段</td><td>本国制造业</td><td>城市手工业(佛兰德斯纺织)</td></tr>
+<tr><td>第三阶段</td><td>对外贸易</td><td>农村改良与农业革命</td></tr>
+<tr><td>资本积累方式</td><td>农业剩余→再投资</td><td>商业利润→制造业→再农业</td></tr>
+<tr><td>关键制度障碍</td><td>无(理想模型)</td><td>封建制+长子继承+农奴制</td></tr>
+<tr><td>斯密评价</td><td>合理且效率最高</td><td>反常但最终产生有益结果</td></tr>
+</table>
+
+<div class="summary"><h4>📋 卷三小结：制度如何塑造繁荣路径</h4>
+<ul>
+<li>自然顺序（农→工→商）被欧洲封建制度完全颠倒</li>
+<li>城市自由+对外贸易是欧洲「反自然」发展的引擎</li>
+<li>制度分析的开创性尝试——政治制度约束经济发展方向</li>
+</ul></div>
+
+<!-- ============ 卷四 ============ -->
+<h2 id="b4">卷四 论政治经济学体系</h2>
+
+<div class="def"><strong>卷四核心命题</strong>：批判重商主义体系，构建自由贸易理论基础。斯密将政治经济学定义为「政治家或立法者科学的一个分支」，其两大目标是「给人民提供充足的收入或生计」和「给国家或社会提供充分的收入使公务得以进行」。</div>
+
+<h3 id="b4c1">§4.1 重商主义批判——「财富≠金银」</h3>
+
+<div class="quote">"财富不在于金银，而在于一国土地和劳动的年产物，这年产物构成该国民众的消费与享受。"<span class="src">——卷四</span></div>
+
+<div class="derive">重商主义核心信条（斯密的批判靶心）：
+㈠ 金银是财富的最可靠形态
+㈡ 贸易顺差→金银流入→国家致富
+㈢ 政府应管制贸易以最大化出口、最小化进口
+
+斯密的逐条反驳：
+1. 金银≠财富：西班牙/葡萄牙从美洲获得巨量金银，国内产业反而被扼杀
+   →「把金沙作为财富唯一形态，好比把厨灶视为财富而忽视锅内的食物」
+
+2. 贸易差额是零和思维：贸易使双方受益——互通有无本身即创造价值
+   → 两国间「每年互相交换货物总值应该大致相等，但利得不必均等」
+
+3. 政府管制扭曲资源配置：「个人比政治家更了解自己的利益所在」
+   → 保护某一产业→资源从更高产部门抽走→净损失
+
+4. 限制进口相当于强迫国内消费者高价购买：「消费者利益几乎总是为生产者利益而被牺牲」
+   → 重商主义体系的根本谬误：生产者取向而非消费者取向
+
+斯密抨击的具体重商主义政策：
+• 英国《谷物法》(Corn Laws, 1670年)——限制谷物进口以维持国内粮价高昂，利于地主而害消费者
+• 英国《航海条例》(Navigation Acts, 1651年)——斯密破例维护的唯一保护政策
+  「国防比国富重要得多」→航海条例虽不利于贸易却有利于国家安全
+• 殖民地贸易独占——东印度公司享有印度贸易垄断权→特权商人获利、消费者受损
+• 高额进口关税和禁令——使国内制造商免受外国竞争→消费者被迫接受质次价高商品
+→ 斯密要求废除其中大部分，仅保留国防相关条款</div>
+
+<div class="chart-wrap"><canvas id="mercantilism" width="600" height="280"></canvas>
+<div class="fig-cap">图4：重商主义贸易差额观vs斯密自由贸易观对比图（Mercantilism vs Free Trade），基于亚当·斯密原文论证重构，核心论点：重商主义错把金银当财富(存量观)，自由贸易使双方皆受益(流量观)——两国交换的不是金银，是各自富余的劳动生产物。历史背景：17-18世纪欧洲列强的殖民地贸易垄断政策(航海条例等)。现代经济学延伸：绝对优势与比较优势是自由贸易的基础。</div></div>
+
+<h3 id="b4c2">§4.2 自由贸易与「看不见的手」</h3>
+
+<div class="quote">"他通常既不打算促进公共的利益，也不知道他自己是在什么程度上促进那种利益……他受着一只看不见的手的指导，去尽力达到一个并非他本意想要达到的目的。"<span class="src">——卷四第二章</span></div>
+
+<div class="derive">自由贸易的根本论证（斯密四重论证）：
+
+第一论证（绝对优势）：
+  若甲国生产葡萄酒的劳动生产率高于乙国，而乙国生产呢绒的效率高于甲国
+  → 甲应专业化产酒、乙应专业化产呢绒 → 双方交换 → 总产出>自给自足
+
+第二论证（国内市场优先）：
+  资本首先应投入国内农业与制造业(运输成本最低、信息最通畅)
+  → 对外贸易是次优选择，但在一国资本过剩时应鼓励
+
+第三论证（消费者主权——斯密最激进的见解）：
+  「消费是一切生产的唯一目的，生产者利益只应在促进消费者利益时才加注意」
+  → 重商主义把生产者利益置于消费者利益之上——主客倒置
+
+第四论证（国际分工的互利性——比较优势的前身）：
+  「如果外国能提供比我们自己生产更便宜的商品，我们最好用自己的优势产业的产品去购买」
+  → 这一原理后来被李嘉图形式化为比较优势理论(1817)</div>
+
+<h4>附论：斯密与法国重农学派对话</h4>
+<div class="derive">重农主义（Physiocracy, 魁奈 Quesnay 为首）是斯密同时代的主要经济学体系。斯密高度尊敬魁奈（《国富论》原拟献给魁奈，但魁奈在出版前去世），但在关键点上明确分歧：
+
+重农学派的核心主张：
+① 只有农业是「生产性」的——土地是财富的唯一源泉
+② 制造业与商业是「非生产性」的——仅转换物质形态
+③ 单一土地税——仅对土地征税，废除其他一切赋税
+
+斯密的回应：
+  认可：(1)农业基础地位的重要性 (2)自由贸易的价值
+  反对：(1)将制造业/商业贬为非生产性「完全错误」——制针厂的分工生产性一目了然
+       (2)单一土地税在政治上不可行——地主阶级势力过大
+       (3)重农学派对「自然秩序」的过度形而上学推演
+
+这一争论的本质：财富来源的劳动观(斯密)vs土地观(重农学派)。斯密胜出——他用制针厂证明了制造劳动同样创造价值。工业革命用历史事实完成了裁决。</div>
+
+<h4>斯密在后世的延伸与当代回响</h4>
+<p>《国富论》不仅是经济学独立学科的开山之作，其影响力远超出经济领域。达尔文从斯密的「自发秩序」获得自然选择机制的灵感——自然界中无数个体不经意的互动产生出「看不见的手」般的生态均衡。哈耶克将斯密的自发秩序扩展至全部社会制度——市场、语言、法律都不是人类设计的结果，而是文化演化中「人类行动而非人类设计的产物」。当代行为经济学(Thaler等)则重新检视斯密的「自利人」假设，证明人类决策系统性地偏离理性——斯密低估了认知偏差对「看不见的手」运行的影响。</p>
+
+<p>在制度设计中：斯密的「自然自由制度」最直接的现代对应是布坎南的公共选择理论——政治家同样受自利动机驱动(「政治中的人和在市场中的人是同一个人」)，因此制度设计必须假设掌权者也可能追求私利。世贸组织(WTO)的基石——贸易自由化使所有参与国获益——正是斯密182年前阐述的原理的制度化。</p>
+
+<h4>《国富论》的历史影响：从出版到工业革命</h4>
+<p>《国富论》出版的1776年恰逢瓦特改良蒸汽机成型并与博尔顿合伙建厂。斯密本人与瓦特的制造基地——著名的苏荷制造厂——有直接交流渠道。博尔顿在给斯密的信中详述了苏荷工厂的分工实践，令斯密「深感满足」。斯密的制针厂案例取材于法国《百科全书》狄德罗的记载，但他将这一观察提升为普遍经济学原理。《国富论》直接影响了一代英国政治精英——小皮特任首相期间(1783-1801, 1804-1806)推行自由贸易政策，大幅降低关税，并试图废除奴隶贸易。皮特曾公开称赞斯密：「我们是您的学生。」19世纪初，李嘉图、马尔萨斯、詹姆斯·穆勒等古典经济学家在斯密奠定的框架上展开论争——他们之间有分歧(尤其是价值理论和地租理论)，但无人否认斯密是政治经济学这门科学的首位体系化建构者。</p>
+
+<table class="compare">
+<tr><th>维度</th><th>重商主义体系</th><th>斯密自由贸易体系</th></tr>
+<tr><td>财富定义</td><td>金银贵金属存量</td><td>一国土地和劳动的全年产物</td></tr>
+<tr><td>贸易观</td><td>零和博弈(顺差者胜)</td><td>正和交换(双方互利)</td></tr>
+<tr><td>国家角色</td><td>全方位管制进出口</td><td>「守夜人」——国防、司法、公共工程</td></tr>
+<tr><td>政策工具</td><td>关税、禁令、航海条例、殖民地垄断</td><td>自由放任+仅对少数国防相关行业保护</td></tr>
+<tr><td>目标取向</td><td>生产者（商人+制造业者）</td><td>消费者（全体国民）</td></tr>
+<tr><td>殖民地</td><td>排他性原料来源与垄断市场</td><td>成本高于收益，主张放弃或自治</td></tr>
+<tr><td>代表性政策</td><td>英国航海条例(1651)</td><td>渐进开放、自然自由的制度</td></tr>
+</table>
+
+<div class="warn">⚠ 斯密的「自由贸易」≠无条件零关税。斯密明确承认两项例外：(1)国防必需的产业(如英国的航海法规——「国防比国富重要得多」)；(2)对国内征税商品同等征进口税(税收公平)。另注意斯密的绝对优势与李嘉图的比较优势不同——斯密未解决「一国在所有产品上均无绝对优势时是否还应贸易」的问题，这由李嘉图1817年补全。</div>
+
+<div class="summary"><h4>📋 卷四小结：看不见的手与自由贸易</h4>
+<ul>
+<li>重商主义错把金银当财富、错把贸易当零和博弈</li>
+<li>自由贸易使各国专业化于优势产业→总产出增加→双方互利</li>
+<li>「看不见的手」：自利动机→市场交换→非意图的公共利益</li>
+<li>消费者利益应为经济政策终极目标(生产者利益仅是手段)</li>
+<li>斯密不反对一切政府干预——国防和安全是例外</li>
+</ul></div>
+
+<!-- ============ 卷五 ============ -->
+<h2 id="b5">卷五 论君主或国家的收入</h2>
+
+<div class="def"><strong>卷五核心命题</strong>：国家在「自然自由制度」下有三项应尽义务——国防、司法行政、公共工程与公共机构。财政支出必须与之匹配，而税收是最持久稳定的公共收入来源。</div>
+
+<h3 id="b5c1">§5.1 国家的必要支出</h3>
+
+<div class="derive">斯密论国家的三大义务与对应支出：
+第一义务：国防
+  → 军事技术越进步→常备军越必要（斯密强力论证常备军优于民兵）
+  →「文明国家中政府的第一要务」
+
+第二义务：司法行政
+  → 保护社会中每个人不受其他人侵害→公正的司法体系
+  → 司法独立于行政——「如果司法权与行政权合一→公正荡然无存」
+
+第三义务：公共工程与公共机构
+  → (1)便利商业的设施：道路、桥梁、运河、港口、铸币
+  → (2)教育设施：青年教育机构(学校)+各年龄层国民宗教教育机构
+  → 斯密主张基础教育应由公共支付部分成本：「国家只要极其低廉的费用，
+      就能引导、鼓励乃至强制全体人民接受最基本的教育」
+  → 工厂制分工使劳动者「精神愚钝」→国家有责任通过教育纠正</div>
+
+<h3 id="b5c2">§5.2 税收四原则——斯密财政学核心</h3>
+
+<div class="quote">"一国国民，都须在可能范围内，按照各自能力的比例即按照各自在国家保护下所获收入的比例，缴纳国赋。"<span class="src">——卷五第二章</span></div>
+
+<div class="derive">斯密的税收四大原则（现代财政学的奠基性论述）：
+
+第一原则——平等(Equality)：
+  国民应按各自能力比例纳税，即按各自在「国家保护下」所获收入比例缴纳
+  → 累进税的逻辑前身：获益多者应多纳
+
+第二原则——确定(Certainty)：
+  纳税时间、方式、数额都必须「清楚、明白、确定」——不可由征税官主观裁定
+  →「税收的不确定性比税收的不平等为害更大」——斯密极其重视确定性
+
+第三原则——便利(Convenience)：
+  征税时间与方式应最便利于纳税人——消费在购买时支付、地租在收获后缴纳
+  → 好的税制让纳税人在「最可能有钱支付的时候」纳税
+
+第四原则——经济(Economy)：
+  征税成本应最小化——人民缴纳的税款与国库实际收入之间的差额越小越好
+  →「一切赋税的征收，须设法使人民付出的尽可能等于国家收入的」
+
+收入来源分级：
+  斯密认为地租是最适合征税的税基(地主收益来自社会改良而无需努力)
+  → 利润次之(因为利润是资本的报酬，征税可能抑制投资)
+  → 工资最不宜征税(工资由必需品成本决定，征税→工资必上涨→转嫁给消费者/地主)</div>
+
+<div class="chart-wrap"><canvas id="taxFour" width="600" height="240"></canvas>
+<div class="fig-cap">图5：斯密税收四原则分类结构图（Four Maxims of Taxation），基于亚当·斯密原文论证重构，核心论点：平等、确定、便利、经济是评判一切税制的四项金科玉律。历史背景：18世纪英国复杂的包税制(lease of taxes)和重税农民的不合理制度。现代经济学延伸：最优税制理论(拉姆齐法则)在「经济」维度上的数学化发展，确认了斯密的直觉。</div></div>
+
+<h3 id="b5c3">§5.3 公债论</h3>
+
+<div class="derive">斯密对公债的犀利批判（令人惊讶地具有当代相关性）：
+
+「巨大债务的累积，在长时间内将破坏欧洲各大国的财政，并最终导致国家破产」
+
+公债的根本问题：
+(1) 借债→延迟税收→政府无节约动力→铺张浪费
+(2) 公债主要用于非生产性支出(战争、宫廷)→不创造偿债的资本
+(3) 公债将私人资本从生产性用途(投资农业/制造业)抽走→投向非生产性政府消费
+(4) 「偿债基金」(sinking fund)不过是一种自我欺骗——「政府轻易不用于还债」
+(5) 「当国家积累巨额公债，几乎没有一个国家能公平彻底地偿还」
+
+斯密预言：
+→ 极大债务终将导致国家破产(公开拒付或以贬值的铸币偿还→变相违约)
+→ 建议：只有紧急状态下(战争)才能举债，和平时期必须快速偿还
+
+斯密的分析惊人地预见了18世纪末法国王室债务危机→法国大革命；
+以及后世无数主权债务危机的经典模式。</div>
+
+<h4>卷五附论：斯密「守夜人国家」与现代政府比较</h4>
+<table class="compare">
+<tr><th>政府职能</th><th>斯密守夜人国家(1776)</th><th>现代国家(20-21世纪)</th></tr>
+<tr><td>国防</td><td>常备军+民兵,国防第一优先</td><td>职业化军队+集体安全体系</td></tr>
+<tr><td>司法与秩序</td><td>保护生命财产与契约执行</td><td>全面司法+监管执法体系</td></tr>
+<tr><td>教育</td><td>基础识字,低廉公共支付</td><td>义务教育至高中+补贴高等教育</td></tr>
+<tr><td>基础设施</td><td>道路/运河/港口(便利商业)</td><td>全面交通/水/电/网设施</td></tr>
+<tr><td>社会保障</td><td>无(教会/教区济贫)</td><td>养老/失业/医疗(福利国家)</td></tr>
+<tr><td>经济调控</td><td>无(自然自由,废除干预)</td><td>货币政策/反垄断/环保规制</td></tr>
+</table>
+
+<div class="summary"><h4>📋 卷五小结：有限政府与稳健财政</h4>
+<ul>
+<li>国家三义务：国防、司法、公共工程(含教育)</li>
+<li>税收四大金科玉律：平等、确定、便利、经济</li>
+<li>地租最宜征税→利润次之→工资最难征税</li>
+<li>公债是「破坏性财政工具」——偏向非生产性支出、蚕食私人资本</li>
+<li>「小政府+自由贸易+稳健财政」是斯密的理想制度框架</li>
+</ul></div>
+
+<!-- ============ 全书总结 ============ -->
+<div class="summary" style="border-color:#c8874a;background:#fffcf5">
+<h4 style="font-size:15px">📚 《国富论》全书核心思想体系</h4>
+<p><strong>逻辑总链</strong>：分工（生产力之源）→ 交换（人性自发倾向）→ 市场（分工的边界）→ 资本积累（分工深化的物质前提）→ 自然自由制度（政府仅守夜人）→ 自由贸易（打破重商主义镣铐）→ 国民财富增长 → 所有阶级共享繁荣（至少斯密如此相信）。</p>
+<p><strong>方法论基石</strong>：①个体自利动机的社会化后果——「看不见的手」将自利转化为公益；②「自然」与「人为」制度的张力——自然顺序被封建制度扭曲，改革即恢复自然；③消费者主权——生产仅是手段，消费才是终极目的。</p>
+<p><strong>后世批判与修正</strong>：马克思指出斯密忽视了劳资对抗；李嘉图纠正了地租论；凯恩斯否定萨伊定律(斯密的「供给创造自身需求」)；桑巴特/韦伯批评斯密忽略了「资本主义精神」的文化维度。但《国富论》作为经济学独立学科的奠基之作——其核心洞见始终是市场经济理论的思想原点。</p>
+<p><strong>永恒提问</strong>：斯密描绘了一个「分工深化→普遍富裕」的美好图景。但他自己也观察到工业革命初期的工人精神退化与贫富分化。自利与共善、自由与平等、市场与国家——这些张力在斯密之后两个半世纪始终是经济学的根本追问。</p>
+
+<h4>斯密核心概念与后世经济学术语的演进对照表</h4>
+<table class="compare">
+<tr><th>斯密概念(1776)</th><th>原初含义</th><th>后世经济学家</th><th>现代术语</th></tr>
+<tr><td>看不见的手</td><td>自利行为无意中促进公共利益</td><td>阿罗-德布鲁 (1954)</td><td>福利经济学第一定理(竞争均衡帕累托有效)</td></tr>
+<tr><td>制针厂分工</td><td>劳动专业化极大提升生产率</td><td>杨格 (1928)</td><td>报酬递增与迂回生产</td></tr>
+<tr><td>绝对优势</td><td>两国各专业化于绝对效率高的产业</td><td>李嘉图 (1817)</td><td>比较优势(即使一国全面落后仍可贸易互利)</td></tr>
+<tr><td>自然价格</td><td>由工资+利润+地租自然率决定的价格</td><td>瓦尔拉斯 (1874)</td><td>一般均衡价格体系</td></tr>
+<tr><td>生产性劳动</td><td>加在物上增加其价值的劳动</td><td>现代国民核算 (SNA)</td><td>市场化生产(GDP计入所有市场交易)</td></tr>
+<tr><td>守夜人国家</td><td>仅提供国防/司法/公共工程</td><td>萨缪尔森 (1954)</td><td>公共物品理论(非竞争+非排他→政府提供)</td></tr>
+<tr><td>市场广度限制分工</td><td>小市场→低专业化→低产出</td><td>克鲁格曼 (1980)</td><td>本土市场效应(Home Market Effect)</td></tr>
+<tr><td>税收四原则</td><td>平等/确定/便利/经济</td><td>米尔利斯 (1971)</td><td>最优所得税理论(公平与效率的最优权衡)</td></tr>
+</table>
+</div>
+
+</main>
+
+<!-- ==================== Canvas 图表引擎（零外部依赖） ==================== -->
+<script>
+class CanvasChart{
+  constructor(id,w,h){
+    this.c=document.getElementById(id);if(!this.c)return;
+    this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h;
+    this.p={t:40,r:30,b:55,l:60};this.dpr=1;
+    if(window.devicePixelRatio>1){this.dpr=2;this.c.width=w*2;this.c.height=h*2;this.c.style.width=w+'px';this.c.style.height=h+'px';this.ctx.scale(2,2)}
+  }
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  grid(xMin,xMax,yMin,yMax){
+    const c=this.ctx,p=this.p,pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;
+    this.xs=v=>p.l+(v-xMin)/(xMax-xMin)*pw;this.ys=v=>p.t+(yMax-v)/(yMax-yMin)*ph;
+    c.strokeStyle='#e8e3d5';c.lineWidth=0.5;c.beginPath();
+    for(let i=0;i<=5;i++){const yv=yMin+(yMax-yMin)*i/5,y=this.ys(yv);c.moveTo(p.l,y);c.lineTo(this.w-p.r,y)}
+    for(let i=0;i<=10;i++){const xv=xMin+(xMax-xMin)*i/10,x=this.xs(xv);c.moveTo(x,p.t);c.lineTo(x,this.h-p.b)}
+    c.stroke();c.strokeStyle='#555';c.lineWidth=1.5;c.beginPath();
+    c.moveTo(p.l,p.t);c.lineTo(p.l,this.h-p.b);c.moveTo(p.l,this.h-p.b);c.lineTo(this.w-p.r,this.h-p.b);c.stroke();
+    c.fillStyle='#555';c.font='10px sans-serif';c.textAlign='right';
+    for(let i=0;i<=5;i++){const yv=yMin+(yMax-yMin)*i/5;c.fillText(yv.toFixed(0),p.l-6,this.ys(yv)+4)}
+    c.textAlign='center';
+    for(let i=0;i<=10;i++){const xv=xMin+(xMax-xMin)*i/10;c.fillText(xv.toFixed(0),this.xs(xv),this.h-p.b+16)}
+  }
+  bar(labels,values,colors){
+    const c=this.ctx,p=this.p,pw=this.w-p.l-p.r,ph=this.h-p.t-p.b,bw=pw/labels.length*0.6;
+    const maxV=Math.max(...values,1);
+    labels.forEach((l,i)=>{const x=this.xs(i+0.5),h=values[i]/maxV*ph*0.9;c.fillStyle=colors[i]||'#8b4513';c.fillRect(x-bw/2,this.h-p.b-h,bw,h);c.fillStyle='#333';c.font='11px sans-serif';c.textAlign='center';c.fillText(l,x,this.h-p.b+16);c.fillText(values[i],x,this.h-p.b-h-8)})}
+  line(pts,color,w=2.5,dash=null){
+    if(pts.length<2)return;const c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(dash)c.setLineDash(dash);
+    c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));
+    for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));
+    c.stroke();c.setLineDash([]);c.restore();
+  }
+  hLine(y,color='#888',dash=[4,4],label=''){
+    const c=this.ctx,sy=this.ys(y);c.save();c.strokeStyle=color;c.lineWidth=1;if(dash)c.setLineDash(dash);c.beginPath();
+    c.moveTo(this.p.l,sy);c.lineTo(this.w-this.p.r,sy);c.stroke();c.setLineDash([]);
+    if(label){c.fillStyle=color;c.font='11px sans-serif';c.textAlign='left';c.fillText(label,this.p.l,sy-5)}c.restore();
+  }
+  vLine(x,color='#888',dash=[4,4]){const c=this.ctx,sx=this.xs(x);c.save();c.strokeStyle=color;c.lineWidth=1;if(dash)c.setLineDash(dash);c.beginPath();c.moveTo(sx,this.p.t);c.lineTo(sx,this.h-this.p.b);c.stroke();c.setLineDash([]);c.restore()}
+  dot(x,y,color,size=5){const c=this.ctx;c.fillStyle=color;c.beginPath();c.arc(this.xs(x),this.ys(y),size,0,Math.PI*2);c.fill()}
+  label(x,y,text,color='#555',ox=8,oy=-8){const c=this.ctx;c.fillStyle=color;c.font='bold 10px sans-serif';c.fillText(text,this.xs(x)+ox,this.ys(y)+oy)}
+}
+
+// 图1: 制针厂分工效率对比
+(function(){
+  const ch=new CanvasChart('pinFactory',600,300);
+  if(!ch.c)return;ch.clr();
+  ch.ctx.fillStyle='#555';ch.ctx.font='14px sans-serif';ch.ctx.textAlign='center';
+  ch.ctx.fillText('制针厂分工效率对比 (支/人/天)',300,22);
+  ch.grid(0,2.5,0,5000);
+  ch.bar(['单人工匠(不分工)','十人工厂(分工)','分工提升倍数'],[20,4800,0],[0,4800,0].map(v=>'#8b4513'));
+  // Custom bar for multiplier
+  const c=ch.ctx,p=ch.p,pw=600-p.l-p.r,ph=300-p.t-p.b;
+  c.fillStyle='#1a4a6b';c.fillRect(ch.xs(2.5)-30,ch.ys(240),60,ch.ys(0)-ch.ys(240));
+  c.fillStyle='#fff';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('240x',ch.xs(2.5),ch.ys(120));
+  c.fillStyle='#333';c.font='11px sans-serif';c.fillText('提升倍数',ch.xs(2.5),300-p.b+16);
+})();
+
+// 图2: 价格构成拆解
+(function(){
+  const ch=new CanvasChart('priceComp',560,260);
+  if(!ch.c)return;ch.clr();
+  const c=ch.ctx;c.fillStyle='#555';c.font='14px sans-serif';c.textAlign='center';c.fillText('商品价格构成 (100%分解)',280,22);
+  ch.grid(0,3,0,100);
+  const data=[{l:'原始社会:100%工资',v:100,c:'#c8874a'},{l:'土地私有后:工资+地租',v:70,c:'#8b4513'},{l:'资本积累后:工资+利润+地租',v:100,c:'#1a4a6b'}];
+  const p=ch.p,pw=560-p.l-p.r,ph=260-p.t-p.b,gap=8;
+  data.forEach((d,i)=>{
+    const x=ch.xs(i+0.5),w=80,y0=ch.ys(0),yL=ch.ys(d.v);
+    const h=Math.abs(y0-yL);
+    if(i===0){c.fillStyle='#c8874a';c.fillRect(x-w/2,yL,w,ch.ys(0)-yL);c.fillStyle='#333';c.font='10px sans-serif';c.textAlign='center';c.fillText('100%工资',x,ch.ys(30))}
+    else if(i===1){c.fillStyle='#c8874a';c.fillRect(x-w/2,ch.ys(70),w,ch.ys(0)-ch.ys(70));c.fillStyle='#8b4513';c.fillRect(x-w/2,ch.ys(100),w,ch.ys(70)-ch.ys(100));c.fillText('70%工资',x,ch.ys(35));c.fillText('30%地租',x,ch.ys(85))}
+    else{c.fillStyle='#c8874a';c.fillRect(x-w/2,ch.ys(40),w,ch.ys(0)-ch.ys(40));c.fillStyle='#1a4a6b';c.fillRect(x-w/2,ch.ys(70),w,ch.ys(40)-ch.ys(70));c.fillStyle='#8b4513';c.fillRect(x-w/2,ch.ys(100),w,ch.ys(70)-ch.ys(100));c.fillText('40%工资',x,ch.ys(20));c.fillText('30%利润',x,ch.ys(55));c.fillText('30%地租',x,ch.ys(85))}
+    c.fillStyle='#333';c.fillText(d.l,x,260-p.b+14);
+  });
+})();
+
+// 图3: 资本分类
+(function(){
+  const ch=new CanvasChart('capitalStruct',600,260);
+  if(!ch.c)return;ch.clr();
+  const c=ch.ctx;c.fillStyle='#555';c.font='14px sans-serif';c.textAlign='center';c.fillText('斯密资本分类逻辑示意图',300,20);
+  c.strokeStyle='#8b4513';c.lineWidth=2.5;c.beginPath();c.moveTo(300,55);c.lineTo(300,80);c.stroke();
+  c.fillStyle='#fdfbf6';c.fillRect(200,40,200,32);c.strokeStyle='#8b4513';c.lineWidth=2;c.strokeRect(200,40,200,32);c.fillStyle='#333';c.font='13px bold sans-serif';c.fillText('一国总资财',300,60);
+  // Left branch: 消费资财
+  c.strokeStyle='#8b4513';c.lineWidth=2;c.beginPath();c.moveTo(250,72);c.lineTo(100,110);c.stroke();c.fillStyle='#fdfbf6';c.fillRect(20,100,140,32);c.strokeRect(20,100,140,32);c.fillText('消费资财(不产生收入)',90,120);
+  // Right branch: 资本
+  c.beginPath();c.moveTo(350,72);c.lineTo(500,110);c.stroke();c.fillStyle='#fdfbf6';c.fillRect(420,100,160,32);c.strokeRect(420,100,160,32);c.fillText('资本(为获取收入)',500,120);
+  // Fixed capital
+  c.strokeStyle='#1a4a6b';c.lineWidth=2;c.beginPath();c.moveTo(460,132);c.lineTo(400,168);c.stroke();c.fillStyle='#fff';c.fillRect(300,162,180,28);c.strokeStyle='#1a4a6b';c.strokeRect(300,162,180,28);c.fillStyle='#1a4a6b';c.fillText('固定资本(机器/建筑物/技能等)',390,180);
+  // Circulating capital
+  c.strokeStyle='#c8874a';c.beginPath();c.moveTo(530,132);c.lineTo(550,168);c.stroke();c.fillRect(495,162,110,28);c.strokeStyle='#c8874a';c.strokeRect(495,162,110,28);c.fillStyle='#c8874a';c.fillText('流动资本(货币/原料/制成品)',550,180);
+  // Sub branches
+  c.strokeStyle='#1a4a6b';c.lineWidth=1.5;c.beginPath();c.moveTo(330,190);c.lineTo(250,225);c.stroke();c.fillText('机器工具',220,240);c.beginPath();c.moveTo(370,190);c.lineTo(350,225);c.stroke();c.fillText('营利建筑',320,240);c.beginPath();c.moveTo(410,190);c.lineTo(450,225);c.stroke();c.fillText('土地改良',420,240);
+  c.strokeStyle='#c8874a';c.beginPath();c.moveTo(530,190);c.lineTo(530,225);c.stroke();c.fillText('货币/原料/货品',500,240);
+})();
+
+// 图4: 重商vs自由贸易
+(function(){
+  const ch=new CanvasChart('mercantilism',600,280);
+  if(!ch.c)return;ch.clr();
+  const c=ch.ctx;c.fillStyle='#555';c.font='14px sans-serif';c.textAlign='center';
+  c.fillText('贸易差额观 vs 互利交换观',300,20);
+  // Left: Mercantilist view
+  c.fillStyle='#fef9f0';c.fillRect(20,40,260,210);c.strokeStyle='#8b4513';c.strokeRect(20,40,260,210);
+  c.fillStyle='#8b4513';c.font='13px bold sans-serif';c.fillText('重商主义: 零和博弈',150,65);
+  c.fillText('A国出口>进口(顺差)',150,95);
+  c.fillText('→ 金银从B流入A',150,112);
+  c.fillText('→ A国得利,B国受损',150,129);
+  c.fillStyle='#b33a00';c.font='12px sans-serif';c.fillText('财富=金银存量',150,155);
+  c.fillText('国家=竞争者',150,172);
+  // Right: Smith view
+  c.fillStyle='#f0f8f0';c.fillRect(320,40,260,210);c.strokeStyle='#1a6b1a';c.strokeRect(320,40,260,210);
+  c.fillStyle='#1a6b1a';c.font='13px bold sans-serif';c.fillText('斯密: 正和交换',450,65);
+  c.fillText('A国出口酒→得英国呢绒',450,95);
+  c.fillText('B国出口呢绒→得法国酒',450,112);
+  c.fillText('→ 双方都获得所需商品',450,129);
+  c.fillStyle='#1a6b1a';c.font='12px sans-serif';c.fillText('财富=年生产物',450,155);
+  c.fillText('国家=贸易伙伴',450,172);
+  // Bottom shared text
+  c.fillStyle='#555';c.font='11px sans-serif';
+  c.fillText('← 金银流通只是交换媒介,不是财富本身 →',300,245);
+})();
+
+// 图5: 税收四原则
+(function(){
+  const ch=new CanvasChart('taxFour',600,240);
+  if(!ch.c)return;ch.clr();
+  const c=ch.ctx;p=ch.p;c.fillStyle='#555';c.font='14px sans-serif';c.textAlign='center';c.fillText('斯密税收四原则',300,20);
+  const principles=[
+    {n:'原则一·平等',d:'按能力比例纳税',c:'#8b4513',x:150,y:55},
+    {n:'原则二·确定',d:'税额/方式/时间明确',c:'#1a4a6b',x:450,y:55},
+    {n:'原则三·便利',d:'纳税时间便利于民',c:'#c8874a',x:150,y:130},
+    {n:'原则四·经济',d:'征税成本最小化',c:'#1a6b1a',x:450,y:130}
+  ];
+  principles.forEach(pr=>{
+    c.fillStyle=pr.c;c.beginPath();c.arc(pr.x,pr.y,40,0,Math.PI*2);c.fill();
+    c.fillStyle='#fff';c.font='12px bold sans-serif';c.textAlign='center';c.fillText(pr.n,pr.x,pr.y-4);c.fillText(pr.d,pr.x,pr.y+16);
+  });
+  c.fillStyle='#555';c.font='11px sans-serif';c.textAlign='center';
+  c.fillText('「一切赋税的征收，须设法使人民付出的，尽可能等于国家收入的」——斯密',300,195);
+})();
+
+console.log('✅ 《国富论》全五卷精读教材 · 全部Canvas可视化图表加载完成 · 零外部依赖');
+</script>
+</body>
+</html>

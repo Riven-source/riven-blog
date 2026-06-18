@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>迈尔斯社会心理学 · 全球正统体系 · 社会认知与人际博弈</title>
+<style>
+:root{
+  --bg:#fcfbf8;--card:#fff;--border:#d5d0c8;--text:#1a1a16;--sub:#505048;
+  --accent:#8b3a1a;--accent2:#1a3a5c;--code-bg:#f5f0ed;
+  --warn-bg:#fff4f0;--warn-text:#7a2a00;--table-s:#f7f3ee;
+  --side-w:200px;--red:#c03838;--blue:#1a4a6b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:14.5px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#1a1612;color:#b0a090;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#e8e0d0;font-size:12px;margin-bottom:12px;border-bottom:1px solid#3a3428;padding-bottom:8px}
+.sidebar a{display:block;color:#908878;text-decoration:none;font-size:10.5px;padding:3px 0;transition:color .2s}
+.sidebar a:hover{color:#d88050}
+.main{margin-left:var(--side-w);max-width:860px;padding:32px 42px}
+h1{font-size:23px;text-align:center;margin-bottom:4px;color:#1a0c08}
+.subtitle{text-align:center;color:var(--sub);font-size:12px;margin-bottom:32px}
+h2{font-size:18px;color:var(--accent);margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14.5px;color:var(--accent2);margin:24px 0 8px}
+h4{font-size:13px;color:#3a3018;margin:14px 0 6px}
+p{margin:7px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:10px 0}
+.def{background:#faf6f2;border-left:4px solid var(--accent);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:13px}
+.def strong{color:var(--accent)}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:12px 16px;margin:10px 0;border-radius:5px;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:12px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:12px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:10.5px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:10px 14px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:var(--warn-text)}
+.example{background:#f4f8f4;border-left:4px solid #2a6a2a;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:12.5px}
+.example strong{color:#1a4a1a}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:#e8e2d5;padding:7px 9px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:7px 9px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#fdf9f2;border:2px solid var(--accent);border-radius:7px;padding:16px;margin:18px 0}
+.summary h4{color:var(--accent);margin-bottom:5px}
+.summary ul{padding-left:16px;font-size:12px}
+.compare th:first-child{background:#e0d8c8}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:14px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:860px){.sidebar{display:none}.main{margin-left:0;padding:10px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>👤 迈尔斯社会心理学<br>全球正统体系</h3>
+  <a href="#c1">一、社会认知与归因</a>
+  <a href="#c2">二、自我认知偏差</a>
+  <a href="#c3">三、态度与行为</a>
+  <a href="#c4">四、从众与服从</a>
+  <a href="#c5">五、说服与影响</a>
+  <a href="#c6">六、群体互动</a>
+  <a href="#c7">七、偏见与歧视</a>
+  <a href="#c8">八、攻击与利他</a>
+  <a href="#c9">九、人际吸引与亲密</a>
+  <a href="#c10">十、冲突与和解</a>
+  <a href="#c11">十一、社会决策整合</a>
+</nav>
+
+<main class="main">
+
+<h1>迈尔斯社会心理学 · 全球正统体系</h1>
+<p class="subtitle">Social Psychology · David G. Myers · 第13版对标<br>
+社会认知·人际博弈·群体动力学 · 纯Canvas可视化 · 零外部依赖</p>
+
+<div class="def"><strong>社会心理学（Social Psychology）</strong>——用科学方法研究人们如何相互看待、相互影响、相互交往的学科。迈尔斯将社会心理学核心组织在三大命题下：①社会思维——我们如何知觉自我与他人（归因·态度·认知偏差）；②社会影响——文化、从众、说服与群体如何在无形中重塑个体；③社会关系——偏见、攻击、吸引、利他与冲突的底层机制。理解社会心理学=理解「情境在多大程度上塑造了人」——这也是它与津巴多个体心理学形成完整闭环的互补之处。</div>
+
+<!-- ====== 一 ====== -->
+<h2 id="c1">一、社会认知与归因——我们如何解释他人的行为</h2>
+
+<div class="def"><strong>社会认知（Social Cognition）</strong>——人们如何选择、解释、记忆和使用社会信息来做出判断和决策。人类是社会信息的天然处理系统：我们自动在观察到的行为中做出因果解释，并在极短的时间内形成对他人的初步判断。这些判断的速度远超我们的意识检阅。</div>
+
+<h3>1.1 归因理论——解释行为原因的认知框架</h3>
+<div class="derive">海德(Heider)的朴素心理学——人类天生是「因果解释者」：
+  人们在观察到行为后，自动寻找原因→归类为内部归因(个人特质·能力·态度)或外部归因(情境·运气·他人影响)。这一二分是所有后续归因理论的母体。
+
+凯利(Kelley)的协变模型——归因的三大信息维度：
+  人们在归因中(通常无意识地)基于三种信息维度判断因果：
+  ① 一致性(Consensus)：其他人在该情境下是否也这样做？
+     → 所有人都这样做→外归因；只有这个人这样做→内归因
+  ② 特异性(Distinctiveness)：这个人是否只在特定情境下这样做？
+     → 只对当前对象/情境→特异的→外归因
+  ③ 一贯性(Consistency)：这个人是否总是这样做？
+     → 反复出现→内归因(稳定的个人特质)
+
+  三种信息的组合：
+    低一致性+低特异性+高一贯性→内部归因：「这个人本身就这样」
+    高一致性+高特异性+高一贯性→外部归因：「是情境让任何人这样做」
+
+对应偏差（Correspondence Bias）= 基本归因错误(FAE)：
+  人们在解释他人行为时，系统性地高估内部(人格)因素、低估外部(情境)因素
+  → 《纽约时报》的「琼斯-哈里斯实验」经典验证：被试读完支持/反对卡斯特罗的作文→
+    即使明确告知「作者被安排必须写这个立场」，被试仍然在极大程度上认为「作者本人持有这个立场」
+  → 文化的强烈关联：个人主义文化(美/西欧)的FAE远强于集体主义文化(东亚)
+    东亚人在解释他人行为时更倾向于情境归因→归因偏向本身是社会文化建构的产物</div>
+
+<div class="chart-wrap"><canvas id="attributionModel" width="600" height="280"></canvas>
+<div class="fig-cap">图1：归因理论模型——海德的内外归因二分+凯利的三大信息维度(一致性·特异性·一贯性)，基于迈尔斯社会心理学归因框架复刻。核心推演：观察到行为→自动根据三重信息判断→归为内部(个人)或外部(情境)原因。基本归因错误：西方文化中系统性高估内部归因→低估情境的反直觉力量。实验依据：琼斯-哈里斯1967态度归因实验。现实应用：人际关系冲突(分歧时说对方「你自私」而非「双方情境不同」)。</div></div>
+
+<div class="warn">⚠ 关键区分：行动者—观察者偏差（Actor-Observer Bias）：解释自己的行为时→倾向于外环境归因（「我迟到是因为堵车」）；解释同一他人行为时→倾向于内人格归因（「他迟到是因为懒」）。这是我们双重标准看待人与己的心理机制。</div>
+
+<div class="summary"><h4>📋 第一模块复盘</h4>
+<ul><li>归因=人类自动寻找行为因果的心理程序</li><li>凯利三维度：一致性+特异性+一贯性→内外归因</li><li>基本归因错误(FAE)：高估人格、严重低估情境的作用</li></ul></div>
+
+<!-- ====== 二 ====== -->
+<h2 id="c2">二、自我认知的偏差——我们如何看待自己</h2>
+
+<div class="def"><strong>自我概念（Self-Concept）</strong>——个体对自身特征、能力和价值的全部信念的集合。自我概念不是一面中性的镜子——它被多项自我保护性偏差系统性地扭曲——不是偶尔的、轻微的，而是系统性、稳固的、跨文化一致的。我们视自己比实际更聪明、更道德、更不易遭受不幸——这些不是自恋，而是「自我保护」这一普遍心理需求所必须的认知滤镜。健康的心理功能需要适度的自我服务偏差——完全「客观准确地看待自己」反而是临床抑郁的标志之一（抑郁现实主义理论）。</div>
+
+<h3>2.1 自我服务偏差矩阵</h3>
+<div class="derive">五项核心自我服务偏差——迈尔斯社会心理学核心发现：
+
+① 自我服务归因偏差（Self-Serving Attribution Bias）：
+   成功→「这是我的能力和努力」（内部归因）
+   失败→「环境和运气不好」（外部归因）
+   → 保护自尊的自动心理防御
+
+② 优于平均效应（Better-Than-Average Effect）：
+   大多数人在「道德水准」「驾驶技术」「领导能力」等几乎所有积极特质上
+   评价自己「高于平均水平」——这在数学上不可能
+   → 大学生自评「与同龄人相比的社交能力」：约85%把自己放在前50%
+
+③ 虚假一致效应（False Consensus Effect）：
+   高估自己观点和行为的普遍性→「大家都这样想」→为自己的行为寻求社会确认
+   这在持有少数观点的人群中尤其明显——因为他们更关注与自己一致的人
+
+④ 虚假独特性效应（False Uniqueness Effect）：
+   在积极的能力领域→低估自己能力的普遍性→「我特别擅长这个」
+   → 同时存在两个相反偏向：在态度上高估一致性，在能力上高估独特性
+
+⑤ 自我妨碍（Self-Handicapping）：
+   在面临可能失败的任务前，主动为自己制造障碍(拖延/宿醉/缺乏准备)
+   → 若失败→归因于外部障碍而非能力→保护自尊
+   → 这是自我价值保护最复杂的机制——以「降低成功概率」换取「失败对自尊的较轻冲击」</div>
+
+<h3>2.2 聚光灯效应与透明幻觉</h3>
+<div class="derive">聚光灯效应（Spotlight Effect, Gilovich）：
+  人们系统性地高估他人对自己外表和行为的注意程度
+  → 实验：让被试穿一件印有尴尬图案的T恤进入教室→被试估计约一半在场者注意到了
+  → 实际只有约25%→人不是宇宙的中心，但每个人都「以为自己是」
+
+透明幻觉（Illusion of Transparency）：
+  高估他人能看穿自己内心状态的程度→「他们肯定看出我紧张/不高兴/在撒谎」
+  → 实验结果：当众撒谎后，撒谎者估计近一半听众识破→实际<10%
+  → 我们的内心状态远不如我们以为的那样对外透明
+
+这两种效应共同解释了许多社交焦虑：我们高估了自己在社交中被注意和被看透的程度。实际社交中，他人更多沉浸在自己的世界里——对你的关注远低于你的焦虑所预估的水平。理解这一点是克服社交恐惧的最基础同时也最有力的认知疗法——「别人真的没那么注意你」。</div>
+
+<div class="summary"><h4>📋 第二模块复盘</h4>
+<ul><li>自我服务偏差五重：归因·优于平均·虚假一致·虚假独特性·自我妨碍</li><li>聚光灯效应→别人注意你的程度远低于你想象</li><li>透明幻觉→你的内心远不如你想象的那么显而易见</li></ul></div>
+
+<!-- ====== 三 ====== -->
+<h2 id="c3">三、态度与行为——信念如何驱动行动</h2>
+
+<div class="def"><strong>态度（Attitude）</strong>——对某人/事/观念的带有评价性（正面/负面）的信念和情感反应。迈尔斯强调态度是三维度的——情感(Affect)·行为倾向(Behavior)·认知(Cognition)——ABC模型。三者通常一致，但一维出现不一致时会产生「态度失调」→驱力迫使三维重新调整回归一致。</div>
+
+<h3>3.1 认知失调——态度改变的引擎</h3>
+<div class="derive">费斯汀格(Festinger)认知失调理论（1957）——社会心理学史上最重要的理论之一：
+
+核心机制：
+  当一个人同时持有两种矛盾认知时（态度vs行为·信念vs新证据→不一致）→
+  产生心理上的不适（失调感Dissonance）→人有强大的驱力去消除这种不适
+  → 消除路径：改变行为（最困难）、改变态度（最常见）、增加新认知以中和矛盾
+
+经典实验（Festinger & Carlsmith, 1959）——「无聊任务+撒谎」：
+  被试做一小时极其无聊的任务→结束后研究者请被试对下一位被试撒谎「这任务很有趣」
+  → 一组给$1报酬撒谎（报酬极低无法合理化）、一组给$20报酬撒谎
+  → 预测：报酬越低→越无法为说谎找到充分的外部理由→内心失调越大
+          → 为消除失调→主动改变态度→真正相信自己撒的谎（「那任务确实挺有趣」）
+  结果完美验证：$1组>>>$20组在事后自评中认为任务更有趣
+  → 高报酬的$20组可以为说谎找到充分外部理由(「我是为了钱才说的」)→无失调→态度不变
+  → 低报酬的$1组无法合理化→「既然不是为了钱→那我确实觉得它有趣吧」→态度改变
+
+认知失调的实际应用：
+  → 让一个人投入了高成本去「做一件事」后→他对该事的评价会上升→「我付出这么多，它必须值得」
+  → 入会仪式越残酷的新成员→对团体的忠诚度越高（「我经历了地狱才进来→这个团体必然极其重要」）
+  → 购物后，消费者主动找理由证明自己的选择是正确的(「购后合理化」)
+  → 道德虚伪：人们容忍自己做了自己公开谴责的行为→通过「重新定义标准」降低失调</div>
+
+<div class="chart-wrap"><canvas id="dissonance" width="560" height="260"></canvas>
+<div class="fig-cap">图2：认知失调理论的行为→态度改变路径，基于费斯汀格1957/1959经典研究复刻。核心推演：行为与态度不一致→心理失调→需要消除失调。报酬足够→外部归因(为钱)→态度不变；报酬不足→无法外部归因→只好改变态度以与行为一致。实验依据：无聊任务+$1/$20撒谎的经典实验(Festinger & Carlsmith, 1959)。现实应用：低成本投入→高态度改变；高成本投入→低态度改变(已有外部合理化)。</div></div>
+
+<h3>3.2 态度预测行为——何时言行一致</h3>
+<div class="derive">态度预测行为的五个条件（拉皮埃尔LaPiere早期研究的反向解读）：
+  态度更可能在以下条件下预测行为：
+  ① 态度是强烈的、经过深度思考的（非表面附和的）
+  ② 态度与行为处于同一个具体层面——泛泛的「环保态度」几乎不预测具体的「垃圾分类」；但针对回收行为的明确态度则具中等预测力
+  ③ 态度基于直接亲身经验——亲历体验>道听途说
+  ④ 不存在强烈的反作用情境压力——社会期望压倒了个人真实态度时言行脱节
+  ⑤ 自我监控度低(self-monitoring)→言行更一致
+
+计划行为理论(Theory of Planned Behavior, Ajzen)：
+  行为意图 = 态度×主观规范×感知行为控制
+  态度=个人对该行为的正面或负面评价
+  主观规范=重要他人认为我应不应该做
+  感知行为控制=我觉得自己能否成功完成</div>
+
+<div class="summary"><h4>📋 第三模块复盘</h4>
+<ul><li>态度=情感+行为+认知(ABC模型)</li><li>认知失调=行为-态度冲突→心理不适→改变态度以归回一致</li><li>行为无法被充足理由外部归因→态度被迫改变(Festinger经典)</li></ul></div>
+
+<!-- ====== 四 ====== -->
+<h2 id="c4">四、从众与服从——情境对人的压迫力量</h2>
+
+<div class="def"><strong>从众（Conformity）</strong>——在真实或想象的群体压力下，改变自己的行为或信念以与群体规范保持一致。谢里夫(Sherif)光点自动效应实验证明：在模糊情境中，群体提供了社会现实的参照框架。阿希(Asch)线段判断实验进一步证明：即使在极其明确的情境下，群体压力仍足以使多数人「睁眼说瞎话」。</div>
+
+<h3>4.1 从众的经典实验与条件</h3>
+<div class="derive">从众的两类驱力——信息性和规范性：
+
+信息性社会影响（渴望正确）：
+  在模糊不确定的情境中→把他人的反应当作信息源→「他们都这样做，这是对的吧」
+  → 这是谢里夫实验的核心心理机制
+
+规范性社会影响（渴望被接受）：
+  即使在明确正确的情境中→为避免群体排斥→仍然与群体的错误保持一致
+  → 这是阿希实验的核心心理机制
+  → 被试事后报告：「我知道我的答案是对的，但我不想成为唯一的异类」
+
+从众强度的五大影响因素（Crutchfield总结+迈尔斯扩展）：
+  ① 群体规模：3-5人的群体→从众压力最大。超过5人→从众率不再显著增加
+  ② 群体一致性：哪怕只有一个异议者→从众率降至原来的1/4
+      → 异议者的存在打破了群体的「一致性氛围」→赋予他人不同的勇气
+  ③ 群体凝聚力：对群体的认同越强→从众压力越大→越害怕被排斥
+  ④ 社会地位：中等地位者比高/低地位者更容易从众
+  ⑤ 公开作答：公开作答的从众>>私下作答→目视他人的评价是从众的强大催化剂</div>
+
+<div class="chart-wrap"><canvas id="conformityData" width="560" height="280"></canvas>
+<div class="fig-cap">图3：阿希从众实验——群体规模与异议者对从众率的影响，基于迈尔斯社会心理学实验数据复刻。核心推演：3-5人群体时从众压力达峰→不再增加；存在一个异议者时(给出正确的独立答案)→从众率骤降至原先的1/4。阿希实验核心结论：情境中微小的「不同声音」具有巨大的解放效应——一个人的勇气能触发群体的连锁独立。现实应用：商业会议中的「魔鬼代言人」机制→打破群体从众固化的「群体思维」。</div></div>
+
+<h3>4.2 服从——米尔格拉姆实验及其当代伦理反思</h3>
+<div class="derive">米尔格拉姆服从实验的核心发现与情境解构（补充迈尔斯社会心理学分析）：
+
+影响服从的四大情境变量：
+  ① 权威的合法性——耶鲁大学实验服vs普通公民→服从率65%→48%→20%
+     →「白大褂」的权威性本身是压倒性的——场景的「庄重感」让服从合理化
+  ② 受害者的距离——受害者与教师的距离越远(看不到只听到)→服从率越高
+  ③ 权威的近距离——当实验者通过仅电话指挥而非现场在旁→服从率骤降
+  ④ 同伴的存在——当被试看到其他人(假被试)拒绝服从→自己的服从率大幅下降
+      → 这和阿希实验的「异议者」机制是同一条传播逻辑
+
+当代伦理反思：
+  米尔格拉姆实验对700名被试造成了严重心理创伤(事后很多人报告持续的噩梦和自责)
+  → 该研究直接改变了整个西方心理学界的伦理准则
+  → 当前任何大学的IRB(伦理委员会)都不可能批准复制该项实验
+  → 这意味着：我们永远无法以同等方式再次测量「服从权威」的绝对程度
+  → 这一事实本身是社会心理学史上最深刻的反思：我们对人类黑暗面最深的探索反而必须以保护研究参与者的人道底线为前提——这意味着我们永远无法以「无害化」的方式再次度量服从的极限。米尔格拉姆的研究不仅证明了情境的压倒性力量，也向全世界的心理学家证明：科学研究有其不可逾越的伦理界限——有些真相的代价太沉重以至于不应再用经典实验范式去探究。</div>
+
+<div class="summary"><h4>📋 第四模块复盘</h4>
+<ul><li>从众=信息性(想要正确)+规范性(想要接受)→双重驱力</li><li>阿希实验→异议者效应：一人反对→从众骤降</li><li>米尔格拉姆服从实验→情境的压迫力超越大多数人的自我道德约束</li></ul></div>
+
+<!-- ====== 五 ====== -->
+<h2 id="c5">五、说服与影响——态度改变的科学</h2>
+
+<div class="def"><strong>说服（Persuasion）</strong>——通过传播信息来改变他人态度的过程。说服有两种基本路径：中心路线（Central Route）——受众仔细、深度地思考信息论据→态度发生持久、耐抗的改变；外围路线（Peripheral Route）——受众不深入思考论据，而被表面线索（演讲者魅力·情感画面·简单口号）所影响→态度改变浅层且易变。</div>
+
+<h3>5.1 精细加工可能性模型</h3>
+<div class="derive">ELM模型（Elaboration Likelihood Model, Petty & Cacioppo 1981→1986）——说服的双路径：
+
+中心路线——「论据的质量决定态度改变」：
+  受众具有处理信息的动机和能力→仔细审阅论证的强度
+  → 强有力的论点→持久的态度改变；弱论点→无力实现改变
+  → 中心路线产生的态度对反说服攻击具有最高免疫力
+
+外围路线——「表面线索决定态度改变」：
+  受众缺乏动机或能力去深入处理信息→依靠与论据本身无关的外部线索
+  → 演讲者的外表魅力、名望、头衔→情感广告→简单重复→「听起来很专业」
+  → 外围路线产生的态度转变较弱、易变、不耐受反攻
+
+岔路选择的关键——受众的涉入度(Involvement)：
+  如果议题与受众自身高度相关→倾向于走中心路线→认真考核论据
+  如果议题与受众无关→走外围路线→看感觉和外表
+  → 这就是为什么：专业人士买专业设备→读技术参数(中心路线)
+     同一个人买洗衣粉→看包装和明星代言(外围路线)</div>
+
+<h3>5.2 说服的六大原则</h3>
+<div class="derive">西奥迪尼(Cialdini)的影响六大核心原则——迈尔斯教材核心内容：
+
+① 互惠（Reciprocity）：感到有义务回报恩惠→「免费试用」策略→接受小礼→感欠→购买
+② 承诺与一致（Commitment & Consistency）：人们强烈驱使自己说话行事与自己过去的公开承诺一致
+    「把目标写下来并公之于众」→写和公开这两个行为创造了承诺→后续较难反悔
+③ 社会证明（Social Proof）：在不确定情况中→看别人做什么→从众
+    例：餐馆门前排队长→「这么多人选→应该好吃」→队伍持续
+④ 喜好（Liking）：更愿意答应自己喜欢的人的要求
+    推销技巧「像你一样的人」「老乡」「共同爱好」→交易成功率上升
+⑤ 权威（Authority）：服从权威符号(头衔·制服·豪华车)
+⑥ 稀缺（Scarcity）：限时/限量的感知→物品价值上升→冲动性行动
+    「仅此一天」「只剩最后2件」→稀缺感刺痛了「错失恐惧(FOMO)」</div>
+
+<div class="summary"><h4>📋 第五模块复盘</h4>
+<ul><li>ELM双路径：中心(论据质量→持久)vs外围(表面线索→浅层)</li><li>西奥迪尼六原则：互惠·一致·社会证明·喜好·权威·稀缺</li></ul></div>
+
+<!-- ====== 六 ====== -->
+<h2 id="c6">六、群体互动——个体在群体中的转变</h2>
+
+<div class="def"><strong>群体动力学（Group Dynamics）</strong>——个体在群体情境中相对于独处时发生的任何行为变化。这些变化有时增强、有时削弱个体的表现。群体既是人类合作创造的发动机，也是个体责任消解和个人失误的放大器。</div>
+
+<h3>6.1 群体中的表现变化——助长与消解</h3>
+<div class="derive">社会助长（Social Facilitation）与抑制：
+
+  优势反应强化假说(Zajonc)：他人在场→生理唤醒增加→强化了优势反应
+  → 在简单或熟练任务中→优势反应=正确→表现提升(社会助长)
+  → 在困难或不熟练任务中→优势反应=错误→表现下降(社会抑制)
+  实验验证：蟑螂迷宫→透明箱(有观众蟑螂)→简单直道更快，复杂转角更慢
+
+社会懈怠（Social Loafing）——群体中的出力减少：
+  个体在群体中工作时比单独工作时付出更少努力
+  → 原因：个体努力在群体成果中「不可识别」→个人责任分散
+  → 当每个人的个人贡献可以被单独评估时→社会懈怠消失
+  → 机制：拔河实验中盲眼加力(以为别人在拉→自己使力减少)——并非有意偷懒
+
+去个体化（Deindividuation）：
+  群体中的匿名性→自我意识消退→自控减弱→对直接情境线索的冲动响应增强
+  → 网络匿名性→对网络上完全陌生的人的暴力语言在现实身份暴露时不可能发出</div>
+
+<h3>6.2 群体决策——智慧与愚蠢并存</h3>
+<div class="derive">群体极化（Group Polarization, Moscovici & Zavalloni）：
+  群体讨论→使成员原先已持有的倾向被放大到更极端
+  → 原先有偏见的群体→讨论后→更偏见
+  → 原先支持改革的群体→讨论后→更激进
+  → 机制：讨论中听到了更多支持己方立场的论据→立场从温和端向极端端迁移
+  → 后果：跨社会群体(政治/宗教/种族)的讨论→加剧了社会隔阂的宽度
+
+群体思维（Groupthink, Janis 1972）——群体决策的最危险陷阱：
+  在高度凝聚的群体中，为了不破坏群体和谐→压制异议、忽略反面信息→做出一致但错误的决策
+  典型特征：无懈可击的错觉('我们肯定对')、集体合理化、对异议者的直接压力、心理守卫
+   → 猪湾入侵(1961)是群体思维的经典案例——肯尼迪政府的高IQ顾问团队在充满凝聚力的
+     密室中做了一致同意但最终惨败的决策→事后发现大量反对信息被系统忽略
+
+  防止群体思维：明确指派「魔鬼代言人」角色→容纳所有反面信息→领导最后发言(先听、后定)
+
+社会助长与抑制的现代工作启示：
+开放办公区→他人在场→简单任务(打字/数据录入)效率提高但复杂任务(编程/写作)受干扰——
+每个员工需要「能随时关上门选择独处」的空间来保护自己的复杂认知任务，这是社会助长理论
+对当代企业办公空间设计的最直接指导：开放协作=简单任务优选，封闭隔间=复杂任务优选</div>
+
+<div class="summary"><h4>📋 第六模块复盘</h4>
+<ul><li>社会助长vs抑制：他人在场→强化优势反应</li><li>社会懈怠：个人贡献不可识别→出力减少</li><li>群体极化：讨论增强原先立场→走向极端</li></ul></div>
+
+<!-- ====== 七 ====== -->
+<h2 id="c7">七、偏见与歧视——社会认知的暗面</h2>
+
+<div class="def"><strong>偏见（Prejudice）</strong>——对某一群体的预先形成的不公正负面态度（情感/认知/行为三维）。偏见≠刻板印象≠歧视——刻板印象是针对群体泛化的认知信念，偏见是负面态度，歧视是负面行为。三者通常协同出现但并非必然联动——一个人可以对某个群体持有刻板印象但没有强烈的偏见态度或歧视行为。</div>
+
+<h3>7.1 偏见的社会根源与认知根源</h3>
+<div class="derive">偏见的三重来源——迈尔斯综合分析：
+
+社会根源：
+  ① 社会不平等→不平等合理化需求→「富人富是因为聪明勤奋→穷人穷是因为懒」
+      → 这种叙事并非事实，而是「将现存不平等合理化」的认知心理防御
+  ② 内群偏差(Ingroup Bias)：对自己所属群体天然的偏袒→「我们>你们」
+      → 只需要将人群随机分成两组→立刻产生「我方组员更优秀」的判断(Robbers Cave实验)
+  ③ 宗教与种族的历史冲突→长期的文化叙事将某些群体与负面形象深度绑定
+
+动机根源：
+  ① 替罪羊理论(Scapegoat Theory)：当挫折的来源太复杂不可控时→将愤怒转移至一个明确的群体→「就是他们害的」
+  ② 社会同一性理论(Social Identity Theory, Tajfel)：个体的自尊部分依赖于所属群体的地位→通过贬低外群来抬高自身群体→「我们队赢了所以我也赢了」
+
+认知根源：
+  ① 分类化(Categorization)：人类大脑自动将人(与物)归入类别→简化社会世界→却是刻板印象的认知起点
+  ② 外群同质效应(Outgroup Homogeneity Effect)：认为「我方多样化，对方都一个样」
+      → 亚洲人看欧洲人「长相都一样」，反之亦然→将外群的个体差异系统性低估
+  ③ 显著案例效应(Vivid Case)：一个外群成员犯罪的新闻被记忆放大了→而对同群中无数守法者的日常视而不见。
+      → 所有群体偏见的认知强化都是「极小概率信号的高亮放大」。</div>
+
+<div class="chart-wrap"><canvas id="prejudiceModel" width="560" height="280"></canvas>
+<div class="fig-cap">图4：偏见的三重来源交互模型——社会不平等·动机(社会同一性/替罪羊)·认知(分类/外群同质/显著案例)，基于迈尔斯社会心理学偏见模块复刻。核心推演：社会结构创造了群体之间的权力和地位差别→动机层面激发「我们>你们」的身份保护需求→认知层面的分类思维和外群同质化为这些动机提供了思维捷径。三层迭加→偏见的自我强化闭环。干预需要同时打击社会结构+动机+认知三个环节才能有效减轻群体间的紧张。</div></div>
+
+<div class="summary"><h4>📋 第七模块复盘</h4>
+<ul><li>偏见≠刻板印象≠歧视——态度/信念/行为三纬度不完全同步</li><li>偏见=社会(不平等合理化)+动机(社会同一性)+认知(分类/外群同质)三层迭加</li></ul></div>
+
+<!-- ====== 八 ====== -->
+<h2 id="c8">八、攻击与利他——人性中的两极</h2>
+
+<div class="def"><strong>攻击（Aggression）</strong>——有意伤害他人的任何身体或言语行为。攻击分为敌意性攻击(Hostile Aggression)——以伤害本身为目的(由愤怒/仇恨驱动)，和工具性攻击(Instrumental Aggression)——伤害是为达成其他目标的手段。<br><strong>利他（Altruism）</strong>——以增加他人福利为终极目标的助人行为，不计回报。</div>
+
+<h3>8.1 攻击的多重来源</h3>
+<div class="derive">攻击的三大驱动因素——生物·挫折·社会学习：
+
+① 生物因素：
+   脑区：杏仁核(情绪·攻击启动)→前额叶(冲动控制)的正常平衡
+   前额叶受损→冲动控制消失→无法抑制愤怒和攻击冲动
+   生化：睾酮水平与攻击性呈中低正相关(不是睾酮=暴力，是睾酮+社会情境联动)
+   酒精→降低前额叶的自控→酒后更容易出现攻击行为
+
+② 挫折—攻击假说(Frustration-Aggression Hypothesis, Dollard 1939)：
+   挫折→愤怒→攻击准备状态升高→触发→攻击发泄
+   → 修正版(Berkowitz)：挫折不直接导致攻击→挫折产生了「愤怒」，愤怒在有攻击线索(如看到了武器)的环境中更容易触发攻击行为
+
+③ 社会学习（Bandura）：
+   看到他人的攻击获得奖赏→观察者自己更易模仿攻击(波波玩偶实验的直接推论)
+   暴力电子游戏长期争议：相关研究一致显示→暴力游戏与攻击思维/行为呈正相关(r~.15-.20)
+   但因果性未决：本身高攻击性的人也更倾向选择暴力游戏→相关性≠因果性</div>
+
+<h3>8.2 利他——为何帮助陌生人</h3>
+<div class="derive">亲社会行为的四个决策步骤（Darley & Latané—旁观者效应模型的扩展）：
+  ① 注意到事件——在匆忙城市中首先必须注意到有人在求助
+  ② 解释为紧急——是否界定为需要帮助的紧急情况(多元无知：所有人看着都不动→各自认为「可能不严重」)
+  ③ 承担责任——「我必须做点什么」(单人在场→责任感高；多人在场→责任扩散)
+  ④ 知道如何帮助——具备相关能力/知识
+
+何时人们更愿意帮助：
+  ① 施助者的情绪——情绪好的时候更愿意帮助；极度内疚时需要助人以平复
+  ② 潜在的成本与收益——助人有成本(时间/风险)→是否助人是成本-收益的快算
+  ③ 相似性——更愿意帮助与自己相似的人(穿着/外貌/群体)
+  ④ 互惠规范——受恩→感到欠→以助人偿还，社会关系的基座之一
+
+利他动机的三种可能解释：
+  ① 互惠利他——期望将来被他人帮助，进化视角下的间接长期自利
+  ② 亲缘选择——优先帮助具有共享基因的血亲→自然选择在基因层面上将利他内置于生物本能
+  ③ 共情利他(Batson)——纯粹的共情驱动：「你的痛苦让我难受→我帮你以让你不再痛苦」
+     真实的无私利他在Batson的经典实验室范式（Elaine实验）中被多次验证：
+     当被试对求助者产生强烈共情时→即使可以轻易离开情境(为自己免去帮人的一切成本)，
+     仍然选择留下帮助。共情→真实无私帮助的因果关系在多项RCT中成立。
+     人性不全然自私——共情利他是人类最光辉的社会心理能力。Batson的整个研究志业都在证明：真实的、不计回报的利他行为不是理想化的神话，而是可以被实验条件稳定诱发的真实人类反应。</div>
+
+<div class="summary"><h4>📋 第八模块复盘</h4>
+<ul><li>攻击=生物(杏仁核-前额叶失衡)+挫折+社会学习三因素</li><li>助人的四步决策：注意→解读→担责→执行</li><li>利他动机：互惠+亲缘+共情；真实的纯粹利他在实验验证中存在</li></ul></div>
+
+<!-- ====== 九 ====== -->
+<h2 id="c9">九、人际吸引与亲密关系——我们为什么走近彼此</h2>
+
+<div class="def"><strong>人际吸引（Interpersonal Attraction）</strong>——对另一个人的积极态度，包含喜欢、好感与亲密欲。吸引从不是随机的——它被一系列可预测的心理变量所系统性地驱动。</div>
+
+<h3>9.1 吸引的决定因素</h3>
+<div class="derive">人际吸引的五大驱动因素：
+
+① 接近性（Proximity）——最重要的单一因素
+   住得近=互动多→熟悉度高→「纯粹曝光效应」——熟悉本身即增加好感
+   麻省理工宿舍研究：已婚学生公寓→邻居成为朋友的概率>60%→住同一楼层的两端住的几乎不交往
+
+② 外表吸引力（Physical Attractiveness）——第一次见面最强烈的过滤器
+   「美貌光环效应(Halo Effect)」：我们自动地将「外表好看=其他品质也好」
+   → 老师对颜值高的学生自动给予了更高评价(同分作文→好看学生更高分)
+   → 外表吸引力在工作面试、相亲、刑事判决等几乎所有社会评价领域中持续发挥作用
+   → 「匹配假设」在跨文化研究中成立——每个人在外表吸引力市场中根据自身条件选择与选择他人，最终收敛至与自身相近颜值的人建立更长期关系。这不是「凑合」，而是「社会选择的均衡结果」——追求远超自身的人→高概率遭拒绝→自然调节至可行区间。
+
+ ③ 相似性（Similarity）——「物以类聚」的科学确认
+   态度、价值观、兴趣、人格相似→吸引>互补
+   原因：与他人相似→我们的态度被确认→自我验证感→愉快→关系开始
+   在线约会平台的算法实质上就是「相似性计算器」</div>
+
+<h3>9.2 爱情与亲密</h3>
+<div class="derive">斯滕伯格爱情三角（Sternberg—迈尔斯教材核心内容）：
+
+  亲密(Intimacy)：彼此深入了解、信任、分享脆弱——友谊的核心成分
+  激情(Passion)：强烈的性吸引和浪漫迷恋——爱情最早期最强烈的成分
+  承诺(Commitment)：维持长期关系的坚定决心——长期婚姻的基石
+
+  三成分组合→七种不同类型的爱（从「喜欢」到「完美之爱」）：
+    仅有亲密=喜欢(友情)；仅有激情=迷恋；仅有承诺=空洞之爱
+    亲密+激情=浪漫之爱(早期热恋)；亲密+承诺=同伴之爱(老年婚姻)
+    激情+承诺=愚昧之爱(闪婚)；三者皆有=完美之爱(最理想但最难长期维持)
+
+亲密关系的维持——戈特曼(Gottman)的幸福婚姻研究：
+  稳定幸福 vs 离婚边缘的关键差异：
+  → 正面互动与负面互动的比率：幸福夫妻≈5:1正面>负面；离婚≈1:1持平或负面>正面
+  → 不幸福的互动中→批评性低评(轻蔑)是最强的单指标→包含了「我对你不屑」的情绪
+  → 日常微小善意的持续积累>>偶尔的大浪漫表达（「每天说我出门小心」>>「一年只送一次花」）</div>
+
+<div class="summary"><h4>📋 第九模块复盘</h4>
+<ul><li>吸引=接近(熟悉曝露)+外表(闪光+匹配)+相似(态度验证)</li><li>Sternberg三角：亲密·激情·承诺——七种爱的组合</li><li>Gottman：正面:负面>5:1的持续微小善意是幸福婚姻的核心</li></ul></div>
+
+<!-- ====== 十 ====== -->
+<h2 id="c10">十、冲突与和解——人际与群体紧张的和解路径</h2>
+
+<div class="def"><strong>冲突（Conflict）</strong>——被知觉到的目标互不相容或一方认为另一方干扰了自己实现目标的进程。冲突的根源往往不在实质的资源差异，而在双方对对方动机、意图和行为的「镜像式错误感知」——每一方都认为自己是防御性的对受侵害进行正当自卫，而对方是恶意挑衅。</div>
+
+<h3>10.1 社会困境——个人理性导致的集体非理性</h3>
+<div class="derive">囚徒困境在真实世界中的四大映射：
+
+① 公共资源困境——公地悲剧的现实版：
+   每个个体合理提取一小份公共资源→整体公共资源枯竭→所有人受损
+   → 捕捞总量上限→但每个渔民都想多捕→总体持续捕捞→鱼群不可恢复→破产
+
+② 军备竞赛困境：
+   两国各想「我多投资国防=我安全一点」→对方见你增强→对方也增强→
+   总军费年年飙升但双方的安全感未增加→双方都比削减军备前更紧张(「安全困境」)
+
+③ 全球温室气体减排：
+   各国最优策略=在家减排→让其他国家去承担最大的减排量→享受共同的清洁空气
+   → 结果全部国家搭便车→总体减排远不够→全球温室持续上升→所有国家受损
+
+④ 价格战中的行业自我伤害：
+   各企业合理削价→夺竞争对手的市场份额→对方报复性折让→连续几轮→
+   行业利润率逼近零线→多家出局→剩余一两家→价格重新上升→破产企业的投资被清零
+
+解决上述社会困境的共同公式：改变规则——使合作的收益>背叛的收益
+  囚徒困境的和解=重复博弈(将两人拖入长期关系)+外部监管惩罚背叛+奖励长期合作者
+  → 「只要每个人知道未来会因今天的背叛而被长期惩罚→理性本身就会选择合作」</div>
+
+<div class="chart-wrap"><canvas id="conflictModel" width="560" height="280"></canvas>
+<div class="fig-cap">图5：冲突中的镜像感知与和解路径模型，基于迈尔斯社会心理学冲突与和解模块复刻。核心推演：冲突双方各自认为自身是被侵害的防御者、对方是恶意挑起的挑衅者→这种「镜像式错误感知」使冲突长期持续，每一方都觉得「我反应合理→他反应过度」。和解四路径：接触(增加双方互动)→合作(建立共同外部目标)→沟通(第三中立方的调解)→和解(单方主动释放善意和平信号→测试对方反应)。</div></div>
+
+<div class="summary"><h4>📋 第十模块复盘</h4>
+<ul><li>冲突=镜像感知→双方各认为自己正当自卫·对方恶意挑衅</li><li>社会困境→个人理性与集体冲突的深层张力</li><li>和解四步：接触→合作→沟通→单方和解释放</li></ul></div>
+
+<!-- ====== 十一 ====== -->
+<h2 id="c11">十一、社会决策整合——情境中的理性人</h2>
+
+<div class="derive">迈尔斯社会心理学历经13版的全部核心发现可归为一个大命题：
+
+**「情境的力量」是这门学科全部发现的最终统一场论**
+
+人在情境中的行为≠独立人格在孤立真空中的意志表达
+= 社会情境×个人内在×文化背景的三元乘积
+
+这并不是说法人可以对自己的行为不负责任（「环境让我这样做」的借口）
+——而是对任何人际判断最致命的错误：将他人的行为一昧归因于「人格缺陷」
+而完全忽视行为发生的具体情境压力。
+
+基本归因错误的社会代价是巨大的：
+  当我们将所有行为都归因于个人时→社会结构的不平等和压迫被「个人化」
+  贫穷=「懒」而非制度排斥；犯罪=「坏」而非失学+失业+街区帮派网络唯一出路
+
+迈尔斯全书的终极教导：
+  在判断他人行为之前，先暂停半拍，问自己一句：
+  「如果我在完全相同的处境下——拥有完全相同的童年、教育、生活环境和社会关系——
+    我会不会做出与他完全相同的行为？」
+
+  社会心理学的终极启示：将「他人」重新放回「情境」之中，用理解与同理替代指责与鄙夷。
+这不是要免除个人的行为责任，而是将对一个人的认知从单一的「人品好坏」的道德判断
+调整为一个更完整、更接近真实的人性理解——一个同样的人在不同的情境下会做出完全不同
+的行为。社会心理学教会我们最重要的谦逊是：在充分了解他全部情境之前，暂缓对他品格
+的最终审判。所有残酷的行为背后都有情境的强力推手，所有美好和利他也同样生长在特定
+的情境土壤中。了解情境≠为不道德行为脱责；忽视情境=对真实人性的系统误读。情境意识让我们在面对复杂人际冲突时多一分理解、少一分冲动审判——这既是社会心理学的学术使命，也是日常生活必备的认知修养。</div>
+
+<div class="chart-wrap"><canvas id="socInt" width="560" height="280"></canvas>
+<div class="fig-cap">图6：迈尔斯社会心理学核心框架——情境×人格×文化的三元交互模型。核心推演：人的每一个社会行为都是三元乘积的结果→任何试图割裂单维度的解释都无法捕捉真实的「为什么」。学科使命=将情境的力量带回我们对他人行为的解释中来——从而反对将复杂的社会行为粗暴归因于简单的「人品决定论」。</div></div>
+
+<div class="summary" style="background:#fdf8f0;border-color:#8b3a1a">
+<h4 style="font-size:15px">👤 迈尔斯社会心理学·全域总纲——情境的力量</h4>
+<p><strong>全书核心命题：</strong>社会思维（归因·态度·自我偏差）→社会影响（从众·说服·群体→改变个体的力量）→社会关系（偏见·攻击·吸引·利他·冲突→人际质量的调节器）。三大模块不各自孤立——社会思维中的「归因错误」是偏见之所以大行其道的底层认知推力；社会影响中的「从众」在群体冲突中将犹豫者推向极端；社会关系中的「利他」是个人超越情境消极力发起正面互动的最光辉行动。</p>
+<p><strong>与津巴多普心的闭环：</strong>津巴多讲「个体内部」——脑、认知、情绪、人格、障碍；迈尔斯讲「个体与外部」——社会认知、人际博弈、群体机制、偏见与冲突。人性的完整图景需要两本书的联合——个体内部的心理机制（津巴多）与社会情境对个体的塑造力量（迈尔斯）是同一枚硬币的两面。</p>
+</div>
+
+</main>
+
+<!-- ==================== Canvas 引擎 ==================== -->
+<script>
+class PC{
+  constructor(id,w,h){this.c=document.getElementById(id);if(!this.c)return;this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h}
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  g(x0,x1,y0,y1){const c=this.ctx,p={t:30,r:22,b:45,l:55},pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;this.xs=v=>p.l+(v-x0)/(x1-x0)*pw;this.ys=v=>p.t+(y1-v)/(y1-y0)*ph;c.strokeStyle='#e8e3d8';c.lineWidth=.5;c.beginPath();for(let i=0;i<=5;i++){let y=y0+(y1-y0)*i/5;c.moveTo(p.l,this.ys(y));c.lineTo(this.w-p.r,this.ys(y))}for(let i=0;i<=10;i++){let x=x0+(x1-x0)*i/10;c.moveTo(this.xs(x),p.t);c.lineTo(this.xs(x),this.h-p.b)}c.stroke();c.strokeStyle='#555';c.lineWidth=1.5;c.beginPath();c.moveTo(p.l,p.t);c.lineTo(p.l,this.h-p.b);c.moveTo(p.l,this.h-p.b);c.lineTo(this.w-p.r,this.h-p.b);c.stroke()}
+  ln(pts,color,w=2.5,d=null){if(pts.length<2)return;var c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(d)c.setLineDash(d);c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));c.stroke();c.setLineDash([]);c.restore()}
+  txt(x,y,t,c='#333',s=11,a='center'){this.ctx.fillStyle=c;this.ctx.font=`${s}px sans-serif`;this.ctx.textAlign=a;this.ctx.fillText(t,x,y)}
+  rect(x,y,w,h,cl,sc='#555'){this.ctx.fillStyle=cl;this.ctx.fillRect(x,y,w,h);this.ctx.strokeStyle=sc;this.ctx.lineWidth=1.5;this.ctx.strokeRect(x,y,w,h)}
+}
+
+// 图1: 归因模型
+(function(){
+  var k=new PC('attributionModel',600,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('归因理论模型——海德二分+凯利三维信息',300,16);
+  var boxes=[
+    {x:220,y:40,w:160,h:30,l:'观察他人行为',c:'#faf6f2'},
+    {x:40,y:100,w:130,h:50,l:'高一致性+高特异性\n+高一贯性→外归因',c:'#e8f0e8'},
+    {x:230,y:100,w:140,h:50,l:'凯利协变模型\n三维度信息自动分析',c:'#f0f0f0'},
+    {x:430,y:100,w:130,h:50,l:'低一致性+低特异性\n+高一贯性→内归因',c:'#fef0f0'},
+    {x:150,y:200,w:300,h:30,l:'FAE: 系统性高估内部归因·低估情境',c:'#fdf0f0'}
+  ];
+  boxes.forEach(b=>{c.fillStyle=b.c;c.fillRect(b.x,b.y,b.w,b.h);c.strokeStyle='#888';c.lineWidth=1.5;c.strokeRect(b.x,b.y,b.w,b.h);c.fillStyle='#333';c.font='9px sans-serif';c.textAlign='center';var ls=b.l.split('\n');ls.forEach((l,i)=>c.fillText(l,b.x+b.w/2,b.y+16+i*16))});
+  c.strokeStyle='#555';c.lineWidth=1.5;
+  c.beginPath();c.moveTo(300,70);c.lineTo(300,100);c.stroke();
+  c.beginPath();c.moveTo(300,70);c.lineTo(105,100);c.stroke();c.beginPath();c.moveTo(300,70);c.lineTo(495,100);c.stroke();
+  c.beginPath();c.moveTo(105,150);c.lineTo(160,200);c.stroke();c.beginPath();c.moveTo(300,150);c.lineTo(280,200);c.stroke();c.beginPath();c.moveTo(495,150);c.lineTo(420,200);c.stroke();
+  c.fillStyle='#8b3a1a';c.font='9px bold sans-serif';c.fillText('跨文化差异：个人主义=FAE强 / 集体主义=更倾向情境归因',300,250);
+})();
+
+// 图2: 认知失调
+(function(){
+  var k=new PC('dissonance',560,260);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('认知失调理论——费斯汀格无聊任务+撒谎实验',280,16);
+  var nodes=[{x:200,y:40,l:'行为与态度冲突',c:'#faf6f2'},{x:40,y:100,l:'报酬充足($20)',c:'#e8f0e8'},{x:360,y:100,l:'报酬不足($1)',c:'#fef0f0'},{x:40,y:170,l:'外部归因：为了钱',c:'#e8f0e8'},{x:360,y:170,l:'无法外部归因',c:'#fef0f0'},{x:100,y:230,l:'态度不变(无失调)',c:'#f0f0f0'},{x:420,y:230,l:'改变态度(消除失调)',c:'#fef0f0'}];
+  nodes.forEach(n=>{c.fillStyle=n.c;c.fillRect(n.x,n.y,140,32);c.strokeStyle='#888';c.lineWidth=1.5;c.strokeRect(n.x,n.y,140,32);c.fillStyle='#333';c.font='10px sans-serif';c.textAlign='center';c.fillText(n.l,n.x+70,n.y+22)});
+  c.strokeStyle='#555';c.lineWidth=1.5;c.beginPath();c.moveTo(280,72);c.lineTo(110,100);c.stroke();c.beginPath();c.moveTo(280,72);c.lineTo(430,100);c.stroke();
+  c.beginPath();c.moveTo(110,132);c.lineTo(110,170);c.stroke();c.beginPath();c.moveTo(430,132);c.lineTo(430,170);c.stroke();
+  c.beginPath();c.moveTo(110,202);c.lineTo(150,230);c.stroke();c.beginPath();c.moveTo(430,202);c.lineTo(450,230);c.stroke();
+  c.fillStyle='#8b3a1a';c.font='10px bold sans-serif';c.fillText('低报酬→高失调→必须改变态度合理化行为',280,250);
+})();
+
+// 图3: 从众实验对比柱状图
+(function(){
+  var k=new PC('conformityData',560,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('阿希从众实验——群体规模与异议者的效应',280,16);
+  k.g(0,4.5,0,80,'','从众率 (%)');
+  var bars=[{x:k.xs(1)-20,w:40,h:12,l:'1人',c:'#8b3a1a'},{x:k.xs(2)-20,w:40,h:35,l:'3人',c:'#8b3a1a'},{x:k.xs(3)-20,w:40,h:75,l:'5人',c:'#8b3a1a'},{x:k.xs(4)-20,w:40,h:19,l:'有1个\n异议者',c:'#2a7a3a'}];
+  bars.forEach(b=>{c.fillStyle=b.c;c.fillRect(b.x,k.ys(0)-(k.ys(0)-k.ys(80))*b.h/100,40,(k.ys(0)-k.ys(80))*b.h/100);c.fillStyle='#333';c.font='9px sans-serif';c.textAlign='center';c.fillText(b.l,b.x+20,k.h-30)});
+  c.fillStyle='#8b3a1a';c.font='9px sans-serif';c.fillText('3-5人→从众达峰',350,100);
+  c.fillStyle='#2a7a3a';c.fillText('1异议者→从众骤降至1/4',350,80);
+  c.fillStyle='#555';c.font='10px bold sans-serif';c.fillText('异议者的存在是打破群体从众的'核按钮'——一个人的勇气撬动整个群体',280,250);
+})();
+
+// 图4: 偏见模型
+(function(){
+  var k=new PC('prejudiceModel',560,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('偏见的三重来源——社会+动机+认知',280,16);
+  var pillars=[{x:40,y:45,l:'社会根源',sub:'不平等合理化\n内群偏差',c:'#faf6f2',sc:'#8b3a1a'},{x:200,y:45,l:'动机根源',sub:'社会同一性\n替罪羊',c:'#faf6f2',sc:'#8b3a1a'},{x:360,y:45,l:'认知根源',sub:'分类化·外群同质\n显著案例放大',c:'#faf6f2',sc:'#8b3a1a'},{x:140,y:170,l:'→ 偏见的三重迭加自我强化闭环 ←',c:'#fdf0f0',sc:'#c03838'}];
+  pillars.forEach(p=>{c.fillStyle=p.c;c.fillRect(p.x,p.y,140,50);c.strokeStyle=p.sc;c.lineWidth=2;c.strokeRect(p.x,p.y,140,50);c.fillStyle='#333';c.font='11px bold sans-serif';c.textAlign='center';c.fillText(p.l,p.x+70,p.y+18);c.font='9px sans-serif';var ss=p.sub.split('\n');ss.forEach((s,i)=>c.fillText(s,p.x+70,p.y+34+i*14))});
+  c.strokeStyle='#8b3a1a';c.lineWidth=1.5;c.beginPath();c.moveTo(110,95);c.lineTo(180,170);c.stroke();c.beginPath();c.moveTo(270,95);c.lineTo(280,170);c.stroke();c.beginPath();c.moveTo(430,95);c.lineTo(380,170);c.stroke();
+  c.fillStyle='#8b3a1a';c.font='9px bold sans-serif';c.fillText('社会结构创造不平等+动机维护自我+认知提供思维捷径=偏见自我循环',280,220);
+})();
+
+// 图5: 冲突镜像感知
+(function(){
+  var k=new PC('conflictModel',560,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('冲突中的镜像感知与和解路径',280,16);
+  // Left side A
+  c.fillStyle='#faf6f2';c.fillRect(20,45,180,80);c.strokeStyle='#8b3a1a';c.strokeRect(20,45,180,80);
+  c.fillText('A方视角',110,65);c.font='9px sans-serif';c.fillText('我：防御·正当自卫',110,85);c.fillText('他：挑衅·恶意',110,100);c.fillText('「我的反应完全合理」',110,115);
+  // Right side B
+  c.fillStyle='#faf6f2';c.fillRect(360,45,180,80);c.strokeStyle='#8b3a1a';c.strokeRect(360,45,180,80);
+  c.fillText('B方视角',450,65);c.fillText('我：防御·正当自卫',450,85);c.fillText('他：挑衅·恶意',450,100);c.fillText('「我的反应完全合理」',450,115);
+  // Center mirror
+  c.fillStyle='#c03838';c.font='10px bold sans-serif';c.fillText('⟷ 镜像感知 ⟷',280,90);
+  // Resolution path
+  c.fillStyle='#2a7a3a';c.font='10px bold sans-serif';c.fillText('和解路径：接触→合作(建立共同目标)→沟通(调解)→单方和解释放',280,165);
+  c.fillStyle='#555';c.font='9px sans-serif';c.textAlign='center';c.fillText('每一方都觉得自己是被侵犯时的正当防卫人——另一方都一样——这就是冲突的死锁所在',280,140);
+})();
+
+// 图6: 社会心理学三大模块
+(function(){
+  var k=new PC('socInt',560,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('迈尔斯社会心理学——情境×人格×文化三元交互',280,16);
+  // Triangle
+  var pts=[{x:280,y:35,t:'社会情境',c:'#8b3a1a'},{x:80,y:200,t:'人格·个体',c:'#1a4a6b'},{x:480,y:200,t:'文化·规范',c:'#2a7a3a'}];
+  pts.forEach(p=>{c.fillStyle='#fff';c.beginPath();c.arc(p.x,p.y,50,0,Math.PI*2);c.fill();c.strokeStyle=p.c;c.lineWidth=3;c.stroke();c.fillStyle=p.c;c.font='13px bold sans-serif';c.textAlign='center';c.fillText(p.t,p.x,p.y+6)});
+  c.fillStyle='#555';c.font='11px bold sans-serif';c.textAlign='center';c.fillText('行为 = 情境 × 人格 × 文化   (三者不可割裂)',280,240);
+})();
+
+console.log('✅ 迈尔斯社会心理学 · 6张Canvas · 零外部依赖');
+</script>
+</body>
+</html>

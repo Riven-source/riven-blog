@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>卡尼曼认知决策科学 · 系统1+2 · 前景理论 · 有限理性全体系</title>
+<style>
+:root{
+  --bg:#fcfcf8;--card:#fff;--border:#d5d0c8;--text:#141410;--sub:#484840;
+  --accent:#1a4a6a;--accent2:#5a2a1a;--code-bg:#f5f2ec;
+  --warn-bg:#fff8f0;--warn-text:#6b3000;--table-s:#f7f3ee;
+  --side-w:195px;--blue:#1a4a6b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:14.5px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#101418;color:#98a0a8;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#c8d8e8;font-size:12px;margin-bottom:12px;border-bottom:1px solid#283038;padding-bottom:8px}
+.sidebar a{display:block;color:#8090a0;text-decoration:none;font-size:10.5px;padding:3px 0;transition:color .2s}
+.sidebar a:hover{color:#58a0d0}
+.main{margin-left:var(--side-w);max-width:860px;padding:32px 42px}
+h1{font-size:22px;text-align:center;margin-bottom:4px;color:#0c1418}
+.subtitle{text-align:center;color:var(--sub);font-size:12px;margin-bottom:32px}
+h2{font-size:18px;color:var(--accent);margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14.5px;color:var(--accent2);margin:24px 0 8px}
+h4{font-size:13px;color:#2a3028;margin:14px 0 6px}
+p{margin:7px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:10px 0}
+.def{background:#f2f6fa;border-left:4px solid var(--blue);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:13px}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:14px 18px;margin:10px 0;border-radius:5px;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:12px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:12px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:10.5px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:10px 14px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:var(--warn-text)}
+.example{background:#f4f8f0;border-left:4px solid #2a5a2a;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:12.5px}
+.example strong{color:#1a341a}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:#e8e4dc;padding:7px 9px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:7px 9px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#fdf8f4;border:2px solid var(--accent);border-radius:7px;padding:16px;margin:18px 0}
+.summary h4{color:var(--accent);margin-bottom:5px}
+.summary ul{padding-left:16px;font-size:12px}
+.compare th:first-child{background:#dce0d8}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:14px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:860px){.sidebar{display:none}.main{margin-left:0;padding:10px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>🧠 卡尼曼认知决策<br>有限理性全体系</h3>
+  <a href="#c1">一、双系统思维模型</a>
+  <a href="#c2">二、启发式与偏差总览</a>
+  <a href="#c3">三、锚定效应</a>
+  <a href="#c4">四、损失厌恶与禀赋效应</a>
+  <a href="#c5">五、概率判断偏差</a>
+  <a href="#c6">六、前景理论</a>
+  <a href="#c7">七、框架效应</a>
+  <a href="#c8">八、团队决策误区</a>
+  <a href="#c9">九、修正博弈论完全理性</a>
+  <a href="#c10">十、决策修正与博弈策略</a>
+</nav>
+
+<main class="main">
+
+<h1>卡尼曼认知决策科学完整体系</h1>
+<p class="subtitle">Daniel Kahneman · 2002年诺贝尔经济学奖 · Thinking, Fast and Slow<br>
+系统1+2 · 前景理论 · 损失厌恶 · 有限理性 · 纯Canvas可视化 · 零外部依赖</p>
+
+<div class="def"><strong>认知决策科学的核心革命</strong>——卡尼曼与特沃斯基(Amos Tversky)在1970-1990年代的一系列实验彻底推翻了经济学中「人是完全理性的期望效用最大化者」的核心假设。他们的发现不是「人有时会犯错误」——而是「人的决策系统性地、可预测地偏离了理性最优选择」。这些偏差不是随机的——它们构成了一组系统性的、可被实验反复验证的认知规律。2002年诺贝尔经济学奖授予卡尼曼(特沃斯基于1996年去世)，标志着行为经济学正式被主流经济学接纳为其核心分支。</div>
+
+<!-- ====== 一 ====== -->
+<h2 id="c1">一、双系统思维模型——认知的两种运算模式</h2>
+
+<div class="def"><strong>系统1（System 1）</strong>——快速、自动、不费力、无意识的直觉思维。它从不「关闭」——始终在后台持续运行，对进入感官的一切刺激自动产生印象、直觉和情感反应。它是人类数百万年进化中最优化的生存算法。<br><strong>系统2（System 2）</strong>——缓慢、需要努力、有意识、可被主体感知的审慎思维。它负责复杂的计算、逻辑推理、自我控制和需要高度注意力的任务。系统2的运转需要消耗认知资源——每次使用都会感受到「思索的努力」。</div>
+
+<h3>1.1 系统1与系统2的并行-轮流运作机制</h3>
+<div class="derive">卡尼曼的双系统运作法则：
+
+日常状态：系统1「自动驾驶」→处理99%的日常认知任务
+  阅读文字、辨识人脸、判断距离、理解简单的日常语句→全部由系统1自动完成
+  → 你不需要「努力」就能读这些字——系统1在背后自动识别了每个汉字
+
+挑战触发：系统1遇到无法自动处理的任务→召唤系统2介入
+  任务特征：需要多步计算、逻辑推理、自我抑制、不同寻常的决策权重比较
+  例：计算17×24——系统1自动报出「大概400多」，要精确答案必须召唤系统2进行分步计算
+
+系统交互的认知经济法则：
+  → 系统2是「懒惰的」→它默认信任系统1的快速判断而不复核（最小努力原则）
+  → 只有在明确感知到「需要努力」时，系统2才被调用——而大部分时间人们根本没有感知到系统1可能出错
+
+认知负荷实验（瞳孔实验）实证：
+  被试在解算术题时→瞳孔直径随题目难度同步扩大→瞳孔=认知努力的精确生理指标
+  → 系统2的运转是可见的、可测量的、要消耗生理代谢能量的——不是比喻而是生理事实</div>
+
+<div class="chart-wrap"><canvas id="dualSystem" width="620" height="290"></canvas>
+<div class="fig-cap">图1：双系统思维模型——系统1(直觉·自动·不费力)与系统2(审慎·需要努力·可控制)的交互运作机制，基于卡尼曼《思考，快与慢》核心模型复刻。核心推演：系统1不间断运行→自动产生印象和直觉→系统2在大多数时候默认接受系统1的输出→仅在感知到「需要检验」时才介入→但系统2的介入频率远低于它理应介入的情况→大量系统偏差由此产生。实验依据：瞳孔直径变化(认知努力的生物标记)、Stroop效应(系统2需要努力抑制自动反应)。</div></div>
+
+<div class="summary"><h4>📋 第一模块复盘</h4>
+<ul><li>系统1=自动·快·不费力·持续运行→处理99%日常认知</li><li>系统2=审慎·慢·消耗能量·只在被召唤时运作</li><li>系统2默认信任系统1→大部分认知偏差=系统2偷懒未复检</li></ul></div>
+
+<!-- ====== 二 ====== -->
+<h2 id="c2">二、启发式与偏差总览——认知捷径的系统性代价</h2>
+
+<div class="def"><strong>启发式（Heuristic）</strong>——大脑在面对复杂问题时的「快捷替代策略」：用一个简单问题替代原问题并自动回答替代问题。这是一种进化的认知高效率——绝大多数时候这个替代足够准，但在特定情境中，替代答案与正确答案之间的系统偏差构成了认知偏差的根源。</div>
+
+<h3>2.1 三大原始启发式</h3>
+<div class="derive">特沃斯基与卡尼曼(1974)在Science上提出的三大认知启发式：
+
+① 可得性启发（Availability Heuristic）：
+   人们用「我能多快想起此类事例」来替代「此事发生的真实概率」
+   → 刚刚看到空难新闻→自动判断空难概率→高估飞行风险
+   → 实际上：飞行是最安全的交通方式，每百万飞行小时的死亡率远低于驾车
+   → 偏差来源：媒体对罕见高震撼事件的饱和报导+大脑对生动事例的易提取性
+
+② 代表性启发（Representativeness Heuristic）：
+   用「此事例多像该群体的典型样板」来替代「此人属于该群体的统计概率」
+   → 「林达是哲学系学生、参与反核运动、关心社会正义」→判断她是「女权主义银行出纳」
+    的概率高于「银行出纳」——这是逻辑荒谬的(不可能P(A∧B)>P(A))→但被试大量做出
+    此判断，因为描述匹配了「女权主义者」的刻板印象
+   → 核心错误：忽视基准率(Base Rate Neglect)——替代样本相似性忽略总体统计发生率
+
+③ 锚定与调整启发式（Anchoring and Adjustment）：
+   用一个已接触的数字(或任意暗示)作为「锚」→所有后续判断围绕这个锚做「不充分的修正」
+   → 在骰子实验中，只随机转了一个骰子数字(10或65)之后问「非洲国家有多少个在联合国」
+   → 骰子10→平均回答25；骰子65→平均回答45——一个完全随机的数字公然影响了判断</div>
+
+<div class="chart-wrap"><canvas id="biasesMap" width="620" height="300"></canvas>
+<div class="fig-cap">图2：三大认知启发式与衍生的系统性偏差分类全景图，基于特沃斯基-卡尼曼1974年Science论文复刻。核心推演：可得性(易提取事例→高估概率)、代表性(匹配刻板→忽略统计基准率)、锚定(任意接触数字→不充分修正)。三个启发式各自衍生出4-5类更加具体的认知偏差——它们共同构成了人类认知系统中最稳定可重复的系统性错误模式。实验依据：多个重复RCT(空军飞行员/医学生/法官的各版本实验)。</div></div>
+
+<div class="summary"><h4>📋 第二模块复盘</h4>
+<ul><li>三大启发式：可得性(联想替代概率)·代表性(相似替代统计)·锚定(初始暗示替代估算)</li><li>共同的底层逻辑=用一个简单问题替代一个困难问题→系统1走捷径+系统2未复检</li></ul></div>
+
+<!-- ====== 三 ====== -->
+<h2 id="c3">三、锚定效应——完全无关的数字如何污染一切判断</h2>
+
+<div class="def"><strong>锚定效应（Anchoring Effect）</strong>——当人们需要对某个未知量进行数值估计时，任何先前接触的数字（无论与待估量是否相关）都会作为「锚」拉拽最终估计值向其靠拢。锚定效应的惊人之处在于它不可思议地强大——即使在明确告知被试「锚是随机生成、毫无关联的」之后，效应的强度几乎不衰减。这是认知心理学中最稳健、最难以被「意识克服」的偏差之一。</div>
+
+<h3>3.1 锚定的双重机制与层层浸染</h3>
+<div class="derive">卡尼曼识别了锚定的双层产生机制：
+
+机制A：系统2的调整不足（Insufficient Adjustment）
+  锚点提供了一个最初的「出发值」→系统2从这个值出发向外调整→
+  调整需要认知努力——在到达「感觉合理」的第一个值即停止→
+  这个停止点在无意识中仍然过于靠近锚。调整=需要持续努力→系统2的懒惰本质使中止在非最优处。
+
+机制B：系统1的启动效应（Priming Effect / Associative Coherence）
+  锚点激活了记忆中与锚点数值相关的整个信息簇→这些被激活的信息
+  反过来塑造了后续判断可用的全部认知材料。锚点数值启动了什么，什么就更容易被后续提取。
+
+锚定效应的跨领域传染实验：
+  法官量刑实验中——让法官阅读同一案件的案卷，但检察方建议判罚分别为「3个月」
+  和「9个月」的版本→法官的最终判决显著被建议锚拉向各自锚点附近。专家≠免疫锚定。
+  房地产估价师被给出同一房屋时——若卖方要价较高→估价结果显著上浮→专业人士同样深陷锚中。
+
+商业谈判中的锚定博弈策略：
+  ① 先报价者绝对主动——初始价无论如何都将成为后续全部讨论的心理锚
+  ② 极端初始锚+随后「让步」→产生对比效应→「让步后的价格感觉合理多了」
+  ③ 当对方先报价→你唯一有效反击锚定的方法是：有意识地考虑对方报价
+     的反方向极端值→人为在脑中植入自己的反锚以抵消对方锚的影响力</div>
+
+<div class="chart-wrap"><canvas id="anchoringCurve" width="560" height="260"></canvas>
+<div class="fig-cap">图3：锚定效应模型——任意接触的数字如何通过系统2调整不足+系统1启动效应将最终判断拉向锚点附近，基于卡尼曼锚定理论复刻。核心推演：锚值无论来源(随机骰子·刻意开价·先行接触)→通过两个并行机制→最终估计被锁定在锚附近→与实际应当的无偏估算之间存在系统性缺口。实验依据：联合国非洲国家数量×随机骰子的经典实验、法官专业刑事量刑受无关锚影响的实验。</div></div>
+
+<div class="summary"><h4>📋 第三模块复盘</h4>
+<ul><li>锚定双机制：系统2的不充分调整+系统1启动效应</li><li>锚定极强→即使告知「这个锚是随机的也毫无关系」→效应不衰减</li><li>商业谈判：先报价=掌握锚定权；极端锚+让步=交易成功</li></ul></div>
+
+<!-- ====== 四 ====== -->
+<h2 id="c4">四、损失厌恶与禀赋效应——失去的痛苦数倍于获得的快乐</h2>
+
+<div class="def"><strong>损失厌恶（Loss Aversion）</strong>——卡尼曼与特沃斯基最著名的发现之一：同等金额的「失去」所引发的心理痛苦强度大约是同等金额「获得」所引发的快乐强度的2-2.5倍。损益在人的内心不是对称的——损失的主观权重系统性地高于收益。<br><strong>禀赋效应（Endowment Effect）</strong>——人们对自己已拥有物品的估值远高于对同一物品尚未拥有时的估值。「拥有的那一刻——物品在你心中的价值就变了」。</div>
+
+<h3>4.1 禀赋效应的经典实验及其博弈启示</h3>
+<div class="derive">卡尼曼-内奇-泰勒(1990)的马克杯实验：
+
+  被试随机分为两组：一组每人免费发给一个大学马克杯(卖家组)；
+  另一组不发(买家组)。允许两组自由交易→交易价格应趋近于个人对该杯的估值。
+
+  结果：卖家组想卖出的最低价≈$7.12；买家组愿意出的最高价≈$2.87
+  → 同一物品的买/卖价格比为7.12÷2.87≈2.48∶≈正好是损失厌恶比
+  → 不是信息不对称导致——这是纯粹的「拥有即改变估值」的心理所有权效应
+
+投资中的禀赋效应和处置效应：
+  投资者对持仓亏损的股票——「不忍卖出承认损失」→持有亏损股、卖出盈利股→
+  这种「处置效应」(Disposition Effect)的底层心理=损失厌恶——每个投资者在
+  面对「关闭亏损=正式确认损失」的那一刻→内心被「我不想当失败者」死死抓住
+
+博弈谈判中的损失厌恶应用——「损失框架>收益框架」：
+  当你需要说服对方接受某个提案→「如果不这样做，你会损失X」的语言
+  比「如果这样做，你会获得X」的语言强大约2倍。这不是修辞技巧——是如实利用了
+  对方大脑的损失厌恶双倍处理神经通路</div>
+
+<div class="chart-wrap"><canvas id="lossAversion" width="560" height="270"></canvas>
+<div class="fig-cap">图4：损失厌恶不对称价值函数——损失的斜率(≈2.25倍)比收益的斜率(≈1倍)更陡的心理学机制，基于卡尼曼-特沃斯基前景理论价值函数复刻。核心推演：原点(参照点)两侧不对称——损失侧的效用曲线比收益侧陡约2.25倍。「失去100元的痛苦≈获得225元的快乐」——这不是比喻，是在多个跨文化RCT中反复校准的稳定经验系数。实验依据：马克杯实验(Kahneman-Knetsch-Thaler 1990)、投资处置效应(Barber & Odean)、跨文化损失厌恶差异。</div></div>
+
+<div class="summary"><h4>📋 第四模块复盘</h4>
+<ul><li>损失厌恶≈2.25:1→失去的痛苦=获得的快乐×2.25倍</li><li>禀赋效应：拥有的瞬间→同一物品的心理价值跳跃约2.5倍</li><li>博弈谈判：「不行动会损失X」>>「行动会获得X」约2倍效价</li></ul></div>
+
+<!-- ====== 五 ====== -->
+<h2 id="c5">五、概率判断偏差——人类对小数和随机性一再犯同样的错误</h2>
+
+<div class="def"><strong>概率判断偏差</strong>——人类直觉对概率的处理方式完全不是数学式的。我们使用的概率「感觉」在许多特定情境中系统性地、同一方向地远离实际概率。最常见的两种：A.「小数定律」B.「合取谬误」C.「忽视回归均值」。</div>
+
+<h3>5.1 三大核心概率偏差</h3>
+<div class="derive">① 小数定律（Law of Small Numbers）——卡尼曼的命名本身就是尖刺的讽刺：
+   人们直觉性地认为任何小样本都将忠实地代表大总体的全部统计特征
+   → 「扔6次硬币连续4次正面→这个硬币有偏向性！」——实际上在公平硬币的随机序列中，
+   短期内连续四正面的概率为(1/2)^4=6.25%完全不奇→在一次扔6次硬币中发生完全正常
+   → 后果：投资者看一家公司连续4季度好业绩→自动断定「这家公司管理卓越」→
+    忽略了4这个样本量完全不足以区分「运气好」和「真能力」
+
+② 合取谬误（Conjunction Fallacy）——卡尼曼最著名的偏差之一：
+   P(A∧B) 必然 ≤ min[P(A), P(B)]——不可能超过任一单独事件
+   林达实验：人们将P(林达既是女权又是银行出纳)判断为> P(林达是银行出纳)
+   → 这是逻辑上绝对不可能的真值——但它反复发生
+   → 系统1用典型性(女权银行出纳的描述更像女权者)代替了概率逻辑的自己验算
+   → 系统2在旁边袖手旁观——不介入纠偏
+
+③ 忽视回归均值（Regression to the Mean Neglect）：
+   极端的表现在下一次测试中必然向平均值方向回移——这是统计学的必然，
+   与任何因果干预完全无关。但人们系统性地为这个「回归」编造了因果故事
+   → 以色列空军教官的经典抱怨：「惩罚一个表现差的飞行员→他下次就变好了；
+     表扬一个表现好的飞行员→他下次反而变差了。所以表扬有害、惩罚有效！」
+     卡尼曼的回答：这和表扬/惩罚完全无关。极差的表现→下次只能更好(回归);极好的表现→下次只能变差(回归)。教官自以为在教心理学——他只是在教纯粹的统计学，且他自己没有意识到。
+   → 商业中：CEO上年利润极高→第二年自然回归→股价跌→董事会以为他「变懒了」将其辞退
+     → 辞退可能是巨大的战略失误——新CEO同样无法逆反回归均值
+
+④ 后见之明偏差（Hindsight Bias）——「我早就知道」的幻觉：
+   事件发生后→人们系统性地高估自己在事前对该事件的预测概率
+   → 事后看任何已经发生了的历史事件，都感觉「当时就应该预料到的」
+   → 这在投资和战略复盘中的致命后果：每一次失败复盘都在「事后诸葛亮」的框架下
+     展开——完全忘记当时在不确定性中做判断的全部压力和信息的不完整性</div>
+
+<div class="summary"><h4>📋 第五模块复盘</h4>
+<ul><li>小数定律=直觉假设小样本和大总体具有相同的统计特性</li><li>合取谬误=P(A∧B)估计高于P(A)——逻辑的绝对不可能</li><li>回归均值被误解为因果→大量商业和人事决策因此产生无意义的轮换</li></ul></div>
+
+<!-- ====== 六 ====== -->
+<h2 id="c6">六、前景理论——人类真实决策的价值函数</h2>
+
+<div class="def"><strong>前景理论（Prospect Theory, Kahneman & Tversky 1979）</strong>——卡尼曼获得诺贝尔经济学奖的核心成果，替代了传统期望效用理论(Expected Utility Theory)对人在风险和不确定情境下实际决策的刻画。前景理论的核心贡献：它不是假设「人应该如何理性决策」，而是如实描述「人实际上是如何决策的」。</div>
+
+<h3>6.1 前景理论的三个核心构件</h3>
+<div class="derive">传统的期望效用理论(EU)：
+  U = Σ p_i × u(x_i)   —— 将每个可能结果的效用乘以其客观概率→加权求和
+
+前景理论(PT)的核心替代：
+  V = Σ π(p_i) × v(x_i − r)   —— 每个要素均被人类实际的决策偏差重新加权
+
+三个根本革新：
+
+① 价值函数 v(·) 取代效用函数 u(·)：
+   价值是参照点(reference point)的函数← v(x_i − r) ← 不是绝对量
+   → 同等绝对财富的人——如果一个是赚的、另一个是亏的——心理感受完全不一样
+   → v(·) 在收益区为凹函数(风险厌恶→落袋为安——见好就收)
+   → v(·) 在损失区为凸函数(风险追求→赌一把——死马当活马医)
+   → 损失侧的斜率≈收益侧斜率的2.25倍——损失厌恶的最后数学化
+
+② 决策权重函数 π(p) 取代客观概率 p：
+   人们不是按客观概率加权→而是按决策权重 π(p) 来感知可能性的
+   → π(p) ≈ p 仅在 p ≈ 20%-80%时(中间概率区才接近客观)
+   → π(非常小的p) >> p (对小概率事件的极端高估——这就是为什么人们买彩票且买地震保险)
+   → π(非常大的p) << 接近1的p (对大概率事件的折扣——确定效应 Certainty Effect)
+
+③ 参照点依赖（Reference Dependence）：
+   价值感取决于变化而非绝对水平→你的快乐/痛苦是被「相比你原以为的」定义了全部</div>
+
+<div class="chart-wrap"><canvas id="prospectTheory" width="580" height="300"></canvas>
+<div class="fig-cap">图5：前景理论价值函数 vs 传统期望效用直线——参照点(中心原点)两侧的不对称S形曲线，基于卡尼曼-特沃斯基1979年Econometrica论文复刻。核心推演：传统EU效用=通过原点的直线(损益对称)·前景理论价值函数=原点处有折弯的S形曲线。收益侧(右)凹=风险厌恶(确定小赚>冒险大赚)；损失侧(左)凸=风险追求(宁愿赌一把也不愿确定小亏)。损失侧斜率陡≈2.25:1=损失厌恶数学化。实验依据：阿莱悖论(Allais Paradox,1953)和大量RCT跨国验证。</div></div>
+
+<div class="summary"><h4>📋 第六模块复盘</h4>
+<ul><li>PT三大革新：价值参照点拉平+决策权重扭歪概率+参照依赖</li><li>收益区凹=风险厌恶；损失区凸=冒险偏好→同一人的风险偏好在损益两侧完全相反</li></ul></div>
+
+<!-- ====== 七 ====== -->
+<h2 id="c7">七、框架效应——同一问题换一种说法导致截然相反的选择</h2>
+
+<div class="def"><strong>框架效应（Framing Effect）</strong>——信息表述方式（「框架」）的系统性改变可以完全逆转人们对同一选项的偏好。人们在面对客观相同的决策问题时——仅因表述是「损失框架」还是「收益框架」——做出截然相反的选择。</div>
+
+<h3>7.1 亚洲疾病问题——框架效应的经典演示</h3>
+<div class="derive">卡尼曼-特沃斯基(1981)的亚洲疾病问题——框架效应的最经典实验：
+
+假设美国准备应对一种亚洲疾病的爆发，预计600人将死。
+收益框架(正面·获救表述)：
+  A方案: 200人将被救活(确定性)   → 72%被试选择A
+  B方案: 1/3概率600人全救活、2/3概率无人救活
+损失框架(负面·死亡表述)：
+  C方案: 400人将死去(确定性)     → 仅22%被试选择C
+  D方案: 1/3概率无人死、2/3概率600人全死
+
+A和C方案在数学上完全等同！ (救活200=死400)
+→ 仅因表述为「救活」还是「死去」→同一组人中的偏好率从72%骤降至22%
+
+框架效应的博弈应用：
+  商务提案：「A套餐比市场价贵20%，但服务期延长一年直至项目交接」
+    vs 「A套餐=市场价，但如只选一年服务将多付20%的延期费」
+   → 同一价格同一服务→框架不同→交易成功率显著改变
+   → 医疗告知：「手术成功率90%」vs「手术死亡率10%」——框架选择=医生手中最合法的说服武器</div>
+
+<div class="summary"><h4>📋 第七模块复盘</h4>
+<ul><li>框架效应=同一客观选项在收益/损失框架下偏好全盘翻转</li><li>「救活200=死400」——但表述为救活→72%选之；表述为死→22%选之</li></ul></div>
+
+<!-- ====== 八 ====== -->
+<h2 id="c8">八、团队决策误区——群体中的偏差放大与内部共识陷阱</h2>
+
+<div class="def"><strong>团队决策中的认知偏差</strong>——个体层面的认知偏差在团队中不仅不会被「集体理性」纠正——反而可能被群体内部的信息流和权力结构进一步放大。卡尼曼指出：让一群带有相同偏差的个体互相讨论——不是纠偏，而是互相确认和加固原有的偏见。</div>
+
+<h3>8.1 团队中的偏差放大四重机制</h3>
+<div class="derive">① 确认偏误在小组讨论中的增强循环
+   个体成员在讨论前已存在对某一方案的倾向→讨论中每个人各引用一遍支持该方案的数据
+   → 反对方案的信息被全员(各自地)忽略→经过讨论→大家的倾向不是减弱了而是更强了
+  → 这不是「集体智慧」——这是「几个人的确认偏误互为饲料」
+
+② 过度自信（Overconfidence）被「成功人士光环」强化
+   团队中地位最高的成员在表达判断时的自信程度→直接决定了其他人能否说出反对意见
+   → 高层说：「我们当然能做到」→其他人即使看到风险也可能自我抑制→因为挑战上位的自信=挑战他的权威
+
+③ 规划谬误（Planning Fallacy）在团队中的系统性存在
+   团队在时间、成本、风险的规划中→一致低估历史同类项目实际经历的困难→
+   卡尼曼：「需要在规划时问自己一句：我们之前做过的同类项目实际最后花了多少时间和预算？」→
+   把「外部视角」(原来每次都超期50%)置于「内部乐观」(这次我们能赶上！)之上
+
+④ 沉没成本谬误在团队中的倍增
+   个人已经难以放弃自己参与投资的失败项目→团队的每个人更不愿意承认错误——因为「大家都觉得还能成功」
+   → 沉没成本在团队中被多人分摊→「沉没成本的合理化」=越多的人参与→越不可能喊停</div>
+
+<div class="summary"><h4>📋 第八模块复盘</h4>
+<ul><li>团队≠纠偏机——同质人群=互相确认偏差→倾向极端化</li><li>规划谬误：永远相信「这次能更快」→系统性地低估历史均值带来的教训</li></ul></div>
+
+<!-- ====== 九 ====== -->
+<h2 id="c9">九、有限理性——修正博弈论的「完全理性人」根本假设</h2>
+
+<div class="def"><strong>有限理性（Bounded Rationality, Herbert Simon 1955）</strong>——卡尼曼和特沃斯基的工作在某种意义上完成了赫伯特·西蒙的先见：人不是无限理性的最大化机器，而是用有限的认知资源在真实时间内做出「足够好」的决策的「满意化者」(Satisficer)。博弈论的纳什均衡假设每个参与人拥有无限的推理能力+完全信息+共同知识——三者中任何一个在现实中都不完全成立。</div>
+
+<h3>9.1 从完全理性到有限理性的博弈修正</h3>
+<div class="derive">标准博弈论的「完全理性人」假设需在以下每个维度上做上述修改：
+
+维度一：信息处理
+  假设：参与人能即时处理博弈树的所有分支和全部节点的回报
+  现实：人的工作记忆≈4±1组块、推理能力受认知负荷硬性约束
+  → 在现实博弈中，参与人仅分析有限的选项→其余直接注入「直觉判断」(系统1)
+
+维度二：概率评估
+  假设：任何概率组合均能被精确加权(期望值=Σp×u)
+  现实：决策权重函数π(p)扭曲了客观概率；小数被高估→大数以折扣
+  →博弈理论中混合策略均衡的假设权重=参与人按客观概率随机化——但人类的概率感觉完全不是线性的
+
+维度三：风险偏好的一致性
+  假设：一个参与人在整个博弈中保持相同的风险偏好(等于效用函数的曲率)
+  现实：收益区=风险厌·损失区=风险求——同一人的风险偏好随损益状态陡然切换
+  →「处处有同一个效用函数」的前景是纯理论的——在真实博弈中人们随损益状态改变偏好
+
+由此→行为博弈论(Behavioral Game Theory, Camerer 2003)的诞生：用卡尼曼的偏差集合修正经典博弈论的每一层假设，使之更接近真实人类决策。</div>
+
+<div class="chart-wrap"><canvas id="boundedRationality" width="560" height="280"></canvas>
+<div class="fig-cap">图6：有限理性修正经典博弈论——三个维度(信息·概率·风险偏好)将完全理性假设逐一替换为有限理性的真实人类决策模型。核心推演：从古典博弈均衡到行为博弈均衡=在每一个「假设」的部位植入人类真实的系统偏差→纳什均衡产生位置轻微位移但策略选择可能根本不同。实验依据：最后通牒博弈中服从拒绝不公平分配(完全理性=应该接受任何分的任何量，现实=低于~30%被拒绝)、选美竞猜博弈(Keynes Beauty Contest)。</div></div>
+
+<div class="summary"><h4>📋 第九模块复盘</h4>
+<ul><li>博弈论假设：无限推理+精确概率+稳定风险偏好——三不成立</li><li>真实博弈：有限推理+扭歪概率权重+损益侧风险偏好反转</li><li>行为博弈论=在博弈论框架的内部每一层植入卡尼曼偏差→更近真人</li></ul></div>
+
+<!-- ====== 十 ====== -->
+<h2 id="c10">十、决策修正与博弈策略——基于认知偏差的实战工具包</h2>
+
+<h3>10.1 个体决策修正六法</h3>
+<div class="derive">方法一：预验尸——克服乐观偏误的高效方法
+  在项目启动前对团队说：「假设一年后这个项目彻底失败了——请每个人独立写下导致失败的最可能的三个原因。」
+  → 这强制每个人提前在脑中「体验」了失败的情境→此时大脑自动放弃了
+    「这次会顺利」的系统1推断→激活了对过去所有失败经验的提取→大幅度修正了过高的自信。
+
+方法二：外部基准——攻克规划谬误
+  在任何时间/成本估算前，先查阅同类项目的历史实际完成中位数——强制用「外部视角」
+  覆盖自己内心那个永远偏乐观的「内部视角」。
+
+方法三：买入前先假设自己已经卖出了——避禀赋效应
+  在评估一个潜在买入决策前自问：「如果我今天已经拥有了它，我会愿意以同样价格卖出吗？」
+  → 这个翻转从心理上消除了「未拥有的低估价」的禀赋效应差距。
+
+方法四：先算反面——攻克确认偏误
+  在投资、人事录用、战略决策时必须自问：「如果我当初的判断完全错了——
+  现在我会在数据中看到哪些本应看到但被我忽略的信号？」
+
+方法五：延迟24小时——征服系统1的冲动
+  对金额超过某个阈值的消费或投资决策，强制延迟24小时——等大脑的情绪高峰过去再返回重判。
+
+方法六：利用损失厌恶——自控的外包
+  与朋友约定：如果没有完成某个目标→将付出约定金额给一个你极不喜的机构。
+  → 损失厌恶转化成一个可主动激活的自控工具</div>
+
+<div class="summary" style="background:#f8fafc;border-color:#1a4a6a">
+<h4 style="font-size:15px">🧠 卡尼曼全体系总纲——有限理性的终极觉悟</h4>
+<p><strong>系统1→直觉发动机，系统2→审慎复检器</strong>。三层偏差链：启发式(可得·代表·锚定)→衍生的具体偏差(锚定·禀赋·损失厌恶·合取谬误·忽视回归)→后果=真实决策在每一个维度上偏离理性的系统可预测的方向。前景理论=对上述全部偏差在风险决策情境下的统一数学建模。行为博弈论=将这些偏差植入经典博弈论的每一项理性假设中。</p>
+<p><strong>不是要你不再信任你自己的判断——而是要学会在关键决策的当下识别「现在正在说话的是系统1(直觉)还是系统2(审慎)」，并在最重要的那个时刻把直觉交给系统2复核一遍。心智的成熟不是从不犯错，是在犯错的结构中逐渐学会哪个步骤最需要放慢、哪个时刻必须给直觉自己的无意识欲望让路。</strong></p>
+</div>
+
+</main>
+
+<!-- ==================== Canvas 引擎 ==================== -->
+<script>
+class PC{
+  constructor(id,w,h){this.c=document.getElementById(id);if(!this.c)return;this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h}
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  g(x0,x1,y0,y1){const c=this.ctx,p={t:30,r:22,b:45,l:50},pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;this.xs=v=>p.l+(v-x0)/(x1-x0)*pw;this.ys=v=>p.t+(y1-v)/(y1-y0)*ph}
+  ln(pts,color,w=2.5,d=null){if(pts.length<2)return;var c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(d)c.setLineDash(d);c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));c.stroke();c.setLineDash([]);c.restore()}
+  txt(x,y,t,c='#333',s=11,a='center'){this.ctx.fillStyle=c;this.ctx.font=`${s}px sans-serif`;this.ctx.textAlign=a;this.ctx.fillText(t,x,y)}
+  rect(x,y,w,h,cl,sc='#555'){this.ctx.fillStyle=cl;this.ctx.fillRect(x,y,w,h);this.ctx.strokeStyle=sc;this.ctx.lineWidth=1.5;this.ctx.strokeRect(x,y,w,h)}
+}
+
+// 图1: 双系统模型
+(function(){
+  var k=new PC('dualSystem',620,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#1a4a6a';c.font='13px bold sans-serif';c.textAlign='center';c.fillText('双系统思维模型——系统1(直觉)与系统2(审慎)',310,16);
+  // System 1
+  c.fillStyle='rgba(26,74,107,0.06)';c.fillRect(20,40,270,120);c.strokeStyle='#1a4a6a';c.lineWidth=2;c.strokeRect(20,40,270,120);
+  c.fillStyle='#1a4a6a';c.font='12px bold sans-serif';c.fillText('系统1 · 快思维',155,60);
+  c.font='9px sans-serif';c.fillText('自动·不费力·无意识·始终运行',155,78);
+  c.fillText('• 自动识别·即时印象·情感反应',155,96);
+  c.fillText('• 处理99%日常认知任务',155,112);
+  c.fillText('• 速度快但系统偏差→需要复核',155,128);
+  // System 2
+  c.fillStyle='rgba(90,42,26,0.06)';c.fillRect(330,40,270,120);c.strokeStyle='#5a2a1a';c.lineWidth=2;c.strokeRect(330,40,270,120);
+  c.fillStyle='#5a2a1a';c.font='12px bold sans-serif';c.fillText('系统2 · 慢思维',465,60);
+  c.font='9px sans-serif';c.fillText('控制·需要努力·有意识·按需调用',465,78);
+  c.fillText('• 多步计算·逻辑推理·自我控制',465,96);
+  c.fillText('• 消耗代谢能量(瞳孔变化)',465,112);
+  c.fillText('• 懒惰→默认信任系统1→偏差产生',465,128);
+  // Arrow
+  c.strokeStyle='#888';c.lineWidth=2;c.beginPath();c.moveTo(290,100);c.lineTo(330,100);c.stroke();
+  c.fillStyle='#1a4a6a';c.font='10px bold sans-serif';c.fillText('系统1输出→系统2默认接受(大部分偏差)',310,80);
+  c.fillText('少数情况：系统1觉察困难→召唤系统2复检',310,190);
+  c.font='9px sans-serif';c.fillText('瞳孔变化+Stroop效应=系统2运转的生物标记',310,210);
+})();
+
+// 图2: 认知偏差分类
+(function(){
+  var k=new PC('biasesMap',620,300);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#1a4a6a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('三大认知启发式及衍生的系统性偏差谱系',310,16);
+  var heuristics=[
+    {x:20,y:45,l:'① 可得性启发',sub:'联想数→概率感',c:'#f2f6fa',d:['高估罕见灾难','媒体饱和放大','易提取事例=高估']},
+    {x:220,y:45,l:'② 代表性启发',sub:'相似度→概率感',c:'#f2f6fa',d:['合取谬误','忽视基准率','小样本过度推断']},
+    {x:420,y:45,l:'③ 锚定启发',sub:'接触数→调整不充分',c:'#f2f6fa',d:['任意锚拉拽估计','价位锚定','极端锚+让步']}
+  ];
+  heuristics.forEach(function(h){
+    c.fillStyle=h.c;c.fillRect(h.x,h.y,190,50);c.strokeStyle='#1a4a6a';c.lineWidth=1.5;c.strokeRect(h.x,h.y,190,50);
+    c.fillStyle='#333';c.font='10px bold sans-serif';c.textAlign='center';c.fillText(h.l,h.x+95,h.y+16);c.fillText(h.sub,h.x+95,h.y+35);
+    c.font='9px sans-serif';h.d.forEach(function(d,i){c.fillText('• '+d,h.x+90,h.y+70+i*18)});
+  });
+  c.fillStyle='#5a2a1a';c.font='10px bold sans-serif';c.textAlign='center';c.fillText('每个启发式下都衍生一组特定偏差→全可被实验反复复制→非随机噪音而是系统性模式',310,210);
+})();
+
+// 图3: 锚定效应
+(function(){
+  var k=new PC('anchoringCurve',560,260);if(!k.c)return;k.clr();
+  k.g(0,100,0,100,'','最终估值(锚点=1.0)');
+  k.ln([[0,100],[50,90],[80,70],[100,60]],'#1a4a6a',3);
+  k.ln([[0,0],[30,15],[60,28],[100,40]],'#5a2a1a',3);
+  k.ln([[0,30],[100,30]],'#888',1,[3,3]);
+  var c=k.ctx;c.fillStyle='#1a4a6a';c.font='10px sans-serif';c.textAlign='left';c.fillText('高锚→估值被向上拉',350,80);
+  c.fillStyle='#5a2a1a';c.fillText('低锚→估值被向下拉',350,180);
+  c.fillText('应有(无偏)估值线',350,130);
+  c.fillStyle='#555';c.font='11px bold sans-serif';c.textAlign='center';c.fillText('无论高锚低锚→调整总是在到达无偏值之前停止→锚定残余',280,16);
+})();
+
+// 图4: 损失厌恶价值函数
+(function(){
+  var k=new PC('lossAversion',560,270);if(!k.c)return;k.clr();
+  k.g(-10,10,-30,20,'损益 (相对于参照点)','心理价值');
+  k.ln([[-10,-23],[-8,-18],[-5,-11],[-2,-4.5],[0,0],[2,3.5],[5,8],[8,12],[10,14.5]],'#1a4a6a',3.5);
+  k.ln([[-10,-10],[10,10]],'#888',1.5,[3,3]);
+  var c=k.ctx;c.fillStyle='#1a4a6a';c.font='10px sans-serif';c.textAlign='left';c.fillText('损失侧(|Slope|≈2.25)',200,210);
+  c.fillText('收益侧(Slope≈1)',380,100);
+  c.fillStyle='#5a2a1a';c.fillText('损失厌恶比≈2.25:1',380,60);
+  c.fillStyle='#c03030';c.font='9px bold sans-serif';c.textAlign='center';c.fillText('参照点(原点): 价值感=变化而非绝对水平',280,235);
+  c.fillStyle='#555';c.font='11px bold sans-serif';c.fillText('前景理论价值函数 v(x−r)——损失区陡≈2.25×收益区',280,16);
+})();
+
+// 图5: 前景理论
+(function(){
+  var k=new PC('prospectTheory',580,300);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#1a4a6a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('前景理论vs传统期望效用——损益两侧的不对称S形价值函数',290,16);
+  k.g(-10,10,-30,20,'损益量','心理价值');
+  k.ln([[-10,-24],[-8,-19],[-6,-13.5],[-4,-9],[-2,-4.5],[0,0],[2,3.5],[4,6.5],[6,9],[8,11.5],[10,14]],'#1a4a6a',3.5);
+  k.ln([[-10,-10],[10,10]],'#888',1.5,[3,3]);
+  // Labels
+  c.fillStyle='#1a4a6a';c.font='10px sans-serif';c.textAlign='left';
+  c.fillText('收益侧=凹(风险厌恶)→见好就收',380,90);
+  c.fillText('损失侧=凸(风险追求)→赌一把',250,210);
+  c.fillStyle='#5a2a1a';c.fillText('参照点 r',400,50);
+  c.fillText('传统EU(对称直线)',400,180);
+  c.fillStyle='#555';c.font='9px sans-serif';c.textAlign='center';c.fillText('阿莱悖论Allais(1953)→人们违反EU独立性公理→PT为行为基础',290,260);
+})();
+
+// 图6: 有限理性修正博弈论
+(function(){
+  var k=new PC('boundedRationality',560,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#1a4a6a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('有限理性——三个维度的经典博弈论假设修正',280,16);
+  var dims=['信息处理: 无限推理→有限推理(W≈4组块)','概率评估: 客观p→决策权重π(p)','风险偏好: 稳定统一→损益两状态反转'];
+  dims.forEach(function(d,i){
+    var y=50+i*55;
+    c.fillStyle='#f2f6fa';c.fillRect(20,y,520,40);c.strokeStyle='#1a4a6a';c.lineWidth=1.5;c.strokeRect(20,y,520,40);
+    c.fillStyle='#333';c.font='10px bold sans-serif';c.textAlign='center';c.fillText(d,280,y+25);
+  });
+  c.fillStyle='#5a2a1a';c.font='11px bold sans-serif';c.textAlign='center';
+  c.fillText('→ 行为博弈论(Behavioral Game Theory): 在每个假设层植入偏差→新均衡',280,230);
+})();
+
+console.log('✅ 卡尼曼认知决策 · 6张Canvas · 零外部依赖');
+</script>
+</body>
+</html>

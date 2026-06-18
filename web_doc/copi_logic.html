@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>柯匹《逻辑学导论》· 正统逻辑体系 · 严谨思维的底层基石</title>
+<style>
+:root{
+  --bg:#fcfcf8;--card:#fff;--border:#d5d2c8;--text:#141410;--sub:#484840;
+  --accent:#2a3a5a;--accent2:#5a2a3a;--code-bg:#f4f2ec;
+  --warn-bg:#fff8f4;--warn-text:#6b3a10;--table-s:#f7f5f0;
+  --side-w:195px;--blue:#1a3a6b;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:14.5px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#141210;color:#a09888;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#e0d8c8;font-size:12px;margin-bottom:12px;border-bottom:1px solid#3a3428;padding-bottom:8px}
+.sidebar a{display:block;color:#908878;text-decoration:none;font-size:10.5px;padding:3px 0;transition:color .2s}
+.sidebar a:hover{color:#7898c8}
+.main{margin-left:var(--side-w);max-width:860px;padding:32px 42px}
+h1{font-size:22px;text-align:center;margin-bottom:4px;color:#100c08}
+.subtitle{text-align:center;color:var(--sub);font-size:12px;margin-bottom:32px}
+h2{font-size:18px;color:var(--accent);margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14.5px;color:var(--accent2);margin:24px 0 8px}
+h4{font-size:13px;color:#2a2820;margin:14px 0 6px}
+p{margin:7px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:10px 0}
+.def{background:#f2f4f8;border-left:4px solid var(--blue);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:13px}
+.def strong{color:var(--accent)}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:14px 18px;margin:10px 0;border-radius:5px;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:12px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:12px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:10.5px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:10px 14px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:var(--warn-text)}
+.example{background:#f4f8f4;border-left:4px solid #2a5a2a;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:12.5px}
+.example strong{color:#1a3a1a}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:#e8e4d8;padding:7px 9px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:7px 9px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#fdfaf4;border:2px solid var(--accent);border-radius:7px;padding:16px;margin:18px 0}
+.summary h4{color:var(--accent);margin-bottom:5px}
+.summary ul{padding-left:16px;font-size:12px}
+.compare th:first-child{background:#e0dcd0}
+.tt-table td{font-family:"SF Mono","Menlo",monospace;font-size:12px;text-align:center}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:14px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:860px){.sidebar{display:none}.main{margin-left:0;padding:10px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>📐 柯匹逻辑学导论<br>正统体系</h3>
+  <a href="#c1">一、逻辑学基础概念</a>
+  <a href="#c2">二、命题逻辑·真值表</a>
+  <a href="#c3">三、直言命题与对当关系</a>
+  <a href="#c4">四、三段论·有效形式</a>
+  <a href="#c5">五、演绎推理体系</a>
+  <a href="#c6">六、归纳推理</a>
+  <a href="#c7">七、因果推理</a>
+  <a href="#c8">八、类比推理</a>
+  <a href="#c9">九、形式谬误</a>
+  <a href="#c10">十、非形式谬误</a>
+  <a href="#c11">十一、论证建构与评估</a>
+</nav>
+
+<main class="main">
+
+<h1>柯匹《逻辑学导论》· 正统逻辑体系</h1>
+<p class="subtitle">Introduction to Logic · Irving M. Copi · Carl Cohen · Kenneth McMahon · 第15版对标<br>
+形式逻辑+非形式逻辑 · 全体系严谨思维 · 纯Canvas可视化 · 零外部依赖</p>
+
+<div class="def"><strong>逻辑学（Logic）</strong>——研究正确推理的原则与方法的学科。逻辑学不关心推理的具体内容是否为「真」，而关心推理的形式是否「有效」——结论是否能从前提中必然地推导出来。柯匹将逻辑分为两大分支：形式逻辑（命题逻辑·三段论·符号逻辑→检验推理形式是否有效）和非形式逻辑（日常语言中的论证建构·谬误识别→检验日常辩论是否合乎理性）。完整的逻辑素养需两者兼修：能从日常语言中提取出形式结构进行严格检验，也能识别形式分析无法捕捉的语言与语境谬误陷阱。</div>
+
+<!-- ====== 绪论 ====== -->
+<h4 style="color:#2a3a5a;margin-top:20px">绪论：逻辑学为何是所有学科的底层思维基础设施</h4>
+<p>从柏拉图到哥德尔，逻辑学是人类最古老且至今仍然是最核心的知识分支之一。无论你在研究经济学中的边际推理、心理学中的因果实验、博弈论中的策略空间，还是哲学中的存在论证——所有学科在进行「从前提推出结论」的那一刻，都必须接受逻辑规则的裁判。一个经济理论可能在数学模型上极其复杂，但如果它的推理链条中包含了一处肯定后件的逻辑谬误，整个理论的可信度就从根本上被瓦解了——无论该理论在直觉上多么诱人。逻辑学不是某个专业的附属工具，而是所有专业所赖以运行的底层操作系统。</p>
+
+<!-- ====== 一 ====== -->
+<h2 id="c1">一、逻辑学基础概念——命题·论证·有效性</h2>
+
+<div class="def"><strong>命题（Proposition）</strong>——具有真值的陈述句。每一个命题要么为真（T），要么为假（F），不可是模糊状态。<br><strong>论证（Argument）</strong>——由一个或多个命题构成的前提（Premises）加上一个结论（Conclusion）组成的命题序列。前提声称支持结论——不是随便拼凑，是存在支持关系的结构。</div>
+
+<h3>1.1 论证与有效性的严格定义</h3>
+<div class="derive">论证的基本结构：
+  前提₁ (P₁) ：「所有人都会死」
+  前提₂ (P₂) ：「苏格拉底是人」
+  ────────────── (推理线)
+  结论  (C) ：「苏格拉底会死」
+
+演绎论证的「有效性」(Validity)与「可靠性」(Soundness)的区分：
+
+有效性（Validity）：
+  如果全部前提为真，则结论必然为真。有效性是「形式」的性质，不涉及内容的真假。
+  即：只要论证的形式满足「前提真→结论必然真」这一逻辑关系，该论证在形式上有效。
+
+可靠性（Soundness）：
+  一个论证是可靠的，当且仅当：①该论证是有效的 + ②所有前提在事实上为真。
+  可靠论证同时满足形式和内容双重标准。
+  → 「有效但真实前提假的论证」=逻辑形式上没问题，但前提本身是假的→结论不可信任
+  → 「有效的论证」≠「好的论证」——一个好的论证需要有效+前提为真→可靠
+
+ 有效性vs真理性关键结论：
+   一个论证既可以「有效→前提假→结论假」=形式上正确但现实错误
+   也可以「无效→前提真→结论偶然真」=结论真≠论证有效（纯粹碰巧）
+    → 唯一不能的结构：「前提全真+形式有效」→结论假（不可能发生的矛盾）</div>
+
+<h3>1.2 归纳论证——不同于演绎的推理家族</h3>
+<div class="derive">演绎论证 vs 归纳论证——柯匹逻辑学的最核心区分之一：
+
+演绎论证（Deductive）：
+  声称前提对结论提供「决定性的支持」→如果前提真，结论必然真→不能有例外
+  例：「所有人都会死，小张是人，所以小张会死」→演绎，必然结论
+
+归纳论证（Inductive）：
+  前提对结论仅提供「一定程度的支持」→结论「很可能」真而非必然真
+  例：「北京过去100年每年都下雪→所以明年也会下雪」→归纳，极可能但不必然
+  → 即使前提全真，结论仍可能是假的←这才是「非演绎论证」的根本特征
+
+区分二者的一条实用检验：
+  自问：「如果所有前提为真，结论可以假吗？」
+  → 如果绝无可能→演绎；如果极不可能但逻辑上可能→归纳
+  → 归纳论证的强度取决于前提给予结论的概率支持量：强/弱→不是二元有效/无效
+
+注意：归纳论证不用「有效/无效」来描述→用「强/弱」来描述前提给结论提供了多大概率支持</div>
+
+<div class="summary"><h4>📋 第一模块复盘</h4>
+<ul><li>命题=有真值的陈述句；论证=前提→结论的支持结构</li><li>有效性(形式属性)≠可靠性(形式+真前提)</li><li>演绎=前提真→结论必然真；归纳=前提真→结论很可能真</li></ul></div>
+
+<!-- ====== 二 ====== -->
+<h2 id="c2">二、命题逻辑——真值表与逻辑联结词</h2>
+
+<div class="def"><strong>命题逻辑（Propositional Logic）</strong>——用符号表示简单命题，并通过逻辑联结词（Connectives）构建复合命题，用真值表（Truth Table）判定复合命题的真值与逻辑等价关系的演绎推理子系统。五个基本逻辑联结词构成了全部现代命题逻辑的语法。</div>
+
+<h3>2.1 五个逻辑联结词的完整真值表</h3>
+<div class="derive">设 p 和 q 为任意命题，T = 真、F = 假
+
+① 否定（Negation）¬p（NOT/p）→取反：
+  p: T → ¬p: F；p: F → ¬p: T
+
+② 合取（Conjunction）p ∧ q（p AND q）：
+  仅在p和q都真时整个为真→其余情况全部为假
+  T∧T=T; T∧F=F; F∧T=F; F∧F=F
+
+③ 析取（Disjunction）p ∨ q（p OR q）：
+  仅在p和q都假时整个为假→其余情况全为真（逻辑中的OR=「至少一个为真」）
+  T∨T=T; T∨F=T; F∨T=T; F∨F=F
+
+④ 蕴含（Implication）p → q（IF p THEN q）：
+  仅在p真且q假时整个为假→前提真但结论假是该表达式的唯一「假」案例
+  T→T=T; T→F=F; F→T=T; F→F=T
+  → 前提假时蕴含式自动为「真」——这是蕴含逻辑最不可思议也最关键的一点
+  → 「假的前提可推出任何结论」——形式逻辑将前提假设为假时整个条件为真（空洞真理）
+
+⑤ 等值（Biconditional）p ↔ q（p IF AND ONLY IF q）：
+  p和q真值相同时=真；不同时=假 → 严格对称
+
+逻辑等价关系的判定：
+  两个命题表达式逻辑等价 ↔ 它们的真值表在所有行的真值完全相同
+  例：p→q 与 ¬p∨q 逻辑等价——在任何p/q取值下二者真值一模一样</div>
+
+<div class="chart-wrap"><canvas id="truthTables" width="620" height="280"></canvas>
+<div class="fig-cap">图1：五大逻辑联结词真值表全景——否定、合取、析取、蕴含、等值的完整真值矩阵，基于柯匹逻辑学导论第15版复刻。核心推演：每一个联结词都是一个从「输入命题的真假」到「输出复合命题的真假」的精确函数。蕴含逻辑的关键难点：p假→q假和p假→q真都判定为T——前提假时整个蕴含自动为真。现实逻辑意义：从一个错误的前提出发，可以推导出任何东西（包括荒谬的结论）。</div></div>
+
+<div class="warn">⚠ 高频思维错误：日常语言中的「如果p那么q」与逻辑中的「p→q」并非等价。日常语言要求p和q之间必须存在「现实因果关联」→才将之判断为「真」。逻辑仅用真假值计算→与现实关联无关。例：「如果月亮由奶酪制成(假)，那么猪会飞(假)」→逻辑为真(前提假→自动真)，但日常判断下一听到立马排斥。</div>
+
+<div class="summary"><h4>📋 第二模块复盘</h4>
+<ul><li>五个联结词 + 真值表 = 全部命题逻辑推理的基础</li><li>蕴含逻辑(p→q)：唯一假的情况=T→F；前提假→自动真</li><li>逻辑等价的标志=两个表达在各行真值完全相同</li></ul></div>
+
+<!-- ====== 三 ====== -->
+<h2 id="c3">三、直言命题与对当关系——古典逻辑的基石</h2>
+
+<div class="def"><strong>直言命题（Categorical Proposition）</strong>——关于两个类的全部或部分成员关系的断言。由四个部分组成：量词（所有/有的）·主项（S）·联词（是/不是）·谓项（P）。亚里士多德将直言命题区分为四种标准形式，即著名的A·E·I·O四型。</div>
+
+<h3>3.1 A·E·I·O 四型及其对当关系</h3>
+<div class="derive">四种标准直言命题：
+
+A (全称肯定)：所有S都是P  —  SaP  —  All S are P
+  例：「所有哺乳动物都是恒温动物」
+  否定形式=并非所有S都是P ≡ 有的S不是P（≡ O命题）
+
+E (全称否定)：没有S是P    —  SeP  —  No S is P
+  例：「没有鲸鱼是鱼」
+  否定形式=并非没有S是P ≡ 有的S是P（≡ I命题）
+
+I (特称肯定)：有的S是P    —  SiP  —  Some S is P
+  例：「有的鸟类不会飞」（注意：逻辑中的「有的」=至少一个，可能全部）
+
+O (特称否定)：有的S不是P  —  SoP  —  Some S is not P
+  例：「有的学生不是理科生」
+
+传统对当方阵（Square of Opposition）——四型之间的逻辑关系：
+
+矛盾关系（Contradictories）：A↔O；E↔I→二者永远真值相反
+  一真→另一必假；一假→另一必真
+
+反对关系（Contraries）：A↔E→不能同真，但可同假
+  若A真→E必假；若E真→A必假；但A/E可以同时为假
+
+下反对关系（Subcontraries）：I↔O→不能同假，但可同真
+  若I假→O必真；若O假→I必真；I/O可以同时为真
+
+差等关系（Subalternation）：A→I、E→O→全称真→特称必真，但特称真≠全称真
+  A真→I真，但I真不能推论A真；A假→I可不真不假</div>
+
+<div class="chart-wrap"><canvas id="squareOpposition" width="500" height="310"></canvas>
+<div class="fig-cap">图2：传统对当方阵（Square of Opposition）——A·E·I·O 四型直言命题的逻辑关系全景图，基于柯匹逻辑学导论第15版复刻。核心推演：矛盾关系(A↔O, E↔I)=永远真值相反；反对关系(A↔E)=不能同时真但可同假；下反对(I↔O)=不能同时假但可同真；差等(A→I, E→O)=全称真→特称真。传统对当方阵的前提假设：主项S类为非空集(存在至少一个S)——如果S类为空，A-O、E-I的矛盾关系仍成立，但反对/下反对/差等关系全部崩溃。</div></div>
+
+<div class="summary"><h4>📋 第三模块复盘</h4>
+<ul><li>A=所有S是P；E=没有S是P；I=有的S是P；O=有的S不是P</li><li>对当方阵四关系：矛盾·反对·下反对·差等</li><li>传统方阵假设S类非空→若无元素→反对+下反对+差等均失效</li></ul></div>
+
+<!-- ====== 四 ====== -->
+<h2 id="c4">四、三段论——古典演绎推理的核心</h2>
+
+<div class="def"><strong>直言三段论（Categorical Syllogism）</strong>——由三个直言命题构成的演绎论证：两个前提（大前提+小前提）逻辑上必然导出一个结论。其中三个不同的词项各出现恰好两次。这是亚里士多德逻辑的巅峰——从两个关于类的命题必然推出第三个关于类的命题。</div>
+
+<h3>4.1 三段论的标准形式与有效式</h3>
+<div class="derive">标准三段论的结构示例：
+  大前提(Major Premise)：所有M都是P (A命题)
+  小前提(Minor Premise)：所有S都是M (A命题)
+  ──────────────
+  结论(Conclusion)：所有S都是P (A命题)
+
+  其中：P=大词(结论谓项)、S=小词(结论主项)、M=中词(两前提皆出现，结论消失)
+
+三段论的有效标准三规则——满足全部三条=有效，违反任一条=无效：
+
+规则一：中词(M)必须至少在一个前提中为周延
+  → 两个前提中都必须涉及的全部M→否则M没有起「连接S和P」的作用
+  周延：命题中该词项所指的类的全部成员被涉及
+
+规则二：在前提中不周延的词项，在结论中也不能周延
+  → 不能在结论中对一个词的断言超出前提提供的信息
+
+规则三：否定结论的数量必须与否定前提的数量一致
+  → 如果两个前提都是肯定的→结论必须肯定
+  → 如果恰好一个前提否定→结论必须否定
+  → 不能两个前提都否定(从中推导不出任何确定结论)
+
+三段论共有256个可能的「式」(Mood)+「格」(Figure)的组合
+  → 其中仅有24个为有效（古典传统15个+现代补充9个）
+  最常用的四个有效式（每格典型一个）：
+    Barbara(AAA-1) · Celarent(EAE-1) · Darii(AII-1) · Ferio(EIO-1)
+
+换位法（Conversion）·换质法（Obversion）·换质位法（Contraposition）
+  是三种在直言命题之间进行逻辑等价变换的基本操作——大部分有效三段论的证明不是一眼可见，
+  需先通过换位/换质将命题转为标准形式再检验有效性。传统三段论15个无条件有效式分布于
+  四个格中：第一格(Barbara·Celarent·Darii·Ferio)为最完美格。现代符号逻辑另增9个
+  在存在假设下成立的有效式→共24个三段论有效式。</div>
+
+<div class="chart-wrap"><canvas id="syllogismVenn" width="560" height="260"></canvas>
+<div class="fig-cap">图3：三段论的文恩图检验法——三个重叠圆表示S·M·P三个类的关系，基于柯匹逻辑学导论文恩图判定法复刻。核心推演：将两个前提的信息在三个圆的对应区域中依次填涂(阴影=该区域为空集)，然后检查结论所断言的关系是否已由前两个前提的交集自动得出。若得出结论被画出的图必然包含→三段论有效。文恩图将三段论的有效性判定从抽象的规则记忆转化为可视化的逻辑运算。</div></div>
+
+<div class="summary"><h4>📋 第四模块复盘</h4>
+<ul><li>三段论=两个前提+一个结论→三个词各出现两次</li><li>有效三规则：中词周延+前提不周延结论不周延+否定前提数匹配</li><li>256组合→24有效式；文恩图=可视化判定工具</li></ul></div>
+
+<!-- ====== 五 ====== -->
+<h2 id="c5">五、演绎推理体系——系统化的推导方法</h2>
+
+<div class="def"><strong>形式推演（Formal Derivation）</strong>——从给定的前提集合出发，运用一组严格的推理规则，逐步推导出最终结论的符号化逻辑运算。每一个推导步骤都必须明确标注所调用的推理规则的名称和所应用到的前提行号。</div>
+
+<h3>5.1 命题逻辑的19条标准推理规则（柯匹体系）</h3>
+<div class="derive">第一组：9条基本蕴涵规则（每步只能从前提到结论，不可反向）
+
+1. 肯定前件式(Modus Ponens, MP): p→q, p ⊢ q
+2. 否定后件式(Modus Tollens, MT): p→q, ¬q ⊢ ¬p
+3. 假言三段论(Hypothetical Syll, HS): p→q, q→r ⊢ p→r
+4. 析取三段论(Disjunctive Syll, DS): p∨q, ¬p ⊢ q
+5. 建设性二难(Constructive Dilemma, CD): (p→q)∧(r→s), p∨r ⊢ q∨s
+6. 吸收律(Absorption, Abs): p→q ⊢ p→(p∧q)
+7. 简化律(Simplification, Simp): p∧q ⊢ p
+8. 附加律(Conjunction, Conj): p, q ⊢ p∧q
+9. 添加律(Addition, Add): p ⊢ p∨q
+
+第二组：10条等价替换规则（任何方向上均可替换）
+
+10. 德摩根律(De Morgan's, DM): ¬(p∧q) ≡ ¬p∨¬q; ¬(p∨q) ≡ ¬p∧¬q
+11. 交换律(Comm): p∧q ≡ q∧p; p∨q ≡ q∨p
+12. 结合律(Assoc): (p∧q)∧r ≡ p∧(q∧r)
+13. 分配律(Dist): p∧(q∨r) ≡ (p∧q)∨(p∧r)
+14. 双重否定(DN): p ≡ ¬¬p
+15. 换质位(Trans): p→q ≡ ¬q→¬p
+16. 蕴含析取(Impl): p→q ≡ ¬p∨q
+17. 等值展开(Equiv): p↔q ≡ (p→q)∧(q→p) ≡ (p∧q)∨(¬p∧¬q)
+18. 输出律(Export): (p∧q)→r ≡ p→(q→r)
+19. 重言律(Taut): p ≡ p∧p; p ≡ p∨p</derivate>
+
+<div class="example"><strong>形式推演范例——用推理规则证明逻辑定理：</strong><br>
+证明：p→q, r→¬q ⊢ r→¬p<br>
+① p→q (前提1)；② r→¬q (前提2)；③ ¬q→¬p (①换质位)；④ r→¬p (②③HS假言三段论)。QED。<br>
+每一步都标注了规则名称+适用行号——这是柯匹逻辑推导的严格纪律要求。缺少任何一行规则标注的推导在柯匹体系中即为不合格——形式推演的透明性和可复制性完全依赖于此。</div>
+
+<h4>形式推演进阶示例——用推演规则证明逻辑重言式</h4>
+<div class="derive">证明：⊢ (p→q) → (¬q→¬p)  （换质位律=任何命题逻辑中自证的定理）
+① p→q  (假设前提 CP法)
+② ¬q   (假设前提 CP法)
+③ ¬p   (①② 否定后件 MT)
+④ ¬q→¬p (②③ CP)
+⑤ (p→q)→(¬q→¬p) (①④ CP)  QED
+
+这条证明仅用了MP/MT/CP三条最基本的规则就证明了任何充分条件均可转化为
+逆否命题——这是所有逻辑等价变换中最实用的定理之一：当原命题p→q不好证时，
+转而证其逆否命题¬q→¬p。CP法是整个形式推演系统的发动机——
+「假设P，证明Q在P假设下成立，则P→Q被证」→将结论中的整个蕴含式拆解为
+假设下的推演——这是绝大多数形式推演的核心推进逻辑。</div>
+
+<div class="summary"><h4>📋 第五模块复盘</h4>
+<ul><li>19条标准推理规则→9基本+10替换→构成全部命题逻辑演绎的工具箱</li><li>MP(肯定前件)和MT(否定后件)是最常用的两个日常推理范式</li><li>每步推导严格标注规则名称+引用行号→形式推演的纪律</li></ul></div>
+
+<!-- ====== 六 ====== -->
+<h2 id="c6">六、归纳推理——从样本到总体的概率推演</h2>
+
+<div class="def"><strong>归纳推理（Inductive Reasoning）</strong>——从特定观察样本出发推出关于未观察到的总体或未来事件的结论。归纳不提供「必然为真」的保证，而是提供「基于现有证据的最可能为真的判断」。</div>
+
+<h3>6.1 归纳的三大类型与强度评定</h3>
+<div class="derive">① 枚举归纳（Induction by Enumeration）——从样本特征推定总体特征：
+   已观察的S类的n个个体中，比例为p的个体具有特征F
+   → 结论：总体S中大约p%具有特征F
+
+   评估枚举归纳强度的柯匹五项标准：
+   (a) 样本量——越大越强
+   (b) 样本代表性——抽样方法必须无偏(随机≠自我选择)
+   (c) 样本覆盖面——从总体不同子人群中均匀取样
+   (d) 效应量——极端比例(>80%或<20%)比中间比例提供更强归纳
+   (e) 控制混淆——证据不能被第三个变量同时解释
+
+② 统计三段论（Statistical Syllogism）——从总体比例推个体概率：
+   前提：总体F中x%具有G，个体a属于F
+   →a具有G的概率≈x%。注意：x%=99%≠100%→结论总存在1%的假可能
+   这揭示了归纳论证与演绎的根本区别——高概率支持≠绝对必然
+
+③ 归纳滑坡（Hasty Generalization）谬误：基于极小或高度偏差的不具代表性样本→断定总体结论。这是日常对话中最频发的归纳逻辑错误——「我认识的三个X地人都……所以X地人全部……」</div>
+
+<h4>归纳推理的日常应用陷阱——以偏概全的识别训练</h4>
+<div class="example"><strong>正确归纳：</strong>「在随机抽样的1,000名全国各收入阶层成年人中，63%表示支持该政策，误差边际±3%→我们有理由相信全国成年人对该政策的支持率大约在60-66%之间。」——样本量充足+随机抽样+误差边际。</div>
+<div class="warn"><strong>谬误归纳：</strong>「我朋友群里5个人都在抱怨房价→现在全社会都买不起房。」——样本仅5人、非随机(友群同质)、无总体估计→无法推断全国。识别此谬=归纳推理的最实用自我保护技能。</div>
+
+<div class="summary"><h4>📋 第六模块复盘</h4>
+<ul><li>归纳=从样本推总体→不保真，只给概率支持</li><li>枚举归纳的五评价标准：样本量+代表性+覆盖面+效应量+控制混淆</li><li>统计三段论≠演绎：高概率≠必然→总有假的可能性</li></ul></div>
+
+<!-- ====== 七 ====== -->
+<h2 id="c7">七、因果推理——密尔五法与实验逻辑</h2>
+
+<div class="def"><strong>因果推理（Causal Reasoning）</strong>——确定一个事件/特征(因)是否是另一事件/特征(果)的原因的逻辑方法。密尔(John Stuart Mill)在1843年的《逻辑体系》中提出了五条推断因果关系的标准方法——密尔五法——至今仍然是科学实验设计的逻辑基础。</div>
+
+<h3>7.1 密尔五法——因果推断的古典基石</h3>
+<div class="derive">密尔五法(Mill's Methods)——因果推断的五种系统化逻辑工具：
+
+① 契合法（Method of Agreement）：
+   如果被研究现象出现的所有案例都有一个共同的先行情况→该先行情况是该现象的(可能)原因
+   逻辑：找所有「果出现」场合的共性→共同因→仅此一法不可下肯定因果结论(可能是巧合)
+
+② 差异法（Method of Difference）：
+   如果两组在所有方面完全相同→唯一的差异是：一组有A另一组无A
+   →只有有A的那组出现了现象→A是现象的(可能)原因
+   逻辑：改变一个因素→果随之出现/消失→这是实验法的逻辑核心(RCT的原始雏形)
+
+③ 契合差异并用法（Joint Method）：
+   结合①和②→既看A出现时果也出现→又看A不出现时果也不出现→双重证据
+
+④ 剩余法（Method of Residue）：
+   从复合现象中减去已知原因可解释的部分→剩余部分必被剩余原因所解释
+
+⑤ 共变法（Method of Concomitant Variation）：
+   当一个变量在数量上变化时→另一变量也随之在数量上同方向或反方向变动
+   →两者存在因果关联的概率很高。剂量-反应关系正是此法的最典型应用</div>
+
+<div class="warn">⚠ 关键区分：相关≠因果。全世界最频繁的逻辑误导就出在此处——「冰淇淋销量与溺水死亡人数高度正相关」→不是冰淇淋导致了溺水，而是「热天」这一隐藏变量同时推高了冰淇淋购买和下游泳水的行为→混淆变量(Confounding Variable)的存在使相关不意味着因果。密尔五法中的差异法正是逻辑学对因果与相关进行分离操作的最严谨工具：要求除了被检验的因素外，处理组和控制组在其他全部方面必须等同于——这正是现代随机对照试验RCT的逻辑起点。</div>
+
+<h4>因果推理的现实应用——从密尔五法到现代实验设计</h4>
+<div class="example"><strong>医学RCT中的差异法应用：</strong>新药组vs安慰剂组→除了「是否服用药」这一变量，两组在所有其他方面由随机化实现统计等同→若新药组恢复显著快于对照组→差异法逻辑推论：该药物是恢复加速的因果原因。<br><strong>警惕「强拉因果」（Post Hoc）：</strong>A事件先于B事件发生≠A是B的原因——公鸡打鸣之后太阳升起≠公鸡叫出了太阳。时间先后顺序是因果关系的必要而非充分条件。</div>
+
+<div class="summary"><h4>📋 第七模块复盘</h4>
+<ul><li>密尔五法：契合·差异·契合差异并用·剩余·共变</li><li>差异法=现代RCT的逻辑前身</li><li>相关≠因果——差异法是区分两者的逻辑工具</li></ul></div>
+
+<!-- ====== 八 ====== -->
+<h2 id="c8">八、类比推理——从已知相似到未知相似</h2>
+
+<div class="def"><strong>类比推理（Analogical Reasoning）</strong>——如果两个事物在多个已知方面相似，那么它们在另一些未知方面也可能相似。类比永远不给确定的结论——只给出或强或弱的概率性推理支持。</div>
+
+<div class="derive">评估类比推理强度的六大标准(柯匹体系)：
+
+① 相似方面的数量：已知共享的特征越多→结论支持越强
+② 相似方面的相关性：共享特征与推论特征必须在因果或逻辑上相关——
+   无关的相似点无助于结论的强度
+③ 反面类比(已知差异)：已知的不同点越多且越相关→结论支持越弱
+④ 结论的野心度(Modesty)：结论越谨慎和具体→支持强度越高
+   例：从「地球和火星都有大气和岩石」→「火星也有沙尘暴(谨慎·有根据)」
+       vs「火星也有智慧生命(野心过大·支持弱)」
+⑤ 前提中实例的多样性：已知样本越多且越多样化→结论支持越强
+⑥ 防止「谬误的类比」(False Analogy)——两事物间没有足够的相关相似性来支持类比结论
+
+法律推理中大量使用类比(判例法)——「此事与过往判例是否实质性相似」→类比强度决定裁决。法律中的类比是整个判例法体系的逻辑骨架，律师和法官在每一案件中都在训练「类比强度评估」的精微技能。
+
+类比的典型应用与谬误警示：强类比→「辉瑞与Moderna的mRNA疫苗技术相同、靶点一样、同类人群→预计有效性相近」(共享大量因果相关特征→类比强)。谬误类比→「企业像家庭一样量入为出，所以政府也须永远平衡预算」(企业与家庭在货币发行权、投资周期、规模效应上完全不同→类比弱不可靠)。</div>
+
+<div class="summary"><h4>📋 第八模块复盘</h4>
+<ul><li>类比≠证明→只给概率支持→六条强度评估标准</li><li>核心=相似方面的「与结论的相关性」>>相似的数量</li></ul></div>
+
+<!-- ====== 九 ====== -->
+<h2 id="c9">九、形式谬误——推理形式的系统性错误</h2>
+
+<div class="def"><strong>形式谬误（Formal Fallacy）</strong>——由于推理的逻辑结构本身存在缺陷而导致前提不能有效支持结论的错误推理。形式谬误与推理内容无关——即使前提和结论在事实上都「真」，论证仍可能因形式无效而毫无逻辑效力。</div>
+
+<div class="derive">柯匹逻辑学导论中的核心形式谬误清单：
+
+① 肯定后件（Affirming the Consequent）：
+   p→q, q ∴ p    →无效！从「如果下雨地湿」和「地湿」
+                   不能推出「下雨了」——地湿还可能因为洒水车
+
+② 否定前件（Denying the Antecedent）：
+   p→q, ¬p ∴ ¬q  →无效！从「如果下雨地湿」和「没下雨」
+                   不能推出「地不湿」——洒水车照样可以使地湿
+
+③ 中词不周延（Undistributed Middle）——三段论特有：
+   所有A是B，所有C是B ∴ 所有A是C →无效！A和C都是B的一部分
+   但它们之间可能完全不重叠——「所有狗都是哺乳动物，所有猫都是哺乳动物，
+   所以所有狗都是猫」——这个三段论形式上的荒谬之处正是在于中词从未被分配
+
+④ 周延不当（Illicit Major / Illicit Minor）：
+   三段论中，在前提中不周延的大词/小词在结论中充当了周延
+   → 结论的断言超出了前提可提供的全部证据→三段论无效
+
+⑤ 否定前提推出否定结论——所有前提均为否定时，无法推出任何确定的结论
+
+日常语境中最常见的的形式谬误速查：
+  「如果他是罪犯，他的DNA会在现场出现。现场发现了他的DNA。所以他是罪犯。」
+  → p→q, q ∴ p → 肯定后件谬误！DNA在现场可能有完全合法合理解释。
+  「如果经济复苏，股市会涨。但现在经济没有复苏。所以股市不会涨。」
+  → p→q, ¬p ∴ ¬q → 否定前件谬误！股市可能因其他原因(降息/外资流入)而涨。
+
+  每一例形式谬误在日常论证、法庭辩论、新闻评论中都以高频率反复出现——
+  即使经过多年教育的知识分子也常在无意识中使用这两种谬误。识别它们
+  需要在每次遇到「如果……那么……」的论证时训练自己自动调出肯定后件和否定前件的结构</div>
+
+<div class="chart-wrap"><canvas id="formalFallacies" width="560" height="280"></canvas>
+<div class="fig-cap">图4：形式谬误——肯定后件与否定前件的逻辑结构解析，基于柯匹逻辑学导论形式谬误模块复刻。核心推演：p→q, q无法推出p(地湿≠必然下雨)；p→q, ¬p无法推出¬q(没下雨≠一定没湿)。这两种形式谬误是日常论证中最普遍的逻辑漏洞——几乎在所有未经逻辑训练的人的论证中都会高频出现。它们的共同本质是混淆了「充分条件」与「必要条件」——p是q的充分而非必要条件。</div></div>
+
+<div class="summary"><h4>📋 第九模块复盘</h4>
+<ul><li>形式谬误=推理结构有问题→与内容真假无关</li><li>最常见两种：肯定后件+否定前件→混淆充分与必要条件</li></ul></div>
+
+<!-- ====== 十 ====== -->
+<h2 id="c10">十、非形式谬误——日常语言中的逻辑陷阱</h2>
+
+<div class="def"><strong>非形式谬误（Informal Fallacy）</strong>——不是由于逻辑结构的形式错误，而是由于论证内容、语言使用、心理操纵或情境上下文引发的推理错误。这些谬误在日常对话、社交媒体辩论、政治演说和商业广告中极其普遍。</div>
+
+<h3>10.1 非形式谬误的三大类</h3>
+<div class="derive">柯匹将非形式谬误分为三大范畴：
+
+类别一·关联性谬误（Fallacies of Relevance）——前提与结论之间在逻辑上无关联：
+  ① 诉诸人身(Ad Hominem)：攻击论点主张者而非论点本身
+  ② 诉诸公众(Ad Populum)：多数人相信=真
+  ③ 诉诸权威(Argument from Authority)：引用非专业领域的权威→例如引用演员支持某种药品效果
+  ④ 诉诸无知(Argument from Ignorance)：无法证明假=真，无法证明真=假
+  ⑤ 诉诸同情(Pity)：用引发同情替代逻辑论证
+
+类别二·歧义性谬误（Fallacies of Ambiguity）——由于词、短语或句法的双关或模棱两可：
+  ⑥ 歧义(Equivocation)：同一个词在论证中换了不同的意义
+  ⑦ 构型歧义(Amphiboly)：句子结构含混→可析出多种不同解读
+
+类别三·假定性谬误（Fallacies of Presumption）——错误地将未经证明的假定作为前提：
+  ⑧ 假两难(False Dilemma/Black-or-White)：将问题过度简化为仅有两个选项→忽视了中间灰色地带
+  ⑨ 窃取论题(Begging the Question/Circularity)：结论已隐藏在前提之中→循环论证
+  ⑩ 滑坡谬误(Slippery Slope)：假设第一步行动必然引发一系列极端的连锁反应→缺乏中间步骤的概率估计
+  ⑪ 强拉因果(False Cause/Post Hoc)：无因果关系推断为因果关系→「因为A先发生，所以A导致B」
+  ⑫ 合成谬误(Composition)：部分为真→整体也推定为真（各成员优秀≠团队优秀）
+  ⑬ 分解谬误(Division)：整体为真→各部分也推定共有该特征
+
+非形式谬误中最高频的日常场景识别训练：
+  诉诸人身(Ad Hominem)：「你一个专科生有什么资格讨论经济？」→攻击人的学历非论证内容
+  诉诸公众：「大家都在买这只股票，所以它肯定有价值」→多数人行为≠事实正确
+  假两难：「要么支持政府所有政策，要么就是民族叛徒」→忽视中间广大多种态度
+  滑坡谬误：「同意小张请假一天→下周全部门都会无故旷工→公司就要倒闭」→缺乏中间因果估计
+  强拉因果：「我刚转发锦鲤就中奖了→锦鲤带来了好运」→偶然时间前后≠因果关系</div>
+
+<div class="chart-wrap"><canvas id="fallacyTree" width="600" height="290"></canvas>
+<div class="fig-cap">图5：非形式谬误分类系统树——三大范畴·十三子类，基于柯匹逻辑学导论第15版非形式谬误全面复刻。核心推演：关联性(前提与结论逻辑上无关联→诉诸人身·公众·权威·无知·同情)·歧义性(语言构造引发多义性→歧义·构型歧义)·假定性(前提暗含了未经证明的假设→假两难·窃取论题·滑坡·强拉因果·合成·分解)。非形式谬误是日常辩论和公共讨论中逻辑错误的最主要来源。</div></div>
+
+<div class="summary"><h4>📋 第十模块复盘</h4>
+<ul><li>非形式谬误=不是形式错了→是内容/语言/心理操控的推理陷阱</li><li>三大类十三子类覆盖日常辩论中最常见的逻辑漏洞</li><li>识谬是修逻辑的第一步：能认出谬误=论证能力升一阶</li></ul></div>
+
+<!-- ====== 十一 ====== -->
+<h2 id="c11">十一、论证的建构与评估——逻辑学的终极技能</h2>
+
+<h3>11.1 标准论证的建构步骤</h3>
+<div class="derive">柯匹体系中的五步论证建构法：
+
+① 明确结论——你到底想证明什么？
+   → 所有论证始于一个清晰的、可判断真假的结论陈述
+
+② 列出支持该结论的全部前提——从最可靠的证据开列
+   → 每个前提自身必须被论证或被广泛接受为真
+   → 前提之间不能互相矛盾
+
+③ 选择推理形式——演绎(保真)还是归纳(概率)→运用有效推理规则
+
+④ 检查全部前提的真值——是不是因为偏见/既得利益/信息不足而接受了假前提？
+
+⑤ 预测并回应反方可能的反驳——这是强论证与弱论证的最重要区分
+   → 「预答辩」一个强论证：写出对方最强的不利于你结论的论证→用逻辑正面回击而非回避
+
+柯匹全书终极洞见：
+  严谨的逻辑思维不是「天生的天赋」→而是可以通过系统训练学得并能终身运用的认知技能
+  逻辑学的价值不在于让你「从不犯错」→而在让你「能够迅速识别自己和他人论证中的错误」
+   →从无意识地错误推理→有意识地严密推演→这是人类认知能力的质变飞跃</div>
+
+<div class="chart-wrap"><canvas id="argumentFramework" width="560" height="280"></canvas>
+<div class="fig-cap">图6：论证建构与评估的全流程框架——明确结论→列出前提→选择推理形式→验证真值→预答辩反方，基于柯匹逻辑学导论论证建构模块复刻。核心推演：强论证=有效/强推理形式+真前提+正面回应反方；弱论证=无效推理或假前提或回避反面证据。逻辑学的终极目标不是赢得辩论，而是找到「已知前提下，什么结论是在逻辑上可以推出的」。</div></div>
+
+<h3>11.2 柯匹逻辑推导的核心纪律——每步必标规则+行号</h3>
+<div class="derive">柯匹体系中任何形式推演必须满足的明文军规：
+① 前提行必须逐行编号——所有后续规则引用都通过行号指向前提
+② 每步推导必须标注调用了何规则(例如：MP, MT, HS, Simp, Add等)
+③ 每步标注该规则所引用的具体行号——使任何旁观者能够逐行复验推导的正确性
+④ 最终一行=目标结论——若最终行的命题与待证明的结论逻辑等价，推导成功
+
+缺少其中任何一条的推演在柯匹体系中即为不合格——这不是形式缛节，是确保逻辑推导完全透明、
+可被任何第三方独立复检的学术最高纪律。科学论文的逻辑论证、法律判决书的推理链、
+程序代码的形式化验证都建立在这一最基本的「每一步都可被独立复检」的原则之上。</div>
+
+<h3>11.3 日常论证的实战解剖——用柯匹工具分析真实评论</h3>
+<div class="derive">【实战训练：解剖一段典型网络评论中的逻辑结构】
+
+原始评论：「现在物价这么高，肯定是因为政府在乱印钱。你看房子价格都涨到天上去了，
+  政府再不控制货币，普通人都没法活了。」
+
+柯匹逻辑分析步骤：
+前提❶：「物价在持续上涨」（可能为真，需核实具体数据）
+前提❷：「政府发行了大量货币」（是否真实取决于中央银行的实际资产负债表）
+隐含前提❸：「货币发行量是物价上涨的唯一原因」（被强加而不证的因果假设）
+结论  ：「政府必须控制货币供应量」
+
+逻辑问题清单：
+① 从「物价涨+政府印了钱」到「物价涨=政府印钱」→强拉因果谬误。物价上涨可能来自：
+   全球供应链受阻、能源价格飙升、企业垄断定价、季节性因素——这四者中任一个
+   都可能是物价上涨的主因。密尔差异法从未在此实现(没有非印钱对照组)。
+② 「再不控制就活不下去」→滑坡谬误——缺乏中间步骤的因果概率估计
+③ 整段论证中没有任何对「货币数量论(MV=PY)」的实际数据检验→诉诸直觉
+   代替了归纳推理→简化为高情绪性断言。
+
+经过上述逻辑解剖，原始论证的推演力量被大幅削弱——不是否定其结论可
+能正确(政府确实可能在过度印钱)，而是指出从现有前提无法按逻辑有效
+地推导出所声称的结论。这就是柯匹逻辑学作为思维日常工具的最高实践价值。</div>
+
+<h3>11.4 逻辑体系与全部学科的统一联系</h3>
+<table class="compare">
+<tr><th>学科</th><th>核心逻辑工具</th><th>柯匹对应模块</th></tr>
+<tr><td>经济学</td><td>演绎推理论证(理论推理)+因果推理(政策评估)</td><td>三段论+密尔五法→因果推断</td></tr>
+<tr><td>心理学</td><td>归纳推理(样本→总体)+因果推理(实验)</td><td>枚举归纳强度评估+差异法</td></tr>
+<tr><td>博弈论</td><td>命题逻辑(策略推理)+演绎推演</td><td>真值表+命题逻辑规则</td></tr>
+<tr><td>法学</td><td>类比推理(判例法)+论证建构</td><td>类比强度六标准+论证评估</td></tr>
+<tr><td>计算机科学</td><td>命题逻辑(布尔代数)+谓词逻辑</td><td>全部形式逻辑</td></tr>
+</table>
+
+<div class="summary" style="background:#f8f8fc;border-color:#2a3a5a">
+<h4 style="font-size:15px">📐 柯匹《逻辑学导论》全域总纲——严谨思维的元工具</h4>
+<p><strong>逻辑学的递进阶梯：</strong>概念与命题(定义+真值)→命题逻辑(真值表+19条规则)→直言命题(AEIO方阵)→三段论(256组合→24有效式)→演绎推理系统→归纳推理(枚举+统计三段论+强度评定)→因果推理(密尔五法)→类比推理(六标准)→形式谬误(肯定后件+否定前件+无效三段论)→非形式谬误(三大类13子类)→论证建构(五步法+预答辩)。</p>
+<p><strong>逻辑学的终极使命</strong>不是让你在每一次辩论中都获胜——而是让你在任何听到的论证中都能快速完成一次「逻辑体检」：前提→推演→结论三者之间的关系是否满足有效性/可靠性的标准。是对是错、是实是虚，都能独立于情感偏好做出严谨判断。逻辑是元工具——不是为某个结论服务的武器，而是所有结论都必须经过的思维检测站。掌握柯匹逻辑学意味着从被推理裹挟的被动思考者升级为能够主动解剖任何推理结构的元思考者——这是人类认知能力上最根本的质变飞跃之一。</p>
+</div>
+
+</main>
+
+<!-- ==================== Canvas 引擎 ==================== -->
+<script>
+class PC{
+  constructor(id,w,h){this.c=document.getElementById(id);if(!this.c)return;this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h}
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  g(x0,x1,y0,y1){const c=this.ctx,p={t:30,r:22,b:45,l:50},pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;this.xs=v=>p.l+(v-x0)/(x1-x0)*pw;this.ys=v=>p.t+(y1-v)/(y1-y0)*ph}
+  ln(pts,color,w=2.5,d=null){if(pts.length<2)return;var c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(d)c.setLineDash(d);c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));c.stroke();c.setLineDash([]);c.restore()}
+  txt(x,y,t,c='#333',s=11,a='center'){this.ctx.fillStyle=c;this.ctx.font=`${s}px sans-serif`;this.ctx.textAlign=a;this.ctx.fillText(t,x,y)}
+  rect(x,y,w,h,cl,sc='#555'){this.ctx.fillStyle=cl;this.ctx.fillRect(x,y,w,h);this.ctx.strokeStyle=sc;this.ctx.lineWidth=1.5;this.ctx.strokeRect(x,y,w,h)}
+}
+
+// 图1: 真值表全景
+(function(){
+  var k=new PC('truthTables',620,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('五大逻辑联结词的真值表全景',310,16);
+  var headers=['  p  ','  q  ','¬p','p∧q','p∨q','p→q','p↔q'];
+  var rowData=[['T','T','F','T','T','T','T'],['T','F','F','F','T','F','F'],['F','T','T','F','T','T','F'],['F','F','T','F','F','T','T']];
+  var cw=75,x0=45,y0=40;
+  c.font='10px bold sans-serif';c.textAlign='center';
+  for(var j=0;j<headers.length;j++){c.fillStyle='#e8e4d8';c.fillRect(x0+j*cw,y0,cw,24);c.strokeStyle='#888';c.strokeRect(x0+j*cw,y0,cw,24);c.fillStyle='#333';c.fillText(headers[j],x0+j*cw+cw/2,y0+16)}
+  for(var i=0;i<4;i++){for(var j=0;j<headers.length;j++){c.fillStyle=i%2==0?'#fff':'#f8f6f0';c.fillRect(x0+j*cw,y0+24+18*i,cw,18);c.strokeStyle='#ddd';c.lineWidth=.5;c.strokeRect(x0+j*cw,y0+24+18*i,cw,18);c.fillStyle='#333';c.font='10px monospace';c.fillText(rowData[i][j],x0+j*cw+cw/2,y0+24+18*i+13)}}
+  // Highlight implication
+  c.strokeStyle='#c03030';c.lineWidth=2;c.strokeRect(x0+5*cw,y0+24+18,cw,18);
+  c.fillStyle='#c03030';c.font='9px sans-serif';c.fillText('唯一假:T→F','#c03030');
+  c.textAlign='left';c.fillText('← 前提假时自动T(空洞真理):F→T=T, F→F=T',x0+7*cw+8,y0+24+32);
+})();
+
+// 图2: 对当方阵
+(function(){
+  var k=new PC('squareOpposition',500,310);if(!k.c)return;k.clr();
+  var c=k.ctx,cx=250,cy=140,r=80;
+  c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('传统对当方阵——A·E·I·O 四型关系',250,16);
+  // Main square
+  var corners=[{x:cx-r,y:cy-r,l:'A:所有S是P',c:'#e8f0f8'},{x:cx+r,y:cy-r,l:'E:没有S是P',c:'#e8f0f8'},{x:cx-r,y:cy+r,l:'I:有的S是P',c:'#e8f0f8'},{x:cx+r,y:cy+r,l:'O:有的S不是P',c:'#e8f0f8'}];
+  corners.forEach(n=>{c.fillStyle=n.c;c.fillRect(n.x-50,n.y-24,100,48);c.strokeStyle='#2a3a5a';c.lineWidth=1.5;c.strokeRect(n.x-50,n.y-24,100,48);c.fillStyle='#333';c.font='11px bold sans-serif';c.fillText(n.l,n.x,n.y+4)});
+  // Lines
+  var lines=[{x1:cx-r,y1:cy-r+24,x2:cx+r,y2:cy+r-24,l:'矛盾(永远相反)',c:'#c03030',dash:null},
+    {x1:cx-r,y1:cy-r+24,x2:cx+r,y2:cy-r-24,l:'反对(不同真)',c:'#5a2a3a',dash:null},
+    {x1:cx-r+50,y1:cy-r,x2:cx-r+50,y2:cy+r,l:'差等(全真→特真)',c:'#888',dash:[3,3]},
+    {x1:cx-r,y1:cy+r-24,x2:cx+r,y2:cy+r+24,l:'下反对(不同假)',c:'#5a2a3a',dash:null}];
+  lines.forEach(l=>{c.strokeStyle=l.c;c.lineWidth=2;if(l.dash)c.setLineDash(l.dash);c.beginPath();c.moveTo(l.x1,l.y1);c.lineTo(l.x2,l.y2);c.stroke();c.setLineDash([])});
+  // Labels
+  c.fillStyle='#c03030';c.font='9px bold sans-serif';c.fillText('矛盾',cx,cy+5);
+  c.fillStyle='#5a2a3a';c.fillText('反对',cx,cy-85);c.fillText('下反对',cx,cy+200);
+  c.fillStyle='#888';c.fillText('差等',cx-95,cy);c.fillText('差等',cx+95,cy);
+})();
+
+// 图3: 三段论文恩图
+(function(){
+  var k=new PC('syllogismVenn',560,260);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('三段论的文恩图检验——Barbara(AAA-1)示例',280,16);
+  // Draw three overlapping circles
+  var cx=160,cy=140,r=60;
+  ['M','S','P'].forEach(function(l,i){
+    var ox=i==0?cx+30:i==1?cx-35:cx+65;
+    c.strokeStyle='#555';c.lineWidth=2;c.beginPath();c.arc(ox,cy,r,0,Math.PI*2);c.stroke();
+    c.fillStyle='#333';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText(l,ox,cy-r-8);
+  });
+  // Shade: All M is P -> M区域中非P部分涂黑
+  c.fillStyle='rgba(42,58,90,0.3)';c.beginPath();c.arc(cx+30,cy,r,0,Math.PI*2);c.clip();
+  c.fillStyle='rgba(0,0,0,0.15)';c.beginPath();c.arc(cx+65,cy,r,Math.PI*2,0,true);c.fill();c.restore();
+  // Right side: explanation
+  c.textAlign='left';c.fillStyle='#555';c.font='10px sans-serif';
+  c.fillText('Barbara (AAA-1):',360,60);
+  c.fillText('所有 M 是 P',360,78);
+  c.fillText('所有 S 是 M',360,96);
+  c.fillText('∴ 所有 S 是 P',360,114);
+  c.fillStyle='#2a5a2a';c.font='10px bold sans-serif';
+  c.fillText('文恩图:两前提共同排除了',360,145);
+  c.fillText('S在M外·M在P外的所有区域',360,162);
+  c.fillText('→结论:所有S必然在P内✓',360,179);
+  c.fillStyle='#c03030';c.fillText('≠:中词M不在结论出现',360,210);
+})();
+
+// 图4: 形式谬误逻辑结构
+(function(){
+  var k=new PC('formalFallacies',560,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('形式谬误——肯定后件+否定前件的逻辑解剖',280,16);
+  // Affirming consequent
+  c.fillStyle='#faf4f0';c.fillRect(20,40,240,90);c.strokeStyle='#c03030';c.lineWidth=2;c.strokeRect(20,40,240,90);
+  c.fillText('❌ 肯定后件(无效!)',140,60);c.font='10px sans-serif';
+  c.fillText('p→q: 如果下雨→地湿',140,80);c.fillText('  q: 地湿(真的!)',140,96);c.fillText('∴ p: 下雨(无效!洒水车?)',140,112);
+  // Denying antecedent
+  c.fillStyle='#faf4f0';c.fillRect(300,40,240,90);c.strokeStyle='#c03030';c.lineWidth=2;c.strokeRect(300,40,240,90);
+  c.fillText('❌ 否定前件(无效!)',420,60);c.fillText('p→q: 如果下雨→地湿',420,80);c.fillText('¬p: 没下雨(真的!)',420,96);c.fillText('∴¬q: 地一定不湿(无效!)',420,112);
+  // Bottom lesson
+  c.fillStyle='#2a3a5a';c.font='11px bold sans-serif';c.textAlign='center';
+  c.fillText('p是q的「充分」条件(有p则q必现)→并非「必要」条件(q出现不必然有p)',280,170);
+  c.fillText('日常论证中最普遍的逻辑错误:把充分条件当成必要条件→导致肯定后件+否定前件',280,195);
+})();
+
+// 图5: 谬误分类树
+(function(){
+  var k=new PC('fallacyTree',600,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('非形式谬误分类系统树——三大范畴·十三子类',300,16);
+  // Root
+  c.fillStyle='#e8f0f8';c.fillRect(220,35,160,30);c.strokeStyle='#2a3a5a';c.strokeRect(220,35,160,30);c.fillText('非形式谬误',300,55);
+  // Three branches
+  var branches=[{x:30,y:85,l:'关联性谬误',sub:'诉诸人身·公众·权威·无知·同情',c:'#faf4f0',sc:'#5a2a3a'},
+    {x:220,y:85,l:'歧义性谬误',sub:'歧义(偷换概念)·构型歧义',c:'#f4f4f8',sc:'#2a3a5a'},
+    {x:420,y:85,l:'假定性谬误',sub:'假两难·窃取论题·滑坡·\n强拉因果·合成·分解',c:'#f0f4f0',sc:'#2a5a2a'}];
+  branches.forEach(b=>{c.fillStyle=b.c;c.fillRect(b.x,b.y,170,55);c.strokeStyle=b.sc;c.lineWidth=1.5;c.strokeRect(b.x,b.y,170,55);c.fillStyle='#333';c.font='10px bold sans-serif';c.fillText(b.l,b.x+85,b.y+16);c.font='8px sans-serif';var ss=b.sub.split('\n');ss.forEach((s,i)=>c.fillText(s,b.x+85,b.y+32+i*12))});
+  // Connecting lines
+  c.strokeStyle='#888';c.lineWidth=1.5;c.beginPath();c.moveTo(300,65);c.lineTo(115,85);c.stroke();
+  c.beginPath();c.moveTo(300,65);c.lineTo(300,85);c.stroke();
+  c.beginPath();c.moveTo(300,65);c.lineTo(505,85);c.stroke();
+  c.fillStyle='#2a3a5a';c.font='9px bold sans-serif';c.fillText('识别谬误=逻辑素养的第一道防线：「你的论证中现在正在使用哪条谬误？」',300,165);
+  c.fillStyle='#c03030';c.font='9px sans-serif';c.fillText('每天在社交媒体和日常辩论中,这三类谬误的发生频率极度惊人——逻辑训练使之可见',300,185);
+})();
+
+// 图6: 论证建构框架
+(function(){
+  var k=new PC('argumentFramework',560,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('论证建构五步法——柯匹体系标准流程',280,16);
+  var steps=['① 明确结论','② 列出全部前提','③ 选推理形式','④ 验证前提真值','⑤ 预答辩反方'];
+  steps.forEach(function(s,i){
+    var x=30+i*105,y=60;c.fillStyle='#e8f0f8';c.fillRect(x,y,95,36);c.strokeStyle='#2a3a5a';c.lineWidth=1.5;c.strokeRect(x,y,95,36);c.fillStyle='#333';c.font='9px bold sans-serif';c.fillText(s,x+47,y+22);
+    if(i<4){c.strokeStyle='#888';c.lineWidth=1.5;c.beginPath();c.moveTo(x+95,y+18);c.lineTo(x+105,y+18);c.stroke()}
+  });
+  var row2=['逻辑有效/强推理形式','前提全真→真论证','反方反驳被理性回击'];
+  row2.forEach(function(s,i){c.fillStyle='#f0f8f0';c.fillRect(70+i*165,130,140,30);c.strokeStyle='#2a5a2a';c.lineWidth=1.5;c.strokeRect(70+i*165,130,140,30);c.fillStyle='#333';c.font='9px sans-serif';c.fillText(s,70+i*165+70,150)});
+  c.fillStyle='#2a3a5a';c.font='11px bold sans-serif';c.fillText('→ 逻辑学的终极目标:不是赢得辩论→是在已知前提下推出可得的结论',280,200);
+})();
+
+console.log('✅ 柯匹逻辑学导论 · 6张Canvas模型 · 零外部依赖');
+</script>
+</body>
+</html>

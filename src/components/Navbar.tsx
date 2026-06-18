@@ -36,6 +36,7 @@ export function Navbar() {
             <Link href="/" className="nav-link">首页</Link>
             <Link href="/articles" className="nav-link">文章</Link>
             <Link href="/forum" className="nav-link">论坛</Link>
+            <Link href="/books" className="nav-link">书籍</Link>
             <Link href="/about" className="nav-link">关于</Link>
 
             {session ? (
@@ -113,6 +114,7 @@ export function Navbar() {
             <Link href="/" className="block nav-link py-2" onClick={() => setMobileMenuOpen(false)}>首页</Link>
             <Link href="/articles" className="block nav-link py-2" onClick={() => setMobileMenuOpen(false)}>文章</Link>
             <Link href="/forum" className="block nav-link py-2" onClick={() => setMobileMenuOpen(false)}>论坛</Link>
+            <Link href="/books" className="block nav-link py-2" onClick={() => setMobileMenuOpen(false)}>书籍</Link>
             <Link href="/about" className="block nav-link py-2" onClick={() => setMobileMenuOpen(false)}>关于</Link>
             {session ? (
               <>

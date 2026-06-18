@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>博弈论完整正统体系 · 纳什均衡·动态博弈·贝叶斯·演化·机制设计</title>
+<style>
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#c9d1d9;--gold:#e3b341;--red:#f85149;--green:#3fb950;--blue:#58a6ff;--purple:#bc8cff;--muted:#8b949e;--warn-bg:#2d1a1a;--info-bg:#0d1b2a;--derive-bg:#1a1e24;--case-bg:#14261a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:15.5px}
+main{max-width:940px;margin:0 auto;padding:40px 24px}
+h1{font-size:2em;text-align:center;color:var(--gold);margin:20px 0 6px;letter-spacing:1.5px}
+.subtitle{text-align:center;color:var(--muted);margin-bottom:32px;font-size:0.92em}
+h2{font-size:1.55em;color:var(--gold);border-bottom:2px solid var(--border);padding-bottom:8px;margin:44px 0 18px}
+h3{font-size:1.2em;color:var(--blue);margin:26px 0 12px}
+h4{font-size:1.05em;color:var(--purple);margin:18px 0 8px}
+.def-box{background:var(--info-bg);border:1px solid var(--blue);padding:14px 18px;border-radius:6px;margin:14px 0}
+.def-box strong{color:var(--blue)}
+.derive{background:var(--derive-bg);border:1px solid var(--border);padding:14px 18px;border-radius:6px;margin:12px 0;font-size:0.94em}
+.plain{background:#1a1e1a;border-left:3px solid var(--green);padding:14px 18px;border-radius:0 6px 6px 0;margin:12px 0;font-size:0.94em}
+.plain strong{color:var(--green)}
+.warn{background:var(--warn-bg);border:1px solid var(--red);padding:12px 16px;border-radius:6px;margin:14px 0;color:#fdaeb0}
+.warn strong{color:var(--red)}
+.case-box{background:var(--case-bg);border:1px solid var(--green);padding:14px 18px;border-radius:6px;margin:12px 0}
+.case-box strong{color:var(--green)}.case-box p{margin:4px 0}
+.summary{background:var(--surface);border:2px solid var(--gold);padding:16px 20px;border-radius:8px;margin:20px 0}
+.canvas-wrap{margin:18px 0;text-align:center}
+.canvas-wrap canvas{max-width:100%;border:1px solid var(--border);border-radius:6px}
+.fig-cap{font-size:0.84em;color:var(--muted);text-align:center;margin:6px 0 14px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92em}
+th{background:var(--surface);color:var(--gold);padding:10px 12px;border:1px solid var(--border);text-align:left}
+td{padding:8px 12px;border:1px solid var(--border)}tr:nth-child(even){background:rgba(255,255,255,0.02)}
+.hl{color:var(--gold);font-weight:bold}.rh{color:var(--red);font-weight:bold}.bh{color:var(--blue)}.gh{color:var(--green)}
+nav.toc{background:var(--surface);padding:16px 20px;border-radius:8px;margin:16px 0;columns:2;column-gap:14px;font-size:0.88em}
+nav.toc a{color:var(--blue);text-decoration:none;display:block;padding:2px 0}nav.toc a:hover{color:var(--gold)}
+.formula{background:#0d1117;padding:8px 14px;border-radius:4px;display:inline-block;margin:4px 0;font-family:monospace;font-size:0.93em;color:var(--gold);border:1px solid var(--border)}
+.divider{border:none;border-top:1px dashed var(--border);margin:36px 0}
+@media print{body{background:#fff;color:#000;font-size:12px}main{max-width:100%}.warn{background:#fff5f5}}
+@media(max-width:640px){nav.toc{columns:1}h1{font-size:1.5em}}
+</style>
+</head>
+<body>
+<main>
+
+<h1>博弈论完整正统体系 · 从纳什均衡到机制设计</h1>
+<p class="subtitle">John von Neumann · John Nash · Reinhard Selten · John Harsanyi · Thomas Schelling<br>静态·动态·重复·贝叶斯·演化 · Chart.js矢量矩阵与博弈树 · 纯离线</p>
+
+<nav class="toc" id="toc"></nav>
+
+<!-- ====== 绪论 ====== -->
+<h2 id="c0">全书总纲：博弈论在回答什么问题</h2>
+<div class="def-box"><strong>博弈论（Game Theory）</strong>——研究多个决策者在策略互动中如何做出理性选择的数学框架。每一个参与者的收益不仅取决于自己选了什么，还取决于所有其他参与者选了什么。这不是单纯的最优化问题——而是"我猜你会怎么做，而你同时也在猜我在猜你会怎么做"的无穷嵌套推理。博弈三要素：<span class="hl">参与人（Players）+ 策略空间（Strategies）+ 收益函数（Payoffs）</span>。三者完备即定义一个博弈。</div>
+<div class="plain"><strong>通俗拆解：</strong>你下楼买早餐，老板卖5元一碗面——这不叫博弈，因为老板定了价、你决定买不买——你的选择不影响老板今天的定价，老板今天的定价也单一地决定了你的决策（这是单主体最优化问题，不是博弈）。<strong>但</strong>如果整条街上的三家早餐店都在互相盯价——你降一块我就降八毛、但你降八毛会不会把我逼到关门的边缘我又要降价还是换个馅料——每一家的最优选择都取决于它认为另两家会怎么反应——这就是博弈。博弈的本质：<span class="hl">在自己的行动还没有发生之前，先站在对方的鞋子里计算对方针对你的每一种可能行动的最优反应——然后再回头选择自己的行动</span>。</div>
+
+<!-- ====== 第一章：博弈基本概念 ====== -->
+<div class="divider"></div>
+<h2 id="c1">第一章 博弈的基础——共同知识与理性假设</h2>
+<div class="chapter">
+
+<h3>1.1 博弈三要素与标准式表达</h3>
+<div class="derive"><strong>标准式（Normal Form）博弈 = 参与人N + 策略空间S<sub>i</sub> + 收益函数u<sub>i</sub>(s<sub>1</sub>,...,s<sub>n</sub>)</strong><br>一个两人博弈的标准式就是一个支付矩阵。行玩家选行，列玩家选列——交点处的二元组（u₁,u₂）分别表示两人的收益。</div>
+<div class="plain">标准式的核心预设是整个博弈只发生一次——所有人在同一时刻（或在不知道别人已经选了什么的条件下）做出选择。这就好比两个被关在不同审讯室的嫌犯在同一时刻决定坦白还是抵赖——你选的时候完全不清楚另一个人正在选什么。这就是经典的同时决策博弈。</div>
+
+<h3>1.2 共同知识——"我知道你知道我知道……"的无穷递归</h3>
+<div class="plain"><strong>通俗拆解：</strong>你下国际象棋，你知道对手知道你应该知道的所有规则——如果你怀疑对手根本不知道马走日字，你对他下一步的推演完全丧失了基础。博弈论的标准假设是所有参与人不仅自身完全理性，而且都知道彼此是完全理性的——同时每个人都知道每个人都知道彼此是完全理性的……直到无穷阶。这是极其强的假设——在现实中经常不满足。但只有在这个假设下，均衡的收敛逻辑才严格成立。偏离共同知识的任何情形都属于行为博弈论的修正范畴。</div>
+
+<h3>1.3 占优策略——不需要猜别人想什么的绝对最优</h3>
+<div class="def-box"><strong>严格占优策略（Strictly Dominant Strategy）</strong>：无论对手选择什么策略，该策略都给参与人带来严格更高的收益。如果一个策略被严格占优，理性人永远不会选——<strong>迭代剔除严格劣策略（IESDS）</strong>是求解博弈的第一步。</div>
+<div class="plain">通俗案例：你下班后可以选择加班（多赚300元）或回家躺平（多赚0元）。不管你同事选什么——加班对你总是额外多赚的。加班就是占优策略。但多数现实博弈不存在占优策略——你需要进一步去猜对手会选什么。</div>
+</div>
+
+<!-- ====== 第二章：纳什均衡 ====== -->
+<div class="divider"></div>
+<h2 id="c2">第二章 纳什均衡——博弈论的核心解概念</h2>
+<div class="chapter">
+
+<h3>2.1 纳什均衡的定义与直觉</h3>
+<div class="def-box"><strong>纳什均衡（Nash Equilibrium, Nash 1950）</strong>：在所有参与者都选定各自策略之后，没有任何单一个人可以通过单方面改变自己的策略来获得更高收益。也就是说——给定你的策略，我选了我最优的回应；给定我的策略，你也选了你最优的回应。当每个人都对彼此的策略满意——这个策略组合就是纳什均衡。</div>
+<div class="plain"><strong>通俗拆解：</strong>想象两个人在拥挤的走廊里迎面走过来。同时向左闪——撞上了。同时向右——也撞上了。一人左一人右——顺利通过。两个不撞的组合（左,右）和（右,左）都是纳什均衡——因为任何单方改变都会从"顺利通过"变成"撞上"。两个一起撞的组合都不是——任何一个人单方面改变方向就能免除碰撞。纳什均衡就是人际互动中"谁都不后悔选了这一招"的稳态。</div>
+
+<h3>2.2 纯策略与混合策略——为什么直觉不够</h3>
+<div class="plain"><strong>纯策略=</strong>每次确定地选某一个具体动作（总是出剪刀）。<strong>混合策略=</strong>以某个概率分布在几个动作之间随机选择（三分之一概率出剪刀、三分之一石头、三分之一布）。<br>剪刀石头布没有纯策略纳什均衡——因为任何固定的"我总是出石头"都会被对手的无情利用（对方总出布）。唯一的纳什均衡是<strong>混合均衡</strong>：双方各以(1/3, 1/3, 1/3)的概率出拳。此时对手无法通过偏向任何一拳来获得更高胜率——他出了布也有三分之一概率被你的剪刀切掉。</div>
+
+<div class="derive"><strong>混合策略纳什均衡求解三步法：</strong><br>①设定行玩家的混合策略(p, 1−p)。②列出列玩家针对该混合策略的两个纯策略期望收益并令其相等——如果不等，列玩家就会偏到收益高的那一侧导致不均衡。③解出p*。④对称求出q*。关键逻辑：混合均衡是强制使对手在两个选项之间"无差别"——当他真的无差别了，他也没有偏离激励。</div>
+
+<div class="canvas-wrap"><canvas id="chart1" width="800" height="480"></canvas></div>
+<div class="fig-cap">图1：纳什均衡的核心直觉。两个参与人各自在对方策略给定的前提下选择对自己最优的回应。交点处任何人单方面偏离都会降低自身收益——此即纳什均衡的稳定性来源。囚徒困境中(坦白,坦白)是唯一纳什均衡——虽然双方的联合结果可以被(抵赖,抵赖)显著帕累托改进——这就是个人理性导致集体非理性的根源。</div>
+
+<div class="warn"><strong>⚠ 频发混淆：纳什均衡 ≠ 帕累托最优。</strong>囚徒困境中(坦白,坦白)是纳什均衡但不是帕累托最优。(抵赖,抵赖)使两人都更好却不是一个均衡——因为双方都有单方面背离的激励。纳什均衡未必好，它只是稳定。好与稳定在博弈中经常是天敌。</div>
+</div>
+
+<!-- ====== 第三章：四大经典博弈 ====== -->
+<div class="divider"></div>
+<h2 id="c3">第三章 四大经典同时博弈——矩阵中的全部社会逻辑</h2>
+<div class="chapter">
+
+<h3>3.1 囚徒困境——全世界最著名的博弈</h3>
+<div class="derive"><strong>标准矩阵（行：A，列：B）：</strong><br>
+          B抵赖 &nbsp; B坦白<br>A抵赖 &nbsp; (−1,−1) &nbsp; (−10,0)<br>A坦白 &nbsp; (0,−10) &nbsp; (−5,−5)<br>
+占优策略分析：无论B选什么——A坦白的刑期都严格短于A抵赖（0<−1，−5<−10）→坦白是A的严格占优策略。对称地B也是。所以(坦白,坦白)是唯一均衡——每人五年。而(抵赖,抵赖)每人仅一年——双双更好但不均衡。</div>
+<div class="plain"><strong>通俗拆解：</strong>你和你同事各自负责一个独立项目。谁先懈怠对方多干一点——那个懈怠的自己轻松了还能拿一样的团队奖金。双人都偷懒=团队没成绩=奖金为零。两人都拼命=有奖金但每人只拿一半。个体最优策略=自己偷懒（因为如果对方不偷懒你白蹭；对方也偷懒你至少没白累）。结果双偷——团队奖金归零——两人一起亏。囚徒困境的统一结构=<span class="rh">个体占优策略在集体层面是所有结果中最差的之一</span>。</div>
+
+<div class="case-box"><strong>【商业案例·价格战】</strong>两家航空公司运营同一航线。若都维持高价→各赚5亿。若A降价抢客流→A赚8亿B仅赚1亿。若双方都降→各赚2亿。双方降价都是占优策略→均衡结果各赚2亿——比默契高价各少赚了3亿。囚徒困境解释了为什么寡头行业频繁呼吁"行业自律"却极少真正摆脱价格战。<br><strong>【日常案例·室友不洗碗】</strong>四个室友公用厨房。一个人洗了碗→另外三个享受干净的厨房却没付出任何劳动。第三个开始洗的室友心想"凭什么又是我"→不洗了→四个人全都不洗→水池堆满→全宿舍生活质量暴跌。</div>
+
+<h3>3.2 智猪博弈——为什么大企业研发小企业模仿</h3>
+<div class="derive">假设大猪按一次食槽按钮需耗费2单位力气，落下的食物=10单位。若大猪先到食槽→吃9单位净得7（去按了按钮）。若小猪先到→吃4单位大猪吃6单位（净得4）。若都不按→0。若都按→大猪得5小猪得1（减去各自消耗）。<br>结果：小猪的占优策略是<strong>永远不按</strong>——等在食槽边。大猪明知小猪不按但自己也得去按——因为不按自己也要饿死。均衡=大猪按、小猪等。</div>
+<div class="plain"><strong>通俗拆解：</strong>市场里的大企业（大猪）投入数亿研发新药品→上市后中小仿制药厂（小猪）在专利到期后无研发成本直接复制工艺、以极低价出售。大猪的巨额前期研发成了全行业共享的公共品——每一家小猪都在食槽边坐等。<strong>这不是小猪不道德——这是智猪博弈的均衡预言：在市场结构给定的情况下，最优策略就应该是"不做研发只做快速跟随者"。</strong></div>
+
+<div class="case-box"><strong>【商业案例·拼多多vs京东】</strong>京东花了十五年建立了全国顶级物流仓配体系（大猪去按按钮）。拼多多的初期仅靠微信社交裂变和供应商直发，物流用了四通一达的现成网络——完全不需要自建仓配（小猪等在槽边）。京东的物流投资量极大，但拼多多从这一投资中零成本受益。<br><strong>【政策案例·气候减排谈判】</strong>全球气候=食槽。大国（大猪）如果按按钮（大幅减排）→全地球温度降下来所有国家受益。小国（小猪）等着也不参与减排→照样享受降温。智猪博弈是全球气候谈判每一次陷入僵局的最深层结构原因。</div>
+
+<h3>3.3 斗鸡博弈——谁先踩刹车谁就是胆小鬼</h3>
+<div class="derive">两车对开，谁先打方向盘就是"胆小鬼"（忍辱但保命），双方都不打→撞车双死。收益：(直行,直行)=(−10,−10)·(直行,转向)=(5,−2)·(转向,直行)=(−2,5)·(转向,转向)=(0,0)。<br>纯策略纳什均衡有两个：(直行,转向)和(转向,直行)。谁先亮牌谁有优势——但若双方都亮"我一定直行"→双撞。</div>
+<div class="plain">斗鸡博弈的核心是<strong>承诺</strong>——一方如果能够以不可逆的方式公开宣告"我将绝不转向"（把方向盘焊死在直行位置并让对手亲眼看见），那么对手的最优反应就是立刻转向。焊死方向盘是绝对的占优策略——但前提是这个承诺真的不可逆。如果你只是张嘴说"我绝不转向"——对手可能不信，继续互相逼近直到有人心理崩溃。</div>
+
+<h3>3.4 猎鹿博弈——合作需要信任</h3>
+<div class="derive">两猎人可各自猎兔（独自完成得2）或合作猎鹿（需要两人都选猎鹿才成功各得4）。若一人猎鹿另一人跑去猎兔→猎鹿者空手得0而猎兔者得2。纯策略纳什均衡有两个：(猎鹿,猎鹿)帕累托优，(猎兔,猎兔)风险小。<br>猎鹿博弈精确地刻画了"合作需要足够的相互信任"这一命题——只要你对对方有一丝怀疑（他可能选兔抛下我），你理性的保险策略就是自己猎兔。</div>
+</div>
+
+<!-- ====== 第四章：动态博弈 ====== -->
+<div class="divider"></div>
+<h2 id="c4">第四章 动态博弈与子博弈完美均衡——序贯行动的威力</h2>
+<div class="chapter">
+
+<h3>4.1 博弈树与逆向归纳法</h3>
+<div class="def-box"><strong>扩展式（Extensive Form）博弈</strong>——用博弈树表达：决策节点（谁在什么时候选）、分支（每个可选的行动）、终端节点（所有行动完成后双方的最终收益）。<strong>逆向归纳法（Backward Induction）</strong>——从博弈树的最后一个决策节点开始，在那个节点上计算决策者的最优选择；然后退到倒数第二个节点，将前面已确定的最优选择代入；一直退到整棵树的起点。</div>
+<div class="plain"><strong>通俗拆解：</strong>你和朋友在玩一个游戏——你先拿一个蛋糕切两块，然后他先选。你怎么切？你有一个秘技——先推演他在看到你的刀痕之后会做出什么选择。你如果切了90%和10%两块——他一定拿90%那一块。所以你唯一能让两人都满意的切法是50%-50%。先动者在逆向推算了后动者的每一步最优反应之后，<strong>已经在他的第一刀里把自己的利益和后手者的利益做了一个最优的均衡</strong>。</div>
+
+<h3>4.2 斯塔克尔伯格产量领导模型</h3>
+<div class="derive">企业1（领导者）先选产量q₁→企业2（追随者）观察到q₁后选q₂。需求P=a−bQ，MC₁=MC₂=c。<br>逆向归纳：先求追随者的最优反应→π₂=(a−b(q₁+q₂)−c)q₂→∂π₂/∂q₂=0→q₂*=(a−c−bq₁)/(2b)。领导者将此最优反应代入自身利润→max π₁→q₁*=(a−c)/(2b)，q₂*=(a−c)/(4b)。<br>对比古诺同时决策均衡q₁=q₂=(a−c)/(3b)：领导者产量更大、利润更高。这就是<strong>先动优势</strong>——通过不可逆的产量承诺迫使追随者出让市场份额。</div>
+
+<div class="canvas-wrap"><canvas id="chart2" width="800" height="480"></canvas></div>
+<div class="fig-cap">图2：斯塔克尔伯格博弈树。根节点=企业1（领导者）先选产量q₁——中间决策节点=企业2（追随者）观察到q₁后选自己的最优q₂——由逆向归纳从最下层开始回推至根节点。SPNE条件：追随者在每一个子博弈（即无论q₁为何）都必须选择最优回应——空洞威胁（"不管你选什么我都扩产到让你亏本"）在子博弈完美检验下被剔除。</div>
+
+<h3>4.3 可信威胁与空洞威胁</h3>
+<div class="plain"><strong>核心鉴别：</strong>进入威慑博弈——一个垄断者面对潜在的进入者。"如果你进来，我会把价格降到亏损水平让你也活不了"——这个威胁如果只是口头上的，进入者算一下：垄断者真的执行这个威胁自己也大亏→它不是垄断者的最优选择→进入者可以不理它大大方方进来。但如果垄断者提前签了一份不可取消的超额扩产合同——这个威胁就变成了<span class="hl">可信承诺</span>——进入者一看垄断者已经锁定了无法拒绝降价的身位→就不进来了。空洞和可信之间的唯一区别：后动者是否已经通过一个不可逆的投入把"执行威胁"变成了自己的唯一最优选择。</div>
+
+<div class="case-box"><strong>【商业案例·Intel产能威慑】</strong>1990年代Intel持续超额建设晶圆厂（远远超过自身当前的需求）。这向AMD传递了一个极清晰的信号：AMD若想大规模进入CPU领域——Intel将立刻把闲置产能填满并以低价淹没市场——而且Intel已经为这个产能付了钱所以它执行降价的额外成本极低，根本不必犹豫。这就是不可逆产能投资的博弈论威慑模板。<br><strong>【日常案例·小孩和糖果】</strong>小孩对妈妈说"你再不给我买糖我就哭"。妈妈说"你哭吧——我在商场。"小孩算了一下：在这里哭五分钟妈妈不买，这个威胁对妈妈来说成本是零——继续不买。但如果在安静的教堂里，小孩一哭所有人向妈妈投来谴责的目光→妈妈的成本瞬间极大→买糖。同样的威胁在不同的旁立者结构下可信度完全不同。</div>
+</div>
+
+<!-- ====== 第五章：重复博弈 ====== -->
+<div class="divider"></div>
+<h2 id="c5">第五章 重复博弈——长期关系如何催生合作</h2>
+<div class="chapter">
+
+<h3>5.1 有限次重复与连锁店悖论</h3>
+<div class="plain">把囚徒困境重复10次——用逆向归纳从最后一次开始推。第10次=一次性的囚徒困境→双方必然坦白。第9次→双方知道第10次已经注定要背叛→第9次也没有未来合作价值→双方继续背叛……逆推到第1次→<strong>有限次重复不能催生合作</strong>——这就是塞尔顿的连锁店悖论（Selten's Chain Store Paradox）。理论推导的逻辑极美——但现实中的人并不会真的从第100步开始逆推——有限次重复悖论恰恰暴露了博弈论"无限理性+无限阶共同知识"假设在现实中的不适配。</div>
+
+<h3>5.2 无限次重复——针锋相对的爆发力</h3>
+<div class="derive"><strong>无限次重复囚徒困境中的合作条件：</strong>如果双方都采用触发策略（你合作我就继续合作；你背叛一次我将永久性反击背叛）→合作能持续的条件是贴现因子δ ≥ (b−a)/(b−d)，其中a=合作每期收益、b=一次背叛的短期暴利、d=双方都背叛后的惩罚期收益。<br>δ越接近1（未来越重要）→合作的可持续条件越容易满足。</div>
+<div class="plain">阿克塞尔罗德（1984）用计算机锦标赛发现，在无限次重复囚徒困境中最成功的策略就是一个极简的四字规则——<strong>针锋相对（Tit-for-Tat）</strong>：第一轮合作、此后每一轮复制对手上一轮的行徑。你善他就善、你恶他也恶——极简单、极清晰、极难被利用。针锋相对胜出的原因不是它"聪明"，是它同时满足了好合作、易报复、可饶恕（你只要重新合作他立刻重新合作）和极清晰（对手很快摸清）。</div>
+
+<div class="case-box"><strong>【商业案例·两家早餐店的默契】</strong>同一条街上的两家早餐店。A在第一天把豆浆从2元涨到3元→B看了一天发现客人并没有大量转向自己→第二天B也涨到3元。双方心照不宣——只要你不打压我，我也不打压你——双方的默契利润远比每天互相打价格战高。这就是无限次重复博弈中无声无息涌现的合作均衡。<br><strong>【大国案例·美苏冷战中的核威慑】</strong>双方都持有足以毁灭对方数次的核武器。任何一方的"第一次核打击"会换来对方的毁灭性还击——所以任何一方都没有先按按钮的一意孤行激励。这就是无限次重复的非一锤子买卖：今天的互不攻击是建立在"你对我出手的下一秒你也一样会被吞灭"这一预期之上的。</div>
+</div>
+
+<!-- ====== 第六章：寡头博弈与不完全信息 ====== -->
+<div class="divider"></div>
+<h2 id="c6">第六章 古诺 x 伯特兰 × 贝叶斯——寡头竞争与不确定对手</h2>
+<div class="chapter">
+
+<h3>6.1 古诺vs伯特兰——数量竞争vs价格竞争的对抗</h3>
+<div class="derive"><strong>古诺均衡：</strong>每个企业选产量+市场统一出清价格。双寡对称q*=(a−c)/(3b)，P*=(a+2c)/3。<br><strong>伯特兰均衡：</strong>企业选价格+消费者全部涌向最低价。即使只有两家→价格被竞争推到P=MC=c→利润→零。<br><strong>伯特兰悖论：</strong>按照伯特兰的逻辑，两寡头已经足以复制完全竞争，任何高于边际成本的定价都无法在均衡中维持——与现实中双寡头普遍存在正利润严重不符。</div>
+<div class="plain"><strong>破解悖论的四个出口：</strong>①产品差异化——你的店离我更近或我更喜欢你的包装→不完全同质→不是纯伯特兰。②产能限制——你报出极低价但你的工厂日产量只有一万件卖完就没了→囤货到涨价再卖等于拱手送市场。③重复互动——双方知道今天杀价明天将持续承受利润真空→默契代替了短期最大化。④信息滞后——你不知道对方的真实价格→试探性降价不会立刻拉走全部消费者。</div>
+
+<div class="canvas-wrap"><canvas id="chart3" width="800" height="480"></canvas></div>
+<div class="fig-cap">图3：古诺最优反应函数与纳什均衡交点。R₁(q₂)为企业1面对任何q₂的最优产量。R₂(q₁)为企业2面对任何q₁的最优产量。两线交点为纳什均衡——任何一方单独偏离最优反应线均降自身利润。古诺均衡价格高于边际成本>零利润——弥补了伯特兰悖论。</div>
+
+<h3>6.2 贝叶斯博弈——对手类型的不确定性</h3>
+<div class="def-box"><strong>不完全信息（Incomplete Information）</strong>——某一个参与人拥有关于自身类型（成本高低、风险偏好强弱、善意或敌对意图）的私有信息，对方只知道类型的概率分布。<strong>海萨尼转换（Harsanyi Transformation）</strong>——引入一个"自然"虚拟参与人在博弈之前先行随机抽取每个参与人的类型——将不完全信息博弈转化为不完美信息博弈。贝叶斯纳什均衡（BNE）——每个类型下的策略对自身来说是最优——且每个参与人对对手类型的信念在均衡过程中被一致化。</div>
+
+<div class="plain">一个高成本企业面对对手时不会像低成本企业那样有底气——它不能假装自己低成本因为假装没钱去买那批廉价原料。而对手在不知道这个企业的真实成本的情况下，只能用概率算期望——有可能对方成本低＝它可能猛扩产→我必须少量留力；也有可能对方成本高＝它不敢扩产→我可以多拿份额。贝叶斯博弈把"我不知道但是我会用概率分布去计算"这一现实加了回去。</div>
+
+<div class="case-box"><strong>【商业案例·并购竞标中的赢家诅咒】</strong>五家公司竞标同一块油田的开发权。每家有各自的钻探结果（私有信号），油田的真实价值对所有人一样但没人知道确切数字（共同价值）。出价最高者赢——但赢标者恰恰是所有人中信号最乐观或观测误差最大的一家——赢标即亏损的数学期望极高。理性竞标者必须将赢家诅咒内化——在信号估计值上做折扣——否则每一次赢标交易都在赔钱。<br><strong>【日常案例·二手车柠檬问题】</strong>卖家知道自己的车底细（类型）——买家只知道市场上有好车也有破车——买家的唯一理性出价=全市场混合平均→好车卖家全部不想卖→市场只剩破车。这是贝叶斯博弈在真实市场中极具破坏力的一个信息版本。</div>
+</div>
+
+<!-- ====== 第七章：演化博弈 ====== -->
+<div class="divider"></div>
+<h2 id="c7">第七章 演化博弈——当理性被生物种群取代</h2>
+<div class="chapter">
+
+<h3>7.1 演化稳定策略ESS——变异入侵的门神</h3>
+<div class="def-box"><strong>演化稳定策略（Evolutionarily Stable Strategy, Maynard Smith 1973）</strong>——如果一个种群中绝大多数成员都采用某个策略，而任何一小撮变异者（采用不同策略）无法在种群中获得比原策略更高的适应度——那么原策略就是演化稳定的。ESS是比纳什均衡更强的稳定性概念——<strong>ESS ⊂ 纳什均衡</strong>。</div>
+<div class="plain">鹰鸽博弈：鹰派正面冲突有50%胜率但若对手也是鹰派则双双重伤。鸽派从不主动打。当种群中鹰派极少→鸽鸽太平→鹰派入侵占蛮大好处→鹰比例上升→鹰太多相互打伤频频→鸽派因避免冲突而重占优势→鸽比例回升。均衡=种群中鹰的稳定比例p*=V/C（其中V=胜利收益，C=冲突成本）。当V=C时约50%的鹰和50%的鸽处于动态平衡。</div>
+
+<h3>7.2 复制动力学——策略的频率如何随时间演化</h3>
+<div class="derive">复制动力学（Replicator Dynamics）：策略i的增长率 = 策略i的平均适应度 − 种群的平均适应度。高于平均的行为被复制，低于平均的行为萎缩直至消除。任何严格纳什均衡都是复制动力学的渐进稳定不动点——但非所有的纳什均衡都是演化可达的。那些被严格占优压倒的策略在演化中会永远消失。</div>
+
+<div class="canvas-wrap"><canvas id="chart4" width="800" height="480"></canvas></div>
+<div class="fig-cap">图4：鹰鸽博弈的演化稳定均衡相位图。p=种群中鹰的比例。p*>0为混合ESS——种群在p*处稳定（偏离p*→选择压推回p*）。若初始p过高→鹰内部互相伤害→鸽获相对优势→p回落。若p过低→鸽被鹰轻易掠夺→鹰比例回升→系统在p*处自稳定。</div>
+
+<div class="case-box"><strong>【社会案例·排队插队的演化】</strong>如果插队者每次插队都成功+不受任何惩罚→插队收益>排队成本→"插队策略"的适应度高于老实排队→插队者在人群中不断增多→最终所有排队场所必须由强力第三方（保安/罚款）人为改变收益函数——否则演化自动导向插队泛滥。<br><strong>【商业案例·市场价格战的演化收敛】</strong>在没有监管的寡头市场中，率先降价的企业获得市场份额暴涨（收益高→策略复制）。几轮之后所有企业都学会了频繁降价→囚徒困境的低价常态成为ESS——任何一家试图回归高价（单方变异）都会被低价者抢走大量客户而亏损。</div>
+</div>
+
+<!-- ====== 第八章：零和与机制设计 ====== -->
+<div class="divider"></div>
+<h2 id="c8">第八章 零和博弈与机制设计——从分析博弈到设计规则</h2>
+<div class="chapter">
+
+<h3>8.1 极小极大定理</h3>
+<div class="derive"><strong>二人零和博弈：</strong>u₁ + u₂ = 0（你的得就是我的失）。冯·诺依曼极小极大定理（1928）：v = max_{σ₁} min_{σ₂} u₁(σ₁,σ₂) = min_{σ₂} max_{σ₁} u₁(σ₁,σ₂)。行玩家确保的最低受益=列玩家能限制的最高受益=博弈的值。公式含义：在零和对抗中，双方若能以最优混合策略随机化——行玩家能把自己的"最坏情况"推到最优，同时列玩家也能把对方的"最好情况"压缩到极限——二者恰好相等。</div>
+<div class="plain"><strong>通俗拆解·足球点球：</strong>射门的人选左或右。守门员也选左或右。如果射门人永远射同一个方向→守门员数据团队发现之后就全中→你一个球也踢不进去。你唯一的均衡策略是以左右各50%（或根据实际能力微调些微比例）的概率随机出脚——守门员在左右方向之间无法取得任何统计学优势。这就是极小极大策略在体育中的直接应用——<span class="gh">不可预测=最优防御</span>。</div>
+
+<h3>8.2 机制设计——逆向工程博弈规则</h3>
+<div class="def-box"><strong>机制设计（Mechanism Design）</strong>——传统博弈论给定规则→寻找均衡。机制设计=逆向：给定想要达到的社会最优结果→设计规则使得参与人在追求自身私利时自动收敛到那个最优结果。代表作=维克里拍卖：报价最高者赢但仅支付第二高报价→每个人真实报出自己估值是占优策略。</div>
+<div class="plain">维克里拍卖的精妙：你报得比自己的真实估值低→如果第二高报价介于你的报价和真实估值之间→你本来可以赢但你因为报低了输了=受损。你报得比估值高→如果第二高价也处于你的报价与真实估值之间→你赢了却必须支付超过自己估值的第二高报价=亏损。只有<b>真实报出自己估值</b>（b*=v）才能同时消除这两种缺憾。这就是激励相容——在给自己设计的规则中，诚实是所有选项中的最优选择。</div>
+
+<div class="case-box"><strong>【商业案例·Google关键词竞价排名】</strong>广告主为关键词出价——点击量最高的位置给最高出价者但他的实际花费=第二高出价+1美分。这就是广义二阶价拍卖——它继承了维克里拍卖的激励相容属性——每个广告主的最优策略都是真实报出自己为每一次点击愿意支付的最高价。<br><strong>【日常案例·AA制中的点菜博弈】</strong>一群人AA制聚餐——每个人菜单上看什么最贵就点什么→总账单上天。机制设计解=各自付款各自点的——每个人自动面对"我点的我付"。规则一变众决策立刻自利到合理。</div>
+</div>
+
+<!-- ====== 第九章：跨章对比 ====== -->
+<div class="divider"></div>
+<h2 id="c9">第九章 全书核心对比模块</h2>
+
+<h3>9.1 博弈分类全矩阵</h3>
+<table>
+<tr><th>维度</th><th>静态</th><th>动态</th></tr>
+<tr><td><strong>完全信息</strong></td><td>纳什均衡(NE)：囚徒困境·古诺·斗鸡</td><td>子博弈完美均衡(SPNE)：斯塔克尔伯格·进入威慑·鲁宾斯坦讨价还价</td></tr>
+<tr><td><strong>不完全信息</strong></td><td>贝叶斯纳什均衡(BNE)：一级密封拍卖·柠檬市场</td><td>完美贝叶斯均衡(PBE)：信号博弈(Spence教育模型)</td></tr>
+<tr><td><strong>无限重复</strong></td><td colspan="2">民间定理(Folk Theorem)→任何帕累托优于最小最大收益的组合在δ足够大时均可为SPNE</td></tr>
+<tr><td><strong>演化</strong></td><td colspan="2">ESS+复制动力学→不依赖理性的均衡可达性</td></tr>
+</table>
+
+<h3>9.2 全书易混淆高频概念</h3>
+<div class="warn">
+<strong>占优均衡 ≠ 纳什均衡：</strong>严格占优均衡蕴含NE——但NE不需要占优。多重NE的博弈里没有任何一个人有任何占优策略。<br>
+<strong>纯策略 ≠ 混合策略：</strong>纯策略是混合策略的一个特例（某个动作概率为1其余为零）。没有纯策略NE的博弈仍存在混合策略NE。<br>
+<strong>SPNE ≠ NE：</strong>SPNE必须是NE但反向不成立。空洞威胁下的NE在子博弈中不可置信从而不是SPNE。<br>
+<strong>有限重复 ≠ 无限重复：</strong>有限次（已知终点）的囚徒困境由于逆向归纳的逆推崩塌严格不支持合作。无限次可通过针锋相对支撑合作。<br>
+<strong>零和 ≠ 非零和：</strong>零和博弈中minimax=v且任何NE的收益都是v。非零和博弈中多重均衡的收益可以完全不同。现实中的大多数博弈为非零和。
+</div>
+
+<h3>9.3 博弈论与《道德经》/《国富论》/行为经济学的三向对话</h3>
+<div class="derive">
+<strong>博弈论 vs 《道德经》：</strong>"不争"=放弃零和博弈转向更高维的非零和价值创造（夫唯不争故天下莫能与之争="我在不争这个维度里没有人能与我竞争"）。"弱者道之用"=柔性长期策略在无限次重复博弈中系统性地高于单次权力最大化的刚硬策略。将欲歙之必固张之=对周期反转的博弈论直觉——对方扩张到极限时的反转窗口恰是你零成本入场的最佳时机。上善若水·不争先而处众人之所恶=在博弈中占据无人竞争的低位=零竞争者的垄断利润。<br>
+<strong>博弈论 vs 《国富论》：</strong>斯密的看不见的手=千万个体在完全竞争中的自利行为无意间达到社会最优——这正是纳什均衡在完全竞争市场中的帕累托最优性证明。古诺/伯特兰模型解释了为什么在非完全竞争场景下这只看不见的手会失效。斯密对重商主义的批判="限制进口"是一个国家层面的负和博弈——保护者获利、全体消费者买单——消费者的人数远多于被保护的生产者但每人分摊的损失太小不足以组织政治反抗——这就是奥尔森"集体行动逻辑"在二百年前的先声。<br>
+<strong>博弈论 vs 卡尼曼前景理论：</strong>博弈论标准假设=完全理性+期望效用最大化+无限阶共同知识。行为经济学用大量实验室和田野实验证明：真实人的效用函数是参考点依赖（非绝对水平）、损失厌恶（损失的心理痛苦约两倍于同等收益的快感）、概率权重非线性的（极小概率被过重、中等概率被过度折价）。有限理性下的均衡往往偏离纳什均衡的精确预言——这使得真实谈判中的最后通牒博弈不是理论预言的99:1而是最终约50:50被接受。博弈论的精确框架+行为修正=完整的真实世界博弈分析工具链。
+</div>
+
+<!-- ====== 第十章：真实博弈实战 ====== -->
+<div class="divider"></div>
+<h2 id="c10">第十章 博弈六步法——从理论到实战的完整操作手册</h2>
+
+<h3>10.1 任何真实博弈的六步标准拆解</h3>
+<div class="derive"><strong>第一步·识别参与人：</strong>这件事的决策者是谁？所有直接相关人+间接受到溢出效应影响的人。<br>
+<strong>第二步·框定策略空间：</strong>每个人可选的实质性行动是什么？（注意：口头承诺与威胁不算策略除非它有不可逆的锁定机制）。<br>
+<strong>第三步·量化收益：</strong>把参与人面对的后果近似量化——为了能前后一致的推演，必须将所有后果折算成一个可比较的数值。<br>
+<strong>第四步·确定博弈类型：</strong>同时决策还是序贯？一次还是重复？零和还是非零和？有无私有信息？<br>
+<strong>第五步·求解均衡：</strong>按标准博弈论工具箱求解→占优→IESDS→纯策略NE→混合策略→逆向归纳SPNE→贝叶斯更新。<br>
+<strong>第六步·检验可信度：</strong>假设全理性是否成立？若共同知识可能不现实→回到有限理性的ESS/针锋相对去校准预测。</div>
+
+<h3>10.2 四种商业博弈的标准策略处方</h3>
+<div class="plain">
+<strong>①价格竞争（囚徒困境结构）：</strong>与你陷入囚徒困境的对手，你唯一能逃脱互残的方法是把这个博弈从一次性转化为无限次重复——引入长期合同、引入未来交易预期、引入"价格跟随机制"。单次价格博弈永远导向最低价的纳什均衡。<br>
+<strong>②新市场进入博弈（斗鸡博弈结构）：</strong>如果你是既有者——通过扩产或长期合同把"我不会退"的可信承诺做大。如果你是新进入者——在还不是既有者之前，先想办法让既有者的冲突成本比你更高（另选它的盲区进入）。<br>
+<strong>③产品研发博弈（智猪博弈结构）：</strong>小企业不要跟大企业拼研发总量——等大企业研发完成→在专利到期的第一时间做极致便宜的跟随品。大企业的正确回应=用专利丛林和互补资产将跟随者的"食槽"尽可能缩小。<br>
+<strong>④合作伙伴谈判（猎鹿博弈结构）：</strong>在进入合作之前就先与对方约定可验证的互相承诺——双方都在一开始就把沉没成本埋进去——使得背叛不再是每个人的独立最优选择。
+</div>
+
+<div class="case-box"><strong>【综合实战·外卖平台补贴大战的博弈论复盘】</strong>2014-2016年中国外卖平台大战=经典多寡头同时重复博弈。三巨头（美团·饿了么·百度外卖）同时陷入以下囚徒困境：每一方都知道如果三家都不补贴=全行业盈利；但任何一方单方面停止补贴=用户立刻被仍在补贴的对手吸走→市场份额崩塌。唯一的纳什均衡=三方持续补贴直到某些玩家的资本耗尽出局。最终百度外卖先离场（资本方停止供血→等同于无限次重复博弈中一方的贴现因子δ被外部打断）→出清为两强→两强不再需要过度补贴→均衡补贴额从"每单补贴10元"自然下降到盈亏平衡线附近。全过程的每一步都是教科书级的多方寡头博弈在现实中的展开。</div>
+</div>
+
+<!-- ====== 补充第十一章 ====== -->
+<div class="divider"></div>
+<h2 id="c11">第十一章 信号博弈与承诺的博弈论</h2>
+<div class="chapter">
+
+<h3>11.1 Spence教育信号模型——学历为什么值钱</h3>
+<div class="def-box"><strong>信号博弈（Signaling Game, Spence 1973）</strong>：劳动力市场中，求职者拥有私人信息（高能力或低能力）。雇主无法直接观察能力——只能观察学历这一信号。高能力者获取学历的"心理成本"远低于低能力者（高能力者学习轻松、低能力者极其痛苦）→同一个学历对两种类型的分离成本不同→<strong>分离均衡</strong>可以成立：高能力者选高学历→雇主看到高学历就给高工资；低能力者的痛苦程度不足以支撑它模仿同样的学历→雇主看到低学历就给低工资。</div>
+<div class="plain"><strong>通俗拆解：</strong>大学学位并不证明你具体学了什么在工作中能立刻用到的东西——它证明的是你能在四年里忍受极其枯燥和密集的智识训练。这是低能力值、低意志力者极难伪造的信号——分离成本极高。这就是为什么即使你毕业后找的工作和专业完全不对口，四年本科的品牌信号依然在给你发工资溢价。这不是系统的漏洞——这是博弈论精密运转的结果。</div>
+
+<h3>11.2 承诺的博弈论——为什么锁死自己反而是力量</h3>
+<div class="plain"><strong>反直觉的核心命题：</strong>在博弈中，约束自己的选择空间反而增加了你的谈判力。因为你对对手的威慑不是来自你能做什么，而是来自你<strong>不能做什么</strong>。如果你已经销毁了撤退的选择——对手知道你只能战斗——他的最优回应可能是屈服。但如果你还保留着撤退的自由度——对手会试探你的底线。博弈中的最高力量不是"我什么都能做"的灵活性，而是"我现在除了这一条路别的路我自己已经堵死了"的不灵活性。<br>这就是谢林（Schelling, 1960/诺贝尔经济学奖2005）的"绑住自己双手"策略——把自己的方向盘焊死、把舵锁死、当着对手的面烧掉自己的退路——唯一挡在他和他的目标之间的是他自己不怕死地站在那儿。这不是鲁莽——是经过计算的博弈论最优策略。</div>
+
+<div class="case-box"><strong>【历史案例·科尔特斯烧船】</strong>1519年科尔特斯率军登陆墨西哥之后——命令把全部船烧掉。退路彻底没有了——要么战胜要么全灭。随行的西班牙军人和阿兹特克人全部明白这不是激情这是信号——科尔特斯已将自己锁死在"绝不退"的纯策略上。阿兹特克人在博弈树上的每一个分支现在都必须考虑一个已经在起点自锁的对手——他们的威吓瓦解了。烧船就是有史以来最昂贵也是最有效的博弈论可信承诺之一。<br><strong>【商业案例·苹果的闪电接口】</strong>当苹果在iPhone上采用独家Lightning接口——它向全世界的配件厂传递的信息是"我们不退回到通用接口了"。配件厂的合理博弈选择是：既然苹果已经自锁——只能跟随它——整个第三方配件工业由此被锁定在苹果的私有标准上长达十年。</div>
+</div>
+
+<div class="divider"></div>
+<div class="summary">
+<h4>📋 全书十一章完整复盘</h4>
+<p><strong>博弈论的统一大逻辑链：</strong></p>
+<p>定义博弈三要素→ 剔除严格劣策略(IESDS)→ 求解纯策略NE→ 无纯策略NE转向混合策略求解→ 纳入序贯行动以逆向归纳求SPNE并剔除非可信威胁→ 拉长时间轴为无限次重复让针锋相对催生自发合作→ 对手私有信息用贝叶斯概率更新赋予BNE解→ 信号博弈中以分离均衡将质量在事前筛选出来→ 放宽理性以ESS与复制动力学替代理性计算→ 逆向工程——以机制设计让个体自利自动导向社会最优结果。</p>
+<p><strong>博弈论的最高实践洞察：</strong>在你决定自己的行动之前，先全部推演对手针对你每一种可能行动的全部最优反应——在那些反应已知的前提下重新校准自己的第一步。这一"递归思维"是博弈论区别于单体最优化数学最本质的特征。在每一次面对商业竞争、人际谈判、大国对局中问自己：<span class="hl">对方认为我会怎么做？基于这个预期对方打算怎么做？知道对方这个意图后，我最初的计划要如何调整？</span>这就是博弈论将"策略思维"内化为认知本能之后的最宝贵智力资产。</p>
+</div>
+
+<div class="summary">
+<h4>📋 全书八章完整复盘</h4>
+<p><strong>博弈论的统一大逻辑链：</strong></p>
+<p>定义博弈三要素（参与人·策略·收益）→ 剔除严格劣策略 → 求解纯策略NE → 无纯策略NE的博弈转向混合策略求解 → 纳入序贯行动用逆向归纳求SPNE并剔除非可信威胁 → 拉长时间轴为无限次重复让针锋相对催生自发合作 → 对手的私有信息（成本/意图/偏好）用贝叶斯概率更新赋予BNE解 → 放宽理性并考虑人口动态—ESS与复制动力学替代理性计算 → 最后逆向工程——设计博弈规则让个体自利自动导向社会最优。</p>
+<p><strong>博弈论的最高实践洞察：</strong>在你决定自己的行动之前，先全部推演对手针对你每一种可能行动的全部最优反应——在那些反应已知的前提下重新校准自己的第一步。这一"递归思维"是博弈论区别于单人的最优化数学最本质的特征。在每一次面对商业竞争、人际谈判、大国对局中问自己：<span class="hl">对方认为我会怎么做？基于这个预期对方打算怎么做？知道对方这个意图后，我最初的计划要如何调整？</span></p>
+</div>
+
+<!-- ====== Chart.js ====== -->
+<script>
+(function(){
+function C(id,w,h){var c=document.getElementById(id);c.width=w;c.height=h;return{ctx:c.getContext('2d'),w:w,h:h}}
+function bg(c,w,h){c.fillStyle='#0d1117';c.fillRect(0,0,w,h)}
+
+// 图1: 纳什均衡核心直觉图
+(function(){
+var{ctx,w,h}=C('chart1',800,480);bg(ctx,w,h);
+var cx=w/2,cy=220;
+// 两个参与人圆圈
+ctx.fillStyle='#58a6ff';ctx.beginPath();ctx.arc(cx-180,cy,70,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#fff';ctx.font='bold 14px sans-serif';ctx.textAlign='center';ctx.fillText('参与人A',cx-180,cy+4);
+ctx.fillText('策略s₁',cx-180,cy+26);
+ctx.fillStyle='#e3b341';ctx.beginPath();ctx.arc(cx+180,cy,70,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#fff';ctx.fillText('参与人B',cx+180,cy+4);
+ctx.fillText('策略s₂',cx+180,cy+26);
+// 互指
+ctx.strokeStyle='#f85149';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(cx-115,cy-15);ctx.lineTo(cx+110,cy-15);ctx.stroke();
+ctx.beginPath();ctx.moveTo(cx+115,cy+15);ctx.lineTo(cx-110,cy+15);ctx.stroke();
+ctx.fillStyle='#f85149';ctx.font='bold 13px sans-serif';
+ctx.fillText('给定s₂→A最优回应s₁*',cx,cy-35);
+ctx.fillText('给定s₁→B最优回应s₂*',cx,cy+55);
+// 底部
+ctx.fillStyle='#e3b341';ctx.font='bold 16px sans-serif';
+ctx.fillText('纳什均衡: 任何人单方面偏离自身策略→收益不增',cx,cy+130);
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';
+ctx.fillText('囚徒困境(坦白,坦白) ←→ 古诺(最优反应线交点) ←→ 剪刀石头布(1/3,1/3,1/3)',cx,cy+160);
+})();
+
+// 图2: 斯塔克尔伯格博弈树
+(function(){
+var{ctx,w,h}=C('chart2',800,480);bg(ctx,w,h);
+var cx=w/2,cy=h/2;
+// 根节点
+ctx.fillStyle='#58a6ff';ctx.beginPath();ctx.arc(cx,60,22,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#fff';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.fillText('企1',cx,65);
+ctx.fillText('选q₁',cx,85);
+// 分支线
+ctx.strokeStyle='#30363d';ctx.lineWidth=1.5;
+ctx.beginPath();ctx.moveTo(cx-18,82);ctx.lineTo(cx-140,170);ctx.stroke();
+ctx.beginPath();ctx.moveTo(cx+18,82);ctx.lineTo(cx+140,170);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='11px sans-serif';
+ctx.fillText('q₁低',cx-100,130);ctx.fillText('q₁高',cx+80,130);
+// 中层节点
+function node(x,y,txt){ctx.fillStyle='#e3b341';ctx.beginPath();ctx.arc(x,y,18,0,Math.PI*2);ctx.fill();ctx.fillStyle='#0d1117';ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.fillText(txt,x,y+5)}
+node(cx-140,185,'企2');node(cx+140,185,'企2');
+ctx.fillStyle='#8b949e';ctx.font='10px sans-serif';ctx.fillText('选q₂',cx-140,210);ctx.fillText('选q₂',cx+140,210);
+// 下分支
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(cx-155,200);ctx.lineTo(cx-220,270);ctx.stroke();
+ctx.beginPath();ctx.moveTo(cx-125,200);ctx.lineTo(cx-60,270);ctx.stroke();
+ctx.beginPath();ctx.moveTo(cx+125,200);ctx.lineTo(cx+60,270);ctx.stroke();
+ctx.beginPath();ctx.moveTo(cx+155,200);ctx.lineTo(cx+220,270);ctx.stroke();
+// 终端
+ctx.fillStyle='#3fb950';ctx.font='bold 11px sans-serif';
+ctx.fillText('π₁*',cx-220,290);ctx.fillText('π₂',cx-220,310);
+ctx.fillText('π₁',cx-60,290);ctx.fillText('π₂*',cx-60,310);
+ctx.fillText('π₁',cx+60,290);ctx.fillText('π₂',cx+60,310);
+ctx.fillText('π₁*',cx+220,290);ctx.fillText('π₂*',cx+220,310);
+cntFillStyle='#f85149';ctx.font='bold 14px sans-serif';
+ctx.fillText('SPNE: 逆向归纳→在每个子博弈中追随者最优回应→领导者在根节点最大化',cx,370);
+ctx.fillText('领导者先动优势: q₁*=(a-c)/(2b) > 古诺对称q=(a-c)/(3b)',cx,395);
+})();
+
+// 图3: 古诺最优反应线
+(function(){
+var{ctx,w,h}=C('chart3',800,480);bg(ctx,w,h);
+var ml=80,mr=40,mt=40,mb=70,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';ctx.textAlign='center';
+ctx.fillText('q₂',w/2,h-18);ctx.fillText('q₁',20,h/2);
+// R1
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+30,h-mb-30);ctx.lineTo(ml+350,mt+30);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.font='bold 13px sans-serif';ctx.fillText('R₁(q₂)',ml+300,mt+20);
+// R2
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+40,mt+30);ctx.lineTo(ml+350,h-mb-30);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('R₂(q₁)',ml+300,h-mb-20);
+// 交点
+var nx=ml+190,ny=mt+180;
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(nx,ny,6,0,Math.PI*2);ctx.fill();
+ctx.setLineDash([4,4]);ctx.strokeStyle='#f85149';
+ctx.beginPath();ctx.moveTo(nx,ny);ctx.lineTo(nx,h-mb);ctx.stroke();
+ctx.beginPath();ctx.moveTo(nx,ny);ctx.lineTo(ml,ny);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#f85149';ctx.font='bold 14px sans-serif';ctx.fillText('N 纳什均衡',nx+40,ny-8);
+ctx.fillText('q₁*=q₂*=(a-c)/(3b)',nx+40,ny+18);
+})();
+
+// 图4: 鹰鸽ESS
+(function(){
+var{ctx,w,h}=C('chart4',800,480);bg(ctx,w,h);
+var ml=80,mr=40,mt=40,mb=55;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb-10);ctx.lineTo(w-mr,h-mb-10);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='13px sans-serif';ctx.textAlign='center';
+ctx.fillText('鹰的比例p',w/2,h-10);ctx.fillText('适应度',20,h/2);
+// 鹰适应度线
+ctx.strokeStyle='#f85149';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+20,h-mb-30);ctx.lineTo(ml+500,mt+30);ctx.stroke();
+ctx.fillStyle='#f85149';ctx.font='bold 12px sans-serif';ctx.fillText('W(鹰)',ml+460,mt+20);
+// 鸽适应度线
+ctx.strokeStyle='#3fb950';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+20,mt+100);ctx.lineTo(ml+480,h-mb-150);ctx.stroke();
+ctx.fillStyle='#3fb950';ctx.fillText('W(鸽)',ml+430,h-mb-170);
+// ESS交点
+var ex=ml+260,ey=mt+160;
+ctx.fillStyle='#e3b341';ctx.beginPath();ctx.arc(ex,ey,6,0,Math.PI*2);ctx.fill();
+ctx.setLineDash([4,4]);ctx.strokeStyle='#e3b341';
+ctx.beginPath();ctx.moveTo(ex,ey);ctx.lineTo(ex,ey+160);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#e3b341';ctx.font='bold 14px sans-serif';ctx.fillText('p* ESS稳定',ex+20,ey-8);
+// 箭头
+ctx.fillStyle='#e3b341';ctx.font='13px sans-serif';
+ctx.fillText('p<p*→鸽被掠→鹰增',ml+80,mt+120);
+ctx.fillText('p>p*→鹰互残→鹰减',ml+360,mt+95);
+})();
+
+// TOC
+var toc=document.getElementById('toc');
+var hs=document.querySelectorAll('h2[id]');
+hs.forEach(function(h){var a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent.trim();toc.appendChild(a)});
+})();
+</script>
+
+</main>
+</body>
+</html>

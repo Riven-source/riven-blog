@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《大国的兴衰》宏观长周期博弈 · 五百年霸权更替 · 国力制衡体系</title>
+<style>
+:root{
+  --bg:#fcfbf6;--card:#fff;--border:#d0ccc0;--text:#141210;--sub:#484030;
+  --accent:#2a3a5a;--accent2:#5a2a1a;--code-bg:#f4f0e8;
+  --warn-bg:#fff6e8;--warn-text:#6b2800;--table-s:#f6f2e8;
+  --side-w:195px;--navy:#1a2a4a;--gold:#8a6a20;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.88;font-size:14.5px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#0c1014;color:#98a0a8;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#c8d0d8;font-size:12px;margin-bottom:12px;border-bottom:1px solid#283038;padding-bottom:8px}
+.sidebar a{display:block;color:#8090a0;text-decoration:none;font-size:10.5px;padding:3px 0;transition:color .2s}
+.sidebar a:hover{color:#6090c0}
+.main{margin-left:var(--side-w);max-width:860px;padding:32px 42px}
+h1{font-size:22px;text-align:center;margin-bottom:4px;color:#0a1018}
+.subtitle{text-align:center;color:var(--sub);font-size:12px;margin-bottom:32px}
+h2{font-size:18px;color:var(--accent);margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14.5px;color:var(--accent2);margin:24px 0 8px}
+h4{font-size:13px;color:#2a2818;margin:14px 0 6px}
+p{margin:7px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:10px 0}
+.def{background:#f2f4f8;border-left:4px solid var(--navy);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:13px}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:14px 18px;margin:10px 0;border-radius:5px;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:12px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:12px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:10.5px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:10px 14px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:var(--warn-text)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:#e0dcd0;padding:7px 9px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:7px 9px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#f8f8fc;border:2px solid var(--accent);border-radius:7px;padding:16px;margin:18px 0}
+.summary h4{color:var(--accent);margin-bottom:5px}
+.summary ul{padding-left:16px;font-size:12px}
+.compare th:first-child{background:#d8d4c8}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:14px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:860px){.sidebar{display:none}.main{margin-left:0;padding:10px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>🌍 大国的兴衰<br>长周期博弈体系</h3>
+  <a href="#c1">一、大国兴衰核心命题</a>
+  <a href="#c2">二、哈布斯堡西班牙</a>
+  <a href="#c3">三、荷兰黄金时代</a>
+  <a href="#c4">四、法国争霸之路</a>
+  <a href="#c5">五、不列颠帝国</a>
+  <a href="#c6">六、美苏冷战</a>
+  <a href="#c7">七、经济与军事制衡</a>
+  <a href="#c8">八、霸权更替周期规律</a>
+  <a href="#c9">九、当代大国博弈投射</a>
+  <a href="#c10">十、兴衰共性规律提炼</a>
+</nav>
+
+<main class="main">
+
+<h1>《大国的兴衰》宏观长周期博弈体系</h1>
+<p class="subtitle">The Rise and Fall of the Great Powers · Paul Kennedy · 1987<br>
+五百年的经济基础与军事制衡 · 纯Canvas可视化 · 零外部依赖</p>
+
+<div class="def"><strong>肯尼迪的核心命题</strong>——《大国的兴衰》以一个简洁得近乎残酷的公式概括了五百年来全部大国的命运：一国经济实力的增长速度与其军事义务的增长速度之间的不平衡，是帝国衰弱和崩溃的最深根源。每当一个大国将过多的社会财富从生产性投资转移至军事开支→经济增速放缓→它相对其他竞争对手的优势缩小→最终被后发强国超越——肯尼迪用五百年间的西班牙、荷兰、法国、英国和冷战中的美苏一连串历史数据来验证这同一个命题。</div>
+
+<!-- ====== 一 ====== -->
+<h2 id="c1">一、大国兴衰的核心命题——经济基础与军事义务的根本张力</h2>
+
+<div class="def"><strong>帝国过度扩张（Imperial Overstretch）</strong>——肯尼迪定义的大国衰落的通用路径：一个大国在其鼎盛时期承担了过多的海外军事承诺——这些承诺的总成本超过了它经济自身增长的速率→国家将越来越多资源从生产性投资抽入非生产性军事支出→经济增长率系统性被压制→数十年的累积效应表现为「相对衰落」——不是在绝对意义上变穷了，而是在与竞争对手的比较中从第一逐渐滑落。</div>
+
+<h3>1.1 肯尼迪模型的核心变量</h3>
+<div class="derive">大国兴衰的四个核心变量：
+
+变量一·经济基础（Economic Base）
+  一国在全球制造业产出中的份额→是全部军事开支和外交影响力的终极支撑
+  肯尼迪：「一个大国的经济实力与其军事力量的规模存在非常紧密的正相关」
+
+变量二·军事负担（Military Burden）
+  军费占GDP/GNP的比例→每增加一个百分点→该国的生产性投资就减少一个百分点
+  → 长期效果：军事负担越久的国家→经济增长率越低于竞争对手→最终被超越
+
+变量三·相对增长率差（Differential Growth Rate）
+  绝对GDP在长期内并不重要——重要的是两个或多个竞争者之间的相对增速差
+  → A国每年增长3%，B国每年增长5%→五十年后B国从不到A国一半反超A国——即使A国的绝对GDP也在持续增加！
+  → 大国衰落的「相对性」：不是A变穷了，是B拥有了更多的制造业产出用作军事开支的财政基础
+
+变量四·技术-制度转换效率
+  一国将经济资源转化为有效军事能力的技术和制度效率
+  经济总量大≠军事有效——需要有效的税制+高效的军购制度+灵活的战略规划</div>
+
+<div class="chart-wrap"><canvas id="kennedyModel" width="600" height="290"></canvas>
+<div class="fig-cap">图1：肯尼迪大国兴衰核心模型——经济基础·军事负担·相对增速·技术转换效率四变量的交互博弈，基于《大国的兴衰》核心论述复刻。核心推演：经济增速相对于军事开支增速的相对速度差=大国兴衰的最深层驱动因子。四个变量中经济基础是自变量的核心，军事负担是负反馈的放大器，增速差是长期相对变化的倍增器。</div></div>
+
+<div class="summary"><h4>📋 第一模块复盘</h4>
+<ul><li>帝国过度扩张=军事承诺的增速>经济产出增速→长期累积→相对衰落</li><li>四变量：经济基础·军费负担·相对增速·技术制度转换效率</li><li>关键洞察：不是绝对变穷——是相对于竞争对手的对比优势在几十年中被缓慢侵蚀殆尽</li></ul></div>
+
+<!-- ====== 二 ====== -->
+<h2 id="c2">二、哈布斯堡西班牙——帝国过度扩张的第一模板</h2>
+
+<div class="def"><strong>西班牙帝国的悖论（16世纪）</strong>——查理五世和腓力二世的西班牙从美洲殖民地的金银矿中获得了史无前例的财富，却在一个半世纪内从欧洲最强大的帝国衰落为二流国家。肯尼迪将这作为帝国过度扩张的原型：西班牙同时在荷兰、地中海、大西洋和美洲大陆上卷入多条付出远大于回报的战争前线——其从美洲流入的白银再多也填不满这些战争的黑洞。</div>
+
+<h3>2.1 西班牙衰落的量化解剖</h3>
+<div class="derive">西班牙帝国的财政炸弹——四重引爆机制：
+
+① 美洲白银的诅咒——短期的天降巨财成了长期的经济毒药
+  每年从美洲运入塞维利亚港的巨大白银→不是投入国内的制造业和农业技术升级
+  →而是直接偿付了尼德兰(荷兰)战争、地中海对奥斯曼的战事、无敌舰队对英远征的全部军费
+  → 白银没有留在国内滋养本国经济——它直接流入欧洲其他国家的银行和金库
+  → 西班牙成了「白银的过境管道」——天量的贵金属只是从美洲短暂经过，连一点滞留都没有
+
+② 持续多条战线的结构性透支
+  同时卷入：荷兰八十年独立战争(1568-1648)、地中海对奥斯曼帝国、大西洋对英私掠船、
+  美洲殖民地的持续防卫——任何一个单独前线都可能耗尽一个正常国家的兵力
+  → 四条同步的后果=财政体系被永久地压在极限运转——每一次新的军事远征
+    都需要提前预支未来数年还没到手的下一批美洲运银船的收入
+
+③ 国内产业被挤出式破坏
+  大量现金注入→严重通胀(价格革命)→西班牙国内制造业因通胀变得毫无竞争力
+  → 本国商品太贵→从荷兰英国法国进口一切工业制品→西班牙自己的产业凋零
+  → 到了17世纪中叶西班牙的羊毛纺织厂已大量关闭→失去了几乎整个本土制造业基础
+
+④ 绝对衰落——从第一变成二流
+  1600: 西班牙仍为欧洲最强大国
+  1659: 比利牛斯条约→西班牙被迫割让领土给法国→欧洲大陆霸权的终结
+  → 从顶峰到衰落约六十年—相对衰落在每一个十年中增量，最终累积为不可逆转的定退</div>
+
+<div class="summary"><h4>📋 第二模块复盘</h4>
+<ul><li>白银诅咒=美洲财富不反哺本土生产→全用于无限战争→资源过境、国内赤字</li><li>多线战争+通胀破坏本土产业+白银过境三重锁→六十年内从霸权顶峰坠落</li></ul></div>
+
+<!-- ====== 三 ====== -->
+<h2 id="c3">三、荷兰——商业帝国的高效与天花板</h2>
+
+<div class="def"><strong>荷兰黄金时代（17世纪）</strong>——荷兰在短短几十年间从反抗西班牙统治的小共和国崛起为全欧洲最富裕、最先进的海上贸易帝国。它的特殊之处在于：荷兰的国力几乎不基于领土的大小或人口的多寡，而是完全基于高效的金融系统、全球贸易网络和海军的质量。</div>
+
+<h3>3.1 荷兰模式的崛起与极限</h3>
+<div class="derive">荷兰崛起的四大支柱：
+
+① 阿姆斯特丹金融体系的全球领先——世界第一家中央银行、第一家股票交易所
+  阿姆斯特丹汇兑银行(Wisselbank, 1609年建立)→稳定的货币体系+低息贷款
+  → 全欧洲的资本涌入荷兰→荷兰政府可以以低于竞争对手数个百分点的利息率借款
+  → 这种金融优势在长时段战争中的意义：利息成本差×数十年×巨量本金=天文总数的军费优势
+
+② 海上马车夫——全球贸易网络
+  荷兰拥有全欧洲最多的商船吨位→控制波罗的海的谷物贸易+亚洲的香料贸易
+  → 商业利润再投资于海军造船厂→保持海军的技术优势
+
+③ 荷兰衰落的根本——人口与领土的上限锁死
+  荷兰的最大弱点=幅员小→总人口始终在一两百万左右→无论金融·商业多么高效——
+  只要对方法国或英国在军事上全海岸封锁→荷兰的贸易立即瘫痪
+  → 第三次英荷战争(1672-1674)证明了这一上限：荷兰海军极其勇敢——
+    但英法联军从陆路和海路同时压境阿姆斯特丹时荷兰的整个商业结构处于要被摧毁的边缘
+
+④ 路易十四法国全面战争对荷兰的最终消耗
+  荷兰为了对抗法国的陆地扩张→被迫放弃低成本的海军战略→投入巨资构建陆军
+  → 这背离了荷兰的根本竞争优势(海军·商业)→使荷兰陷入了和西班牙一样的陆地军备竞赛</div>
+
+<div class="summary"><h4>📋 第三模块复盘</h4>
+<ul><li>荷兰=金融·商业·海军的最高组合效率→小国规模的优势极致化</li><li>天花板=人口+土地不可扩→大国的全面陆海军竞赛→荷兰被拉入不具备优势的地面消耗战</li></ul></div>
+
+<!-- ====== 四 ====== -->
+<h2 id="c4">四、法国——拥有欧洲最强资源却从未完全打赢大棋局</h2>
+
+<div class="def"><strong>法国的悖论（1661-1815）</strong>——法国在路易十四至拿破仑的约150年间始终是欧洲人口最多、陆军最强的大国，却始终未能将之转化为稳定的欧洲霸权。肯尼迪将法国作为「经济基础优渥→但反复被过度军事消耗所抵消」的典型反面教材。</div>
+
+<h3>4.1 法国的反复透支循环</h3>
+<div class="derive">法国的四重失败模式：
+
+① 路易十四——人口优势被无限战争消耗殆尽
+  1661-1715年路易在位的54年间约有35年在战争
+  → 每次战争都给法国留下巨额的债务→西班牙王位继承战争结束时
+    法国的国债年利息已吞噬了全部税收的绝大部分→只得在和平年份极缓慢还债
+  → 路易十四死时法国从欧洲最富变成欧洲债务最高的国家
+
+② 拿破仑——天才的个人将法国国力导出最后的极限值
+  奥斯特里茨战役后的法国的版图在全欧洲扩张到前所未有→
+  但拿破仑每次胜利→法国都需驻军到新征服领土→军事占领的开支无人支付→
+  法国没有能力消化每一次「胜利」
+  → 1812年侵俄→60万法军→撤回的只剩约2万→兵役耗尽法国一代青年
+
+③ 法国在历次重大战后和会上被制度性地「压回」——反法同盟的持续存在
+  每次法国在欧洲战场上获胜→英国立刻出钱组织新的反法同盟→法国面对的不是单一对手，
+  而是一个不断被英国财力再聚合的持续变换的成本同盟→法国以一敌多→单独承受持续的均势力量
+
+④ 法国体制的天花板——旧制度下的财税效率远不及英国
+  凡尔赛宫廷的行政能力弱于伦敦的议会→法国明明比英国有更多的人口和更大的土地，
+  但国王能有效征收上来的税收远不及英国按经济活动比例抽取的税→战争潜力无法被经济转化为有效战力</div>
+
+<div class="summary"><h4>📋 第四模块复盘</h4>
+<ul><li>法国=最强陆军资源在150年内被无限的战略消耗磨破</li><li>失败模式=连年战争→债务→战后虚弱→均势同盟的反复叠加</li></ul></div>
+
+<!-- ====== 五 ====== -->
+<h2 id="c5">五、不列颠帝国——海军霸权与全球帝国的兴衰</h2>
+
+<div class="def"><strong>大英帝国（18-20世纪初）</strong>——肯尼迪将英国作为「相对最成功」的大国案例：它最接近于避免大陆争霸的军事陷阱，仅将其陆军投入规模可控的殖民地小规模战争，并将本国绝大部分国力用于打造无与伦比的海军——以海洋霸权支持全球贸易网和殖民地体系，并由贸易利润反哺海军。</div>
+
+<h3>5.1 英国霸权模式的精明均衡</h3>
+<div class="derive">英国相对成功的三重均衡：
+
+① 海军=资本防御+贸易航线保护器 → 非纯粹消耗性的军事开支
+  英国海军≠大陆陆军的战争升级黑洞——海军保护了英国的全球贸易资产——
+  海军本身=英国最重要的资本投资：它为英国的商业保驾护航的生产性工具
+
+② 向大陆盟友输送资金(Subsidies)→用别人的士兵打自己的大陆战争
+  英国在历次欧洲大陆大战中的标准策略：组织大陆盟友(普鲁士/奥地利)形成陆军阵线→
+  英国出钱出舰封锁法国/德国的海岸、护航→不下地打主力陆战→
+  每一场欧洲大战结束，英国的资金、贸易航线、殖民地稳固完好；
+  而大陆小国陆军被严重消耗。这就是英国能连胜整个18世纪的制胜法宝
+
+③ 工业革命——在19世纪的绝对经济—军事综合优势
+  至约1860年英国一国拥有全球工业输出的大约40-45%→
+  这个巨大的制造业基础使英国可以在二三十年内建造任何其他国家无法匹敌的军舰
+  → 当英国经济基础最坚固时——没人能挑战大英的全球海上霸权
+
+④ 相对衰落与收缩
+  1870-1914：美德工业快速崛起→英国全球制造业份额从约32%跌破14%
+  二战后的英国已无法负担全球帝国→苏伊士运河危机(1956)→英国被迫接受美国代替其在全球行使超级大国职能</div>
+
+<div class="chart-wrap"><canvas id="britishCurve" width="580" height="280"></canvas>
+<div class="fig-cap">图2：英国1750-1950年国力演变——从工业革命巅峰（约1860年占全球制造业40%+）到二战后被美苏两极体系替代的全周期轨迹，基于《大国的兴衰》数据复刻。核心推演：英国的相对衰落=本国工业增速平稳而美国/德国的工业增速在19世纪末起飞→两者之间的制造业份额「剪刀差」迅速闭合并逆转→经济基础的重心从伦敦转向纽约。</div></div>
+
+<div class="summary"><h4>📋 第五模块复盘</h4>
+<ul><li>英国相对成功=海军+资本援助+殖民地→贸易利润回流再投海军</li><li>相对衰落=美德工业增速起飞→英国制造业份额从~32%→~14%→不可逆的移位</li></ul></div>
+
+<!-- ====== 六 ====== -->
+<h2 id="c6">六、美苏冷战——两个超级大国的相对马拉松</h2>
+
+<div class="def"><strong>冷战的双轨消耗（1945-1991）</strong>——肯尼迪1987年版本的惊人预见：当时的苏联仍在表面强固地存在，但他精确预判了「如果当前趋势持续，苏联的经济无法长期支撑它的全部军事承诺」——冷战=两个超级大国在长达四十多年的时间里一直保持在和平状态的准战时代——总军费完全耗在「准备打仗」上——不是耗在「真正的战争中」。</div>
+
+<h3>6.1 美国的优势与苏联的结构性崩溃</h3>
+<div class="derive">美苏的长时段竞赛——肯尼迪的预测逻辑(早在苏联解体前五年已明确预见)：
+
+美国的根本优势：
+  → 美国的GDP基数远大于苏联→同样的「军事负担比例」下美方的绝对可支配资金更大
+  → 美国的科技创新系统——从基础研究→硅谷模式→军企合作→技术快速迭代，
+    远比苏联计划经济体制中的军工系统有效
+  → 美国的地缘：大西洋和太平洋的双大洋屏障→美本土免遭敌人的大陆威胁
+
+苏联的结构性致命伤：
+  ① 经济总量远小于美国但军费比例远高于美国→苏联的军事负担=GDP的约15-25%
+     (相对于美国的约6-7%)→这在一个四十年的时间跨度中产生了持续的非对称内耗
+  ② 苏联不存在创新的自组织市场——苏联的每一台计算机和芯片都必须由国家指定→
+     计划经济的效率在从工业化阶段转向信息时代的瞬间急剧衰减
+  ③ 在「和平」的四十年中持续支撑着全部华沙条约组织的军事部署+阿富汗战争→
+     里根1980年代的「星球大战」又迫使苏联在已经透支的经济上再追投巨资
+  ④ 八十年代油价的暴跌→严重削减了苏联外汇的第一来源
+  上述因素没有一个是单一致命的——但它们叠加在一起在1985-1991的六年中从量变积累到了系统自毁</div>
+
+<div class="chart-wrap"><canvas id="coldWarModel" width="580" height="280"></canvas>
+<div class="fig-cap">图3：美苏冷战经济-军事双轨消耗模型——美国GDP基数大+军费比例低+技术创新高效 vs 苏联GDP基数小+军费比例极高+计划经济创新僵化，基于肯尼迪1987年预判框架复刻。核心推演：冷战=军费的长期相对消耗率在四十年中持续累积→苏联从1985年达到了临界率→此后五年内结构性解体。</div></div>
+
+<div class="summary"><h4>📋 第六模块复盘</h4>
+<ul><li>美国优势=更大经济基数+更低军费占GDP+更高效的技术创新体系</li><li>苏联致命伤=小GDP+高军费比(~15-25%)+计划经济创新僵结→40年非对称消耗</li></ul></div>
+
+<!-- ====== 七 ====== -->
+<h2 id="c7">七、经济与军事制衡——帝国的根本均衡公式</h2>
+
+<div class="def"><strong>经济军事制衡（Economic-Military Balance）</strong>——肯尼迪将大国战略中最核心的对立统一总结为：一国经济资源的运用必须在当前消费、生产性投资和军事开支三者之间持续分配。任何过度偏重军事开支的选择→都以牺牲未来的经济产出能力作为代价→当前的安全感以几十年后脆弱的经济根基为成本。</div>
+
+<h3>7.1 肯尼迪三难选择</h3>
+<div class="derive">大国资源的长期三难困境（无法同时最大化三项）：
+
+          社会消费(民生·福利·教育)
+               ╱  ╲
+              ╱    ╲
+生产性投资    ╲    ╱军事开支
+(制造·基建·研发) ╲  ╱(军队·武器·战争)
+
+任何一个大国每年的GDP必须在上述三大领域中分配。
+① 如果过度偏重「军事开支」(西班牙/苏联)→长期中侵蚀了生产性投资和民众的消费幸福→增长衰弱
+② 如果过度偏重「社会消费」(福利型→近年某些欧洲国家)→军事虚弱+未来投资不足
+③ 如果过度「生产性投资」优先→短期内民众的低消费水平会激发内部不满
+
+最优策略=将三腿的比例保持在一个可持续的区间—使其中任何一项不过分挤占另外两者
+  → 但历史上罕有大国在权力的顶峰时刻主动地减轻军事负担(傲慢让每一届统治者觉得自己例外)
+  → 所以肯尼迪模型的深层悲剧在于：帝国式的自我纠正往往来得太晚——当权力的快车冲到悬崖边缘、已无法转向时</div>
+
+<div class="chart-wrap"><canvas id="trilemma" width="560" height="280"></canvas>
+<div class="fig-cap">图4：大国资源分配的三难选择——社会消费·生产性投资·军事开支三者无法同时最大化，基于肯尼迪大国战略分析复刻。核心推演：任何国家每年的GDP必须在三个方向中分配——任何一项的过度都侵蚀另外两项、长期中削弱国力综合基础。历史上极少有大国在权力顶峰主动削减军事承诺→三难的自我纠正常常来得太晚→帝国的坠落是其在巅峰期自带的代价。</div></div>
+
+<div class="summary"><h4>📋 第七模块复盘</h4>
+<ul><li>三难选择=消费-投资-军事 每年必须三者分配→无解的最优</li><li>帝国自毁=在权力顶峰很难主动削减军费→傲慢使纠迟来→最终被历史纠正</li></ul></div>
+
+<!-- ====== 八 ====== -->
+<h2 id="c8">八、霸权更替周期规律——五百年的底层代码</h2>
+
+<div class="def"><strong>霸权更替周期（Hegemonic Cycle）</strong>——肯尼迪在五百年大国兴衰的历史数据中提炼出的周期规律：每约100-150年全球体系中的领先大国发生一次更替。在五百年中依次经历了西班牙(16c)→荷兰(17c)→法国挑战(17-18c)→英国(18-19c)→美国(20c)→？——每次更替都是由一个拥有更大经济基础的新兴国家在经历了长期、无声的制造业份额上升后逐步取代了老霸主。</div>
+
+<h3>8.1 霸权更替的通用法则</h3>
+<div class="derive">肯尼迪从中提炼的一套能在五百年历史中反复验证的长周期规律：
+
+规律一·经济地基规则
+  没有任何国家可以在自己的经济相对于竞争者正在下滑的时候维持住全球军事领先
+  → 19世纪末英国在制造业中对美国的差距=它在后来的两个世代里在海军上对被美国碾压
+
+规律二·后发者优势法则
+  新兴国家可以跳过老霸主已淘汰的过时技术→直接采用最先进的技术体系和工业组织
+  方式起步→从而以更少的时间完成工业化→而老霸主被自身庞大但已陈旧的工业基础拖累
+
+规律三·相对速度规则
+  大国的兴衰不是一场绝对速度的比赛——而是一场相对速度的马拉松
+  → A若每年以2%增长、B以4%增长→约36年B翻了一倍而A仅增长了约一倍为2倍→
+    再36年B从2倍到4倍而A从2倍仅到2.5倍→衰退表现为漫长时间中平缓的相对位移转变
+
+规律四·权力与义务的不可分割
+  任何大国在权力最鼎盛期都积累了大量全球承诺——这些承诺不会因为国力衰减而自动消失
+  → 「从强大到虚弱的过渡期是最危险的——你仍有义务、权利正在离开你」</div>
+
+<div class="chart-wrap"><canvas id="hegemonicCycle" width="620" height="290"></canvas>
+<div class="fig-cap">图5：五百年霸权更替全景图——1500-2000年各大国制造业份额的相对变化，基于《大国的兴衰》核心数据复刻。核心推演：西班牙→荷兰→英国→美国——每一次更替都是后起国在数十年累积的制造业份额超越前任霸主→当制造业份额被反超→军事霸权的削弱会在制造业的移位发生后约一代人的滞后期开始显现→最终不可逆。每一轮更替周期约100-150年。</div></div>
+
+<div class="summary"><h4>📋 第八模块复盘</h4>
+<ul><li>四规律：经济地基·后发者优势·相对速度竞赛·权利与义务的不可分割滞后</li><li>五百年四轮更替=制造业份额的相对移位→滞后期→军力地位的最终不可逆转移</li></ul></div>
+
+<!-- ====== 九 ====== -->
+<h2 id="c9">九、当代大国博弈——肯尼迪框架的21世纪映射</h2>
+
+<div class="def"><strong>中美关系与当代的多极竞合</strong>——肯尼迪在1987年的书中对当今世界的预测精准度在历史学著作中极为罕见。他以五百年的大跨度数据分析所勾画的「大国更替节奏」至今仍稳定地描述着全球力量分布的持续漂移——制造业的重心再度从大西洋沿岸向太平洋西岸移动。</div>
+
+<h3>9.1 当代博弈的四条核心张力</h3>
+<div class="derive">当代大国竞争中的几个关键肯尼迪变量：
+
+① 制造业产出的再转移
+   中国制造业增加值在约2010年超越美国→就像1890年代的美在制造业中超过英国一样
+   → 肯尼迪的预测：制造业份额的相对移位需要约一代人(20-30年)才能完全传导到军力均势的改变
+   → 中国当前(2020s)正处于制造业超越后的「滞后期」→军事现代化仍在加速中
+
+② 财政可持续性——双方的内部考验
+   美国：联邦债务/GDP比率超过120%+持续的海外军事承诺→
+        长期金融可持续性=美国长期能否承受其现行全球安保承诺的最核心变量
+   中国：地方政府债务+房地产调整+人口老龄化将在2030-2040年考验中国经济的长期增长率
+
+③ 技术竞争——新战场
+   半导体·AI·量子计算——当前大国竞争的前沿=哪一方的技术体系能在未来十年更高效
+   地将经济资源转化为技术领先地位→肯尼迪的「技术转化效率」变量在当代以指数极放大
+
+④ 多极化的制度性约束
+   肯尼迪预测的多极世界=没有任何一个单一国家能够在所有维度上占据绝对领导
+   → 美+欧洲+日本+中国的四层博弈=每个国家都在不同的维度上有独特的优势</div>
+
+<div class="summary"><h4>📋 第九模块复盘</h4>
+<ul><li>制造业移位后的滞后期→军事能力的传导约需一代人</li><li>多极化=四个不同优势维度上各占领先的大国并存</li></ul></div>
+
+<!-- ====== 十 ====== -->
+<h2 id="c10">十、兴衰共性规律提炼——五百年的终极教益</h2>
+
+<div class="derive">肯尼迪五百年历史数据中的十五条大国兴衰共性规律：
+
+经济-军事的根本对称律：
+  (1) 经济实力←→军事实力存在极其紧密的正相关性(r≈0.85)
+  (2) 没有任何大国在经济相对衰退期间维持了自身的军事领先
+  (3) 大国的全球军事承诺的存量减少总是滞后于经济相对地位的下降
+
+相对速度垄断律：
+  (4) 大国的兴衰取决于相对增速而非绝对增量
+  (5) 后发国家的工业化速度通常快于先发国家(后发优势+跳过淘汰技术)
+
+大国过度扩张律：
+  (6) 所有一流大国均在三代内有过度扩张的倾向
+  (7) 避免过度扩张≠避免军事开支——=避免军事承诺超出经济可支援的持续水平
+
+制度=兴衰的隐形变量：
+  (8) 良好的税制、金融系统和政府效率使同等经济基础的国家产生出2-3倍的军事/经济效能
+  (9) 制度僵化=任何大国衰落的最后锁——外部竞争者吃进你体内已有的全部效率差距</div>
+
+<div class="summary" style="background:#f6f6fa;border-color:#2a3a5a">
+<h4 style="font-size:15px">🌍 《大国的兴衰》全域总纲——五百年的经济军事二元博弈</h4>
+<p><strong>全书核心等式</strong>：国力的持续性 = 经济增速 / 军事承诺增速。当分母持续超过分子几十年→任何帝国不论当前如何强固都将不可避免地、缓慢而无声地漂向「相对衰落」。</p>
+<p><strong>肯尼迪五百年的终极教益是冷静和反直觉的</strong>：大国不是在战场上被打败的——它们是在七十年的和平积累期中被经济规律无声地超越的。当军事的败仗终于到来时——制造业的相对劣势已经持续了至少一个世代——战争只是为经济衰退打上了最后的图章。这为所有当代观察者提供了最珍贵的一套大尺度认知工具：不要盯着下一场战争——盯着两国未来三十年的相对经济增速，你就能比当前任何军事分析家都更准确地预判下一代霸权的归属。</p>
+</div>
+
+</main>
+
+<script>
+class PC{
+  constructor(id,w,h){this.c=document.getElementById(id);if(!this.c)return;this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h}
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  g(x0,x1,y0,y1){const c=this.ctx,p={t:30,r:22,b:45,l:50},pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;this.xs=v=>p.l+(v-x0)/(x1-x0)*pw;this.ys=v=>p.t+(y1-v)/(y1-y0)*ph}
+  ln(pts,color,w=2.5,d=null){if(pts.length<2)return;var c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(d)c.setLineDash(d);c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));c.stroke();c.setLineDash([]);c.restore()}
+  txt(x,y,t,c='#333',s=11,a='center'){this.ctx.fillStyle=c;this.ctx.font=`${s}px sans-serif`;this.ctx.textAlign=a;this.ctx.fillText(t,x,y)}
+  rect(x,y,w,h,cl,sc='#555'){this.ctx.fillStyle=cl;this.ctx.fillRect(x,y,w,h);this.ctx.strokeStyle=sc;this.ctx.lineWidth=1.5;this.ctx.strokeRect(x,y,w,h)}
+}
+
+// 图1: Kennedy core model
+(function(){
+  var k=new PC('kennedyModel',600,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('肯尼迪大国兴衰核心模型——四变量交互博弈',300,16);
+  var vars=[{x:220,y:40,l:'经济基础',sub:'制造业份额·GDP总量',c:'rgba(42,58,90,0.08)'},{x:40,y:130,l:'军事负担',sub:'军费占GDP%',c:'rgba(90,42,26,0.08)'},{x:400,y:130,l:'相对增速差',sub:'A增长%−B增长%',c:'rgba(26,90,42,0.08)'},{x:220,y:200,l:'技术·制度转换效率',sub:'税制·金融·军备效率',c:'rgba(138,106,32,0.08)'}];
+  vars.forEach(function(v){c.fillStyle=v.c;c.fillRect(v.x-80,v.y-14,160,32);c.strokeStyle='#555';c.lineWidth=1.5;c.strokeRect(v.x-80,v.y-14,160,32);c.fillStyle='#333';c.font='10px bold sans-serif';c.fillText(v.l,v.x,v.y+2);c.font='8px sans-serif';c.fillText(v.sub,v.x,v.y+16)});
+  c.strokeStyle='#888';c.lineWidth=1.2;c.beginPath();c.moveTo(220,58);c.lineTo(120,116);c.stroke();c.beginPath();c.moveTo(220,58);c.lineTo(480,116);c.stroke();c.beginPath();c.moveTo(120,162);c.lineTo(200,186);c.stroke();c.beginPath();c.moveTo(480,162);c.lineTo(280,186);c.stroke();
+})();
+
+// 图2: 英国曲线
+(function(){
+  var k=new PC('britishCurve',580,280);if(!k.c)return;k.clr();
+  k.g(1750,2000,0,50,'年份','全球制造业份额 (%)');
+  k.ln([[1750,5],[1800,12],[1850,25],[1860,40],[1880,35],[1900,32],[1920,25],[1940,22],[1950,15]],'#2a3a5a',3.5);
+  var c=k.ctx;c.fillStyle='#2a3a5a';c.font='10px sans-serif';c.textAlign='left';c.fillText('英国制造业份额—从1860峰值(~40%)→1950(~15%)持续下滑',300,80);
+  c.fillStyle='#888';c.font='9px sans-serif';c.fillText('工业革命起飞',k.xs(1800)+5,k.ys(14));
+  c.fillText('美德竞起→份额双抢',k.xs(1905)+5,k.ys(35));c.fillText('二战后美两极体系取代英国',k.xs(1950)+5,k.ys(18));
+})();
+
+// 图3: 冷战模型
+(function(){
+  var k=new PC('coldWarModel',580,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('美苏冷战经济-军事不对称消耗模型',290,16);
+  // US box
+  c.fillStyle='rgba(42,58,90,0.08)';c.fillRect(20,45,250,90);c.strokeStyle='#2a3a5a';c.lineWidth=2;c.strokeRect(20,45,250,90);
+  c.fillText('美国(1945-1991)',145,65);c.font='9px sans-serif';c.fillText('GDP基数大·军费~6-7%GDP',145,83);c.fillText('高科技军工·硅谷模式·北大小',145,100);c.fillText('基础研究→军转民→消费→再投研发',145,117);
+  // USSR box
+  c.fillStyle='rgba(90,42,26,0.08)';c.fillRect(310,45,250,90);c.strokeStyle='#5a2a1a';c.lineWidth=2;c.strokeRect(310,45,250,90);
+  c.fillText('苏联(1945-1991)',435,65);c.fillText('GDP基数小·军费~15-25%GDP',435,83);c.fillText('计划经济军工·无自组织创新',435,100);c.fillText('石油下跌+星球大战→系统自毁',435,117);
+  c.fillStyle='#c03030';c.font='11px bold sans-serif';c.fillText('↓ 四十年非对称内部消耗 → 苏联经济=1985-1991临界累积→自毁',290,180);
+})();
+
+// 图4: 三难选择
+(function(){
+  var k=new PC('trilemma',560,280);if(!k.c)return;k.clr();
+  var c=k.ctx,cx=280,cy=140,r=100;
+  c.fillStyle='#2a3a5a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('大国资源三难选择——社会消费·投资·军事',280,16);
+  // Triangle
+  var pts=[{x:cx,y:cy-75,l:'社会消费',c:'rgba(42,90,42,0.1)'},{x:cx-85,y:cy+50,l:'生产投资',c:'rgba(42,58,90,0.1)'},{x:cx+85,y:cy+50,l:'军事开支',c:'rgba(90,42,26,0.1)'}];
+  c.strokeStyle='#555';c.lineWidth=2;c.beginPath();c.moveTo(pts[0].x,pts[0].y);c.lineTo(pts[1].x,pts[1].y);c.lineTo(pts[2].x,pts[2].y);c.closePath();c.stroke();
+  pts.forEach(function(p){c.fillStyle=p.c;c.beginPath();c.arc(p.x,p.y,35,0,Math.PI*2);c.fill();c.strokeStyle='#555';c.lineWidth=1;c.stroke();c.fillStyle='#333';c.font='10px bold sans-serif';c.textAlign='center';c.fillText(p.l,p.x,p.y+4)});
+  // Center text
+  c.fillStyle='#c03030';c.font='10px bold sans-serif';c.fillText('三者不可同时最大化',cx,cy);
+  c.fillText('过度偏向任一端→长期侵蚀国力',cx,cy+20);
+  c.fillText('历史罕有大国在顶峰期主动调整→纠偏苦晚',cx,cy+40);
+})();
+
+// 图5: 霸权更替全景
+(function(){
+  var k=new PC('hegemonicCycle',620,290);if(!k.c)return;k.clr();
+  k.g(1500,2050,0,50,'年份 →','全球制造业份额(%)');
+  k.ln([[1520,3],[1580,8],[1630,5]],'#c87040',2.5);
+  k.ln([[1600,2],[1650,8],[1700,5]],'#e89830',2.5);
+  k.ln([[1700,3],[1750,5],[1800,12],[1850,25],[1860,40],[1880,35],[1910,15],[1950,12]],'#2a3a5a',3.5);
+  k.ln([[1880,3],[1910,25],[1920,32],[1940,40],[1960,38],[1980,30],[2000,25],[2020,18]],'#5a2a1a',3.5);
+  k.ln([[1990,3],[2000,5],[2010,15],[2020,25],[2040,35]],'#c03030',2.5,[4,2]);
+  var c=k.ctx;c.fillStyle='#c87040';c.font='9px sans-serif';c.textAlign='left';c.fillText('西班牙(16c)',180,180);
+  c.fillStyle='#e89830';c.fillText('荷兰(17c)',240,200);
+  c.fillStyle='#2a3a5a';c.fillText('英国(18-19c)',370,110);
+  c.fillStyle='#5a2a1a';c.fillText('美国(20c)',430,130);
+  c.fillStyle='#c03030';c.fillText('中国(21c·推测)',480,160);
+  c.fillStyle='#555';c.font='10px bold sans-serif';c.textAlign='center';c.fillText('每~100-150年一轮→制造业份额超越→滞后期→军事地位更替',310,240);
+})();
+
+console.log('✅ 大国的兴衰 · 5张Canvas · 零外部依赖');
+</script>
+</body>
+</html>

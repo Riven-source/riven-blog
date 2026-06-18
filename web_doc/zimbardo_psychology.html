@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>津巴多《普通心理学》第8版 · 完整自学教材 · 含DSM-5更新</title>
+<style>
+:root{
+  --bg:#fafaf8;--card:#fff;--border:#d5d0c8;--text:#23231e;--sub:#5c5950;
+  --accent:#6b3a8a;--accent2:#1a5c7a;--code-bg:#f4f0ec;
+  --warn-bg:#fff5f0;--warn-text:#8b3a20;--table-s:#f7f4ee;
+  --side-w:210px;--green:#2a7a3a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.82;font-size:14.5px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#1a1618;color:#b0a9a0;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#e8e2d8;font-size:12px;margin-bottom:12px;border-bottom:1px solid #3a3430;padding-bottom:8px}
+.sidebar a{display:block;color:#989088;text-decoration:none;font-size:10.5px;padding:3px 0;transition:color .2s}
+.sidebar a:hover{color:#a86ac8}
+.main{margin-left:var(--side-w);max-width:840px;padding:32px 42px}
+h1{font-size:23px;text-align:center;margin-bottom:4px;color:#1a1418}
+.subtitle{text-align:center;color:var(--sub);font-size:12px;margin-bottom:32px}
+h2{font-size:17.5px;color:var(--accent);margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14px;color:var(--accent2);margin:22px 0 8px}
+h4{font-size:13px;color:#3a3430;margin:14px 0 6px}
+p{margin:7px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:10px 0}
+.quote{background:#f8f4f0;border-left:4px solid #a86ac8;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-style:italic;font-size:13px}
+.quote .src{display:block;text-align:right;color:var(--sub);font-size:11px;margin-top:4px;font-style:normal}
+.def{background:#eef2f6;border-left:4px solid var(--accent2);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:13px}
+.def strong{color:var(--accent2)}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:12px 16px;margin:10px 0;border-radius:5px;font-family:"SF Mono","Menlo",monospace;font-size:11.5px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:12px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:10.5px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:9px 13px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:var(--warn-text)}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:11.5px}
+th{background:#e8e3db;padding:6px 8px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:6px 8px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#fdf9f4;border:2px solid var(--accent);border-radius:7px;padding:14px;margin:18px 0}
+.summary h4{color:var(--accent);margin-bottom:5px}
+.summary ul{padding-left:15px;font-size:12px}
+.compare th:first-child{background:#e0dacf}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:14px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:850px){.sidebar{display:none}.main{margin-left:0;padding:10px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>🧠 津巴多普通心理学<br>第8版 · 14章</h3>
+  <a href="#ch1">第1章 心理科学与研究方法</a>
+  <a href="#ch2">第2章 生物心理学与神经科学</a>
+  <a href="#ch3">第3章 感觉与知觉</a>
+  <a href="#ch4">第4章 学习与人类后天教养</a>
+  <a href="#ch5">第5章 记忆</a>
+  <a href="#ch6">第6章 思维与智力</a>
+  <a href="#ch7">第7章 毕生发展</a>
+  <a href="#ch8">第8章 意识状态</a>
+  <a href="#ch9">第9章 动机与情绪</a>
+  <a href="#ch10">第10章 人格</a>
+  <a href="#ch11">第11章 社会心理学</a>
+  <a href="#ch12">第12章 心理障碍(DSM-5)</a>
+  <a href="#ch13">第13章 心理治疗</a>
+  <a href="#ch14">第14章 压力与健康</a>
+</nav>
+
+<main class="main">
+
+<h1>津巴多《普通心理学》第8版</h1>
+<p class="subtitle">Psychology and Life · Philip Zimbardo &amp; Richard Gerrig 著 · 王垒等译<br>含DSM-5心理障碍更新 · 纯Canvas矢量图表 · 14章全覆盖 · 零外部依赖</p>
+
+<div class="def"><strong>六大心理学视角整合</strong>：现代心理学采用生物学、认知、行为、全人（人本主义+心理动力学+特质论）、发展、社会文化六重视角解释心理现象。每章依现象选择最适视角组合，而非单一理论独断。生物视角关注脑结构与神经递质；认知视角关注信息加工过程；行为视角关注可观察反应与环境触发因素；全人视角探索无意识动力与自我实现；发展视角追踪生命全程变化；社会文化视角强调情境与文化力量。</div>
+
+<!-- ===== Ch1 ===== -->
+<h2 id="ch1">第1章 心理科学与研究方法</h2>
+
+<div class="def"><strong>心理学（Psychology）</strong>——研究行为与心理过程的科学。行为是可观察的外显行动，心理过程是内在的主观体验（思维、情感、记忆）。心理学≠常识心理学≠伪科学；作为一门科学，其结论必须基于可重复的实证证据。</div>
+
+<h3>1.1 科学方法的六步骤</h3>
+<div class="derive">① 形成研究问题——基于观察、理论或先前研究
+② 提出假设——可检验的具体预测(零假设H₀ vs 备择假设H₁)
+③ 设计研究方法——选择实验/相关/描述性设计
+④ 收集数据——严格遵循研究方案，控制混淆变量
+⑤ 分析数据与得出结论——统计检验(p<.05为显著标准)
+⑥ 报告研究结果——同行评审→发表→可复制性检验
+
+关键概念：
+自变量(IV)——研究者操纵的变量(如是否服用新药)
+因变量(DV)——测量的结果变量(如抑郁评分变化)
+控制变量——保持恒定的变量(如被试年龄范围)
+随机分配——将被试按概率均等分配到各组(消除选择偏差)
+安慰剂效应——仅因「相信自己被治疗」而产生的改善</div>
+
+<h3>1.2 心理学研究的四种基本方法</h3>
+<table>
+<tr><th>方法</th><th>描述</th><th>优点</th><th>局限</th></tr>
+<tr><td>实验法</td><td>操纵IV，测量DV，随机分配</td><td>可确定因果关系</td><td>人工情境→生态效度问题</td></tr>
+<tr><td>相关法</td><td>测量两个变量间统计关联(r值)</td><td>可在自然情境研究复杂变量</td><td>相关≠因果！(第三方变量)</td></tr>
+<tr><td>调查法</td><td>问卷/访谈收集自我报告数据</td><td>大样本、低成本</td><td>社会赞许偏差、回忆误差</td></tr>
+<tr><td>个案研究</td><td>深入分析单一个体或少量案例</td><td>发现罕见现象(如H.M.病人)</td><td>无法推广到群体</td></tr>
+</table>
+
+<div class="warn">⚠ 伪心理学识别红线：星座性格分析、血型人格、左右脑倾向测试、仅基于坊间传说的「心理法则」均缺乏可重复的实证支持。心理学科学思维的第一道防线：追问「证据来自哪项同行评审的研究？」</div>
+
+<div class="summary"><h4>📋 第1章复盘</h4>
+<ul><li>心理学=研究行为与心理过程的科学</li><li>六大视角整合；科学方法六步骤；IV/DV/随机分配</li><li>实验法可推断因果，相关法≠因果</li><li>伪心理学=无实证证据支持的主张</li></ul></div>
+
+<!-- ===== Ch2 ===== -->
+<h2 id="ch2">第2章 生物心理学与神经科学</h2>
+
+<div class="def"><strong>神经元（Neuron）</strong>——神经系统的基本结构与功能单位。典型神经元含树突（接收信号）、胞体（整合信息）、轴突（传导动作电位）、终扣（释放神经递质至突触间隙）。人脑约有860亿个神经元，每个可与数千个其他神经元形成突触连接。</div>
+
+<h3>2.1 动作电位与突触传递</h3>
+<div class="derive">静息电位：-70mV（神经元内相对于外为负，由Na⁺-K⁺泵维持）
+阈电位：约-55mV——达到此值触发动作电位
+动作电位："全或无"的电信号，沿轴突传导至终扣
+
+阶段：
+① 去极化：Na⁺通道打开→Na⁺内流→膜电位从-70→+40mV
+② 复极化：Na⁺通道失活→K⁺通道打开→K⁺外流→恢复负电位
+③ 不应期：Na⁺通道未恢复→不能再次发放(限制最高发放频率)
+
+神经递质释放：
+动作电位到达终扣→Ca²⁺内流→突触囊泡与膜融合→神经递质释放至突触间隙
+→与突触后膜受体结合→产生兴奋性(EPSP)或抑制性(IPSP)突触后电位
+→总和达到阈值→突触后神经元发放</div>
+
+<h3>2.2 大脑皮层功能分区</h3>
+<div class="chart-wrap"><canvas id="brainMap" width="600" height="260"></canvas>
+<div class="fig-cap">图1：大脑皮层四大叶及主要功能区示意图，复刻津巴多普通心理学原版插图，核心知识：额叶(运动皮层、前额叶执行功能、布洛卡区语言产生)、顶叶(躯体感觉皮层)、枕叶(视觉皮层)、颞叶(听觉皮层、韦尼克区语言理解)。实验依据：潘菲尔德电刺激脑皮层映射、布洛卡/韦尼克失语症病例、fMRI功能定位研究。</div></div>
+
+<h3>2.3 主要神经递质系统</h3>
+<table>
+<tr><th>神经递质</th><th>主要功能</th><th>异常相关问题</th></tr>
+<tr><td>多巴胺(DA)</td><td>奖赏、运动控制、动机</td><td>过多→精神分裂症；过少→帕金森病</td></tr>
+<tr><td>5-羟色胺(5-HT)</td><td>情绪调节、睡眠、食欲</td><td>不足→抑郁、焦虑、强迫症</td></tr>
+<tr><td>去甲肾上腺素(NE)</td><td>警觉、觉醒、战斗或逃跑</td><td>失调→抑郁、PTSD</td></tr>
+<tr><td>乙酰胆碱(ACh)</td><td>肌肉收缩、学习记忆</td><td>不足→阿尔茨海默症(基底前脑ACh神经元死亡)</td></tr>
+<tr><td>GABA</td><td>主要抑制性递质</td><td>不足→焦虑、癫痫</td></tr>
+<tr><td>谷氨酸</td><td>主要兴奋性递质</td><td>过多→兴奋毒性→神经元死亡</td></tr>
+</table>
+
+<div class="summary"><h4>📋 第2章复盘</h4>
+<ul><li>神经元：树突→胞体→轴突→终扣→突触</li><li>动作电位：-70mV→-55mV→+40mV→复极→不应期"全或无"</li><li>四大叶：额/顶/枕/颞→各司运动、感觉、视觉、听觉</li><li>六种神经递质→正常范围维持心理功能</li></ul></div>
+
+<!-- ===== Ch3 ===== -->
+<h2 id="ch3">第3章 感觉与知觉</h2>
+
+<div class="def"><strong>感觉（Sensation）</strong>——感受器对外部物理刺激的检测与初级编码。<br><strong>知觉（Perception）</strong>——组织、解释感觉信息并赋予意义的高阶心理过程。感觉是「接收到什么」，知觉是「理解成什么」。</div>
+
+<h3>3.1 绝对阈限与差别阈限</h3>
+<div class="derive">绝对阈限：能50%次数检测到的最低刺激强度
+  例：黑暗晴夜30英里外的烛光(视觉)；安静房间20英尺外的手表滴答声(听觉)
+
+信号检测论(SDT)：将感官检测分解为
+  ① 感官敏感性(d')——生理层面
+  ② 反应偏差(β)——认知/动机层面(如期望、后果判断)
+
+韦伯定律(Weber's Law)：
+  最小可觉差(JND)=刺激强度的恒定比例
+  ΔI/I = k（常数，不同感官不同）
+  声音频率的k≈0.3%，光强度k≈1.7%，重量比较k≈2%
+  含义：原有刺激越强，需要的变化越大才能被察觉</div>
+
+<div class="chart-wrap"><canvas id="weberCurve" width="560" height="260"></canvas>
+<div class="fig-cap">图2：韦伯定律——最小可觉差(JND)与刺激强度关系图，复刻津巴多普通心理学原版插图，核心结论：ΔI/I=k(常数)，差异阈限与初始刺激强度成固定比例。变量控制条件：标准刺激由弱到强递增测量。现实应用：调光器在暗光和亮光下同一调节幅度感受完全不同。</div></div>
+
+<h3>3.2 知觉组织——格式塔原则</h3>
+<div class="derive">格式塔(Gestalt=完形)六项组织原则：
+① 相似性：相似元素被知觉为一组
+② 接近性：靠近的元素为一组
+③ 闭合性：不完整的图形被补全(大脑自动填补缺口)
+④ 良好连续性：连续平滑的线条优于突变转折
+⑤ 共同命运：同方向运动的元素为一组
+⑥ 图-地分化：区分焦点图形与背景
+
+知觉恒常性：大小恒常性、形状恒常性、颜色恒常性、亮度恒常性
+→ 物理刺激变化而感知不变(演化优势：在变化环境中稳定识别物体)
+
+深度线索：
+  双眼线索：视网膜像差(左/右眼视角差异)→立体视觉
+  单眼线索：相对大小、遮挡、线条透视、纹理梯度、运动视差</div>
+
+<div class="summary"><h4>📋 第3章复盘</h4>
+<ul><li>感觉≠知觉→检测vs解释；韦伯定律ΔI/I=k</li><li>绝对阈限=50%次检测到；差别阈限=刚好可察觉的差值</li><li>格式塔六原则→大脑主动组织感觉信息</li><li>深度如觉：双眼(视差)+单眼(经验线索)</li></ul></div>
+
+<!-- ===== Ch4 ===== -->
+<h2 id="ch4">第4章 学习与人类后天教养</h2>
+
+<div class="def"><strong>学习（Learning）</strong>——由经验引起的相对持久的行为或行为潜能的变化。不包括由成熟、疲劳、药物等引起的暂时性变化。三大学习范式：经典条件反射、操作性条件反射、观察学习。</div>
+
+<h3>4.1 巴甫洛夫经典条件反射</h3>
+<div class="derive">巴甫洛夫狗唾液实验(1904)：
+无条件刺激(US)=食物 → 无条件反应(UR)=流唾液(先天反射)
+中性刺激(NS)=铃声 → 无流唾液反应
+习得阶段：铃声+食物多次配对
+→ 条件刺激(CS)=铃声 → 条件反应(CR)=流唾液(习得反应)
+
+关键现象：
+┌─ 习得(Acquisition)：CS与US反复配对→CR建立
+├─ 消退(Extinction)：CS单独呈现(无US)→CR减弱至消失
+├─ 自发恢复：消退后一段时间→CS再次呈现→CR短暂再现
+├─ 泛化(Generalization)：与CS相似的刺激也引发CR
+├─ 分化(Discrimination)：仅对特定CS有反应
+└─ 二级条件反射：已建立的CS作为US建立新的条件反射</div>
+
+<div class="chart-wrap"><canvas id="pavlovData" width="560" height="260"></canvas>
+<div class="fig-cap">图3：巴甫洛夫经典条件反射习得与消退数据图，复刻津巴多普通心理学原版插图，实验核心结论：CS(铃声)与US(食物)反复配对后CS单独引发CR(唾液)。变量控制：US=食物粉末、CS=节拍器/铃声、CR=导管收集的唾液滴数。现实应用：恐惧症(小艾伯特实验)、味觉厌恶(加西亚效应)、广告(明星+产品的CS-US配对)。</div></div>
+
+<h3>4.2 斯金纳操作性条件反射</h3>
+<div class="derive">操作性条件反射(Operant Conditioning, Skinner)：
+  核心原理：行为的后果决定行为再次出现的概率
+  操作性行为→自发发出→环境对该行为的反应(强化/惩罚)→行为概率改变
+
+ABC分析框架(功能行为分析)：
+  A（前因Antecedent）→ B（行为Behavior）→ C（后果Consequence）
+  前因诱发行为，后果维持或抑制行为。改变后果→改变行为(行为矫正的基础)
+
+强化与惩罚的四象限矩阵：
+  正强化(+R)：给予愉快刺激→行为↑(如按时交作业→表扬→继续)
+  负强化(-R)：移除厌恶刺激→行为↑(如系安全带→蜂鸣声停止→系安全带习惯↑)
+  正惩罚(+P)：给予厌恶刺激→行为↓(如超速→罚单→超速↓)
+  负惩罚(-P)：移除愉快刺激→行为↓(如撒谎→扣零花钱→撒谎↓)
+
+强化程序（部分强化的四大模式）：
+  固定比率(FR)：每n次→强化→高而稳定的反应率(计件工资)
+  可变比率(VR)：平均每n次→强化→最高且最耐消退的反应率(老虎机)
+  固定间隔(FI)：每隔t时间→首次反应强化→锯齿状反应率(月底发薪)
+  可变间隔(VI)：平均每隔不同t→首次反应强化→中等稳定反应率(钓鱼)
+
+班杜拉(Bandura)观察学习与社会认知理论：
+  波波玩偶实验(Bobo Doll, 1961→1963)：儿童观看成人击打充气玩偶→随后模仿
+  观察学习的四个子过程：注意(观看示范)→保持(符号表征储存)→再现(转化为自身行动)→动机(强化预期决定是否执行)
+  替代强化：观察他人行为的后果→影响自身行为概率(他人成功→模仿概率↑；他人受罚→模仿概率↓)
+  交互决定论(Reciprocal Determinism)：个人因素(认知/情感)⇄环境⇄行为→三者相互影响而非单方向因果</div>
+
+<div class="warn">⚠ 误区分：强化≠奖励(强化是增加行为概率；奖励仅指给予愉快物)。
+负强化≠惩罚(负强化移除厌恶→行为增加；惩罚→行为减少)。「负」指移除刺激，非指好坏或伦理性质的负面。</div>
+
+<div class="summary"><h4>📋 第4章复盘</h4>
+<ul><li>经典条件反射：CS-US配对→习得；消退≠擦除(新学习抑制旧CR)</li><li>操作性条件反射：ABC→后果决定行为；四象限→+R/-R/+P/-P</li><li>部分强化程序→固定/可变×比率/间隔=四种模式</li><li>观察学习(班杜拉)：注意→保持→再现→动机</li></ul></div>
+
+<!-- ===== Ch5 ===== -->
+<h2 id="ch5">第5章 记忆</h2>
+
+<div class="def"><strong>记忆（Memory）</strong>——编码、存储与提取信息的能力。记忆不是单一系统，而是含感觉记忆、短时/工作记忆、长时记忆三个相互关联阶段的复杂认知过程。</div>
+
+<h3>5.1 记忆信息加工三级模型</h3>
+<div class="derive">阿特金森-谢夫林三级记忆模型(Atkinson & Shiffrin, 1968)：
+
+阶段一【感觉记忆(Sensory Memory)】
+  容量：极大(全感觉域)；保持时间：<1秒(视觉后像约0.5s，听觉回声约2-4s)
+  信息以感觉通道的原始形式保存，注意将选中的信息转入下一阶段
+
+阶段二【短时记忆/工作记忆(STM/WM)】
+  容量：7±2个组块(Miller, 1956)；保持时间：约18-30秒(无复述时)
+  工作记忆(Baddeley三成分模型)：
+    • 中枢执行器——注意力控制中心(分配注意资源)
+    • 语音回路——处理言语信息(内听觉复述，约2秒容量)
+    • 视空间画板——处理视觉与空间信息
+    • 情节缓冲器(2000年新增)——整合多通道信息与长时记忆联结
+
+阶段三【长时记忆(LTM)】
+  容量：无限(理论估计)；保持时间：从数分钟到终身
+  编码方式：语义编码(意义)为主，视觉、听觉编码为辅
+  提取方式：回忆(无线索自由检索) vs 再认(有线索识别) vs 再学习(重新学更快)
+  长时记忆二分：
+    • 陈述性(外显)记忆——可说出的知识
+      → 语义记忆(事实知识，如「巴黎是法国首都」)
+      → 情景记忆(个人经历，如「我昨天吃的早餐」)
+    • 非陈述性(内隐)记忆——难以言说
+      → 程序性记忆(技能，如骑车)
+      → 条件反射，启动效应(先前呈现促进后续识别)</div>
+
+<div class="chart-wrap"><canvas id="memoryModel" width="600" height="300"></canvas>
+<div class="fig-cap">图4：记忆信息加工三级模型（Atkinson-Shiffrin Model），复刻津巴多普通心理学原版插图，核心结论：感觉记忆→注意→短时记忆→复述→编码→长时记忆。变量控制：控制输入材料长度、呈现时间、复述有无。现实应用：学习策略(精细复述+组块化+间隔复习优于集中突击)。</div></div>
+
+<h3>5.2 艾宾浩斯遗忘曲线</h3>
+<div class="chart-wrap"><canvas id="ebbinghaus" width="560" height="260"></canvas>
+<div class="fig-cap">图5：艾宾浩斯遗忘曲线（1885），复刻津巴多普通心理学原版插图，核心结论：无意义音节(Nonsense Syllables)的记忆保存量随时间指数递减——学习后20分钟遗忘42%，1小时后56%，1天后66%，31天后79%被遗忘。变量控制：Ebbinghaus以自身为唯一被试→以「重学节省时间」测量保持。现实应用：间隔重复(Spaced Repetition)在遗忘曲线快速下降点(约20分钟后、1天后、1周后)进行复习→极大提升长时保持。</div></div>
+
+<h3>5.3 记忆偏差与干扰理论</h3>
+<div class="derive">遗忘的干扰理论：
+  前摄干扰(Proactive)：旧记忆干扰对新材料的学习(学法语词后学西班牙语更难)
+  倒摄干扰(Retroactive)：新材料干扰对旧记忆的提取(学新电话号码后旧号难忆)
+
+记忆的建构性(Elizabeth Loftus的经典研究)：
+  记忆不是录像重放，而是每次提取时重新建构的产物
+  错误信息效应：目击者证词可因事后提问措辞而扭曲
+  例：Loftus & Palmer (1974)——观看车祸影片→问「车相撞时速度多快？」
+  「撞碎」(smashed)组估计→41mph；「碰撞」(hit)组→34mph
+  一周后：「撞碎」组更可能报告「看到碎玻璃」(实无碎玻璃)
+  含义：目击者证词极易受暗示→司法实践的重大警示</div>
+
+<div class="summary"><h4>📋 第5章复盘</h4>
+<ul><li>三阶段模型：感觉→注意→短时(W)→复述+编码→长时</li><li>艾宾浩斯遗忘曲线：指数递减→31天忘79%；间隔复习最有效</li><li>干扰理论：前摄(旧学→新学) + 倒摄(新学→旧忆)</li><li>Loftus研究：记忆是重构过程→受错误信息暗示影响</li></ul></div>
+
+<!-- ===== Ch6 ===== -->
+<h2 id="ch6">第6章 思维与智力</h2>
+
+<div class="def"><strong>思维（Thinking）</strong>——对信息的内部心理操作，包括形成概念、解决问题、推理与决策。概念是思维的基本单位——心理类别使世界可理解。<br><strong>智力（Intelligence）</strong>——从经验中学习、解决新问题、适应环境的能力。智力≠学业成绩≠知识量。</div>
+
+<h3>6.1 问题解决与决策偏差</h3>
+<div class="derive">问题解决策略：
+  算法(Algorithm)：逐一尝试所有可能→保证正确但耗时
+  启发式(Heuristics)：心智捷径→快速但不保证正确
+    • 可得性启发：根据记忆提取的容易程度判断频率/概率
+      → 媒体反复报导空难→高估飞行风险(实际驾驶更危险)
+    • 代表性启发：根据与典型样例的相似度判断类别
+      → 「文静爱读书的人」→判断为「图书管理员」而非「销售」→忽视基准率
+    • 锚定效应：初始数值成为后续估计的锚点
+      → 谈判中先出价者获得优势
+    • 框架效应：同一问题以不同语言表述→不同选择
+      → 「手术存活率90%」vs「死亡率10%」→前者更被接受
+    • 确认偏误：寻找支持既有信念的证据，忽视反证
+      → 阴谋论难以通过提供反面证据消除
+
+功能固着(Functional Fixedness)：仅能按物品通常用途使用(邓克尔蜡烛实验)
+→ 看不见纸盒可作为蜡烛底座→阻碍问题解决</div>
+
+<h3>6.2 智力理论与测量</h3>
+<div class="derive">智力理论演进：
+斯皮尔曼(1904)：g因素(一般智力)+s因素(特殊能力)
+  因所有认知测验得分正相关→存在底层共同因子g
+
+瑟斯顿(1938)：七种基本心理能力(言语理解、数字、空间、记忆、推理、语词流畅、知觉速度)
+  反对单一g→多个相对独立的心理能力
+
+吉尔福特(1967)：智力结构三维模型——操作×内容×产物=180种能力
+
+卡特尔(1971)：流体智力(Gf：推理、解决新问题→随年龄↓)
+              + 晶体智力(Gc：知识、词汇→随年龄↑至老年)
+  实证：WAIS分测验因子分析分化两类
+
+加德纳(1983)：多元智能(语言、逻辑-数学、音乐、空间、身体-运动、人际、内省、自然探索)
+  批评：缺乏标准化的各维度独立测量工具
+
+斯滕伯格(1985)：三元智力理论
+  ① 分析性(学业测验测量的能力)
+  ② 创造性(产生新方案的能力)
+  ③ 实践性(应对日常事务的能力，有时称「街头智慧」)
+
+IQ计算：智力商数(斯坦福-比内量表)
+  IQ = (心理年龄MA/实际年龄CA)×100 （16岁以下适用）
+  现代IQ测验(WAIS-IV, WISC-V)：离差IQ——以年龄组常模均数100、标准差15为标准
+  → 约68%人群在85-115；约95%在70-130</div>
+
+<div class="warn">⚠ 误读纠正：IQ分数≠天生固定不变。弗林效应(Flynn Effect)——过去一世纪全球IQ测验均分每十年提升约3分→证明智力有极强环境可塑性。IQ仅预测学业表现(相关约0.5)——不预测幸福、创造力、人际能力。</div>
+
+<div class="summary"><h4>📋 第6章复盘</h4>
+<ul><li>启发式(可得性/代表性/锚定/框架/确认偏误)→决策偏差</li>
+<li>Gf(推理)随年龄↓；Gc(知识)↑至老年</li>
+<li>现代IQ=离差商数(M=100,SD=15)</li>
+<li>弗林效应→IQ有极强环境可塑性</li></ul></div>
+
+<!-- ===== Ch7 ===== -->
+<h2 id="ch7">第7章 毕生发展</h2>
+
+<div class="def"><strong>发展心理学</strong>——研究人从受孕到死亡全过程身体、认知、社会情感变化的学科。关键争论：遗传vs环境（Nature vs Nurture）、连续vs阶段、稳定vs变化。</div>
+
+<h3>7.1 皮亚杰认知发展四阶段</h3>
+<div class="derive">皮亚杰(Piaget)认知发展阶段理论：
+
+0-2岁【感知运动阶段(Sensorimotor Stage)】
+  关键成就：①客体永久性(物体不在视线中也客观存在——约8-12月龄建立)
+          ②有意图的行为(为达到目标而行动——不再是反射)
+          ③开始符号化思维(内部表征)
+
+2-7岁【前运算阶段(Preoperational Stage)】
+  核心特征：①符号性(语言+假装游戏) ②自我中心(不能从他人视角看)
+          ③非守恒性(外观改变→认为实质也变→守恒实验)
+    守恒实验：同量液体倒入细高→矮粗杯→前运算儿童认为「变了」
+            →证明被试仅关注单一突出维度(高度)而忽视补偿维度(宽度)
+
+7-11岁【具体运算阶段(Concrete Operational Stage)】
+  突破：守恒建立、可逆思维、去中心化、序列化/递移推理
+  局限：思维紧扣具体实物，难以进行抽象假设推理
+
+11岁+【形式运算阶段(Formal Operational Stage)】
+  能力：假设-演绎推理、系统实验(分离变量)、抽象逻辑
+  部分成年人终身未达此阶段(仅是发展的可能而非必然)
+
+对皮亚杰的现代修正：
+  - 低估了婴幼儿认知能力(婴儿视觉偏好与期望-违背范式证明更早理解)
+  - 各领域发展不完全同步(守恒在数量/长度/容量领域非同一时间达成)
+  - 忽略了社会文化对认知发展的促进作用(维果茨基最近发展区)</div>
+
+<div class="chart-wrap"><canvas id="piagetStages" width="600" height="260"></canvas>
+<div class="fig-cap">图6：皮亚杰认知发展四阶段图，复刻津巴多普通心理学原版插图，核心结论：认知发展经历质变性的四个阶段(从感知动作到抽象推理)。实验依据：守恒实验(液体/数量/质量)、三山任务(自我中心测量)。理论争议与局限：低估婴儿能力、发展并非整齐划一阶段式、忽略社会文化促进作用。</div></div>
+
+<h3>7.2 依恋理论</h3>
+<div class="derive">哈利·哈洛(Harlow)恒河猴实验(1958)：
+  设计：新生猴与两个替代母猴同笼——铁丝猴(有奶瓶)vs绒布猴(无食物)
+  结果：幼猴大部分时间依附绒布猴，仅进食时间短暂去铁丝猴
+  恐惧情境(陌生机械)：幼猴奔向绒布猴寻求安慰
+  结论：接触安慰(Contact Comfort)是依恋的基础→推翻「依恋源于喂养」假说
+
+安斯沃斯(Ainsworth)陌生情境测验——三类依恋：
+  ① 安全型依恋(约65%)：用母亲为安全基地探索环境→分离时忧伤→重聚时愉悦
+  ② 不安全-回避型(约20%)：忽视母亲在场→分离时无明显痛苦→重聚时回避
+  ③ 不安全-矛盾型(约15%)：分离时极度不安→重聚时既靠近又抗拒(矛盾)
+  结果预测成年后——安全依恋→更稳定人际关系、更具复原力、高自尊</div>
+
+<div class="summary"><h4>📋 第7章复盘</h4>
+<ul><li>皮亚杰四阶段：感知运动→前运算→具体运算→形式运算</li><li>客体永久性(8-12月)与守恒(7岁)是关键里程碑</li><li>哈洛实验→依恋源于接触安慰；安斯沃斯→三类依恋</li></ul></div>
+
+<!-- ===== Ch8 ===== -->
+<h2 id="ch8">第8章 意识状态</h2>
+<div class="def"><strong>意识（Consciousness）</strong>——个体对自身内部状态与外部环境的觉知。意识不是「全有或全无」的二元状态，而是连续变化的频谱——从高度专注的警觉到深度睡眠，其间还有白日梦、冥想、催眠、药物改变意识等中间状态。</div>
+
+<h3>8.1 睡眠阶段与梦</h3>
+<div class="derive">睡眠周期(约90分钟一个循环，每夜4-6循环)：
+
+非快速眼动睡眠(NREM)：
+  N1：浅浅眠(α→θ波)→持续1-7分钟→易被唤醒
+  N2：睡眠纺锤波+K复合波→占整夜睡眠~50%→巩固记忆
+  N3(慢波睡眠)：δ波→深度睡眠→释放生长激素→醒时迷糊→睡眠剥夺首选恢复
+
+快速眼动睡眠(REM)：
+  β波(似清醒)→快速眼动→肌肉完全松弛(矛盾激活)→梦的发生
+  →每周期REM时长递增(首周期约10分钟，末周期可达60分钟)
+  →REM剥夺→后续夜晚REM反弹(更早进入/更长时间)
+
+睡眠的各阶段功能假说：
+  NREM慢波：恢复体力、清除脑代谢废物(胶状淋巴系统glymphatic最活跃)
+  REM：情绪处理(记忆再巩固)、程序性记忆巩固、创造性联结
+  睡眠不足(持续<6小时/夜)→削弱注意、记忆、情绪调节、免疫、葡萄糖代谢
+
+失眠的认知行为治疗(CBT-I)：
+  刺激控制：床=睡眠(不在床上清醒工作/看手机)→重新建立床与睡眠的连接
+  睡眠限制：限制卧床时间→人为制造轻度睡眠剥夺→加强睡眠驱动力→入睡更快
+  认知重构：改变对睡眠的灾难化信念(「我睡不着明天肯定崩溃」→「偶尔少睡也能应付」)
+  →CBT-I是慢性失眠的一线治疗方案，效果持久>安眠药(长期随访无依赖/反弹)</div>
+
+<div class="summary"><h4>📋 第8章复盘</h4>
+<ul><li>睡眠周期~90分钟：N1→N2→N3→REM→循环</li><li>REM=快速眼动+骨骼肌麻痹+梦</li><li>REM剥夺→REM反弹；慢波睡眠=修复睡眠</li><li>睡眠不足→全方位认知损伤(注意/记忆/情绪/免疫)</li></ul></div>
+
+<!-- ===== Ch9 ===== -->
+<h2 id="ch9">第9章 动机与情绪</h2>
+
+<div class="def"><strong>动机（Motivation）</strong>——引发、指导并维持目标导向行为的内部过程。回答「为什么人们做他们所做的」。<br><strong>情绪（Emotion）</strong>——包含生理唤醒、主观体验、表情行为、认知评价四个成分的复杂反应模式。</div>
+
+<h3>9.1 马斯洛需要层次理论</h3>
+<div class="derive">马斯洛(Maslow, 1943→1970)需要层次金字塔(自下而上)：
+
+1. 生理需要：食物、水、空气、睡眠、性——最基础最优先
+2. 安全需要：人身安全、健康保障、资源稳定
+3. 归属与爱：亲密关系、友谊、社群归属
+4. 尊重需要：自尊、他人认可、成就感
+5. 认知需要(1970新增)：求知、理解、探索——层次间
+6. 审美需要(1970新增)：秩序、对称、美的体验
+7. 自我实现：实现个人潜能——「成为你能成为的一切」
+
+1970年修正要点：
+- 低层次不必完全满足才进入高一层→可逐层向上脉冲
+- 自我实现者特征(15点)：现实知觉准确、接纳自我与自然、自发与简朴、以问题为中心、
+  超然独处的需求、自主性、高峰体验等
+- 超越自我实现的需要(晚年新增)：自我超越——超越个人自我
+
+理论贡献与局限：
+  贡献：人本心理学核心模型→关注健康而非病理，首次将「自我实现」置于心理学核心议题
+  局限：概念模糊难以严格实证定义(什么是「自我实现」？如何量化？)、样本为健康高功能个体(非随机取样)、文化偏差(个人主义价值vs集体文化的自我观有根本差异)</div>
+
+<h3>9.2 情绪理论对比</h3>
+<table>
+<tr><th>理论</th><th>核心命题</th><th>情绪产生顺序</th></tr>
+<tr><td>詹姆斯-朗格</td><td>情绪是对身体反应的感知</td><td>刺激→身体反应→情绪体验</td></tr>
+<tr><td>坎农-巴德</td><td>身体与情绪同时激活</td><td>刺激→丘脑→身体反应+情绪体验(同时)</td></tr>
+<tr><td>沙赫特-辛格双因素</td><td>生理唤醒+认知标签</td><td>刺激→生理唤醒→认知解释(给唤醒贴标签)→情绪</td></tr>
+<tr><td>拉扎勒斯认知评价</td><td>先评价后情绪</td><td>刺激→认知评价(初评+复评)→生理反应+情绪</td></tr>
+</table>
+
+<div class="warn">⚠ 沙赫特-辛格肾上腺素实验(1962)：三组被试注射肾上腺素→告知副作用组(有解释则无特别情绪)；不知副作用组(把心跳解释为情境所致→快乐或愤怒)。证明情绪不仅取决于生理唤醒，还取决于「将唤醒归因为怎样的情绪」的认知标签。</div>
+
+<div class="summary"><h4>📋 第9章复盘</h4>
+<ul><li>马斯洛：生理→安全→归属→尊重→自我实现</li>
+<li>沙赫特-辛格双因素：生理唤醒+认知标签→情绪</li>
+<li>基本情绪(Ekman 6类)：愤怒、厌恶、恐惧、快乐、悲伤、惊讶→跨文化面部识别一致</li></ul></div>
+
+<!-- ===== Ch10 ===== -->
+<h2 id="ch10">第10章 人格</h2>
+
+<div class="def"><strong>人格（Personality）</strong>——个体跨时间、跨情境保持一致的独特思维、情感与行为模式。「每个人在某些方面像所有人，某些方面像部分人，某些方面不像任何人。」</div>
+
+<h3>10.1 大五人格模型(Big Five / OCEAN)</h3>
+<div class="derive">五大超级人格特质(因子分析导出)：
+① 开放性(Openness)：好奇vs保守、想象力、审美敏感→创造性强
+② 尽责性(Conscientiousness)：自律vs散漫、有组织、可靠→学业+,寿命+
+③ 外向性(Extraversion)：社交vs独处、活力、积极情绪→领导+
+④ 宜人性(Agreeableness)：合作vs敌对、信任、利他→人际关系+
+⑤ 神经质(Neuroticism)：情绪不稳vs稳定、焦虑、敌意→心理健康−,寿命−
+
+六国跨文化验证：大五在英语、德语、荷兰语、日语、汉语、俄语人格形容词
+的因子分析中重复出现→较强的跨文化稳定性。
+
+行为预测价值：
+Conscientiousness可预测学业(Correlation: .20 - .30与GPA)
+Neuroticism可预测焦虑障碍风险(OR > 3)
+Extraversion可预测整体幸福感(需结合宜人性协同预测)</div>
+
+<div class="chart-wrap"><canvas id="bigFive" width="500" height="320"></canvas>
+<div class="fig-cap">图7：大五人格维度雷达图（Big Five OCEAN），复刻津巴多普通心理学原版插图，核心结论：用五个维度描画个体人格轮廓，不同个体各维度高低组合形成独特人格剖面。测验工具：NEO-PI-R(Costa & McCrae, 1992/2005修订)。现实应用：职业适配(高O→艺术家；高C→管理者)、临床辅助评估、婚恋匹配参考。</div></div>
+
+<h3>10.2 主要人格理论流派对比</h3>
+<table>
+<tr><th>流派</th><th>核心主张</th><th>代表人物</th><th>主要局限</th></tr>
+<tr><td>心理动力学</td><td>无意识冲突塑造人格；童年经历决定性</td><td>弗洛伊德、荣格</td><td>概念难操作化、过度泛性论</td></tr>
+<tr><td>人本主义</td><td>自我实现倾向、积极成长潜能</td><td>Rogers、Maslow</td><td>概念模糊无法证伪</td></tr>
+<tr><td>特质论</td><td>人格≔一组稳定特质(Big Five)</td><td>Allport、Cattell</td><td>低估情境影响(0.3-0.5)</td></tr>
+<tr><td>社会认知</td><td>特质×情境交互→行为(交互决定论)</td><td>Bandura、Mischel</td><td>忽略生物遗传+情绪作用</td></tr>
+<tr><td>生物学</td><td>遗传(50%)+脑机制塑造人格</td><td>Eysenck、Gray</td><td>未充分结合文化/情境变量</td></tr>
+</table>
+
+<div class="summary"><h4>📋 第10章复盘</h4>
+<ul><li>大五(OCEAN)具备最强跨文化恒定性→各可预测重要生活结果</li><li>五大流派各具洞见→整合视角(生物×特质×情境)更深邃</li><li>遗传力≈.50(Minnesota双生子研究Bouchard)→双生分开抚养→人格中等遗传</li></ul></div>
+
+<!-- ===== Ch11 ===== -->
+<h2 id="ch11">第11章 社会心理学</h2>
+
+<div class="def"><strong>社会心理学</strong>——研究个体思维、情感、行为如何被他人实际存在、想象存在或隐含存在所影响的科学领域。核心主题：社会认知、社会影响、社会关系。</div>
+
+<h3>11.1 从众与服从——经典实验</h3>
+<div class="derive">阿希(Asch)从众实验(1951→1956)：
+  范式：被试与7名假被试坐一排，判断三条比较线段哪条与标准线段等长
+  → 前几轮假被试均正确作答→建立正常感
+  → 关键试验：假被试趋一致地给出明显错误答案
+  结果：75%被试至少一次随大流给出错误答案；全体试验均正确率仅1/4
+  当存在一个支持真实答案的异议者→从众率降至原来的1/4
+  条件影响：①团体人数=3-4人→从众率最高(再加人不增加从众)
+          ②一致性(有人异议→大幅降低从众)
+          ③作答公开性(私下作答→不从众)
+
+米尔格拉姆(Milgram)服从实验(1963→1974)：
+  范式：被试扮演「教师」→对面隔室有「学生」(假被试)→电击
+  电击发生器：15V至450V递增(标注Danger·Severe Shock·XXX)
+  学生每次答错→教师须按更高一档电击
+  → 学生的预先录音→150V尖叫要求停止→300V猛敲墙壁→此后沉默
+  结果：65%的被试一直执行到最高450V(135V时多数动摇但被实验者口头敦促(Prods)继续)
+  耶鲁大学以外地点→48%→仍近半数服从到底
+  女性被试与男性无显著差异
+  贬斥实验者权威(实验者vs普通公民)→服从率剧降至20%</div>
+
+<div class="chart-wrap"><canvas id="conformity" width="600" height="280"></canvas>
+<div class="fig-cap">图8：从众实验与服从实验关键数据对比，复刻津巴多普通心理学原版插图。阿希实验核心结论：情境一致性压力足以使多数人违背自身知觉，异议者的存在极大降低从众。变量控制：标准线段=3英寸，比较线=3-3/8/4-1/4/4-3/4英寸。米尔格拉姆实验核心结论：对权威命令的服从意愿远超常人预判。现实应用：理解纳粹大屠杀(阿伦特「平庸之恶」)、职场伦理、消费者从众。</div></div>
+
+<h3>11.2 归因偏差</h3>
+<div class="derive">基本归因错误(FAE)：解释他人行为时——高估个人因素(人格/态度)
+  低估情境因素(社会压力/环境)当解释自己的同一行为时→通常夸大情境作用
+  → 这种不对称导致人们错误推断，认为他人的行为反映了其持久人格特质
+  例：同事加班到深夜→判断他「勤奋努力」(人格归因)
+      实际上可能因为「领导要求三日内完成」(情境归因而未被考虑)
+
+  FAE的文化差异：个人主义文化(美/西欧)→FAE更强
+                   集体主义文化(东亚)→FAE较弱(更倾向于情境归因)
+  →表明归因偏向本身也深受社会文化建构影响
+
+自利偏差(Self-Serving Bias)：成功时→归因于自己(内部归因)；失败时→归因于运气/环境(外部归因)
+
+旁立者效应与责任扩散(Bystander Effect, Latané & Darley 1968)：
+  吉诺维斯(Kitty Genovese)案引发——38人目击持续袭击→无人报警
+  Darley实验：被试独自在房间→隔壁「突发癫痫(录音)」→紧急情境
+  · 被试认为仅自己一人在场→85%迅速求助
+  · 被试认为4人在场→31%求助(且反应更慢)
+  原因：①责任扩散(多人在场→个人责任稀释) ②社会比较(参照他人的评估→他人无反应→紧急被重新界定) ③评价恐惧(害怕显得不恰当)→三者叠加→持续不行动。该研究直接反驳「城市人冷漠=人格原因」的常识判断——恰恰证明是情境而非人格决定了行为。</div>
+
+<div class="summary"><h4>📋 第11章复盘</h4>
+<ul><li>阿希实验(75%从众率)→情境从众压力</li>
+<li>Milgram服从实验(65%服从至450V)→对权威的服从</li>
+<li>FAE→解释他人行为时高估人格，低估情境</li>
+</ul></div>
+
+<!-- ===== Ch12 ===== -->
+<h2 id="ch12">第12章 心理障碍（DSM-5分类）</h2>
+
+<div class="def"><strong>心理障碍（Psychological Disorder）</strong>——DSM-5定义：个体认知、情绪调节或行为上的临床显著紊乱，反映心理、生物或发展过程中潜藏的心理功能失调，并因此造成显著的痛苦或社会、职业等重要功能领域的残疾。对社会所预期或文化所认可的对常见应激源的反应，不足以界定为障碍。</div>
+
+<h3>12.1 DSM-5主要障碍分类（核心几类）</h3>
+<div class="derive">DSM-5(American Psychiatric Association, 2013)障碍分类架构：
+
+一、神经发育障碍：
+  ASD孤独症谱系障碍(社交沟通缺损+受限重复行为)；
+  ADHD注意缺陷多动障碍(注意困难+多动冲动，12岁前发病、两情境以上出现)
+
+二、精神分裂症谱系：
+  精神分裂症——阳性症状持续≥1月，障碍≥6月
+    阳性：妄想、幻觉(多为听幻觉/评论性或命令性言语)、言语紊乱、严重紊乱紧张症行为
+    阴性：情感平淡、意志减退、言语贫乏→预后较阳性更顽强、更耗竭
+  共病：抑郁占50%↑→高自杀风险(SZ自杀完成率约5-10%)
+
+三、抑郁障碍：
+  重性抑郁障碍(MDD)——≥2周含(以下至少5，
+    核心二选一：①情绪低落 ②快感缺失)：
+    食欲或体重变化、睡眠紊乱、精神运动性迟滞或激越、
+    疲劳或精疲力尽、无价值或内疚、注意困难、反复想到死亡或自杀意念
+  终生患病率：女性~25%, 男性~12% (性别差异始于青春期)
+
+四、焦虑障碍：
+  广泛性焦虑(GAD)——过度担忧≥6月(多生活领域) + 肌肉紧张、睡眠紊乱、易激惹…
+  惊恐障碍——意料之外的反复惊恐发作+持续担忧继续发作或回避行为
+
+五、强迫症及相关障碍：
+  强迫思维(侵入性反复想法/冲动→引起焦虑) +
+  强迫行为(压制或中和强迫思维的重复性行为/仪式)→耗时>1h/天或临床显著痛苦
+
+六、创伤及应激相关障碍：
+  PTSD(创伤后应激障碍)——暴露于创伤事件后出现
+  侵入性症状+持续回避+负性认知与心境改变+高唤起(惊跳/失眠/过度警觉)
+  发病率：终生约7-8%，女性为男性两倍(部分原因是性暴力的高受害风险)
+  治疗：延长暴露(PE)和认知加工治疗(CPT)为创伤聚焦CBT的循证一线干预</div>
+
+<div class="chart-wrap"><canvas id="disorderPie" width="600" height="260"></canvas>
+<div class="fig-cap">图9：DSM-5主要心理障碍类别终生患病率概览，复刻津巴多普通心理学原版插图，核心结论：焦虑障碍是最常见的心理障碍类别(28.8%终生患病率)，抑郁/双相紧随其后(20.8%)。诊断标准：DSM-5多轴系统已取消，改为单一轴+共病标注。现实应用：全科医疗发现综合征→转诊心理科、职场健康、校园心理健康。</div></div>
+
+<div class="warn">⚠ 伪心理学红线：网上的「抑郁自评小测试」「性格障碍筛查」均无信效度报告，不可用于替代专业临床评估。只有精神科医师(我国)有权做出临床障碍诊断，且需结构化访谈(SCID-5)+持续时间+排除器质性病因。</div>
+
+<div class="summary"><h4>📋 第12章复盘</h4>
+<ul><li>DSM-5定义：临床显著扰乱→显著痛苦或功能残疾</li>
+<li>主要类别：焦虑(28.8%)>情绪(20.8%)>冲动控制>物质使用</li>
+<li>SZ阳性+阴性症状，MDD核心=情绪低+快感缺失，PTSD=侵入+回避+高唤起</li></ul></div>
+
+<!-- ===== Ch13 ===== -->
+<h2 id="ch13">第13章 心理治疗</h2>
+
+<div class="def"><strong>心理治疗（Psychotherapy）</strong>——受过专业训练的治疗师与来访者之间基于心理原则的系统互动，旨在改变来访者的思维、情感或行为以减轻痛苦、增强功能。</div>
+
+<h3>13.1 四大治疗取向</h3>
+<table>
+<tr><th>取向</th><th>代表疗法</th><th>核心机制</th><th>适用障碍</th></tr>
+<tr><td>心理动力学</td><td>精神分析、客体关系</td><td>揭示无意识冲突→洞察→改变</td><td>人格障碍、慢性抑郁</td></tr>
+<tr><td>人本主义</td><td>来访者中心(Rogers)</td><td>无条件积极关注+共情+真诚→自我接纳</td><td>自尊问题、存在危机</td></tr>
+<tr><td>认知行为(CBT)</td><td>Beck认知治疗、暴露反应预防</td><td>改变自动负性思维+行为活化→中断恶性循环</td><td>抑郁、焦虑、强迫症</td></tr>
+<tr><td>生物学</td><td>SSRI/SNRI、ECT、TMS</td><td>调整神经递质、改变脑激活模式</td><td>中重度抑郁、SZ、双相</td></tr>
+</table>
+
+<h3>13.2 循证治疗——CBT详解</h3>
+<div class="derive">认知行为治疗(Beck Cognitive Therapy + Behavior Activation)：
+  核心认知模型——「事件不直接导致情绪，对事件的解释才导致情绪」
+  认知三联征(抑郁)：对自我(「我没用」)+对世界(「一切糟透」)+对未来的负性看法
+
+  技术工具：
+  ① 自动思维的识别(功能失调性思维记录DTR→三栏：情境-自动思维-情绪/行为)
+  ② 苏格拉底式提问(引导质疑证据，不直接告诉病人）
+  ③ 行为实验(现实检验不合理的信念→逐步用证据取代偏见)
+  ④ 行为活化(安排愉悦+精进活动→打破退缩回避→正性强化螺旋)
+  ⑤ 暴露与反应预防(针对强迫与恐惧→逐级暴露恐惧情境→禁止安全行为→焦虑习惯化)
+
+  CBT的实证数据：
+  中↓重度抑郁：CBT≈药物治疗(Elkin et al, 1989 NIMH-TDCRP)；联合治疗优于任一单一
+  惊恐障碍：CBT(12-16次)长期随访→80%+不发(Clark+2018)
+  强迫症：EX/RP组合→D-cycloserine加固效应→改善暴露学习记忆(微小剂量联合)
+
+  第三波CBT(扩展)：ACT接受与承诺治疗、DBT辩证行为治疗(针对边缘人格→自杀/自伤高危有效)、
+  MBCT正念认知治疗(预防MDD复发有效：减少>50%复发风险~两轮研究)</div>
+
+<div class="summary"><h4>📋 第13章复盘</h4>
+<ul><li>四大取向：心理动力学/人本/认知行为/生物医学</li><li>CBT循证强度最高(>500 RCTs)</li><li>CBT≈药物(中重度)；联合>单一；持续效应>CBT训练12-16周</li></ul></div>
+
+<!-- ===== Ch14 ===== -->
+<h2 id="ch14">第14章 压力与健康心理学</h2>
+
+<div class="def"><strong>压力（Stress）</strong>——个体在应对被评估为超出其资源并危及自身幸福的情境时产生的生理与心理反应过程。压力=压力源×个体评价×应对资源。</div>
+
+<h3>14.1 压力的生理机制</h3>
+<div class="derive">Selye一般适应综合征(GAS, General Adaptation Syndrome, 1936)：
+阶段一——警戒期(Alarm)：战斗或逃跑——交感神经激活+肾上腺髓质(去甲肾上腺素+肾上腺素)↑↑→HPA轴启动(室旁核→CRH→ACTH→皮质醇)↑→血压/心率/血糖/呼吸频率↑
+阶段二——抵抗期(Resistance)：机体持续动员资源应对压力→皮质醇持续高水平→免疫功能开始下降
+阶段三——耗竭期(Exhaustion)：肾上腺皮质扩张过耗→资源耗尽→对疾病的脆弱性增大
+→ 慢性应激病理效应(终生病高风险)：高血压左室肥大(心血管病)、海马体积↓(记忆衰退)、免疫↓(感染/癌症风险↑)、代谢综合征加速
+
+拉扎勒斯认知评价模型(压力不是事件本身，而是人—环境关系的评价嵌套)：
+  初级评价：事件与己相关否？带来挑战→威胁→或无关？
+  次级评价：应对的资源是否充足？
+  重新评价：经由新信息对原有评价进行修正
+  例：被裁员→初级=威胁/损失→次级=「我和家人有好一笔储蓄+我技能可转岗」
+     →重新评价→仍为消极事件但非灾难性→采取积极的应对行为而非回避</div>
+
+<h3>14.2 压力管理与应对</h3>
+<div class="derive">循证有效的压力应对策略：
+① 有氧运动(RCT)：≥每周3次30分钟中强度步行→BDNF↑→海马神经新生→抗抑郁效应
+② 正念减压(MBSR, Kabat-Zinn, 8周标准课程)：身体扫描+正念哈他瑜伽+坐禅+日常正念
+  →后扣带皮层(PCC)与内侧前额叶(mPFC)的功能连接强化(Self-Referential↓→专注>反刍)
+③ 社会支持缓冲假说(Cohen & Wills, 1985)：感知的社会支持→缓冲应激事件对健康的损害
+  →血浆皮质醇和心率的压力反应削弱
+④ 认知重构(ABC模型应用→理性情绪行为REBT, Ellis)：
+  激活性事件(A)→对事件的信念(B)→情绪的后果(C)
+  改变非理性信念(B)(如必须完美、灾难化)→C随之改变
+
+积极心理学的PERMA模型(Seligman)：
+  积极情绪(Positive Emotion)、投入(Engagement)、关系(Relationships)、
+  意义(Meaning)、成就(Accomplishment)——五大幸福支柱
+  干预随机对照：写下每天三件好事(感恩日记)→21天→持续6个月的幸福提升</div>
+
+<div class="summary"><h4>📋 第14章复盘</h4>
+<ul><li>GAS三阶段：警戒→抵抗→耗竭→慢性应激病理</li><li>认知评价(拉扎勒斯)→压力是评价交互→非事件</li><li>运动、正念、社会支持、认知重构是四种证据最强的应对策略</li></ul></div>
+
+<!-- ==================== 经典实验汇总 ==================== -->
+<div class="summary" style="border-color:var(--accent);background:#fdf8fc">
+<h4 style="font-size:15px">🧪 全书经典心理学实验汇总清单</h4>
+<table>
+<tr><th>实验</th><th>研究者</th><th>核心发现</th><th>章节</th></tr>
+<tr><td>巴甫洛夫狗唾液条件反射</td><td>Pavlov(1904)</td><td>中性刺激与US配对后→CS→CR</td><td>4</td></tr>
+<tr><td>斯金纳箱操作性条件反射</td><td>Skinner(1938)</td><td>行为由后果(强化/惩罚)决定 → 强化程序</td><td>4</td></tr>
+<tr><td>艾宾浩斯遗忘曲线</td><td>Ebbinghaus(1885)</td><td>记忆遗忘指数递减→间隔复习最有效</td><td>5</td></tr>
+<tr><td>Loftus错误信息效应</td><td>Loftus(1974)</td><td>事后措辞显著扭曲目击者记忆→重构性</td><td>5</td></tr>
+<tr><td>哈洛猴替代母爱实验</td><td>Harlow(1958)</td><td>接触安慰 > 食物对依恋的决定性</td><td>7</td></tr>
+<tr><td>阿希从众线段判断</td><td>Asch(1951)</td><td>75%被试至少一次随大流(一致性>人数影响)</td><td>11</td></tr>
+<tr><td>米尔格拉姆服从电击实验</td><td>Milgram(1963)</td><td>65%服从至450V(情境权威的压抑性)</td><td>11</td></tr>
+<tr><td>斯坦福监狱实验</td><td>Zimbardo(1971)</td><td>角色与情境塑造行为的巨大权力→6天中止</td><td>11</td></tr>
+<tr><td>沙赫特肾上腺素情绪实验</td><td>Schachter(1962)</td><td>情绪=生理唤醒+认知标签</td><td>9</td></tr>
+</table>
+</div>
+
+</main>
+
+<!-- ==================== Canvas 图表 ==================== -->
+<script>
+class CC{
+  constructor(id,w,h){this.c=document.getElementById(id);if(!this.c)return;this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h;this.p={t:36,r:24,b:50,l:55}}
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  g(x0,x1,y0,y1,xL='',yL=''){const c=this.ctx,p=this.p,pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;this.xs=v=>p.l+(v-x0)/(x1-x0)*pw;this.ys=v=>p.t+(y1-v)/(y1-y0)*ph;c.strokeStyle='#e4e0d8';c.lineWidth=0.5;c.beginPath();for(let i=0;i<=5;i++){const yv=y0+(y1-y0)*i/5,y=this.ys(yv);c.moveTo(p.l,y);c.lineTo(this.w-p.r,y)}for(let i=0;i<=10;i++){const xv=x0+(x1-x0)*i/10,x=this.xs(xv);c.moveTo(x,p.t);c.lineTo(x,this.h-p.b)}c.stroke();c.strokeStyle='#555';c.lineWidth=1.5;c.beginPath();c.moveTo(p.l,p.t);c.lineTo(p.l,this.h-p.b);c.moveTo(p.l,this.h-p.b);c.lineTo(this.w-p.r,this.h-p.b);c.stroke();c.fillStyle='#555';c.font='10px sans-serif';c.textAlign='right';for(let i=0;i<=5;i++){const yv=y0+(y1-y0)*i/5;c.fillText(yv.toFixed(0),p.l-6,this.ys(yv)+4)}c.textAlign='center';for(let i=0;i<=10;i++){const xv=x0+(x1-x0)*i/10;c.fillText(xv.toFixed(0),this.xs(xv),this.h-p.b+15)}}
+  ln(pts,color,w=2.5,d=null){if(pts.length<2)return;const c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(d)c.setLineDash(d);c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));c.stroke();c.setLineDash([]);c.restore()}
+  dot(x,y,color,size=5){const c=this.ctx;c.fillStyle=color;c.beginPath();c.arc(this.xs(x),this.ys(y),size,0,Math.PI*2);c.fill()}
+  lbl(x,y,text,color='#555',ox=8,oy=-8){const c=this.ctx;c.fillStyle=color;c.font='bold 10px sans-serif';c.fillText(text,this.xs(x)+ox,this.ys(y)+oy)}
+  bar(labels,vals,colors){const c=this.ctx,p=this.p,pw=this.w-p.l-p.r,ph=this.h-p.t-p.b,m=Math.max(...vals,1);labels.forEach((l,i)=>{const w=40,x=this.xs(i+1)-w/2,h=vals[i]/m*ph*.88;c.fillStyle=colors[i]||'#6b3a8a';c.fillRect(x,this.ys(0)-h,w,h);c.fillStyle='#333';c.font='10px sans-serif';c.textAlign='center';c.fillText(l,this.xs(i+1),this.h-p.b+14)})}
+}
+
+// 图1: 脑功能分区
+(function(){
+  const ch=new CC('brainMap',600,260);if(!ch.c)return;ch.clr();
+  const c=ch.ctx;c.fillStyle='#555';c.font='13px sans-serif';c.textAlign='center';c.fillText('大脑皮层四大叶及功能区示意图',300,18);
+  // Outline brain shape
+  c.strokeStyle='#555';c.lineWidth=2.5;c.beginPath();c.ellipse(300,155,180,100,0,0,Math.PI*2);c.stroke();
+  c.lineWidth=1.5;c.beginPath();c.moveTo(300,55);c.lineTo(300,255);c.stroke();
+  // Label lobes
+  c.fillStyle='#6b3a8a';c.font='12px bold sans-serif';c.fillText('额叶(Frontal)',280,70);
+  c.fillText('运动皮层',265,86);c.fillText('前额叶执行功能',258,102);
+  c.fillStyle='#c85a17';c.fillText('顶叶(Parietal)',170,130);c.fillText('躯体感觉',180,146);
+  c.fillStyle='#1a5c7a';c.fillText('枕叶(Occipital)',380,200);c.fillText('视觉皮层',380,216);
+  c.fillStyle='#2a7a3a';c.fillText('颞叶(Temporal)',440,130);c.fillText('听觉皮层',440,146);c.fillText('韦尼克区语言',438,162);
+  // Broca/Wernicke
+  c.fillStyle='#b33a00';c.font='10px sans-serif';c.fillText('布洛卡区(言语产生)',250,130);
+  // Central sulcus
+  c.strokeStyle='#888';c.lineWidth=2;c.beginPath();c.moveTo(300,60);c.lineTo(300,250);c.stroke();
+  c.fillStyle='#888';c.font='9px sans-serif';c.fillText('中央沟',305,70);
+})();
+
+// 图2: 韦伯定律
+(function(){
+  const ch=new CC('weberCurve',560,260);if(!ch.c)return;ch.clr();
+  c=ch.ctx;c.fillStyle='#555';c.font='13px sans-serif';c.textAlign='center';c.fillText('韦伯定律：差别阈限(JND)与标准刺激强度成正比',280,18);
+  ch.g(0,100,0,10,'标准刺激强度 I','JND ΔI');
+  ch.ln([[0,0],[20,1],[40,2],[60,3],[80,4],[100,5]],'#6b3a8a',3);
+  ch.lbl(80,4.5,'ΔI=k·I','#6b3a8a',10,5);
+  const c2=ch.ctx;c2.fillStyle='#6b3a8a';c2.font='10px sans-serif';c2.textAlign='center';c2.fillText('k=0.05(JND=5%·I)——不同感觉模态k各异',280,240);
+})();
+
+// 图3: 巴甫洛夫条件反射数据
+(function(){
+  const ch=new CC('pavlovData',560,260);if(!ch.c)return;ch.clr();
+  c=ch.ctx;c.fillStyle='#555';c.font='13px sans-serif';c.textAlign='center';c.fillText('经典条件反射：习得阶段与消退阶段唾液反应',280,18);
+  ch.g(0,24,0,14,'CS-US配对次数/CS单独次数','唾液分泌量 (滴)');
+  // Acquisition phase
+  ch.ln([[0,0.5],[2,1],[4,2],[6,3.5],[8,6],[10,8],[12,9.5]],'#1a5c7a',3);
+  ch.lbl(12,9.5,'习得阶段↑','#1a5c7a',5,-10);
+  // Extinction phase
+  ch.ln([[12,9.5],[14,7.5],[16,5],[18,3],[20,1.5],[22,0.8],[24,0.4]],'#c85a17',3,[6,3]);
+  ch.lbl(20,2,'消退阶段↓','#c85a17',5,-10);
+  ch.ctx.fillStyle='#888';ch.ctx.font='10px sans-serif';ch.ctx.textAlign='center';ch.ctx.fillText('前12次：CS+US配对→习得(CR建立) | 后12次：仅CS→消退',280,238);
+})();
+
+// 图4: 记忆三阶段模型
+(function(){
+  const ch=new CC('memoryModel',600,300);if(!ch.c)return;ch.clr();
+  const c=ch.ctx;c.fillStyle='#555';c.font='13px sans-serif';c.textAlign='center';c.fillText('记忆信息加工三级模型(Atkinson-Shiffrin)',300,18);
+  // Draw 3 boxes
+  const boxes=[{x:40,y:60,w:130,h:50,l:'感觉记忆',c:'#e8e0f0'},{x:235,y:60,w:130,h:50,l:'短时/工作记忆',c:'#e0e8f0'},{x:430,y:60,w:130,h:50,l:'长时记忆',c:'#e0f0e0'}];
+  boxes.forEach(b=>{c.fillStyle=b.c;c.fillRect(b.x,b.y,b.w,b.h);c.strokeStyle='#555';c.lineWidth=1.5;c.strokeRect(b.x,b.y,b.w,b.h);c.fillStyle='#333';c.font='11px bold sans-serif';c.textAlign='center';c.fillText(b.l,b.x+b.w/2,b.y+30)});
+  // Arrows
+  const arrow=(x1,y1,x2,y2,txt)=>{c.strokeStyle='#888';c.lineWidth=2;c.beginPath();c.moveTo(x1,y1);c.lineTo(x2,y2);c.stroke();c.fillStyle='#555';c.font='10px sans-serif';c.textAlign='center';c.fillText(txt,(x1+x2)/2,y1-2)};
+  arrow(170,85,235,85,'注意→');
+  arrow(365,80,430,80,'编码(复述)→');
+  arrow(430,120,365,120,'←提取');
+  // details below
+  c.fillStyle='#333';c.font='9px sans-serif';c.textAlign='center';
+  c.fillText('容量:极大 | 时间:<1s',105,130);c.fillText('容量:7±2组块 | 时间:18-30s',300,130);c.fillText('容量:无限 | 时间:至终身',495,130);
+  // LTM sub
+  c.fillStyle='#e0f0e0';c.fillRect(390,160,210,60);c.strokeStyle='#2a7a3a';c.strokeRect(390,160,210,60);
+  c.fillText('陈述性(外显):语义=事实,情景=经历',495,180);c.fillText('非陈述性(内隐):程序=技能,条件反射',495,200);
+})();
+
+// 图5: 艾宾浩斯遗忘曲线
+(function(){
+  const ch=new CC('ebbinghaus',560,260);if(!ch.c)return;ch.clr();
+  c=ch.ctx;c.fillStyle='#555';c.font='13px sans-serif';c.textAlign='center';c.fillText('艾宾浩斯遗忘曲线(1885)——保持量随时间指数递减',280,18);
+  ch.g(0,32,0,100,'学习后天数','保持量 (%)');
+  ch.ln([[0,100],[1/24,98],[1/12,96],[0.25,85],[0.5,72],[1,56],[2,44],[7,28],[14,25],[31,21]],'#6b3a8a',3);
+  ch.dot(1/24,98,'#c85a17',4);ch.lbl(1/24,98,'24min:98%','#c85a17',5,10);
+  ch.dot(1,56,'#c85a17',4);ch.lbl(1,56,'1天:56%','#c85a17',10,-5);
+  ch.dot(31,21,'#c85a17',4);ch.lbl(31,21,'31天:21%','#c85a17',10,5);
+  c.fillStyle='#333';c.font='10px sans-serif';c.textAlign='center';c.fillText('无意义音节(Nonsense Syllables)为记忆材料·以重学节省时间%为保持量指标',280,238);
+})();
+
+// 图6: 皮亚杰阶段
+(function(){
+  const ch=new CC('piagetStages',600,260);if(!ch.c)return;ch.clr();
+  c=ch.ctx;c.fillStyle='#555';c.font='13px sans-serif';c.textAlign='center';c.fillText('皮亚杰认知发展四阶段',300,18);
+  const stages=[{l:'感知运动\n0-2岁',x:90,c:'#e8e0f0',w:110},{l:'前运算\n2-7岁',x:215,c:'#e0e8f0',w:110},{l:'具体运算\n7-11岁',x:340,c:'#e0f0e0',w:110},{l:'形式运算\n11岁+',x:460,c:'#fff0e0',w:110}];
+  stages.forEach(s=>{c.fillStyle=s.c;c.fillRect(s.x,60,s.w,60);c.strokeStyle='#555';c.lineWidth=1.5;c.strokeRect(s.x,60,s.w,60);c.fillStyle='#333';c.font='11px sans-serif';c.textAlign='center';const ls=s.l.split('\n');c.fillText(ls[0],s.x+s.w/2,82);c.fillText(ls[1],s.x+s.w/2,100)});
+  // Key milestones
+  c.fillStyle='#555';c.font='9px sans-serif';c.textAlign='center';
+  c.fillText('客体永久性',145,140);c.fillText('象征性、自我中心',270,140);c.fillText('守恒、可逆性',395,140);c.fillText('假设-演绎推理',515,140);
+  c.fillText('客体永久性(8-12月)||',145,220);c.fillText('三山任务(自我中心)||',270,220);c.fillText('液体守恒实验(7岁)||',395,220);c.fillText('摆锤实验(系统操控变量)',515,220);
+})();
+
+// 图7: 大五人格雷达图
+(function(){
+  const ch=new CC('bigFive',500,320);if(!ch.c)return;ch.clr();
+  const c=ch.ctx,cx=250,cy=170,r=100,angles=[-90,-18,54,126,198].map(a=>a*Math.PI/180);
+  const labels=['开放性(O)','尽责性(C)','外向性(E)','宜人性(A)','神经质(N)'];
+  // Grid
+  for(let i=1;i<=5;i++){c.strokeStyle='#e4e0d8';c.lineWidth=1;c.beginPath();for(let j=0;j<5;j++){const x=cx+Math.cos(angles[j])*r*i/5,y=cy+Math.sin(angles[j])*r*i/5;j==0?c.moveTo(x,y):c.lineTo(x,y)}c.closePath();c.stroke()}
+  // Axes
+  angles.forEach(a=>{c.strokeStyle='#888';c.lineWidth=1;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx+Math.cos(a)*r,cy+Math.sin(a)*r);c.stroke()})
+  // Data (example profile)
+  const data=[0.8,0.7,0.55,0.85,0.3];
+  c.fillStyle='rgba(107,58,138,0.3)';c.strokeStyle='#6b3a8a';c.lineWidth=2.5;c.beginPath();
+  angles.forEach((a,i)=>{const x=cx+Math.cos(a)*r*data[i],y=cy+Math.sin(a)*r*data[i];i==0?c.moveTo(x,y):c.lineTo(x,y)});c.closePath();c.fill();c.stroke();
+  // Labels
+  c.fillStyle='#333';c.font='10px sans-serif';c.textAlign='center';
+  angles.forEach((a,i)=>{c.fillText(labels[i],cx+Math.cos(a)*(r+22),cy+Math.sin(a)*(r+22))})
+  c.fillStyle='#555';c.font='11px sans-serif';c.fillText('大五人格剖面示例(1=低,5=高)',cx,cy+r+50);
+})();
+
+// 图8: 从众实验对比
+(function(){
+  const ch=new CC('conformity',600,280);if(!ch.c)return;ch.clr();
+  c=ch.ctx;c.fillStyle='#555';c.font='13px sans-serif';c.textAlign='center';c.fillText('阿希从众实验(75%至少一次) vs 米尔格拉姆服从实验(65%服从至450V)',300,18);
+  const p=ch.p;ch.bar(['阿希:从未从众','阿希:至少一次从众','阿希:有异议者(从众率÷4)','Milgram:不服从','Milgram:服从至450V'],[25,75,19,35,65],['#6b3a8a','#1a5c7a','#2a7a3a','#c85a17','#b33a00']);
+  [0,1,2,3,4].forEach((i,nm)=>{const x=ch.xs(i+1);c.fillStyle='#333';c.font='10px sans-serif';c.textAlign='center';c.fillText([25,75,19,35,65][i]+'%',x,ch.ys(0)-ch.ys([25,75,19,35,65][i]*(ch.h-p.t-p.b)*.88/100)-6)});
+  c.fillStyle='#555';c.font='10px sans-serif';c.textAlign='center';c.fillText('阿希→符合压力 | Milgram→权威命令→情景力量≈个人善恶',280,242);
+})();
+
+// 图9: 心理障碍患病率
+(function(){
+  const ch=new CC('disorderPie',600,260);if(!ch.c)return;ch.clr();
+  c=ch.ctx;c.fillStyle='#555';c.font='13px sans-serif';c.textAlign='center';c.fillText('DSM-5心理障碍终生患病率概览',300,18);
+  const bars=[{l:'焦虑',v:28.8,c:'#6b3a8a'},{l:'情绪(抑郁/双相)',v:20.8,c:'#1a5c7a'},{l:'冲动控制',v:24.8,c:'#c85a17'},{l:'物质使用',v:14.6,c:'#b33a00'},{l:'精神分裂症',v:0.7,c:'#2a7a3a'}];
+  ch.g(0,bars.length+1,0,35,'障碍类别','终生患病率 (%)');
+  bars.forEach((b,i)=>{const w=50,x=ch.xs(i+1)-w/2,h=b.v/35*(ch.h-ch.p.t-ch.p.b)*.88;c.fillStyle=b.c;c.fillRect(x,ch.ys(0)-h,w,h);c.fillStyle='#333';c.font='10px sans-serif';c.textAlign='center';c.fillText(b.l,ch.xs(i+1),ch.h-ch.p.b+14);c.fillText(b.v+'%',ch.xs(i+1),ch.ys(0)-h-6)});
+})();
+
+console.log('✅ 津巴多普心第8版 · 9张Canvas图表 · 14章全覆盖 · 零外部依赖');
+</script>
+</body>
+</html>

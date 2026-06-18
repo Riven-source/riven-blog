@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>曼昆《经济学原理（宏观分册）》完整自学体系 · GDP·通胀·失业·AS-AD·货币财政政策·增长</title>
+<style>
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#c9d1d9;--gold:#e3b341;--red:#f85149;--green:#3fb950;--blue:#58a6ff;--purple:#bc8cff;--muted:#8b949e;--warn-bg:#2d1a1a;--info-bg:#0d1b2a;--derive-bg:#1a1e24;--case-bg:#14261a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:15.5px}
+main{max-width:940px;margin:0 auto;padding:40px 24px}
+h1{font-size:2em;text-align:center;color:var(--gold);margin:20px 0 6px;letter-spacing:1.5px}
+.subtitle{text-align:center;color:var(--muted);margin-bottom:32px;font-size:0.92em}
+h2{font-size:1.55em;color:var(--gold);border-bottom:2px solid var(--border);padding-bottom:8px;margin:44px 0 18px}
+h3{font-size:1.2em;color:var(--blue);margin:26px 0 12px}
+h4{font-size:1.05em;color:var(--purple);margin:18px 0 8px}
+.chapter{padding:0 0 16px;margin:0 0 12px}
+.def-box{background:var(--info-bg);border:1px solid var(--blue);padding:14px 18px;border-radius:6px;margin:14px 0}
+.def-box strong{color:var(--blue)}
+.derive{background:var(--derive-bg);border:1px solid var(--border);padding:14px 18px;border-radius:6px;margin:12px 0;font-size:0.94em}
+.plain{background:#1a1e1a;border-left:3px solid var(--green);padding:14px 18px;border-radius:0 6px 6px 0;margin:12px 0;font-size:0.94em}
+.plain strong{color:var(--green)}
+.warn{background:var(--warn-bg);border:1px solid var(--red);padding:12px 16px;border-radius:6px;margin:14px 0;color:#fdaeb0}
+.warn strong{color:var(--red)}
+.case-box{background:var(--case-bg);border:1px solid var(--green);padding:14px 18px;border-radius:6px;margin:12px 0}
+.case-box strong{color:var(--green)}
+.case-box p{margin:4px 0}
+.summary{background:var(--surface);border:2px solid var(--gold);padding:16px 20px;border-radius:8px;margin:20px 0}
+.canvas-wrap{margin:18px 0;text-align:center}
+.canvas-wrap canvas{max-width:100%;border:1px solid var(--border);border-radius:6px}
+.fig-cap{font-size:0.84em;color:var(--muted);text-align:center;margin:6px 0 14px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92em}
+th{background:var(--surface);color:var(--gold);padding:10px 12px;border:1px solid var(--border);text-align:left}
+td{padding:8px 12px;border:1px solid var(--border)}
+tr:nth-child(even){background:rgba(255,255,255,0.02)}
+.hl{color:var(--gold);font-weight:bold}
+.rh{color:var(--red);font-weight:bold}
+.bh{color:var(--blue)}
+.gh{color:var(--green)}
+nav.toc{background:var(--surface);padding:16px 20px;border-radius:8px;margin:16px 0;columns:2;column-gap:14px;font-size:0.88em}
+nav.toc a{color:var(--blue);text-decoration:none;display:block;padding:2px 0}
+nav.toc a:hover{color:var(--gold)}
+.formula{background:#0d1117;padding:10px 16px;border-radius:4px;display:inline-block;margin:4px 0;font-family:monospace;font-size:0.94em;color:var(--gold);border:1px solid var(--border)}
+.divider{border:none;border-top:1px dashed var(--border);margin:36px 0}
+@media print{body{background:#fff;color:#000;font-size:12px}main{max-width:100%}.warn{background:#fff5f5}}
+@media(max-width:640px){nav.toc{columns:1}h1{font-size:1.5em}}
+</style>
+</head>
+<body>
+<main>
+
+<h1>曼昆《经济学原理（宏观分册）》完整自学体系</h1>
+<p class="subtitle">N. Gregory Mankiw — Principles of Macroeconomics<br>GDP·通胀·失业·总供给总需求·货币财政政策·经济增长 · Chart.js矢量图表 · 纯离线</p>
+
+<nav class="toc" id="toc"></nav>
+
+<!-- ====== 绪论 ====== -->
+<h2 id="c0">全书总纲：宏观经济学在回答什么</h2>
+<div class="def-box">
+<strong>宏观经济学研究什么</strong>——研究一国整体经济的运行规律：为什么有些年份全民高收入增长、有些年份裁员降薪遍地？为什么物价有时几十年纹丝不动有时突然翻倍？一个国家高增长变低增长的原因是工人变懒了还是资本不够了？宏观经济学把所有个体行为汇总为一个国民经济整体，分析全国产量、物价总水平、失业率、总消费、总投资、货币总量和政府收支这些总量指标之间的关系。一句话概括：<span class="hl">核算总量→理解长期增长→看穿短期波动→用政策缓冲波动→融入全球贸易</span>。
+</div>
+<div class="plain"><strong>通俗拆解：</strong>微观经济学研究一棵树怎么长（一个企业怎么定价），宏观经济学研究整片森林的气候（整个国家为什么繁荣或衰退）。你不能用一棵树的视角推演整个森林——一加一不等于二的复杂性在宏观层面无处不在。一个人不花钱省下了钱=他的储蓄增加了（好事）。但全体国民同时不花钱=全社会的总需求暴跌=企业裁人=连你这个原本有工作的人也失业（坏事）。这叫作"合成谬误"——个体层面成立的逻辑全部推及整体时常常崩溃。宏观经济学就是研究这类"个体会做≠整体会好"的系统级现象。</div>
+
+<!-- ====== 第一章：GDP ====== -->
+<div class="divider"></div>
+<h2 id="c1">第一章 GDP——衡量一国经济的总标尺</h2>
+<div class="chapter">
+
+<h3>1.1 GDP的定义与四重核算</h3>
+<div class="def-box"><strong>GDP（Gross Domestic Product，国内生产总值）</strong>——在一给定时期（通常一年或一个季度）内，在一国地理领土内生产的全部最终物品与服务的市场价值总和。"最终"二字极度关键：面粉卖给面包厂不被计入（中间品），面包卖给消费者才计入（最终品）——否则面粉的价值被重复计算了两次。</div>
+<div class="plain"><strong>通俗拆解：</strong>你把一个国家想象成一个巨大的超市，超市里所有东西的价签加在一起就是这个国家一年的GDP。但你只算最终交到顾客手上（包括卖给国外的顾客）那一轮的商品价值——不能把面粉磨成麦子的价值重复全链路上加一遍再算一遍，那样就虚高了。这个看似简单的"在哪个阶段切一刀"的操作差不多就是整个国民经济核算的全部核心。——GDP同时衡量了三样东西：①全体国民的总收入（工资+利润+租金+利息）②全体企业为生产所付出的总支出（消费+投资+政府+净出口）③全体物质与服务的总产出。三者天然等价——你花的每一元必等于别人赚的每一元，全加总必然相等。</div>
+
+<div class="derive"><strong>GDP支出法恒等式：</strong><br>Y = C + I + G + NX<br>C = 消费（家庭购买的物品与服务，约占GDP的55-70%）<br>I = 投资（企业购买的新设备+新建住宅+存货变动，约15-25%）<br>G = 政府购买（政府消费+公共投资，不含转移支付如养老金=转移支付不创造新产出，约15-20%）<br>NX = 净出口 = 出口 − 进口（可正可负，通常−5%至+5%）<br><br><strong>名义GDP与实际GDP</strong>：名义GDP = 当年价格 × 当年数量。实际GDP = 基年价格 × 当年数量（排除了价格变动只量真实物质增长）。<br>GDP平减指数 = 名义GDP / 实际GDP × 100。CPI用消费者篮子固定权重，GDP平减指数篮子随生产结构自然变动——两者衡量的涨价范围并不重合。</div>
+
+<h3>1.2 GDP不衡量什么——清醒的局限</h3>
+<div class="plain"><strong>GDP忽略了：</strong>家务劳动（全职妈妈的产出不在GDP内但其价值极为巨大）、地下经济（逃税的交易+非法经济）、环境代价（化工厂贡献1亿GDP但同时破坏了价值3亿的清洁河水）、闲暇（两国GDP一样但A国每周只工作30小时B国50小时——A国人民实际生活质量远超B国但GDP看不出）、健康与教育水平差异带来的长期福利鸿沟、收入分配的不均等程度（GDP总量涨但中位数在降意味着增长的红利没有普遍惠及全部国民）。GDP是经济最快的温度计——但它量不了幸福、健康、公平和可持续。理解GDP的盲点比背下GDP的定义更重要。</div>
+
+<div class="canvas-wrap"><canvas id="chart1" width="800" height="480"></canvas></div>
+<div class="fig-cap">图1：GDP支出构成全景。C消费（蓝色柱）占总GDP约55-70%为最大成分，I投资（黄色）、G政府购买（紫色）、NX净出口（绿色可正可负）。数据基于典型发达经济体的支出结构模拟。核心逻辑：全国总产出Y=C+I+G+NX是宏观经济学的第一恒等式也是总需求分析的起点。</div>
+
+<div class="case-box"><strong>【日常案例·你今天的消费即GDP】</strong>你早上在楼下早餐店花10元买了煎饼——10元里的约7元是鸡蛋蔬菜成本（中间品不算GDP的重复）实际新贡献的GDP=10元（最终售价）。煎饼摊老板从这10元中赚了3元付自己房租（属于C里的服务消费）——你花的这10元在GDP的支出端属于C，在收入端被拆分为工资+租金+利润+间接税。<br><strong>【国内政策案例·GDP统计口径切换】</strong>中国2016年启动R&D（研发支出）纳入GDP核算——此前研发被当做中间成本扣除，此后研发被重新分类为"固定投资"的一部分。这一口径切换在当年直接使全国GDP向上修正了约1.3%。</div>
+
+<div class="warn"><strong>⚠ 频发混淆：GDP ≠ 居民收入。</strong>GDP的一部分去了设备折旧（补充资本消耗）、另一部分通过税收上缴政府——真正落到居民可支配收入上的是GDP扣掉折旧和税收加上转移支付之后的余额。很多国家GDP年年5%增长但中位数收入增速远低于GDP——因为新增的GDP被前10%富人的资本收入吸走了——增长不等于普遍受益。</div>
+</div>
+
+<!-- ====== 第二章：CPI与通胀 ====== -->
+<div class="divider"></div>
+<h2 id="c2">第二章 CPI与通货膨胀——钱为什么越来越不值钱</h2>
+<div class="chapter">
+
+<h3>2.1 CPI如何被算出来</h3>
+<div class="def-box"><strong>CPI（Consumer Price Index，居民消费价格指数）</strong>——固定一篮子代表性消费品（粮食、房租、交通、医疗、教育……数百种商品和服务），跟踪这一篮子的总价格在不同年份的变化。CPI通胀率 = (今年CPI − 去年CPI) / 去年CPI × 100%。</div>
+<div class="plain"><strong>通俗拆解：</strong>统计局的调查员每个月去超市记录同一个品牌同一规格的食用油、大米、牙膏等数百样东西的价签。然后把每一件商品今年的总开销除以去年同篮子的开销→得出CPI。但你自己的"个人通胀率"跟CPI可能完全不同——因为你每月房租占你收入的一半而CPI中住房权重可能只有20%。老年人大比例花在医疗上、年轻人花在外卖和房租上——统计局的那个"平均人"不是你。</div>
+
+<div class="derive"><strong>CPI的三个固有偏差：</strong><br>①<strong>替代偏差</strong>：猪肉涨价→消费者自动转吃鸡肉→但CPI仍按原来的猪肉权重计算，高估了消费者面对涨价时的实际开支上升。<br>②<strong>新产品偏差</strong>：智能手机十年前不存在→它一出现极大改善了消费者生活质量但CPI无法反映这种"从无到有"的福利提升。<br>③<strong>质量偏差</strong>：同样2000元手机今年的性能是去年的四倍→CPI只看到价格没变就认为没涨价，实际上花同样的钱买到了好得多的东西=真实生活成本下降了。<br>这三个偏差综合导致CPI通常每年高估通胀约0.5-1%。</div>
+
+<h3>2.2 通胀的代价与费雪方程</h3>
+<div class="plain"><strong>通胀不是均匀伤害所有人的：</strong>拿固定工资的打工人、手握大量存款的老人——通胀无声地把他们的积蓄和固定工资的购买力割掉。借了房贷的年轻人——通胀帮了他们——因为他们用"更不值钱的钱"去还几年前签下的固定金额的贷款。债权人和债务人天然站通胀的两头。通胀本质是隐蔽的财富再分配——没有法律的裁决，不需要任何人的同意。</div>
+
+<div class="derive"><strong>费雪方程（名义利率与实际利率）：</strong><br>i = r + π（近似）或 i ≈ r + π<sub>e</sub>（事前实际利率=名义利率−预期通胀）<br>i = 名义利率（银行挂牌的数字），r = 实际利率（减去通胀后真实的资金成本）<br>π = 当前通胀率。π<sub>e</sub> = 预期通胀率。<br>当通胀=5%、名义利率=3%→实际利率=−2%——你存银行的钱到年底实际能买的东西反而少了，这就是"负利率"的真实含义。</div>
+
+<div class="canvas-wrap"><canvas id="chart2" width="800" height="480"></canvas></div>
+<div class="fig-cap">图2：通胀与货币供给增长跨国散点（模拟基于费雪-弗里德曼假说）。横轴=货币供给增速，纵轴=平均通胀率。数据点沿45度线分布=货币增长率与通胀高度正相关。核心逻辑：长期中通货膨胀无论何时何地都是一种货币现象（Friedman，1968）。</div>
+
+<div class="case-box"><strong>【日常案例·你的加薪被通胀吃了】</strong>你今年加薪8%→开心。但今年通胀=6%→你的真实加薪=8%−6%=2%。公司给你涨8%不是因为你的生产力提升了这么多——其中6%只是对物价上涨的被动补偿（通胀调整项）。如果你的同事今年也只涨了5%——他的真实收入实际上反降了1%。<br><strong>【全球案例·恶性通胀的毁灭力】</strong>津巴布韦2008年月通胀率高达79.6亿%——物价每24小时翻倍。工人早上一领工资立即跑去黑市抢购一切能换实物的东西。货币已经丧失了全部价值储藏职能→交易退回到以物易物。恶性通胀从来不是"物价自己涨了"——是政府通过无限印钞为赤字融资→货币数量规律无情地让价格跟着M成倍的放大。</div>
+
+<div class="warn"><strong>⚠ 频发混淆：通胀率下降 ≠ 物价下降。</strong>通胀率从10%降到4%——物价仍然在涨、只是涨得慢了。只有通胀率变为负值=通缩时物价才真正在下降。日常新闻报道中不断有人说"通胀下来了物价应该便宜了吧"——这是彻底的范畴错误。</div>
+</div>
+
+<!-- ====== 第三章：失业 ====== -->
+<div class="divider"></div>
+<h2 id="c3">第三章 失业——劳动力市场的阴影</h2>
+<div class="chapter">
+
+<h3>3.1 三种失业与自然失业率</h3>
+<div class="def-box"><strong>失业率</strong> = 失业人数 / 劳动力人数 × 100%。劳动力 = 就业者 + 正在主动找工作的失业者。注意：放弃了求职的"沮丧工人"不被统计为劳动力——他们会人为压低官方失业数字。</div>
+<div class="plain"><strong>三种失业一口清：</strong><br>①<strong>摩擦性失业</strong>——你刚从旧公司离职，正在找下一份的路上。这种失业不是坏事——它意味着劳动力在向更能发挥自己价值的位置流动。时间通常为几周至几个月。<br>②<strong>结构性失业</strong>——你的技能已经不被市场需要了（打字员被计算机淘汰、流水线工人被自动化替代）。这种失业极为痛苦因为不是多面几份简历能解决的——需要从头学新的技能。通常持续数年。<br>③<strong>周期性失业</strong>——经济整体萎缩→企业裁员→你本可以继续本职工作但企业自己不景气了。这是宏观政策最应该去干预的失业类型——经济复苏后工作岗位会自动回来。<br>摩擦性+结构性≈<strong>自然失业率（Natural Rate of Unemployment）</strong>——在非衰退也不繁荣的正常年份，一国最低可持续的失业率。</div>
+
+<h3>3.2 最低工资与效率工资——失业的微观根源</h3>
+<div class="derive"><strong>为什么工资通常不会降到市场均衡价位以消除全部失业？</strong><br>
+①<strong>最低工资法</strong>：W<sub>min</sub> > W*（市场均衡工资）→劳动供给>劳动需求→过剩劳动=失业。但实证发现美国适度提高最低工资对就业的负效应在部分城市相当接近零→并非教科书曲线那样灵敏。<br>
+②<strong>工会</strong>：集体谈判使内部人工资>市场出清工资→部分工人被挤出至非工会部门压低那里的工资。<br>
+③<strong>效率工资</strong>：企业主动给高于市场均价的工资以提高工人不经意的努力程度（丢了这个工作去哪再找一个这么高薪的？）→工人的生产率随工资提高→企业总利润反而改善。但代价是部分工人永远被关在效率工资之门的外面。</div>
+
+<div class="case-box"><strong>【日常案例·AI时代的结构性失业】</strong>一个45岁做了二十年翻译的中年人→2023年AI翻译的质量已经在大多数商务场景中远超人工且零成本→他的技能从"高需求"变为"结构性被替代"。他面临的是结构性失业不是周期性失业——央行降息对这种人无用。结构性失业的唯一解法=再培训+劳动市场流动性的政策支持。<br><strong>【政策案例·疫情期间的周期性失业vs后续的结构性变化】</strong>2020年餐馆和航空公司大规模裁员=典型的周期性失业（经济恢复后多数岗位可重现）。但经过两年远程办公→大量写字楼前台和商业区服务业发现永久性地不需要原来那么多劳动力了→一部分"周期性失业"永久转变为结构性失业。</div>
+</div>
+
+<!-- ====== 第四章：储蓄投资与金融体系 ====== -->
+<div class="divider"></div>
+<h2 id="c4">第四章 储蓄、投资与金融体系——全社会的资金池</h2>
+<div class="chapter">
+
+<h3>4.1 国民储蓄恒等式</h3>
+<div class="derive"><strong>封闭经济下：</strong>Y = C + I + G → Y − C − G = I → (Y − T − C) + (T − G) = I<br>私人储蓄S<sub>p</sub> = Y − T − C（居民税后收入减消费剩下的那部分）<br>公共储蓄S<sub>g</sub> = T − G（政府税收减政府支出，可以为负=预算赤字）<br>国民储蓄S = S<sub>p</sub> + S<sub>g</sub> = I——全社会的总储蓄恒等于总投资。每一元没有被消费和没有进政府手中的国民收入最终必须以某种形式成为投资。</div>
+<div class="plain"><strong>通俗拆解：</strong>全国的经济像一个大蓄水池。家庭不花出去省下来的钱（S<sub>p</sub>）加上政府收比花多出来的钱（如果有多的话，S<sub>g</sub>）汇聚成水池的总蓄水量S。这个水通过银行、债券市场、股票市场流向了企业——企业用这笔钱买机器、建工厂、研发新产品（这就是投资I）。如果政府花的比收的多（S<sub>g</sub>为负=赤字）→水池里属于私人的那部分水被吸走了→企业可借的钱变少了→长期下全社会的新资本形成受阻。这就是赤字与长期增长之间的核心传导。</div>
+
+<h3>4.2 可贷资金市场——利率如何决定</h3>
+<div class="plain"><strong>把利率想象成蓄水池水的价格：</strong>蓄水的供给来自国民储蓄（大家不花省下来放在银行的钱）——利率越高人们越愿意存（供给曲线向右上方倾斜）。水的需求来自企业想借钱投资——利率越低借钱越便宜越想多借（需求曲线向右下方倾斜）。利率就是水价，它在供给与需求的交汇处自动形成。当政府赤字→储蓄供给曲线左移（水池里的水被抽走了一部分）→利率上升→企业借钱成本变高→私人投资被挤出——这就是经典的<span class="rh">挤出效应（Crowding Out）</span>。</div>
+
+<div class="case-box"><strong>【日常案例·你的储蓄去了哪】</strong>你每月存3000元进银行的定期→银行将这3000元中的约70%（按法定准备金率反推）放贷给本地的装修公司→装修公司用这笔贷款买板材雇佣工人→工人拿到工资后去隔壁餐馆吃饭→餐馆老板收入增加了。你本人的3000元储蓄就这样被银行体系变成了至少三轮别人的收入。你的每元钱储蓄最终以一比三至五的比例乘数创造着GDP。<br><strong>【国内案例·2008年四万亿与挤出效应争论】</strong>2008年中国推出四万亿财政刺激→政府赤字暴涨→S<sub>g</sub>大幅为负→国民储蓄总量被赤字吸走→融资利率面临上行压力。央行同时实施了极度宽松的货币政策压低了利率→一定程度上中和了挤出效应。</div>
+</div>
+
+<!-- ====== 第五章：货币银行 ====== -->
+<div class="divider"></div>
+<h2 id="c5">第五章 货币、银行与货币创造</h2>
+<div class="chapter">
+
+<h3>5.1 货币的三大职能与货币层次</h3>
+<div class="def-box"><strong>货币=交换媒介+计价单位+价值储藏。</strong>M0=流通中的现金（基础货币）。M1=M0+活期存款。M2=M1+定期存款等准货币。各国统计口径略有不同但逻辑一致：流动性从高到低。</div>
+<div class="plain"><strong>通俗拆解：</strong>你微信零钱里的3000块（M1）→随时刷码支付=交换媒介。你看房价用的单位是"元"不是"黄金克数"=计价单位。你把多余工资存进余额宝=价值储藏。如果这三个功能中的任何一个崩溃（比如计价单位一天一变）→货币就退化为废纸——这就是恶性通胀下的真实惨状。</div>
+
+<h3>5.2 部分准备金制与货币乘数</h3>
+<div class="derive"><strong>货币乘数m = 1 / rr（最简模型，rr=法定准备金率）</strong><br>央行印出100元基础货币→存入银行A→A保留rr=10%（10元）→贷出90元→借款人把90元消费→收款人存入银行B→B保留9元贷出81元→B的收款人存入银行C……<br>最终全部存款总和 = 100 × (1 + 0.9 + 0.9² + …) = 100 × 1/(1−0.9) = 1000元。<br>货币供给M = 基础货币MB × 货币乘数m。这就是银行体系通过反复贷存创造货币的核心机制。</div>
+<div class="plain"><strong>关键的现实打折：</strong>2008年后美联储对银行超额准备金支付利息（IOER=Interest on Excess Reserves）→银行手里有大量准备金但不去放贷——而是趴在央行吃利息。货币乘数在2008−2015年间从约1.6暴跌至0.8以下——基础货币QE的四倍扩张并没有将M1等比例地放大。教科书乘数m=1/rr只在<strong>银行愿意放贷+借款人愿意借钱</strong>的双重条件下成立。</div>
+
+<div class="canvas-wrap"><canvas id="chart3" width="800" height="480"></canvas></div>
+<div class="fig-cap">图3：货币供给的传导：央行操作基础货币MB→银行体系通过部分准备金的反复贷存以乘数m将初始注入放大为货币总量M。核心逻辑：货币乘数是银行愿意放贷程度与公众持有现金偏好两者乘积的倒数。现实警示：在流动性陷阱期间乘数可暴跌至接近1。</div>
+
+<div class="case-box"><strong>【日常案例·你的存款创造了多少货币】</strong>你存了5000元进工行→工行留下一部分准备金后→放贷4200元给楼下水果店进货→水果店用4200元给批发商打款→批发商的钱存进了农行→农行再贷出其中3500元……你最初存的5000元在整个银行体系里创造了约四万至五万元的总存款（假设实际乘数约8-10倍）。<br><strong>【全球案例·日本量化宽松与"推绳子"困境】</strong>日本央行自2001年起持续QE→基础货币数倍膨胀→但商业银行体系因为企业不借钱（需求为零）+银行不敢放贷（不良历史包袱）→乘数持续低位→M2增速远低于MB增速→通胀始终在零附近。这精准演示了"推一根绳子"的双重失效——央行可以无限印钱但没法强迫人去借钱。日本的经验永久性地改写了全球中央银行对货币政策有效性的认知边界。</div>
+</div>
+
+<!-- ====== 第六章：AS-AD模型 ====== -->
+<div class="divider"></div>
+<h2 id="c6">第六章 总供给总需求模型——宏观经济最核心的引擎</h2>
+<div class="chapter">
+
+<h3>6.1 总需求AD：为什么它向下倾斜</h3>
+<div class="def-box"><strong>AD总需求曲线</strong>表示在每一物价总水平P下，经济体对物品和服务的总需求量Y=C+I+G+NX。AD向下倾斜≠微观需求定律（替代效应）。在宏观层面，三个完全不同的效应使AD负向倾斜：</div>
+<div class="derive">①财富效应（Pigou Effect）：P↓→人们持有的货币实际购买力上升→感觉更富了→C↑→总Y↑。<br>②利率效应（Keynes Effect）：P↓→真实的货币余额M/P↑→货币供给相对充裕→利率i↓→企业投资I↑→Y↑。<br>③汇率效应（Mudell-Fleming Effect）：P↓→i↓→资本外流→本币贬值→国内商品对外更有竞争力→NX↑→Y↑。<br>三者从C、I、NX三个方向共同推动AD向下倾斜。</div>
+
+<h3>6.2 长期总供给LRAS与短期总供给SRAS</h3>
+<div class="plain"><strong>LRAS（长期总供给）=一根垂直线。</strong>在足够长的时期中，物价水平P再怎么变都改变不了一国能生产的实际最大产出Y*——它由劳动L、资本K、自然资源N和技术A决定：Y*=A·f(L,K,N)。提升LRAS的唯一方法是增加基础要素或技术进步——印钱绝对不可能平移这根垂直线。<br><br><strong>SRAS（短期总供给）向右上方倾斜——三个根原因：</strong><br>①<strong>粘性工资：</strong>劳动合同签了两年的固定工资→物价突然跌了但工资还没降→此时企业每卖一件货利润被压缩→企业减产→Y↓。<br>②<strong>粘性价格：</strong>部分企业的目录价格改一次成本太高→物价普遍涨时这些企业自己的价格还卡着→他们被动损失顾客→减产。<br>③<strong>感知偏差：</strong>物价普遍上涨时部分企业误以为只针对自己的产品提价了（不知道是整体通胀）→以为自己特别有市场→增产→短期Y>Y*。</div>
+
+<h3>6.3 AS-AD均衡与冲击分析</h3>
+<div class="plain"><strong>短期均衡：</strong>AD与SRAS相交决定P和Y。这个Y通常不等于Y*——Y>Y* →过热缺口→通胀压力上升。Y<Y*→衰退缺口→失业率高于自然率。<br><strong>长期自动修正：</strong>衰退缺口→失业>自然率→工资面临下行压力→SRAS右移→价格逐步下降→给一条回到Y*的路径。过热同理反向。但"长期自动修正"可能需要数年甚至十年——期间的政治和社会痛苦可能已经是执政者无法承受的——所以有了宏观政策的必要。</div>
+
+<div class="canvas-wrap"><canvas id="chart4" width="800" height="480"></canvas></div>
+<div class="fig-cap">图4：总供给总需求AS-AD完整模型。LRAS为垂直线在潜在产出Y*处。SRAS向右上方倾斜。AD向下倾斜。三线同时相交=长期均衡。需求冲击（AD左移）→短期Y<Y*衰退缺口+价格微降。供给冲击（SRAS左移）→滞胀=Y↓+P↑同时发生的最坏组合。货币政策/财政政策通过推动AD来尝试恢复Y至Y*。</div>
+
+<div class="warn"><strong>⚠ 致命混淆：微观需求曲线 vs 宏观AD</strong>——微观需求线向下倾斜是替代效应（苹果贵了改吃橙子）。宏观AD向下倾斜是利率+财富+汇率三个宏观总量机制——它绝对不等于"把个人需求线水平加总"。</div>
+
+<div class="case-box"><strong>【全球案例·2008年大衰退的AS-AD解读】</strong>次贷危机=总需求AD急剧左移（银行瘫痪→信贷冻结→C和I骤降）。美联储的应对=将利率降至几乎为零+QE大量购债=将AD用力向右推回。同时奥巴马政府签署$8000亿财政刺激（G增加+减税=AD再右移）。整个过程就是教科书级别的「AD冲击+双政策修复」。<br><strong>【2020年新冠案例·供需双冲击】</strong>疫情初期=AD的大幅左移（全球消费和投资停摆）+SRAS左移（供应链断裂+工厂停产+工人居家）=历史上罕见的P↑+Y↓的完美滞胀教科书实现。用AS-AD一图即可全景解释2020全球经济。</div>
+</div>
+
+<!-- ====== 第七章：财政与货币政策 ====== -->
+<div class="divider"></div>
+<h2 id="c7">第七章 财政政策与货币政策——双引擎调控体系</h2>
+<div class="chapter">
+
+<h3>7.1 财政政策的乘数与挤出</h3>
+<div class="derive"><strong>政府购买乘数（最简模型·无税收漏出）：</strong><br>ΔY = ΔG × 1/(1−MPC) 其中MPC=边际消费倾向（你多收入1元你会花掉几毛钱）。MPC若≈0.8→乘数≈5→1亿元的额外财政支出最终拉动约5亿元的GDP。若加入所得税率t：乘数=1/[1−MPC(1−t)]——税率越高乘数越小（政府把钱拿走的部分越多居民可再消费的越少）。</div>
+<div class="plain"><strong>乘数在现实中远没有5这么大——四大泄洪口：</strong>①税收抽取（政府花的每一元中有相当比例直接通过税收又收回去了）②进口渗漏（消费者多花的钱有一部分买了进口货→顺差国受益）③利率挤出（G↑→赤字→可贷资金供给降→利率升→企业I被挤掉一部分）④李嘉图等价（如果居民预见到今天的赤字意味着未来更高税收→会先储蓄而非多消费——抵消乘数）。学术文献中美国政府支出乘数通常在0.5-1.5之间——大多数情况下是小于1的。</div>
+
+<h3>7.2 货币政策传导三路径</h3>
+<div class="plain"><strong>央行降息 → </strong>①企业借钱成本变低→I增加→直接拉动GDP。②房贷和车贷利率跟着降→居民每月还款减少→可支配收入上升→C增加。③国内利率低于国外→资本外流→本币贬值→国货出口竞争力上升→NX增加。这三条路径最终全部汇聚为一件事：AD曲线右移。<br><span class="rh">但注意严重限制：</span>如果利率已经为零→降无可降（零下限Zero Lower Bound）→传统的利率传导完全失效→必须用QE（量化宽松=央行直接买长期国债和MBS→压低长端利率）和前瞻指引（央行口头承诺长期维持低利率以塑造市场预期）。</div>
+
+<div class="canvas-wrap"><canvas id="chart5" width="800" height="480"></canvas></div>
+<div class="fig-cap">图5：财政扩张（G↑）与自动稳定器。G↑→AD右移→Y↑&P↑。但在古典情形下（LRAS垂直）→AD右移的全部效果最终只落到P↑上而Y不变。核心逻辑：政策在短期有效而长期被价格调整所中和——货币中性在长期中成立。自动稳定器（累进所得税+失业保险）在衰退中无立法动作即自动缓冲AD下滑。</div>
+
+<div class="case-box"><strong>【政策案例·中国2022-2023一揽子稳增长措施】</strong>2022年中国经济因房地产下行+疫情封控冲击→AD左移→GDP增速深度下滑。政府同时动用了：①减税退税（积极的财政刺激G↑等效地提高了可支配收入）②央行降准降息压低LPR ③加大地方专项债发行（财政扩张融资G↑）④保障性住房建设（定向I↑）。但居民端的消费信心恢复速度远低于企业与政府预期→乘数在2022年的传递严重不足。<br><strong>【全球案例·1990年代日本"失落十年"的利率陷阱】</strong>利率从约6%两年内砍到约0.5%→降到零下限附近再也推不动了。降利率推AD的工具箱已经清空→政府开始用天量财政赤字修桥铺路→但基础设施的回报率极低→赤字堆积如山而增长仍然停滞——这是凯恩斯主义工具箱在零下限+人口老龄化双重诅咒下的极限困境。</div>
+
+<div class="warn"><strong>⚠ 古典二分法：名义变量与实际变量的严格分离。</strong>长期中货币供给增加→只改变价格水平P和名义工资W——不改变实际GDP（Y*）、实际利率（r）、实际工资（W/P）任何实际变量。混淆短期有效与长期中性的货币效应是宏观经济政策讨论中最高频的根本错误。</div>
+</div>
+
+<!-- ====== 第八章：菲利普斯曲线与经济周期 ====== -->
+<div class="divider"></div>
+<h2 id="c8">第八章 菲利普斯曲线与经济周期</h2>
+<div class="chapter">
+
+<h3>8.1 短期菲利普斯曲线：通胀与失业的权衡</h3>
+<div class="def-box"><strong>菲利普斯曲线</strong>——通胀率与失业率在短期内呈反向关系。AD右移→Y>Y*→需求拉上→P↑（通胀上行）同时失业率降到自然失业率以下。AD左移→通胀下行失业上行。</div>
+<div class="plain"><strong>通俗拆解：</strong>经济太热了大家抢着买东西→企业扩产多招人→失业降到自然率以下→但工资因为招人难被推高→企业进一步提价→通胀起来了。央行在这时候用加息冷却AD→给过热的经济泼水→失业率回升至自然水平→通胀从高点回落。这就是央行操作菲利普斯曲线的全过程。<br><strong>但1970年代的滞胀把这个曲线炸了：</strong>石油危机→SRAS左移→P↑同时Y↓→高通胀和高失业同时出现。通胀与失业不再反向——因为这次的冲击来自供给端而不是需求端。</div>
+
+<h3>8.2 长中期菲利普斯曲线与牺牲率</h3>
+<div class="derive"><strong>长期菲利普斯曲线=在自然失业率u*处的垂直线。</strong>任何将失业压到自然率以下的企图→最终只将通胀加速推高。设预期通胀π<sub>e</sub>调整至实际通胀：<br>π = π<sub>e</sub> − β(u − u*) + v（其中v=供给冲击）<br>牺牲率 = 将通胀降低1%所损失的累计GDP的百分比。典型估计约在2-5%之间。</div>
+
+<div class="case-box"><strong>【全球案例·沃尔克1980年代力斩通胀】</strong>1979年美国通胀高达13%→美联储主席沃尔克把联邦基金利率暴力拉升至20%。百万企业关门→失业率飙至10.8%。三年里GDP累计损失约相当于降通胀1%付出了GDP的约3.5%。但通胀从此从双位数被永久压回个位数→为长达三十年的"大稳健"垫下了基石。<br><strong>【现代案例·2022-2023全球同步加息周期】</strong>2021-2022全球通胀因供应链+能源冲击+天量QE滞后效应→欧美通胀高达8-9%。美联储和欧央行同步急速加息→2023年通胀降至3-4%区间但GDP增速显著放缓——2023年就是当代菲利普斯曲线在未触发大衰退的情况下精巧的软着陆尝试。</div>
+</div>
+
+<!-- ====== 第九章：开放经济宏观 ====== -->
+<div class="divider"></div>
+<h2 id="c9">第九章 开放经济——全球贸易与汇率的宏观联动机理</h2>
+<div class="chapter">
+
+<h3>9.1 净出口与净资本流出的恒等</h3>
+<div class="derive"><strong>开放经济核心恒等式：</strong>NX（净出口）= NCO（净资本流出）<br>当一个国家卖出的货多于买进的货（NX>0，贸易顺差）→它积累了多于国内投出的外汇→这笔超额外汇必然通过购买外国资产（债券、股票、直接投资）流出本国——于是NCO同样正向。<br>贸易顺差国 = 资本净流出国。逆差国 = 资本净流入国。两者是同一枚硬币的正反面。</div>
+<div class="plain"><strong>通俗拆解：</strong>中国每年对美国卖出了5000亿美元的商品，比从美国买回的多大概3000亿→这3000亿的美元中国用不了全部去买美国货——所以就买入了美国国债、美国企业股票和美国的不动产。美国得到了"中国制造"的实物商品→中国得到了一张美国未来偿债的纸面承诺。双方都在这个交易中自认为得到了自己最想要的东西——中国得到了制造业就业和美元纸钞→美国得到了廉价商品压低了CPI。全球失衡的生命力就建立在这一「双方情愿的交换」上。</div>
+
+<h3>9.2 汇率决定：购买力平价vs利率平价</h3>
+<div class="derive"><strong>PPP购买力平价（长期汇率锚）：</strong>一篮子可比商品在两国的价格在换汇后应该相等。若美国一杯咖啡$4、中国一杯28元→PPP预测汇率≈7 RMB/USD。现实中PPP最多在超长周期作为「均值回归的引力锚」，短期偏差可以极大且持续多年。<br><strong>利率平价（短期汇率驱动力）：</strong>两国利差=预期汇率变动。若美国利率=3%中国利率=2%→一年后人民币应相对美元升值约1%以弥补利息损失。</div>
+
+<div class="canvas-wrap"><canvas id="chart6" width="800" height="480"></canvas></div>
+<div class="fig-cap">图6：开放经济可贷资金市场与外汇市场的双市场联动。可贷资金市场决定实际利率r。外汇市场由NCO=NX决定真实汇率ε。双市场同步均衡构成了开放经济长期模型的核心。真实汇率升值=本币对外购买力上升→出口变贵→净出口下降。贸易逆差=低国内储蓄+高国内投资的结构性结果，关税无法根治。</div>
+
+<div class="case-box"><strong>【全球案例·人民币汇改与中美贸易摩擦】</strong>2005年人民币放弃对美元的硬挂钩→开启长达十年的升值通道（约从8.2升至约6.1）。按照PPP框架，人民币的低估部分被升值逐步消化→中国对美贸易顺差占GDP比重从峰值约10%逐步降至约2%。贸易战的关税试图从价格角度收缩贸易差额——但这无法改变中国高储蓄低消费的结构性是顺差根源的基本事实。<br><strong>【日常案例·海淘中你参与了外汇市场】</strong>你在Amazon上用人民币买了一件日本直邮的电子产品→你的人民币先被换成日元→日本商家拿到日元后换回日元采购→日元/人民币的微小波动在海淘下单的那一刹那直接影响了你的实际支付金额。</div>
+</div>
+
+<!-- ====== 第十章：经济增长 ====== -->
+<div class="divider"></div>
+<h2 id="c10">第十章 长期经济增长——所有宏观问题的最终答案</h2>
+<div class="chapter">
+
+<h3>10.1 生产函数与增长核算</h3>
+<div class="derive"><strong>总量生产函数：</strong>Y = A × f(L, K, H, N)<br>A = 全要素生产率TFP（技术进步+制度效率）。L=劳动力，K=物质资本，H=人力资本（教育+健康），N=自然资源。<br><strong>增长核算方程：</strong>ΔY/Y ≈ ΔA/A + α(ΔK/K) + (1−α)(ΔL/L) 其中α≈0.3是资本收入在总产出中的份额。每一国增长率的分解自动告诉我们：它主要靠堆资本还是靠技术晋升。</div>
+
+<h3>10.2 索洛增长模型的核心直觉</h3>
+<div class="plain"><strong>为什么穷国不能简单地"复制粘贴"富国而马上变富？</strong>因为资本积累遇到边际产量递减——第一台拖拉机对农业增产极大（MP极高）→第1000台拖拉机对增产已经微乎其微（MP接近零）。任何单纯依靠投资拉动（资本深化）的模式迟早会撞上MP递减的天花板——到达稳态（steady state）后，人均产出停止增长。在稳态之后唯一能让人均产出持续增长的引擎只有技术进步ΔA>0。<br>索洛的冷酷预言：增长在不可回避的某一点必须靠"多思考"而不是"多搬砖"来继续。</div>
+
+<div class="derive"><strong>索洛模型核心方程：</strong>Δk = s·f(k) − (δ+n+g)·k<br>s=储蓄率，f(k)=人均生产函数，δ=折旧率，n=人口增长率，g=技术进步率。<br>稳态条件：s·f(k*) = (δ+n+g)·k* → 储蓄刚好补充折旧、人口稀释和技术进步所消耗的人均资本。<br>提高s（储蓄率）→抬升稳态人均产出Y/L（水平效应）但<strong>不改变</strong>稳态的人均产出增长率（增长效应为零）。永久增长率的唯一来源=g=技术进步率。</div>
+
+<div class="canvas-wrap"><canvas id="chart7" width="800" height="480"></canvas></div>
+<div class="fig-cap">图7：索洛增长模型稳态。s·f(k)曲线与(δ+n+g)·k直线交点k*为稳态人均资本。若s上升→人均产出有一次性的水平向上跳跃然后回到原增长率。k<k*→人均资本积累→产出增长。k>k*→人均资本过多→折旧+人口稀释超过新投资→资本回落至k*。</div>
+
+<div class="case-box"><strong>【全球案例·中国1978–2020增长的索洛分解】</strong>中国年均约9.5%的增长→约5-6%来自资本积累（超高储蓄率+投资率s≈40-50%）→约1-2%来自人口红利（剩余劳动力从农村转入城市工业n下降、L质量提升）→约2-3%来自TFP增长（市场化改革、技术引进与自主创新）。但近年来TFP贡献率持续下降→增长正在从"堆资本驱动"向"技术前沿"的微妙转型——索洛模型预言了到达稳态前增速的必然减缓。<br><strong>【个人案例·为什么存款不能让你无限变富】</strong>你今年存下工资60%全投入指数基金→但你的人力资本（你自己能赚到的工资）决定了你的总收入天花板。在某个节点之后，多存的一元钱带来的复利已经远不如你通过学习和提升技能把你自己的工资提高30%带来的终身收入提升。索洛说国家不能无限依靠堆投资——同理，个人不能无限依靠节衣缩食而必须依靠提升自己的A（TFP=你自己能力的代称）。</div>
+</div>
+
+<!-- ====== 第十一章：跨章对比 ====== -->
+<div class="divider"></div>
+<h2 id="c11">第十一章 全书核心对比模块</h2>
+
+<h3>11.1 宏观政策工具箱全览</h3>
+<table>
+<tr><th>维度</th><th>货币政策</th><th>财政政策</th></tr>
+<tr><td>操作机构</td><td>中央银行（Fed/PBoC）</td><td>财政部/国会</td></tr>
+<tr><td>核心工具</td><td>政策利率、准备金率、公开市场操作、QE</td><td>政府购买G、税收T、转移支付</td></tr>
+<tr><td>作用速度</td><td>较快（利率变→市场即时反应）</td><td>较慢（预算立法+执行时滞长）</td></tr>
+<tr><td>适用场景</td><td>需求管理、通胀防控、汇率稳定</td><td>深度衰退、基础设施投放、收入再分配</td></tr>
+<tr><td>长期限制</td><td>货币中性：长期只影响价格不影响实际Y</td><td>挤出效应+债务累积→长期不可持续</td></tr>
+<tr><td>零下限局限</td><td>利率降到零后失效（需QE+前瞻指引）</td><td>债务率过高后主权信用有被降级风险</td></tr>
+</table>
+
+<h3>11.2 全书易混淆概念清单</h3>
+<div class="warn">
+<strong>名义GDP ≠ 实际GDP：</strong>名义GDP的增长一部分是纯粹的价格涨。实际GDP才是真实物质增长。两者之差=通胀的"造假"部分。<br>
+<strong>财政赤字 ≠ 政府债务：</strong>赤字=单年的政府收支缺口（流量）。债务=所有历年赤字加总后仍未偿还的存量。每年有赤字≠债务一定失控——如果GDP增速快过债务利率，债务/GDP比率可以逐步回落。<br>
+<strong>菲利普斯曲线的短期权衡 ≠ 永久取舍：</strong>短期确实存在通胀与失业的反向取舍——但长期菲利普斯曲线是垂直线。靠通胀长久压失业的尝试最终只留下高通胀。<br>
+<strong>提高储蓄率 → 长期增长率上升（错误！）：</strong>索洛模型明确：储蓄率提高只在一个过渡期向上提升了人均产出的绝对水平——不改变长期增长率。永久增长只来自于技术进步。<br>
+<strong>降息 = 印钱（错误！）：</strong>降息是通过降低银行间借贷成本诱导更多借出——间接增加货币流通速度。与央行直接创造准备金（印钱的含义）不同。QE更接近"印钱"。</div>
+
+<h3>11.3 全书核心公式速查</h3>
+<div class="derive">
+<span class="formula">Y = C + I + G + NX</span> GDP支出法恒等式<br>
+<span class="formula">CPI = (当年一篮子费 / 基年一篮子费)×100</span><br>
+<span class="formula">i ≈ r + π</span> 费雪方程<br>
+<span class="formula">失业率 = 失业人数/劳动力×100%</span><br>
+<span class="formula">M×V = P×Y</span> 货币数量方程<br>
+<span class="formula">m = 1/rr</span> 简单货币乘数<br>
+<span class="formula">π = π<sub>e</sub> − β(u−u*)+v</span> 短期菲利普斯曲线<br>
+<span class="formula">s·f(k*) = (δ+n+g)k*</span> 索洛稳态条件<br>
+<span class="formula">NX = NCO</span> 国际收支恒等式
+</div>
+
+<!-- ====== 全书总结 ====== -->
+<div class="divider"></div>
+<div class="summary">
+<h4>📋 全书十章完整复盘</h4>
+<p><strong>宏观经济学统一大逻辑链：</strong></p>
+<p>GDP核算告诉你全国有一块多大的蛋糕（第1章）。CPI和名义与实际收入告诉你蛋糕的加价中有多少是真实的通货膨胀、工资增长跑没跑赢物价（第2章）。失业告诉你有一些想参与分蛋糕但被暂时排除在外的劳动者——他们不是不想工作而是市场容纳不下（第3章）。储蓄和投资告诉你被放到再生产中的那一部分切给了谁（第4章）。货币和银行解释了支付这块蛋糕的血液系统的运作逻辑（第5章）。总供给和总需求把前面所有因素汇聚为国民收入与物价水平的同步决定（第6章）。财政和货币政策通过干预AD来缓冲短期内的过度收缩与过热（第7章）。菲利普斯曲线将通胀和失业这两个宏观第一指标用一根曲线串在一起（第8章）。开放经济分析把国境线打开——汇率与贸易顺差逆差把国内储蓄投资失衡溢出国境（第9章）。最终一切归于长期增长的唯一真正引擎——技术进步（第10章）。</p>
+<p><strong>宏观经济的最高洞察：长期与短期的根本张力。</strong>在长期，货币中性让印钱只推动价格不推动产出；在短期，粘性价格和工资使政策可以拉动真实产出。全部宏观政策=在短期有效与长期中性之间进行极其精准的动态平衡。理解这一张力并带着它去研判现实数据——是宏观经济学的全部艺术。</p>
+<p>宏观经济学区别于微观最深之处，在于个体行为的简单加总在系统层面常常产生完全出乎意料的涌现效应——一个人存钱是美德、全体人同时存钱是衰退；一家企业降价是竞争利器、全体企业同步降价是全行业崩塌。宏观经济学对系统层级涌现规律的关注使得它永远不能简单地通过"把个体微观量求和"来得到准确的宏观答案。保持对合成谬误的警觉、对长短期框架的清晰分离、对模型假设前提的持续自省，是运用宏观经济学进行现实研判时的三项核心纪律。</p>
+</div>
+
+<!-- ====== Chart.js 全部图表 ====== -->
+<script>
+(function(){
+function C(id,w,h){var c=document.getElementById(id);c.width=w;c.height=h;return{ctx:c.getContext('2d'),w:w,h:h}}
+function bg(c,w,h){c.fillStyle='#0d1117';c.fillRect(0,0,w,h)}
+
+// 图1: GDP支出构成柱状图
+(function(){
+var{ctx,w,h}=C('chart1',800,480);bg(ctx,w,h);
+var ml=80,mr=40,mt=40,mb=80,barW=110,gap=30;
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';ctx.textAlign='center';
+ctx.fillText('GDP支出构成 (Y=C+I+G+NX)','center',w/2,mt);
+var data=[{label:'消费C',pct:60,color:'#58a6ff'},{label:'投资I',pct:20,color:'#e3b341'},{label:'政府G',pct:18,color:'#bc8cff'},{label:'净出口NX',pct:2,color:'#3fb950'}];
+var maxH=h-mt-mb-20,sx=ml+30;
+for(var i=0;i<4;i++){var bh=(data[i].pct/100)*maxH;
+ctx.fillStyle=data[i].color;ctx.fillRect(sx+i*(barW+gap),h-mb-bh,barW,bh);
+ctx.fillStyle='#fff';ctx.font='bold 13px sans-serif';ctx.textAlign='center';
+ctx.fillText(data[i].pct+'%',sx+i*(barW+gap)+barW/2,h-mb-bh-6);
+ctx.fillText(data[i].label,sx+i*(barW+gap)+barW/2,h-mb+18);
+}
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+})();
+
+// 图2: 货币增长与通胀散点
+(function(){
+var{ctx,w,h}=C('chart2',800,480);bg(ctx,w,h);
+var ml=80,mr=50,mt=30,mb=60,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';ctx.textAlign='center';
+ctx.fillText('货币供给增长率(%)',w/2,h-15);ctx.fillText('通胀率(%)',20,h/2);
+// 45度线
+ctx.strokeStyle='#f85149';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+ctx.beginPath();ctx.moveTo(ml+30,h-mb-30);ctx.lineTo(ml+600,mt+20);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#f85149';ctx.font='11px sans-serif';ctx.fillText('45°',ml+550,mt+60);
+// 散点
+var pts=[[80,100],[120,150],[180,210],[250,300],[320,340],[380,420],[450,460],[520,520]];
+for(var i=0;i<pts.length;i++){
+var px=ml+pts[i][0],py=h-mb-pts[i][1];
+ctx.fillStyle='#58a6ff';ctx.beginPath();ctx.arc(px,py,6,0,Math.PI*2);ctx.fill();
+}
+ctx.fillStyle='#58a6ff';ctx.font='bold 13px sans-serif';ctx.fillText('各国样本',ml+400,mt+100);
+})();
+
+// 图3: 货币乘数传导
+(function(){
+var{ctx,w,h}=C('chart3',800,480);bg(ctx,w,h);
+var cx=w/2,cy=h/2;
+// 央行节点
+ctx.fillStyle='#e3b341';ctx.beginPath();ctx.arc(cx,cy-120,40,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#0d1117';ctx.font='bold 13px sans-serif';ctx.textAlign='center';ctx.fillText('央行',cx,cy-114);
+ctx.fillText('基础货币MB',cx,cy-140);
+// 银行节点
+ctx.fillStyle='#58a6ff';ctx.beginPath();ctx.arc(cx,cy,50,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#0d1117';ctx.fillText('银行体系',cx,cy+4);
+ctx.fillText('准备金·贷款',cx,cy+30);
+// 公众节点
+ctx.fillStyle='#3fb950';ctx.beginPath();ctx.arc(cx,cy+130,45,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#0d1117';ctx.fillText('公众',cx,cy+134);
+ctx.fillText('存款·消费',cx,cy+158);
+// 箭头
+ctx.strokeStyle='#e3b341';ctx.lineWidth=3;
+ctx.beginPath();ctx.moveTo(cx-12,cy-82);ctx.lineTo(cx-18,cy-52);
+ctx.moveTo(cx+12,cy-82);ctx.lineTo(cx+18,cy-52);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.font='bold 12px sans-serif';ctx.fillText('注入',cx-40,cy-60);
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=3;
+ctx.beginPath();ctx.moveTo(cx-18,cy+52);ctx.lineTo(cx-18,cy+88);
+ctx.moveTo(cx+18,cy+52);ctx.lineTo(cx+18,cy+88);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.fillText('放贷',cx-40,cy+78);
+ctx.fillText('存款',cx+30,cy+78);
+ctx.fillStyle='#f85149';ctx.font='bold 14px sans-serif';ctx.fillText('M = MB × m',cx,h-30);
+ctx.fillText('m = 1/rr (最简)',cx,h-14);
+})();
+
+// 图4: AS-AD完整模型
+(function(){
+var{ctx,w,h}=C('chart4',800,480);bg(ctx,w,h);
+var ml=80,mr=40,mt=25,mb=55,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';ctx.textAlign='center';
+ctx.fillText('实际GDP(Y)',w/2,h-18);ctx.fillText('物价水平(P)',20,h/2);
+// LRAS垂直线
+ctx.strokeStyle='#bc8cff';ctx.lineWidth=2.5;ctx.setLineDash([8,4]);
+ctx.beginPath();ctx.moveTo(ml+280,mt+30);ctx.lineTo(ml+280,h-mb-30);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#bc8cff';ctx.font='bold 13px sans-serif';ctx.fillText('LRAS',ml+255,mt+50);
+ctx.fillText('Y*',ml+280,h-mb-8);
+// AD
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+30,mt+40);ctx.lineTo(ml+550,h-mb-40);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.fillText('AD',ml+520,h-mb-50);
+// SRAS
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+100,h-mb-30);ctx.lineTo(ml+500,mt+50);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('SRAS',ml+460,mt+70);
+// 均衡点
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(ml+280,mt+180,5,0,Math.PI*2);ctx.fill();
+ctx.fillText('E* 长期均衡',ml+330,mt+170);
+// 衰退缺口标注
+ctx.fillStyle='rgba(248,81,73,0.12)';
+ctx.beginPath();ctx.moveTo(ml+180,mt+180);ctx.lineTo(ml+280,mt+180);ctx.lineTo(ml+280,mt+260);ctx.lineTo(ml+180,mt+240);ctx.closePath();ctx.fill();
+ctx.fillStyle='#f85149';ctx.font='11px sans-serif';ctx.fillText('衰退缺口',ml+170,mt+220);
+})();
+
+// 图5: 财政扩张与自动稳定器
+(function(){
+var{ctx,w,h}=C('chart5',800,480);bg(ctx,w,h);
+var ml=80,mr=40,mt=25,mb=55;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';ctx.textAlign='center';
+ctx.fillText('实际GDP',w/2,h-18);ctx.fillText('P',20,h/2);
+// LRAS
+ctx.strokeStyle='#bc8cff';ctx.lineWidth=2;ctx.setLineDash([6,3]);
+ctx.beginPath();ctx.moveTo(ml+260,mt+25);ctx.lineTo(ml+260,h-mb-25);ctx.stroke();ctx.setLineDash([]);
+ctx.fillText('Y*',ml+260,h-mb-8);
+// AD1
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2;ctx.setLineDash([4,3]);
+ctx.beginPath();ctx.moveTo(ml+50,mt+35);ctx.lineTo(ml+420,h-mb-35);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#58a6ff';ctx.font='12px sans-serif';ctx.fillText('AD₁(衰退)',ml+340,h-mb-50);
+// AD2
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+80,mt+35);ctx.lineTo(ml+480,h-mb-35);ctx.stroke();
+ctx.fillText('AD₂(财政扩张后)',ml+440,h-mb-50);
+// SRAS
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+80,h-mb-30);ctx.lineTo(ml+460,mt+50);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('SRAS',ml+420,mt+70);
+// 箭头
+ctx.fillStyle='#f85149';ctx.font='bold 13px sans-serif';ctx.fillText('→G↑',ml+280,mt+130);
+ctx.fillText('扩张财政推AD右移',ml+280,mt+155);
+// 自动稳定器标注
+ctx.fillStyle='#3fb950';ctx.font='bold 12px sans-serif';ctx.fillText('自动稳定器',ml+500,mt+200);
+ctx.fillText('累进税+失业险',ml+500,mt+220);
+ctx.fillText('在衰退中自动缓冲AD下滑',ml+500,mt+240);
+})();
+
+// 图6: 开放经济双市场
+(function(){
+var{ctx,w,h}=C('chart6',800,480);bg(ctx,w,h);
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+// 左半可贷资金
+var lx=60,ly=130,lw=300,lh=280;
+ctx.strokeStyle='#30363d';ctx.strokeRect(lx,ly,lw,lh);
+ctx.fillStyle='#8b949e';ctx.font='13px sans-serif';ctx.textAlign='center';
+ctx.fillText('可贷资金市场',lx+lw/2,ly-8);
+ctx.fillText('可贷资金量',lx+lw/2,ly+lh+20);
+ctx.fillText('实际利率r',lx-25,ly+lh/2);
+// S供给
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(lx+20,ly+lh-20);ctx.lineTo(lx+lw-20,ly+20);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.fillText('S=国民储蓄',lx+220,ly+30);
+// I需求
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(lx+20,ly+20);ctx.lineTo(lx+lw-20,ly+lh-20);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.fillText('I=投资需求',lx+200,ly+lh-10);
+// 交点
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(lx+150,ly+150,5,0,Math.PI*2);ctx.fill();
+ctx.fillText('r*',lx-15,ly+155);
+// 右半外汇市场
+var rx=430,ry=130,rw=300,rh=280;
+ctx.strokeStyle='#30363d';ctx.strokeRect(rx,ry,rw,rh);
+ctx.fillText('外汇市场',rx+rw/2,ry-8);
+ctx.fillText('净出口NX/净资本流出NCO',rx+rw/2,ry+rh+20);
+ctx.fillText('真实汇率ε',rx-25,ry+rh/2);
+// NX线
+ctx.strokeStyle='#3fb950';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(rx+20,ry+20);ctx.lineTo(rx+rw-20,ry+rh-20);ctx.stroke();
+ctx.fillStyle='#3fb950';ctx.fillText('NX(ε)',rx+230,ry+rh-10);
+// NCO垂线
+ctx.strokeStyle='#bc8cff';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(rx+160,ry+20);ctx.lineTo(rx+160,ry+rh-20);ctx.stroke();
+ctx.fillStyle='#bc8cff';ctx.fillText('NCO(r*)',rx+115,ry+50);
+ctx.fillText('ε*',rx-15,ry+rh/2+5);
+})();
+
+// 图7: 索洛模型
+(function(){
+var{ctx,w,h}=C('chart7',800,480);bg(ctx,w,h);
+var ml=80,mr=40,mt=35,mb=65,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='14px sans-serif';ctx.textAlign='center';
+ctx.fillText('人均资本k',w/2,h-18);ctx.fillText('Y/L,投资',20,h/2);
+// 折旧线
+ctx.strokeStyle='#f85149';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(ml+30,mt+250);ctx.lineTo(ml+530,mt+40);ctx.stroke();
+ctx.fillStyle='#f85149';ctx.font='bold 12px sans-serif';ctx.fillText('(δ+n+g)k',ml+460,mt+30);
+// s*f(k)
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+60,mt+260);ctx.quadraticCurveTo(ml+200,mt+190,ml+380,mt+110);ctx.quadraticCurveTo(ml+480,mt+80,ml+560,mt+70);ctx.stroke();
+ctx.fillStyle='#58a6ff';ctx.fillText('s·f(k)',ml+520,mt+88);
+// 稳态交点
+var kx=ml+290,ky=mt+140;
+ctx.fillStyle='#f85149';ctx.beginPath();ctx.arc(kx,ky,5,0,Math.PI*2);ctx.fill();
+ctx.setLineDash([4,4]);ctx.strokeStyle='#f85149';ctx.beginPath();ctx.moveTo(kx,ky);ctx.lineTo(kx,h-mb);ctx.stroke();ctx.setLineDash([]);
+ctx.fillStyle='#f85149';ctx.font='bold 13px sans-serif';ctx.fillText('k* 稳态',kx,h-mb+16);
+ctx.fillText('k<k*→积累↑',ml+120,mt+120);
+ctx.fillText('k>k*→过多资本',ml+420,mt+115);
+})();
+
+// TOC
+var toc=document.getElementById('toc');
+var hs=document.querySelectorAll('h2[id]');
+hs.forEach(function(h){var a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent.trim();toc.appendChild(a)});
+})();
+</script>
+
+</main>
+</body>
+</html>

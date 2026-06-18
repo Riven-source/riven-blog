@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《乡土中国》中式社会底层逻辑 · 差序格局 · 人情博弈全体系</title>
+<style>
+:root{
+  --bg:#fcfaf6;--card:#fff;--border:#d5cfc0;--text:#1a1710;--sub:#504838;
+  --accent:#6b3a1a;--accent2:#3a4a1a;--code-bg:#f5f0e5;
+  --warn-bg:#fff6e8;--warn-text:#6b2a00;--table-s:#f7f2e5;
+  --side-w:195px;--brown:#7a4a2a;--ink:#2a2018;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.88;font-size:14.5px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#1a1410;color:#b0a090;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#e8dcc8;font-size:12px;margin-bottom:12px;border-bottom:1px solid#3a2e20;padding-bottom:8px}
+.sidebar a{display:block;color:#908070;text-decoration:none;font-size:10.5px;padding:3px 0;transition:color .2s}
+.sidebar a:hover{color:#c89860}
+.main{margin-left:var(--side-w);max-width:860px;padding:32px 42px}
+h1{font-size:22px;text-align:center;margin-bottom:4px;color:#1a0e04}
+.subtitle{text-align:center;color:var(--sub);font-size:12px;margin-bottom:32px}
+h2{font-size:18px;color:var(--accent);margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14.5px;color:var(--accent2);margin:24px 0 8px}
+h4{font-size:13px;color:#3a2a10;margin:14px 0 6px}
+p{margin:7px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:10px 0}
+.def{background:#f8f4ed;border-left:4px solid var(--brown);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:13px}
+.def strong{color:var(--accent)}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:14px 18px;margin:10px 0;border-radius:5px;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:12px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:12px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:10.5px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:10px 14px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:var(--warn-text)}
+.example{background:#f4f8f0;border-left:4px solid #3a5a2a;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:12.5px}
+.example strong{color:#2a3a1a}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:#e8e0d0;padding:7px 9px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:7px 9px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#fdf8f0;border:2px solid var(--accent);border-radius:7px;padding:16px;margin:18px 0}
+.summary h4{color:var(--accent);margin-bottom:5px}
+.summary ul{padding-left:16px;font-size:12px}
+.compare th:first-child{background:#e0d5c0}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:14px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:860px){.sidebar{display:none}.main{margin-left:0;padding:10px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>🏯 乡土中国<br>中式社会底层逻辑</h3>
+  <a href="#c1">一、乡土本色·泥土文明</a>
+  <a href="#c2">二、差序格局·核心模型</a>
+  <a href="#c3">三、家族·伸缩的社群</a>
+  <a href="#c4">四、礼治秩序·无为政治</a>
+  <a href="#c5">五、差序伦理·人情逻辑</a>
+  <a href="#c6">六、公私边界·内外有别</a>
+  <a href="#c7">七、文字下乡·乡土思维</a>
+  <a href="#c8">八、血缘与地缘</a>
+  <a href="#c9">九、现代职场人情博弈</a>
+  <a href="#c10">十、中西社会本质对比</a>
+  <a href="#c11">十一、本土社会应用总纲</a>
+</nav>
+
+<main class="main">
+
+<h1>《乡土中国》中式社会底层逻辑体系</h1>
+<p class="subtitle">费孝通著 · 1947年初版 · 中式社会学开山之作<br>
+差序格局·礼治秩序·人情博弈 · 纯Canvas可视化 · 零外部依赖</p>
+
+<div class="def"><strong>《乡土中国》的根本命题</strong>：费孝通于1947年提出的中式社会学核心框架——中国传统社会不是西方意义上的「个体-团体」二元社会，而是一种以「自己」为中心、像水波纹一样由内向外层层推展的「差序格局」（Differential Mode of Association）。西方社会是「捆柴」式的团体格局——每个个体归属于明确的团体，团体间有清晰的边界；中国社会是「波纹」式的差序格局——每个个体以自己为中心，按亲疏远近一圈圈向外推展关系，圈子边界模糊而可伸缩。这一核心洞见解释了此后数十年来无数西方社会学理论无法解释的中国社会现象——从人情往来、家族企业、官场逻辑到互联网圈层文化。</div>
+
+<!-- ====== 一 ====== -->
+<h2 id="c1">一、乡土本色——中国社会的泥土文明根基</h2>
+
+<div class="def"><strong>乡土本色（Earthbound China）</strong>——费孝通用「乡土」概括中国传统社会最根本的特质：「从基层上看去，中国社会是乡土性的。」这不是贬义，而是精确的描述：中国传统社会的人「黏着在土地上」——世代耕种同一块土地，人口的流动率极低，由此衍生了熟人社会、礼俗调节、差序信任等全部后续的制度特征。</div>
+
+<h3>1.1 乡土社会的四大根本特征</h3>
+<div class="derive">① 不流动性——「土」的核心含义
+  中国传统农业社会的根基：「直接靠农业来谋生的人是黏着在土地上的」
+  → 世代在同一村落出生、长大、终老→极少有人走出村子的边界
+  → 后果：社会是同质的——所有人共享相同的社会经验、价值观、行动规范
+  → 一个村落的人不需要言说即能相互理解——「熟悉」成了社会运作的根本逻辑
+
+② 熟人社会——「我们大家都是熟人」
+  一个村落就是一个没有任何陌生人的封闭社群
+  → 人与人的信任不是建立在「契约」或「法律」的基础上
+  → 而是建立在「我从小认识你，你爹年轻时候跟你爷爷一起种地」的长期关系累积
+  → 信任来自「熟悉」而不是「制度」。费孝通：「乡土社会的信用并不是对契约的重视，而是发生于对一种行为的规矩熟悉到不加思索时的可靠性」
+
+③ 语言之外的理解——「眉目传情，指石为证」
+  在极其熟悉的群体中，大量信息不需要通过言语传递——
+  一个眼神、一个动作、一个共同记忆的片段→社群成员即已完全理解
+  → 这解释了为什么「文字下乡」在乡土社会中显得「多余」——不是因为农民不需要知识，而是因为他们的日常生活不需要跨时空、跨群体的正式化沟通
+
+④ 社会结构的稳定性——「鸡犬之声相闻，老死不相往来」
+  村庄是自足的生态单位→极低的社会分工水平→各户生活高度相似
+  → 没有陌生人→没有需要对陌生人做规则解释的需求→法律/合同/明文规则不发达</div>
+
+<div class="summary"><h4>📋 第一模块复盘</h4>
+<ul><li>乡土=不流动+熟人+非文字沟通+结构稳定→四根基柱</li><li>信任=熟悉产生的「不加思索的可靠性」≠制度担保</li><li>低流动性→熟人情谊→差序格局的全部社会关系模板</li></ul></div>
+
+<!-- ====== 二 ====== -->
+<h2 id="c2">二、差序格局——《乡土中国》全书最核心的概念</h2>
+
+<div class="def"><strong>差序格局（Differential Mode of Association / Chaxu Geju）</strong>——费孝通用以描述中国社会关系结构的核心模型。每个人以「自己」为中心，像一块石头丢入水中那样推出一圈圈的波纹——最内圈是家人、然后是亲戚、再向外是朋友、再外是同乡、再外是陌生人。每一个人在时间、地点中所动用的圈子是不一定相同的——差序格局的「差」=等差·差别·差等，即以自我为参照点按亲疏远近区分出不同的关系圈层。</div>
+
+<h3>2.1 差序格局 vs 西方团体格局</h3>
+<div class="derive">费孝通的精确比喻：
+
+西方社会的团体格局（Organizational Mode）：
+  像「一捆捆扎清楚的柴」——每根柴知道自己属于哪一捆
+  → 个体→团体→社会  三层结构，团体内外边界清晰
+  → 同一团体的人「平等」→同团体的权利和义务一致(法律面前人人平等)
+  → 团体外的人=该团体的规则不适用→公私界限一刀切开
+
+中国社会的差序格局（Differential Mode）：
+  像「把一块石头丢在水面上所发生的一圈圈推出去的波纹」
+  → 以「己」为中心→家人(最内圈)→族人→朋友→同乡→一切外人的连续递推
+  → 没有人是完全平等的——因为每个人都在自己的波纹中处于不同的圈层位置
+  → 圈层之间的边界是模糊的、可伸缩的——「自己人」的范围随情境伸缩：
+    面对邻居→家人是自己人；面对外村→全村是自己人；面对外国人→全中国人是自己人
+
+差序格局的关键操作特征：
+  ① 自我中心：不是「个人主义」(individualism)，而是「自我主义」(egoism)——一切价值以「己」作为中心来衡量。个人主义强调个体权力和独立性，自我主义强调以己为关系网的圆心。
+  ② 伸缩性：圈子的边界不是固定的——可以根据情境需要随时收缩或扩展
+  ③ 差序性：不同圈层适用不同的道德标准和义务——对家人和对陌生人完全是两套行为规范
+  ④ 关系本位：人在社会中的位置不由「权利」或「义务」的抽象概念定义，而由「我与你的关系」决定</div>
+
+<div class="chart-wrap"><canvas id="chaxuGeju" width="620" height="300"></canvas>
+<div class="fig-cap">图1：差序格局（波纹式）与西方团体格局（捆柴式）的对比模型，基于费孝通《乡土中国》1947原文逻辑复刻。核心推演：左图=中式差序格局——以「己」为圆心，按亲疏远近一圈圈向外推展（家→族→友→乡→外国人），边界模糊、可伸缩；右图=西方团体格局——个体隶属于明确的团体（家庭·公司·教会·国家），团体内外边界清晰，同团体内成员权利平等。这一对比是理解中式社会全部独特逻辑的根本支点。</div></div>
+
+<div class="warn">⚠ 关键区分：差序格局≠「中国社会就是看重关系」。后一句是庸俗简化版的误读。费孝通的洞见比这深刻得多——「整个社会的组织逻辑都是由差序关系来构造的」——不仅是「关系重要」，而是关系本身的「等差结构」替代了西方社会中的「团体规则」成为社会运作的最基础单元。差序格局不是一种态度，而是一种社会结构。</div>
+
+<div class="summary"><h4>📋 第二模块复盘</h4>
+<ul><li>差序格局=自我波纹式关系圈 vs 西方团体格局=固定团体</li><li>四特征：自我中心·伸缩性·差序性·关系本位</li><li>差序格局=社会结构≠人际态度</li></ul></div>
+
+<!-- ====== 三 ====== -->
+<h2 id="c3">三、家族——中国社会中最核心的伸缩性社群</h2>
+
+<div class="def"><strong>家族（Clan / Jiazu）</strong>——费孝通将中国传统社会的「家」定义为「一个事业组织」——不是西方核心家庭的夫妻+未成年子女的简单单位，而是一个可以沿着父系血缘轴线纵向延伸数代人、横向扩展涵盖族内全部家庭的弹性事业共同体。家族兼具生育、经济生产、教育、宗教祭祀、社会保护、政治联盟六大功能。</div>
+
+<h3>3.1 中西方「家」的本质差异</h3>
+<div class="derive">西方语境中的「Family」=核心家庭（Nuclear Family）：
+  夫妻+未成年子女 → 子成年后→独立成立自己的核心家庭
+  → 「家」在时间上仅持续一代人、成员极其有限、功能专注于情感支持和子女养育
+
+中国差序格局中的「家」=伸缩家族（Expanding Clan）：
+  夫妻+未成年子女+已婚儿子的夫妻及孙辈+未婚的姐妹……
+  → 可沿父系轴无限延伸→同一祖先下五代共居的现实大家族并非罕事
+  → 「家」没有确定的边界——当情景需要，「家」可将远至同村同姓任何人纳入「一家人」→边界伸缩
+
+氏族的长期功能：
+  经济：家族共同拥有财产(田地·店铺)→「不分家」是家族的深层经济逻辑
+  政治：家族内部的辈分和权威秩序=调节分配资源的微型政治系统
+  社会：家族承担个体成员的生老病死全部风险共担→没有现代福利国家的年代，家族就是「保险+退休金+就业局」
+  教育：家族的私塾→培养下一代科举→入仕→反哺家族→「一人得道，鸡犬升天」的底层逻辑
+       一个中了进士的人→不仅本人进入官场，他的整个家族立刻获得社会地位的阶跃
+
+祠堂与族谱——家族的物质化象征：
+  祠堂=全族人共同的物质+精神归属→每个人的名字必须上族谱→生前死后都归属家族
+  族谱=差序格局的物理化记录→精确记载了每个人的辈分和与其他人的差序距离
+  「你的名字不在族谱上」=被差序格局所排除→在中国传统社会等于社会性死亡</div>
+
+<div class="chart-wrap"><canvas id="familyStructure" width="580" height="280"></canvas>
+<div class="fig-cap">图2：中式伸缩家族 vs 西方核心家庭的结构对比，基于费孝通家族理论复刻。核心推演：左=中式家族——沿父系轴线纵向无限延伸(高祖·曾祖·祖父·父·己·子·孙)、横向容纳多房，边界模糊、「家」的范围因情境伸缩。右=西方核心家庭——仅夫妻+未成年子，子成年后独立分家。中式家族的多功能性(生产+教育+政治+祭祀+保险)在西方由社会机构(教会·学校·公司·政府)分担。</div></div>
+
+<div class="summary"><h4>📋 第三模块复盘</h4>
+<ul><li>中式家族=事业组织(多功能) vs 西方Family=情感单位</li><li>伸缩性：「家」的边界随情境扩张收缩</li><li>家族=经济共同体+政治微系统+风险共担池</li></ul></div>
+
+<!-- ====== 四 ====== -->
+<h2 id="c4">四、礼治秩序与无为政治</h2>
+
+<div class="def"><strong>礼治秩序（Rule of Ritual / Li Order）</strong>——费孝通最易被误读的概念之一。礼≠西方意义的「法律」(Law)。「礼」是经过长期社会教化而内化于每个人内心的行为规范——「礼并不是靠一个外在的权力来推行的，而是从教化中养成了个人的敬畏之感，使人服膺」。法治靠外部国家惩罚，礼治靠内心自发的愿从+熟人社区的全息监督。<br><strong>无讼（No Litigation）</strong>——乡土社会的理想是「无讼」：人们从不打官司。打官司=把家族内部的事情搬到「外人」（官府）面前→是终极的根本性丢脸。因此任何纠纷都在熟人圈内部由族长、乡绅在几杯茶之间调停解决——调停的目标不是「谁在法律上对」，而是「怎样能让双方都保全面子并继续在同一村子里共同生活下去」。</div>
+
+<h3>4.1 礼治与法治的本质区分</h3>
+<div class="derive">费孝通的三层对比：
+
+① 「法治」=人服从于外在的、明文规定的法律条文。违法=外部执法机构惩罚。
+   → 「礼治」=人主动服从于内化在内心的行为规范。违礼=自我良心的不安+社群的舆论压力。
+   → 不是「法治靠强制、礼治靠自愿」——礼同样有强制力，只是强制力的来源是内在的和社群舆论的，不是外部国家机器的暴力。
+
+② 为什么乡土社会能靠「礼」运转？
+   因为熟人社会中没有陌生人→一个人的任何行为都被整个社群看在眼里→
+   任何违礼的行为立即被全村人知晓并形成负面的「面子和名声」→
+   在世代不流动的村落中，名声是你和你的子子孙孙未来数十年社会交往的基础——
+   一次的失信可能影响三代人。「礼的制裁力来自群体的接受与排斥」。
+
+③ 「礼治秩序」在当代的崩塌与演变
+   当人口从村落涌入城市→熟人社会瓦解→陌生人的社会中，礼治失去了它的社会基础
+   → 个体不再被整个熟人群体监督→失信的成本急剧降低
+   → 此时社会必然转向「法」——但这个过渡期会经历约数十年长的「礼已崩、法未入人心」的失序</div>
+
+<div class="summary"><h4>📋 第四模块复盘</h4>
+<ul><li>礼治=教化内化→内心敬畏+社群舆论≠法治=外部执法</li><li>熟人社会→礼治有效；陌生人社会→礼治崩塌→需法治补位</li><li>「无讼」是熟人社会最高理想状态</li></ul></div>
+
+<!-- ====== 五 ====== -->
+<h2 id="c5">五、差序伦理——差序格局中的道德逻辑</h2>
+
+<div class="def"><strong>差序伦理（Differential Ethics）</strong>——差序格局在道德领域的直接投射：在差序格局中，不存在一个对所有人同等适用的、统一的道德标准。道德标准因人而异——取决于对方与「己」的关系远近。对内圈的人（家人）奉献牺牲被视为崇高道德，对外圈的人（陌生人）吝啬自利不受道德谴责。</div>
+
+<h3>5.1 差序格局下道德的双重标准</h3>
+<div class="derive">费孝通的经典悖论——一个中国人在不同情境中的道德切换：
+
+情境A（对内圈·家人）：「为家人可以牺牲一切」——将全月工资拿回家供兄弟读书
+  → 在乡土伦理中：这是大孝·至亲·「自己人讲良心」→极高的道德口碑
+
+情境B（对外圈·陌生人）：「对不相干的人斤斤计较理所当然」
+  → 同一人在与陌生人的商业谈判中极尽利己→每一分钱都要算清楚
+  → 在乡土伦理中：这不是「道德败坏」——只是「做生意公事公办」
+
+西方观察者的困惑：「为什么同一个人可以同时如此无私又如此自私？他是伪善吗？」
+差序格局给出的解答：「他没有切换，他从始至终在执行同一套道德系统——对内圈的奉献程度应当远高于对外圈。这是道德的，不是伪善的。」
+
+更尖锐的引申——「为家人以权谋私」在差序伦理中的「道德合理性」：
+  一个官员利用职权帮自己的儿子安排了一个好工作→在差序伦理框架内，这不是「腐败」，
+  而是「本分」——「你不帮自己人谁帮？」——社会的极大一部分舆论也同样基于该伦理。
+  → 西方「公职伦理」(你在职时对任何人不偏私的同等对待)在差序社会中需要整套外来制度加以强力惩戒才能对抗这种根植于伦理深处的「内群道义感」</div>
+
+<div class="chart-wrap"><canvas id="renqingModel" width="580" height="280"></canvas>
+<div class="fig-cap">图3：人情社会中的差序义务梯度模型——「对谁好」「给谁面子」「帮谁到什么程度」完全取决于对方与自己在差序圈层中的位置。核心推演：内圈=无条件付出·极高面子·不记回报；中间圈=有交换记录的人情往来·需维持面子·有来有往的平衡；外圈=陌生人→可斤斤计较·无面子负担·公平交易即可。这个梯度空间解释了中国商业、职场、官场中全部看似矛盾的「对内无私·对外自利」行为的统一伦理底色。</div></div>
+
+<div class="summary"><h4>📋 第五模块复盘</h4>
+<ul><li>差序伦理=对内圈奉献·对外圈自利是同一道德系统的两层标准</li><li>「为己谋权」在差序伦理中具有「本分」的道德自我合理化</li><li>理解「差序道德」=理解中国社会全部双标行为的底层密码</li></ul></div>
+
+<!-- ====== 六 ====== -->
+<h2 id="c6">六、公私边界——中国社会独特的伸缩性公共领域</h2>
+
+<div class="def"><strong>公私边界（Public-Private Boundary）</strong>——差序格局导致的最深刻社会后果之一：中国社会没有西方意义上的「固定公私边界」。「公」和「私」的界限是在每个具体情境中由「己」与「对方」的差序距离来动态划定的。何为公、何为私，在中国社会永远是一个在具体情境中被不断伸缩的变量。</div>
+
+<h3>6.1 「公家的」=「没人管的」——被伸缩的公共心</h3>
+<div class="derive">费孝通的经典观察——「一说是公家的，差不多就是说大家可以占一点便宜的意识」：
+
+西方社会的公私二分法：
+  城市公园=「公共财产」→全体公民共同享有→每个公民有责任维护
+  个人住宅=「私有财产」→个人独占→个人负责维护
+
+中国差序格局中的公私伸缩：
+  自家人以内的=「我们的」→共同维护(家族内部的公共财产)
+  超出自家人的=「别人的/公家的」→与我无关→「可以占一点便宜而无内疚」
+  → 当一个人可以随意把同一物品从「我们的」转列为「别人的」→搭便车行为被合理化
+  → 中国公厕的脏是差序格局社会结构的物理映射：在自己家内洗手间一尘不染同一个人，
+    在公共厕所乱扔纸团——不是个人素质问题，是公私边界的差序逻辑在物理空间的直接投射
+
+现代企业家的「家族化公共资源」现象：
+  将国家资产看作「自己人圈子的共同财富」(差序·内圈)→占用合理化
+  对不相干的外人不分享分毫→「这是我拼搏打下来的天下」</div>
+
+<div class="summary"><h4>📋 第六模块复盘</h4>
+<ul><li>中国社会公私边界随差序圈层动态伸缩→非西方固定公私二分</li><li>「公=可占」心理=差序格局在公共资源上的结构性道德空洞</li></ul></div>
+
+<!-- ====== 七 ====== -->
+<h2 id="c7">七、乡土思维——「文字下乡」为何如此艰难</h2>
+
+<div class="def"><strong>乡土思维（Rural Mode of Thinking）</strong>——费孝通关于中国乡土社会知识状态的精辟分析：乡土社会不需要文字，不是因为农民「蠢」，而是因为他们的日常生活中根本不存在需要文字的沟通场景。在一个所有人共享相同经验、相同的空间、相同的时间节奏的熟人社区中，语言本身都是多余的——何况文字。</div>
+
+<h3>7.1 乡土思维的实用性逻辑</h3>
+<div class="derive">费孝通的「文字下乡」悖论——中国识字率为何数千年来极低：
+
+乡土社会对文字的天然免疫：
+  ① 文字的功能=跨时空传递信息(写给异地、写给后人、写给陌生人)
+     → 在乡土社会中：不存在异地(所有人终身不离开村落)
+     → 不需要写给未来(所有知识都靠长辈口耳相传的实践传递)
+     → 不存在陌生人(所有人都互相认识，语言+熟悉配合已足够)
+     → 结论：文字对乡土社会而言是无用的工具——不是不需要知识，是不需要这种知识形式
+
+  ② 乡土知识=「体会」>「言传」
+     种田的时节感、土壤的手感、天气的嗅觉——这些知识的习得靠身教和体验
+     ≠读书看理论→这种「具身化」的知识与现代科学之间的知识论鸿沟是最深的
+
+当代互联网时代的「数字版文字下乡」：
+  短视频(App)改变了中国底层民众的信息摄入方式——
+  一个不识字的老太太可以完全通过刷短视频获取全部社会信息
+  → 互联网在某种意义上完成了文字下乡未能做到的使命：跨越了文字的障碍，
+    让「不识字」不再等于「信息隔绝」。这是技术对费孝通问题的当代解答。</div>
+
+<div class="summary"><h4>📋 第七模块复盘</h4>
+<ul><li>乡土社会不需要文字=熟人社会+跨时空沟通需求为零</li><li>乡土知识=具身体会>书面传承→与识字率无关的认知能力</li></ul></div>
+
+<!-- ====== 八 ====== -->
+<h2 id="c8">八、血缘与地缘——两种社会结合原理</h2>
+
+<div class="def"><strong>血缘社会（Consanguineous Society）</strong>——以生育和亲属关系为纽带的社会形态。它的根本特征是「无法选择」——谁是你的父母、你出生于哪个家族，这些是你一生下来就不可改变的。<br><strong>地缘社会（Territorial Society）</strong>——以共同居住的地理空间为纽带。血缘关系在乡土社会中是第一性的、地缘仅仅是血缘的投影——「地域上的靠近可以说是血缘上亲疏的一种反映」。</div>
+
+<h3>8.1 从血缘到地缘——中国社会的现代化转型</h3>
+<div class="derive">血缘到地缘的演变轨迹（费孝通的预判）：
+
+传统社会：血缘=社会结构的全部
+  → 村落=同姓人聚居→「张家村」「李家庄」→村名=家族名
+  → 个人的身份=「某某人的儿子/女儿」→个体没有独立的身份
+  → 「家丑不可外扬」=血缘共同体内部的问题永远不在外部解决
+
+现代社会：地缘逐步替代血缘（城市化进程）
+  → 从农村移入城市的个体→脱离了原有家族的全部血缘网络
+  → 在城市中，身份的标签从「某某人的孩子」变为「某某公司的职员」
+  → 但血缘关系并没有消失，而是从「日常生活的组织核心」转化为象征性的「节日的归属」
+
+当代中国社会中血缘与地缘的混合态：
+  北上广深的「老乡会」「同乡群」——这是带进城市中的血缘投影在现代空间中的新形态：
+  血缘=太远、城市=太陌生→用「地缘」填补中间地带→「我们一个村的=不是完全外人」
+  → 差序格局的当代演化：传统五圈(家→族→友→乡→外)在城市陌生人环境下自动前移——「同乡」的重要性被极大放大</div>
+
+<div class="summary"><h4>📋 第八模块复盘</h4>
+<ul><li>血缘=生育关系→不可选择；地缘=共居关系→可流动可切换</li><li>城市化=血缘向地缘的转型→但血缘在节日/同乡/网络重新显现</li></ul></div>
+
+<!-- ====== 九 ====== -->
+<h2 id="c9">九、差序格局在现代职场与商业中的投射</h2>
+
+<div class="derive">差序格局在当代中国人职场博弈中的四项直接操演：
+
+① 拉圈子——人人都在经营自己的「差序」
+   每个职场人都围绕「己」构建一个由近到远的同事圈层
+   → 最内圈=「铁杆自己人」→必保、必帮、绝对忠诚
+   → 外圈=「一般同事」→公事公办、不额外付出
+   → 圈子不是固化的→随项目、站队、利益动态重组
+   → 理解差序格局=解码中国办公室政治的第一把钥匙
+
+② 给面子与「做人」
+   「给个面子」=用你对我的一点内圈交往来交换我现在的一个要求
+   → 面子=你在「社会关系信用系统」中的积累
+   → 面子本身不是事物→它是你在差序圈层中的他人对你的道德评价总和
+   → 「不给我面子」=你拒绝了我将你的内圈纳入我内圈一次的尝试→这是最严重的社交伤害
+
+③ 人情账本——隐性信用系统
+   每一次人情交换都在各自的人情账本上记下一笔
+   → 内圈之间不记账(=「真正自己人说话不算钱」)
+   → 中间圈之间精确记账(=「你欠我一次」，下次我还回去→互惠平衡)
+   → 最棘手的应用场景：「我帮了你一个忙，你以为我在做交换而我只是在维持内圈的情谊」
+     →一旦双方对「人情」的分类不一致→关系破裂的恶性发作
+
+④ 商业中的「自己人」逻辑
+   中国商业合同的真正约束力+「自己人」之间的信用=远大于法律条文
+   → 和不认识的人谈：先看合同再谈交情
+   → 和认识的「中间圈内的人」谈：先喝几次酒建立关系→再在人情关系中嵌入合约
+   → 最核心的商业生存能力：能快速判断一个人在对方的差序系统中被放在哪个圈层</div>
+
+<div class="chart-wrap"><canvas id="businessRenqing" width="580" height="280"></canvas>
+<div class="fig-cap">图4：中国商业人情往来模型——从认识→入圈→人情交换→自己人→信任合同的多步梯进流程。核心推演：中国人不会在陌生人层面进行大额商业合作→先喝酒→先建立关系→经过数次不大不小的考验(=利益交换)→确认可信→被归入内圈→从此商业沟通不需要繁琐合同→口头互信替代法务谈判。这个流程是西方商业文化中最难以理解和适应的一项中国商道。</div></div>
+
+<div class="summary"><h4>📋 第九模块复盘</h4>
+<ul><li>职场差序=人人经营自己的人际圈层→内圈必保·外圈公事公办</li><li>面子=差序圈层中的社会信用总和；人情=隐性双边簿记</li><li>中国商业=先入圈→再签约→「自己人」信任替代合同</li></ul></div>
+
+<!-- ====== 十 ====== -->
+<h2 id="c10">十、中西社会本质对比——差序格局的全系统对照</h2>
+
+<div class="derive">中西社会结构的七维度本质对比：
+
+              西方团体格局           中式差序格局
+社会单元      个人→团体→社会        己→家人→族人→外人
+关系性质      权利-义务对等           远近有别
+道德标准      普遍性(对所有人类     特殊性(对不同圈层适用
+              适用同一道德标准)     完全不同的道德标准)
+公私边界      固定且清晰             随情境伸缩
+社会组织      基于契约自愿加入       基于出生不可退出
+              (可自由退出团体)      (家族出生=终身成员)
+权威来源      法律与制度             礼俗与辈分
+身份定位      我是团体中的某角色     我是某某人的儿子/某人家族的一员</div>
+
+<div class="chart-wrap"><canvas id="chinaWest" width="600" height="290"></canvas>
+<div class="fig-cap">图5：中西社会结构本质差异全景图——团体格局的「平等权利-固定边界-普遍道德」vs 差序格局的「自我中心-伸缩边界-差序道德」。核心推演：西方社会由固定团体组成→团体内权力平等、法律同一适用；中国社会由围绕每个自我的差序圈层递推组成→不存在完全「平等的」两个人——每个人在另一个人的差序格局中都是某一圈层的某个位置。这个结构差异是全部其他中西社会差异的根本出发点。</div></div>
+
+<div class="summary"><h4>📋 第十模块复盘</h4>
+<ul><li>西方=团体格局→平等权利+固定边界+普遍道德+契约自由</li><li>中国=差序格局→亲疏有别+伸缩边界+差序道德+出生归属</li></ul></div>
+
+<!-- ====== 十一 ====== -->
+<h2 id="c11">十一、本土社会应用总纲——从《乡土中国》到现代中国</h2>
+
+<h3>11.1 差序格局在当代中国人的深度心理结构</h3>
+<p>费孝通揭示的「差序格局」在1947年后的七十余年间没有消亡——而是从物理村落转入了心理和数字空间。当代中国人不自觉地以下列方式持续执行差序逻辑：</p>
+<div class="derive">【深层机制一：每个人都在自觉经营自己的「人脉圈」】
+中国人对「人脉」的痴迷≠表面上的功利主义——而是差序格局的现代形态。
+你认识多少人=你的波纹能推多远→能量覆盖范围=你在差序社会中的力量。
+每一个社交场合都是「波纹拓展」的演练场——交换名片、加微信、饭局敬酒
+=都是在将自己投射到对方的差序图谱中并测绘对方在自己图谱中的可能位置。
+
+【深层机制二：「关系操作」的本能化】
+中国人从小在家庭和社区中观察关系操作→将其内化为本能
+→不需要任何理论指导即可自动判断「我跟这人现在处于哪个关系圈层」
+→并能立即调整自己的行为模式来适配该圈层的道德标准和交往规范
+→这种自动感知力是贯穿中国人全部社会交往的基础操作系统
+
+【深层机制三：差序格局在国企、公务系统、私营企业中的三位一体」
+国企=准家族体制(正式组织+差序逻辑的混合)：部门内部≈内圈、跨部门≈中圈、外部≈外圈
+公务员系统=差序格局+正式行政层级的重叠
+私营企业=家族企业的天然差序→重要岗位优先安排自己人→非自己人的职业天花板</div>
+
+<h3>11.2 差序格局的当代七大映射</h3>
+<div class="derive">① 微信朋友圈的「分组可见」=差序格局的数字微缩版
+   每个人在微信中对朋友圈的每一次发布都在执行「这个信息对哪一圈的人可见」的操作→
+   这不是功能创新——这是中国人差序格局的关系管理模式在数字工具上的自然映射
+
+② 企业管理中的「自己人派系」与「空降兵悲剧」
+   从外面高薪请来的职业经理人在企业内没有关系网→被差序圈子的「自己人联盟」
+   信息封锁+资源拦截→空降高管迅速阵亡→非其无能→仅因「不在任何人的内圈」
+
+③ 社交饭局=差序格局的物理排练场
+   座次=差序等级的可视化→主位·次主位·末位=内圈到外圈的空间投射
+   谁敬谁酒·谁来主请=一套在物理空间中操演差序关系的完整仪式
+
+④ 互联网koc与「自己人推荐」的经济学
+   李佳琦/董宇辉的商业力量=他们在通过直播将「自己人」的差序圈层投射到百万观众中
+   →「我不是在向你推销东西，我是以自己人的身份帮你选的」→这是将差序伦理商业化的最高形态
+
+⑤ 人情随礼的数额梯度=差序关系的现金衡量
+   婚礼上的份子钱不是随机金额→是多少=「你在我心中差序圈层的量化位置」
+   →内圈至亲必大额，外圈随大流=「我只走量不重礼」的明确分级信号
+
+⑥ 本地化信任与跨域合作困难
+   中国人之间合作的基础是「先要信任这个人」→而信任又需要在长期的人情交换中慢慢建立→
+   所以中国企业的跨域并购与整合成本极高→西方只需签一份协议+DD→中国需要数月乃至数年的信任交互
+
+⑦ 官场政治中的圈子博弈
+   高位官员周围往往会形成差序的多圈层结构——从最内圈的心理腹臣到外圈的技术官僚
+   → 内部情报流动、决策参与程度、升迁机会与圈层亲疏严格线性正相关</div>
+
+<div class="summary" style="background:#fdf6ed;border-color:#6b3a1a">
+<h4 style="font-size:15px">🏯 《乡土中国》全域总纲——理解当代中国的唯一传统钥匙</h4>
+<p><strong>全书逻辑主线：</strong>乡土本色(泥土文明·不流动)→熟人社会(信任=熟悉)→差序格局(自我波纹式关系结构)→家族(伸缩性事业组织)→礼治秩序(教化内化>外部惩罚)→差序伦理(对内圈奉献·对外圈自利)→公私伸缩(公=可占便宜)→乡土思维(实用具身>抽象文字)→血缘→地缘的现代化转型。这一逻辑链条的每一个环节都仍然在当代中国社会运作中被反复激活——了解这部1947年的作品不是为了怀旧，而是为了在理解你今天的每一个中国社会处境时拥有本土概念的工具箱。</p>
+<p><strong>中西社会双轨并行的当代解读：</strong>现代中国=差序格局的底层遗产+西方制度的移入表层——正式制度(法律·合同·公司治理)都在差序格局的人情逻辑上运行，而不是替代了后者。任何无视差序格局存在而纯粹从法治/契约/个人主义出发的对中国社会的分析都是失根的——这也正是为什么无数试图将西方管理理论直接搬到中国企业中终告失败的深层原因。</p>
+</div>
+
+</main>
+
+<!-- ==================== Canvas 引擎 ==================== -->
+<script>
+class PC{
+  constructor(id,w,h){this.c=document.getElementById(id);if(!this.c)return;this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h}
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  g(x0,x1,y0,y1){const c=this.ctx,p={t:30,r:22,b:45,l:55},pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;this.xs=v=>p.l+(v-x0)/(x1-x0)*pw;this.ys=v=>p.t+(y1-v)/(y1-y0)*ph}
+  ln(pts,color,w=2.5,d=null){if(pts.length<2)return;var c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(d)c.setLineDash(d);c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));c.stroke();c.setLineDash([]);c.restore()}
+  txt(x,y,t,c='#333',s=11,a='center'){this.ctx.fillStyle=c;this.ctx.font=`${s}px sans-serif`;this.ctx.textAlign=a;this.ctx.fillText(t,x,y)}
+  rect(x,y,w,h,cl,sc='#555'){this.ctx.fillStyle=cl;this.ctx.fillRect(x,y,w,h);this.ctx.strokeStyle=sc;this.ctx.lineWidth=1.5;this.ctx.strokeRect(x,y,w,h)}
+}
+
+// 图1: 差序格局 vs 西方团体格局
+(function(){
+  var k=new PC('chaxuGeju',620,300);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b3a1a';c.font='13px bold sans-serif';c.textAlign='center';c.fillText('中式差序格局（波纹式）vs 西方团体格局（捆柴式）',310,18);
+  // Left: Chaxu - concentric circles
+  var cx=170,cy=155,r=115;
+  var circles=[{r:115,c:'rgba(107,58,26,0.03)'},{r:85,c:'rgba(107,58,26,0.05)'},{r:55,c:'rgba(107,58,26,0.08)'},{r:30,c:'rgba(107,58,26,0.12)'}];
+  circles.forEach(cr=>{c.fillStyle=cr.c;c.beginPath();c.arc(cx,cy,cr.r,0,Math.PI*2);c.fill();c.strokeStyle='#6b3a1a';c.lineWidth=1.5;c.stroke()});
+  c.fillStyle='#6b3a1a';c.font='bold 12px sans-serif';c.fillText('己',cx,cy+5);
+  c.font='9px sans-serif';c.fillText('家人',cx,cy-95);c.fillText('族人',cx,cy-65);c.fillText('朋友',cx,cy-40);c.fillText('同乡',cx,cy-22);
+  // Right: Group - bundles
+  var gx=460,gy=155,gs=65;
+  var groups=[{x:gx-gs,y:gy-gs,l:'家庭'},{x:gx+gs,y:gy-gs,l:'公司'},{x:gx-gs,y:gy+gs,l:'教会'},{x:gx+gs,y:gy+gs,l:'国家'}];
+  groups.forEach(g=>{c.fillStyle='rgba(58,74,26,0.06)';c.fillRect(g.x-35,g.y-25,70,50);c.strokeStyle='#3a4a1a';c.lineWidth=1.5;c.strokeRect(g.x-35,g.y-25,70,50);c.fillStyle='#333';c.font='10px sans-serif';c.textAlign='center';c.fillText(g.l,g.x,g.y+4)});
+  // Center: individuals
+  c.fillStyle='#3a4a1a';c.font='bold 10px sans-serif';
+  c.fillText('个体',gx-gs,gx+gs,50);c.fillText('个体',gx+gs,gy-gs+50,50);
+  // Labels
+  c.fillStyle='#6b3a1a';c.font='11px bold sans-serif';c.textAlign='center';
+  c.fillText('中式差序格局：波纹推展',150,285);
+  c.fillStyle='#3a4a1a';c.fillText('西方团体格局：固定团体',470,285);
+})();
+
+// 图2: 家族结构对比
+(function(){
+  var k=new PC('familyStructure',580,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b3a1a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('中式伸缩家族 vs 西方核心家庭',290,16);
+  // Left: Chinese Clan (vertical tree)
+  var nodes=[{x:150,y:50,l:'高祖'},{x:150,y:85,l:'曾祖'},{x:150,y:120,l:'祖父'},{x:150,y:155,l:'父'},{x:150,y:195,l:'己'},{x:150,y:230,l:'子'},{x:150,y:260,l:'孙'}];
+  nodes.forEach(n=>{c.fillStyle='#f8f4ed';c.fillRect(n.x-25,n.y-12,50,24);c.strokeStyle='#6b3a1a';c.lineWidth=1.5;c.strokeRect(n.x-25,n.y-12,50,24);c.fillStyle='#333';c.font='10px sans-serif';c.fillText(n.l,n.x,n.y+4)});
+  // Vertical connector
+  c.strokeStyle='#6b3a1a';c.lineWidth=1.5;c.beginPath();c.moveTo(150,62);c.lineTo(150,248);c.stroke();
+  // Branches
+  c.fillStyle='#6b3a1a';c.font='9px sans-serif';c.textAlign='center';c.fillText('↑ 纵向延伸(不限代) ↑',150,145);
+  // Right: Western nuclear
+  c.fillStyle='#f0f4f0';c.fillRect(390,80,130,90);c.strokeStyle='#3a4a1a';c.lineWidth=2;c.strokeRect(390,80,130,90);
+  c.fillText('核心家庭',455,100);c.fillText('夫+妻+未成年子女',455,120);c.fillText('子成年→分家独立',455,140);
+  c.fillStyle='#6b3a1a';c.font='10px bold sans-serif';c.fillText('中式家族=事业组织(六功能合一)',150,278);
+  c.fillStyle='#3a4a1a';c.fillText('西方Family=情感+养育',455,278);
+})();
+
+// 图3: 人情差序义务梯度
+(function(){
+  var k=new PC('renqingModel',580,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b3a1a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('人情社会差序义务梯度模型',290,16);
+  // Three concentric zones
+  var cx=180,cy=155;
+  [{r:90,c:'rgba(107,58,26,0.08)',l:'外圈·陌生人',v:'○ 公平交易·可斤斤计较·无面子负担'},{r:55,c:'rgba(107,58,26,0.05)',l:'中圈·朋友/同事',v:'● 人情往来·有来有往·面子维护'},{r:25,c:'rgba(184,120,48,0.15)',l:'内圈·家人/至亲',v:'◆ 无条件奉献·不计回报·极重面子'}].forEach(function(z,i){
+    c.fillStyle=z.c;c.beginPath();c.arc(cx,cy,z.r,0,Math.PI*2);c.fill();c.strokeStyle='#6b3a1a';c.lineWidth=1.5;c.stroke();
+    c.fillStyle='#6b3a1a';c.font='10px bold sans-serif';c.textAlign='center';c.fillText(z.l,cx,cy-z.r-6);
+  });
+  // Right side explanation
+  c.textAlign='left';c.fillStyle='#333';c.font='10px sans-serif';
+  c.fillText('内圈人士: 我所有资源为你开放',340,80);
+  c.fillText('中圈人士: 有来有往的互惠平衡',340,130);
+  c.fillText('外圈人士: 纯市场交换逻辑',340,180);
+  c.fillStyle='#6b3a1a';c.font='9px bold sans-serif';
+  c.fillText('道德标准随圈层切换——',340,220);
+  c.fillText('不是伪善,是差序伦理的操作系统',340,238);
+})();
+
+// 图4: 商业人情模型
+(function(){
+  var k=new PC('businessRenqing',580,280);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b3a1a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('中国商业人情——从认识到自己人的多步梯进',290,16);
+  var steps=['① 认识','② 喝酒/饭局','③ 数次人情交换','④ 被纳入内圈','⑤ 自己人信任'];
+  steps.forEach(function(s,i){
+    var x=25+i*110,y=100;c.fillStyle='#f8f4ed';c.fillRect(x,y,95,40);c.strokeStyle='#6b3a1a';c.lineWidth=1.5;c.strokeRect(x,y,95,40);c.fillStyle='#333';c.font='10px bold sans-serif';c.textAlign='center';c.fillText(s,x+47,y+25);
+    if(i<4){c.strokeStyle='#888';c.lineWidth=1.5;c.beginPath();c.moveTo(x+95,y+20);c.lineTo(x+110,y+20);c.stroke()}
+  });
+  c.fillStyle='#6b3a1a';c.font='10px bold sans-serif';c.textAlign='center';
+  c.fillText('每次喝酒/每次人情往来=在对方账簿上积累你的「信用＋自己人分数」',290,60);
+  c.fillText('到达⑤级后：不需要看合同→一句口头承诺就够——这是西方商业最难理解的中式商业信任模式',290,180);
+  c.fillStyle='#c03030';c.font='9px sans-serif';c.fillText('⚠ 任何跳过中间步骤直接「谈合同」的行为→被对方视为「你不是自己人→一切按法律走！」',290,215);
+})();
+
+// 图5: 中西对比全景
+(function(){
+  var k=new PC('chinaWest',600,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#6b3a1a';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('中西社会结构本质差异——七维对比全景',300,16);
+  var dims=['社会单元','关系性质','道德标准','公私边界','社会组织','权威来源','身份定位'];
+  var westVals=['个人→团体→社会','权利-义务对等','普遍性(同一标准)','固定且清晰','基于契约·可退出','法律与制度','团体中的角色'];
+  var chinaVals=['己→家人→族人→外人','远近有别','特殊性(因圈而异)','随情境伸缩','基于出生·不可退','礼俗与辈分','某人的儿子/某家族'];
+  var y0=35,rh=24;
+  dims.forEach(function(d,i){
+    var y=y0+i*(rh+4);
+    c.fillStyle='#f8f4ed';c.fillRect(20,y,180,rh);c.strokeStyle='#6b3a1a';c.lineWidth=1;c.strokeRect(20,y,180,rh);
+    c.fillStyle='#e8f0e8';c.fillRect(210,y,180,rh);c.strokeStyle='#3a4a1a';c.lineWidth=1;c.strokeRect(210,y,180,rh);
+    c.fillStyle='#2a4a1a';c.fillRect(400,y,180,rh);c.strokeStyle='#6b3a1a';c.lineWidth=1;c.strokeRect(400,y,180,rh);
+    c.fillStyle='#333';c.font='9px bold sans-serif';c.textAlign='center';c.fillText(d,110,y+16);
+    c.fillText(westVals[i],300,y+16);
+    c.fillText(chinaVals[i],490,y+16);
+  });
+  c.fillStyle='#555';c.font='9px sans-serif';c.fillText('维度',110,33);c.fillText('西方团体格局',300,33);c.fillText('中式差序格局',490,33);
+  c.fillStyle='#6b3a1a';c.font='10px bold sans-serif';c.fillText('7维度差异的汇总 = 中西方社会全部误解的总根源',300,230);
+})();
+
+console.log('✅ 乡土中国 · 5张Canvas模型 · 零外部依赖');
+</script>
+</body>
+</html>

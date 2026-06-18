@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>《资本论》完整政治经济学体系 · 商品·剩余价值·资本积累·再生产·危机</title>
+<style>
+:root{--bg:#0d1117;--surface:#161b22;--border:#30363d;--text:#c9d1d9;--gold:#e3b341;--red:#f85149;--green:#3fb950;--blue:#58a6ff;--purple:#bc8cff;--muted:#8b949e;--warn-bg:#2d1a1a;--info-bg:#0d1b2a;--derive-bg:#1a1e24;--case-bg:#14261a;--quote-bg:#1a1a14}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Noto Serif SC","Songti SC",serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:15.5px}
+main{max-width:940px;margin:0 auto;padding:40px 24px}
+h1{font-size:2em;text-align:center;color:var(--gold);margin:20px 0 6px;letter-spacing:1.5px}
+.subtitle{text-align:center;color:var(--muted);margin-bottom:32px;font-size:0.92em}
+h2{font-size:1.5em;color:var(--gold);border-bottom:2px solid var(--border);padding-bottom:8px;margin:44px 0 18px}
+h3{font-size:1.18em;color:var(--blue);margin:26px 0 12px}
+h4{font-size:1.05em;color:var(--purple);margin:18px 0 8px}
+.def-box{background:var(--info-bg);border:1px solid var(--blue);padding:14px 18px;border-radius:6px;margin:14px 0}
+.def-box strong{color:var(--blue)}
+.derive{background:var(--derive-bg);border:1px solid var(--border);padding:14px 18px;border-radius:6px;margin:12px 0;font-size:0.94em}
+.plain{background:#1a1e1a;border-left:3px solid var(--green);padding:14px 18px;border-radius:0 6px 6px 0;margin:12px 0;font-size:0.94em}
+.plain strong{color:var(--green)}
+.quote-block{background:var(--quote-bg);border-left:3px solid var(--gold);padding:14px 18px;border-radius:0 6px 6px 0;margin:12px 0;font-style:italic;color:#e6dbaa;font-size:0.95em}
+.quote-block .src{display:block;text-align:right;color:var(--muted);font-size:0.82em;margin-top:6px;font-style:normal}
+.warn{background:var(--warn-bg);border:1px solid var(--red);padding:12px 16px;border-radius:6px;margin:14px 0;color:#fdaeb0}
+.warn strong{color:var(--red)}
+.case-box{background:var(--case-bg);border:1px solid var(--green);padding:14px 18px;border-radius:6px;margin:12px 0}
+.case-box strong{color:var(--green)}.case-box p{margin:4px 0}
+.summary{background:var(--surface);border:2px solid var(--gold);padding:16px 20px;border-radius:8px;margin:20px 0}
+.canvas-wrap{margin:18px 0;text-align:center}
+.canvas-wrap canvas{max-width:100%;border:1px solid var(--border);border-radius:6px}
+.fig-cap{font-size:0.84em;color:var(--muted);text-align:center;margin:6px 0 14px;line-height:1.55}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:0.92em}
+th{background:var(--surface);color:var(--gold);padding:10px 12px;border:1px solid var(--border);text-align:left}
+td{padding:8px 12px;border:1px solid var(--border)}tr:nth-child(even){background:rgba(255,255,255,0.02)}
+.hl{color:var(--gold);font-weight:bold}.rh{color:var(--red);font-weight:bold}
+nav.toc{background:var(--surface);padding:16px 20px;border-radius:8px;margin:16px 0;columns:2;column-gap:14px;font-size:0.88em}
+nav.toc a{color:var(--blue);text-decoration:none;display:block;padding:2px 0}nav.toc a:hover{color:var(--gold)}
+.formula{background:#0d1117;padding:8px 14px;border-radius:4px;display:inline-block;margin:4px 0;font-family:monospace;font-size:0.93em;color:var(--gold);border:1px solid var(--border)}
+.divider{border:none;border-top:1px dashed var(--border);margin:36px 0}
+@media print{body{background:#fff;color:#000;font-size:12px}main{max-width:100%}.warn{background:#fff5f5}}
+@media(max-width:640px){nav.toc{columns:1}h1{font-size:1.5em}}
+</style>
+</head>
+<body>
+<main>
+
+<h1>《资本论》完整政治经济学体系</h1>
+<p class="subtitle">Das Kapital — Karl Marx（1867-1894）<br>商品·劳动·剩余价值·资本积累·再生产·经济危机 · Chart.js矢量图表 · 纯离线</p>
+
+<nav class="toc" id="toc"></nav>
+
+<!-- ====== 绪论 ====== -->
+<h2 id="c0">全书总纲：《资本论》在回答什么</h2>
+<div class="def-box"><strong>马克思的核心追问</strong>——资本主义的财富以"庞大的商品堆积"呈现为一种表面上自动的、公平的交换体系。在这个表面上等价交换的体系之下，利润从何而来？资本为什么要不断自我扩张？这种扩张最终把整个社会引向哪里？马克思的三卷回答是：<span class="hl">利润来自对无偿劳动的占有（剩余价值）→剩余价值被迫转化为追加资本（积累）→全社会的资本通过两大部类进行复杂的价值与实物的双重循环（再生产）→这个循环的内在不稳定性必然周期性爆发危机。</span>全书的终极诊断：资本主义不是永恒的——它有内在的结构性缺陷。</div>
+<div class="plain"><strong>通俗拆解：</strong>每天早上你买一杯咖啡——咖啡店老板收了你的35元钱。你以为是公平交换（你付了钱、他给了咖啡）。但马克思问：这杯咖啡的豆子、牛奶、纸杯、店租、机器折旧加在一起大概12块钱成本。老板自己没动手——是店员从早上六点工作到现在做的。店员今天拿到了150块日薪，而他今天做了将近三百杯咖啡——每杯毛利23块，三百杯=6900元的总毛利润。老板给了店员150元、给了房东和材料商约3600元——剩下的三千多元哪去了？那就是<span class="hl">剩余价值</span>——店员创造的多于他作为工资收回的那一部分价值。整个《资本论》在三卷中以无情的逻辑把这一块被忽略的差额追溯到了它的全部经济后果。</div>
+
+<!-- ====== 第一章：商品 ====== -->
+<div class="divider"></div>
+<h2 id="c1">第一卷第一篇 商品二重性与劳动二重性——理解政治经济学的枢纽</h2>
+<div class="chapter">
+
+<h3>1.1 商品的两个面：使用价值与交换价值</h3>
+<div class="def-box"><strong>使用价值（Use Value）</strong>——物品满足人类某种需要的有用性。一件棉布可以做衣服、能御寒——这是它的使用价值。它由物品的物理属性决定，与任何社会形态无关。<br><strong>交换价值（Exchange Value）</strong>——一种使用价值与另一种使用价值在交换中的数量比例。一件棉布外套=两双皮鞋=二十斤大米。各种使用价值之间之所以可以通约（按比例交换），是因为它们内部都含有某种等量的共同物——<span class="hl">抽象人类劳动</span>。</div>
+<div class="plain"><strong>通俗拆解：</strong>你种了一亩白菜（使用价值=能吃），隔壁老王织了两件毛衣（使用价值=能穿）。你俩怎么换？"我用20棵白菜换你一件毛衣"——这个比例哪来的？不是白菜和毛衣的物理属性天然决定了这个比例——是种白菜花了你三天时间、织毛衣也花了老王三天时间。两边的劳动量差不多→所以能在这个比例下交换。马克思把隐藏在各种商品交换比例下面的这个共同的"人类劳动的花费"称为价值实体。</div>
+
+<h3>1.2 劳动二重性——马克思自称全书"最好的地方"</h3>
+<div class="derive"><strong>具体劳动（Concrete Labour）</strong>——你种白菜、他织毛衣、木匠做椅子——这三种劳动在物理操作上毫无共同之处。具体劳动创造使用价值。<br><strong>抽象劳动（Abstract Labour）</strong>——把种白菜、织毛衣、做椅子中的一切具体差别全部抽走，剩下的共同物是"人类体力和脑力的耗费（在一定的社会平均熟练程度和强度下）"。抽象劳动形成商品的价值。</div>
+<div class="plain">这个区分是全书一切后续分析的逻辑基础。没有抽象劳动的概念，你无法解释为什么种白菜和织毛衣这两个完全不同的生理操作产出的完全不同的物品可以在市场上按比例交换。交换的前提=两者内部都有某种同质的量的耗费。</div>
+
+<h3>1.3 价值形式的发展——从物物交换到一般等价物</h3>
+<div class="derive"><strong>马克思以四阶段假说追溯了货币的起源：</strong><br>①<strong>简单价值形式：</strong>1件外套 = 20尺麻布。此时外套的相对价值偶然地用麻布表现。②<strong>扩大价值形式：</strong>1件外套 = 20尺麻布 = 2只羊 = 10斤铁……交换范围扩大后，等价物增多。③<strong>一般价值形式：</strong>所有商品都用同一种商品（比如麻布）作等价物——这一种充当一般等价物的商品从众商品中被分离出来。④<strong>货币形式：</strong>金银因天然属性（易分割·不易腐蚀·价值密集）在历史演化中最终固定为一般等价物。马克思的结论：<span class="hl">货币不是人类的发明——它是价值形式在交换的反复进行中自己演化出来的必然结果。金银之所以是货币，不是因为政府说了算，而是因为交换本身把金银推到了这个位置。</span></div>
+
+<h3>1.4 商品拜物教——人与人的关系伪装成物与物的关系</h3>
+<div class="plain"><strong>马克思最天才的哲学洞察之一：</strong>在商品社会中，生产者之间通过市场交换彼此发生社会联系——但这些联系不是以"人帮人"的形式直接出现，而是以"我的这双皮鞋值你的那件外套"的物的形式出现。种白菜的农民和织毛衣的工匠从来没有坐下来商量应当生产多少——他们通过价格的涨落在无意中相互调整产量。人与人之间的社会生产关系彻头彻尾地表现为物与物之间的关系——仿佛物品自身具有与人建立社会关系的魔力。这就是商品拜物教。不是"人迷信了商品"——是商品的交换结构本身就是对社会关系的全面物化。</div>
+
+<div class="canvas-wrap"><canvas id="chart1" width="800" height="480"></canvas></div>
+<div class="fig-cap">图1：商品价值二元结构。每一件商品都同时包含使用价值（具体劳动创造·由物理属性决定·满足人的需要）与交换价值（抽象劳动凝结·由社会必要劳动时间决定·在交换中与他物通约）。核心逻辑：具体劳动→使用价值；抽象劳动→价值。同一个劳动过程在两种不同的社会视角下产生了两个不同维度的经济属性。</div>
+
+<div class="case-box"><strong>【日常案例·你点的外卖中藏着劳动二重性】</strong>你花30元点了一份外卖炒面。厨师的翻锅颠勺=具体劳动→创造了一盘可吃的面（使用价值）。但你能用30元换到这盘面——是因为在这盘面的价值和30元之间有一个等量的抽象劳动——厨师的体力消耗和收银员、打包员的体力消耗一起构成了你能用30元交换到的东西。<br><strong>【现代案例·品牌的拜物教效应】</strong>一双标价3000元的耐克鞋和一双200元的无牌鞋——它们的使用价值（遮脚走路）几乎完全相同。多出来的2800元不是你为"更好的走路体验"付的——是你为品牌这一物化社会关系的虚荣符号付出的钱。这就是商品拜物教在当代的极致体现。</div>
+</div>
+
+<!-- ====== 第二章：剩余价值 ====== -->
+<div class="divider"></div>
+<h2 id="c2">第一卷第三至五篇 剩余价值——利润的真正来源</h2>
+<div class="chapter">
+
+<h3>2.1 劳动力成为商品——一切资本主义的起点</h3>
+<div class="def-box"><strong>劳动力（Labour Power）</strong>——工人的劳动能力本身。在资本主义社会中它变成了一种可以在市场上被出售的商品。工人的劳动力被卖给了资本家一整天——但工人从资本家的工厂里领到的工资只值他部分劳动时间的产出。他创造的多于他工资的那一部分就是<span class="hl">剩余价值（Surplus Value）</span>。</div>
+<div class="plain"><strong>通俗拆解：</strong>你是一个服装厂的缝纫工。老板今天给你200元日薪。你从早上九点到下午五点缝出了20件衬衣。每件衬衣在车间里形成的新增价值（扣掉布料和机器折旧后）大约是40元。20件×40元=800元。老板付了你200元，付了布料、店铺租金和水电大约400元——剩下的200元就是剩余价值。不是老板偷了你的200元——是市场交易（工资合同）的合法形式下，你的劳动创造的价值和你从这笔交易中拿回的价值之间自然地留下了一个未被支付的部分。</div>
+
+<h3>2.2 绝对剩余价值vs相对剩余价值</h3>
+<div class="derive"><strong>绝对剩余价值</strong>——延长劳动时间。原本每天工作10小时，资本家在不加薪的前提下延长到12小时。多出来的2小时=纯粹的绝对剩余价值的榨取。这就是19世纪工厂立法的核心斗争：把工作日从14小时逐步缩减到10小时、最后到8小时。<br><strong>相对剩余价值</strong>——通过提高生产率缩短"必要劳动时间"（工人为自己工资部分而工作的时间）来延长余下的"剩余劳动时间"。引入新机器后→工人能在4小时内生产出等于他工资所值的价值→剩下的工作时间里他所有的产出都是免费的剩余价值。</div>
+<div class="plain">两者不是互相排斥的——在现实中资本家同时使用。新机器（增加相对剩余）加同时要求工人加班（增加绝对剩余）是工业史上的常规操作。马克思通过这两条路径展示了资本家如何在合法的劳动合同范围内将工人的无偿劳动最大化。</div>
+
+<h3>2.3 不变资本c vs 可变资本v — 剥削率m'</h3>
+<div class="derive"><strong>不变资本c（Constant Capital）</strong>——投向原材料、机器、厂房的资本部分。这部分在生产过程中不创造新价值——只把自身的原有价值转移到新产品中（棉花的价值转入棉布中、机器的折旧转入衬衣的成本中）。<br><strong>可变资本v（Variable Capital）</strong>——投向工人工资的资本部分。它之所以"可变"是因为工人不只是返还了他工资的等值——他还多返还了一个增量Δv=m。<br><strong>剥削率m' = m / v</strong>——剩余价值÷可变资本。若v=200, m=200→m'=100%，工人每天为自己工作和为资本家免费工作的时间各占一半。</div>
+
+<div class="canvas-wrap"><canvas id="chart2" width="800" height="480"></canvas></div>
+<div class="fig-cap">图2：商品价值构成与剩余价值生成模型。商品总价值W = c + v + m。c（不变资本）=原材料+机器折旧+厂房→价值转移。v（可变资本）=工人工资→劳动力价值。m（剩余价值）=工人创造的多于v的那一部分=利润、利息与地租的全部最终来源。核心逻辑：利润不是"资本家承担风险的应得回报"——而是在生产过程中合法形式下被无偿占有的剩余劳动。</div>
+
+<div class="case-box"><strong>【现代案例·外卖骑手与算法的相对剩余】</strong>外卖平台通过AI算法不断缩短每单的预估送达时间。骑手在6小时内完成的单数从20单被系统推至30单——工资基本没变——但他在同样的6小时内产生了更多的总配送价值。这是21世纪的相对剩余价值——不是用流水线机械替代人力，是用算法将每一分钟的剩余劳动都榨取到极限。<br><strong>【历史案例·福特流水线与5美元日薪的秘密】</strong>1914年亨利·福特将工人日薪从2.5美元翻至5美元——看似大方。但同时流水线将每辆T型车的生产时间从12.5小时压缩至1.5小时。工人的必要劳动时间被压到了极低，相对剩余价值暴涨。5美元日薪不但没有减少福特的剩余价值——反而因为工人不再流失并拼命保持这份"高薪"工作而加大了总剩余价值的产出。</div>
+</div>
+
+<!-- ====== 第三章：资本积累 ====== -->
+<div class="divider"></div>
+<h2 id="c3">第一卷第七篇 资本积累——剩余价值如何变成新资本</h2>
+<div class="chapter">
+
+<h3>3.1 从简单再生产到扩大再生产</h3>
+<div class="def-box"><strong>简单再生产</strong>——资本家把全部剩余价值消费掉，生产规模年复一年不变。<strong>扩大再生产</strong>——资本家将剩余价值的一部分再转化为追加的资本（追加c和v），使下一轮的产能扩大。剩余价值既是消费基金也是积累基金——这两种用途的比例决定了资本的增长速度。</div>
+<div class="plain"><strong>资本积累的残酷必然性：</strong>资本家为什么不能把全部剩余价值都挥霍掉？因为竞争——你不扩大产能→竞争对手扩大→他的规模压低了他的成本→你的市场份额被他蚕食→你利润归零→你被扫地出局。积累不是资本家的"贪婪"可以选择的——它是竞争系统强制的。每个资本家都被这条铁律推着将自己的剩余价值不停地再投回资本之中。这就是资本主义自动扩张的内置发动机。</div>
+
+<h3>3.2 资本有机构成上升与相对过剩人口</h3>
+<div class="derive"><strong>资本有机构成 = c / v</strong>（不变资本÷可变资本）。在积累过程中，资本家持续用机器替代人工→c的相对占比持续上升→v的相对占比持续下降。这意味着每一元新投资所创造的就业岗位越来越少。<br><strong>相对过剩人口（产业后备军）</strong>——机器替代下来的失业工人形成了一支庞大的闲置劳动力池。它的存在持续压低着在职工人的工资谈判力——"你不干外面有的是人排队等着进来"。这保证了即使积累在不断进行中，工人的工资也长期被压在生存线的方向不使其上升。</div>
+
+<h3>3.3 原始积累——"羊吃人"的第一桶金</h3>
+<div class="plain">马克思在《资本论》第一卷的最后一篇用了一整个长章节（第24章）讲述资本主义最初的大规模资本不是通过节俭攒出来的——而是通过暴力将农民从土地上驱赶走、将公有地圈为私有牧场、通过殖民掠夺和奴隶贸易的暴力"原始积累"而积聚的第一批启动资本。英国圈地运动时期，贵族用栅栏把几个世纪的公有牧场圈为私产，农民失去了放羊养猪的公共用地、被迫涌入城市成为无产工人——"羊吃人"正是这一过程的悲惨总结。</div>
+
+<div class="canvas-wrap"><canvas id="chart3" width="800" height="480"></canvas></div>
+<div class="fig-cap">图3：资本积累的贫富分化趋势。左侧：资本在"剩余价值→追加c和v→更大规模剩余价值"的螺旋中自我膨胀。右侧：c/v持续上升→可变资本v相对萎缩→劳动收入占比下降→资本收入占比上升。核心逻辑：积累本身就是财富向资本一方的自动集中——不需要任何人的邪恶意志，竞争机制足以将这一过程不间断地自动执行。</div>
+
+<div class="case-box"><strong>【现代案例·平台经济中的"无形圈地"】</strong>滴滴和Uber在进入新城市时以巨额补贴烧出市场份额——每接一单公司亏三块——这是在用投资人（现代金融资本）的钱把传统出租车驱逐出市场。司机从"有牌照有线路的固定收入者"变为"自备车辆、平台抽成25%、没有任何社会保障的独立承包"。这就是21世纪的原始积累——不是用栅栏圈地，而是用资本补贴圈占整个出行市场，然后把劳动者从固定雇员变为一切风险由自己承担的灵活用工。<br><strong>【历史案例·英国圈地"羊吃人"】</strong>15-18世纪英国贵族将农村公有地通过议会法案合法圈占为私人牧场。成百万失地农民被逐出农村涌入新兴工业城市。他们被迫以任何工资接受工厂雇佣——因为回到土地已不可能。这个以暴力驱赶为手段、以议会法律为外衣的"原始积累"为18世纪下半叶开始的工业革命准备好了大批一无所有只剩劳动力的无产工人。<br><strong>【数据案例·Piketty r>g验证】</strong>皮凯蒂在《21世纪资本论》中用二十多个国家近三百年的数据证明：资本回报率r长期高于经济增长率g→财富存量以快于整体经济增长的速度自动向资本所有者集中。马克思在1867年即以逻辑推导而非数据展示了同一趋势。</div>
+</div>
+
+<!-- ====== 第四章：资本循环与周转 ====== -->
+<div class="divider"></div>
+<h2 id="c4">第二卷 资本循环与周转——资本在时间中的形态变换</h2>
+<div class="chapter">
+
+<h3>4.1 资本的三段式循环</h3>
+<div class="derive"><strong>货币资本循环：G — W … P … W' — G'</strong><br>资本家拿着货币G→购买生产资料和劳动力W→进入生产过程P（用省略号表示流通过程被打断）→生产出包含新增剩余价值的商品W'→以更高的价格G'卖掉（G' = G + ΔG = G + m）。<br>ΔG从哪来？它来自生产阶段P——流通（买卖）本身不创造价值。<br><strong>三种循环同时并存：</strong>货币资本的循环G…G'、生产资本的循环P…P、商品资本的循环W'…W'。三者在现实中同时并存且必须连续继起——任何一个环节中断→全部循环受阻→危机爆发。</div>
+
+<div class="plain"><strong>通俗拆解：</strong>一个面包店的老板月初拿1万元（G）去买面粉黄油（W）→投入烤箱和面包师傅的双手进入生产（P）→烤出面包（W'）→整月卖出1.5万元（G'）。这5000元差额不是面粉自己变出来的——是面包师傅在P阶段用手揉进去的价值。但如果烤箱炸了（P中断）→这个月的G'为零→下个月的G也归零→循环终止=面包店倒闭。</div>
+
+<h3>4.2 固定资本与流动资本的周转差异</h3>
+<div class="plain">马克思在第二卷中区分了两种周转逻辑：<strong>固定资本</strong>（厂房、机器）在一次生产周期中只转移自身价值的一个微小碎片（折旧）进入产品。烤箱能用十年，每次烤面包只磨损其总价值的万分之一。<strong>流动资本</strong>（面粉、黄油、工人工资）在每一轮中就全部转移到新产品。烤箱的十年周转和面粉的一天周转之间的不同步——导致资本回笼在时间上的不均匀——这种不均匀是再生产链条上天然脆弱带的来源。当大量固定资本同时到达更换期→爆发投资浪潮→紧接着是供需的不匹配→危机的一个触发点。</div>
+
+<div class="case-box"><strong>【现代案例·台积电的G-W-P-W'-G'超大循环】</strong>台积电先以数百亿美元（G）购入ASML的EUV光刻机（W—固定资本极大）→在晶圆厂经过200多道工序（P—历时数月）→产出3nm芯片（W'）→以每片数万美元卖给苹果/NVIDIA（G'）。2023年因全球手机需求下滑→W'卖不出去（W'-G'流通中断）→台积电的数百亿固定资本在当季转为闲置→G-G'的金钱回流被卡住→股价暴跌。<br><strong>【历史案例·铁路狂潮中的固定资本同步更换】</strong>19世纪英美铁路大建设时期，全行业在约十年内疯狂铺轨。十年后铁轨和机车同时进入更换期→天量更新需求→钢铁价格飞涨→铁路公司借债更换→债务偿还高峰→多家铁路公司同时违约→铁路恐慌。</div>
+</div>
+
+<!-- ====== 第五章：社会再生产 ====== -->
+<div class="divider"></div>
+<h2 id="c5">第二卷第三篇 社会总资本的再生产与流通——两大部类平衡</h2>
+<div class="chapter">
+
+<h3>5.1 两大部类的划分</h3>
+<div class="derive"><strong>第I部类——生产资料的部门：</strong>煤矿、钢厂、机床厂、芯片制造设备——它们的产出不进入终端个人消费，而是卖给其他企业用于再生产。<br><strong>第II部类——消费资料的部门：</strong>食品厂、服装厂、日用化工——它们的产出直接进入家庭消费。<br>全社会的总产品 = I(c+v+m) + II(c+v+m)。两大部类之间的实物交换和价值补偿必须严格匹配——否则再生产无法继续。</div>
+
+<h3>5.2 简单再生产的平衡条件</h3>
+<div class="derive"><strong>简单再生产（无增长）的核心平衡等式：</strong><br>I(v+m) = IIc<br>第I部类的全部可变资本和剩余价值（工人工资+资本家消费基金）必须刚好等于第II部类需要补偿的不变资本（消耗掉的生产资料需要从第I部类重新买入）。<br>若I(v+m) > IIc → 生产资料生产过剩→第I部类的部分产品无法卖出。<br>若I(v+m) < IIc → 消费资料生产过剩→第II部类无法从第I部类买足补偿所需。</div>
+<div class="plain"><strong>通俗拆解：</strong>全社会把它切成两半——一半是生产面粉拖拉机的工厂（I部类），一半是烤面包的面包店（II部类）。烤面包店这个月卖了10万个面包，折合价值=100万元。其中它消耗了两台旧烤箱、耗用了30吨面粉→这些全是从I部类买来的→成本约40万元（=IIc）。如果I部类的工人工资+老板的利润（=I(v+m)）不等于40万元→要么面粉厂工人没赚够钱买不起面包→II部类的面包卖不掉、要么面粉厂过量生产了不需要的东西。</div>
+
+<h3>5.3 扩大再生产的追加平衡</h3>
+<div class="derive"><strong>扩大再生产的前提条件：</strong>I(v+m) > IIc（必须存在剩余生产资料用来追加到两大部类中去）。追加的Δc和Δv必须在两大部类之间按比例分配——任何一个部类单方面失衡都会导致全面的再生产危机。部类的比例失调不是偶然的——它是无计划的市场生产的固有属性。</div>
+
+<div class="canvas-wrap"><canvas id="chart4" width="800" height="480"></canvas></div>
+<div class="fig-cap">图4：两大部类再生产平衡模型。左侧第I部类（生产资料）与右侧第II部类（消费资料）通过I(v+m)⇄IIc的交换相互依存。简单再生产条件：I(v+m)=IIc。扩大再生产的失衡源头在于I部类的追加投资与II部类的消费购买力之间无法被市场计划性地协调——导致两部门结构性的比例偏离。</div>
+
+<div class="case-box"><strong>【国内案例·中国21世纪初的重化工业过剩】</strong>2000-2010年中国第I部类（钢材·水泥·电力·化工）急速膨胀→I(v+m)远远超过IIc的补偿需要→钢铁和水泥的供给过剩。消化出口=向海外倾售钢材引致国际反倾销。国内消化=启动海量的基建投资和房地产→进一步推高I部类→一旦基建潮退→两大部类间出现巨大的需求缺口——部类失衡的现实版。<br><strong>【全球案例·芯片过剩与短缺的交替】</strong>2021-2022年全球芯片疯狂增产（I部类急剧扩张）。到了2023年消费电子需求下滑→II部类（手机厂商、电脑厂商）大幅减产→IIc骤降→I部类的芯片库存堆积。两大部类在扩大再生产中没有被统一的计划协调——失衡作为常态存在。</div>
+</div>
+
+<!-- ====== 第六章：经济危机 ====== -->
+<div class="divider"></div>
+<h2 id="c6">第三卷 利润率下降与经济危机——资本的内在界限</h2>
+<div class="chapter">
+
+<h3>6.1 利润率趋向下降的规律</h3>
+<div class="derive"><strong>利润率 p' = m / (c+v) = m' / (c/v + 1)</strong><br>在积累过程中：m'（剥削率）相对稳定或上升，但c/v（资本有机构成）持续上升——分母的增大长期压倒分子的变动→p'趋势性地下降。这就是马克思最著名也最具争议的"利润率趋向下降规律"。<br>六项反作用因素可以暂时减缓p'的下降：①剥削率提升——同一批工人被要求产出更多。②工资被压至劳动力价值以下——低于生存线的实际工资。③不变资本要素因技术进步变得更便宜——同样的机器隔几年就便宜得多。④相对过剩人口提供了廉价劳动力——失业者队伍压低在职工人的谈判力。⑤对外贸易从低c/v国进口廉价原料——跨国资本用全球产业链中的低工资国家来对冲国内c/v的上升。⑥股份资本将部分闲置货币吸收到生产中——股份制在暂时避免了一部分资本被迫闲置。理解这六项抵抗因素才能真正理解为什么利润率不是直线下坠——而是在波动中被各种力量反复推拉。</div>
+<div class="plain"><strong>通俗拆解：</strong>一个工厂原先用10万元的简单机械+雇佣30个工人——总资本=机械30万+工资3万=33万。年剩余价值=3万→p'=3/33≈9%。十年后全部换成自动化→机械花了200万只留5个工人——总资本=200万+1万=201万。如果剩余价值勉强维持1万→p'=1/201≈0.5%。这个工厂的总资本翻了六倍——但它的利润率崩塌了。这不是厂长不努力——是积累逻辑本身要求把越来越多的资本投在机器上而人越来越少——但剩余价值只有活的劳动才能创造。</div>
+
+<h3>6.2 危机的四重叠加逻辑</h3>
+<div class="plain"><strong>马克思不是单因论者——他识别了资本主义危机四个同时发生的层面：</strong><br>①<strong>生产过剩</strong>——全社会的生产能力超出了有支付能力的消费需求。不是因为所有人都够用了，而是因为大多数人没有足够工资来购买他们亲手生产的东西。<br>②<strong>两大部类比例失调</strong>——无计划的I部类扩产和II部类的消费容纳力之间的结构裂缝。<br>③<strong>利润率下降</strong>——当利润率跌到刺激资本家持续投资的临界点以下时→投资骤停→全面收缩。<br>④<strong>信用制度对危机的放大</strong>——信用在繁荣期过量放款→过度投资→偿债困难→银行挤兑→信用链条全面断裂→将实体经济的衰退放大为数倍的金融恐慌。</div>
+
+<div class="canvas-wrap"><canvas id="chart5" width="800" height="480"></canvas></div>
+<div class="fig-cap">图5：资本主义经济危机的四重传导逻辑。从利润率下降开始→投资萎缩→就业减少→消费力进一步下降→商品无法出售→部类间交换中断→信用链条断裂→银行和金融机构的破产将实业危机放大为全面金融恐慌。核心逻辑：危机不是外部偶然冲击——它是资本积累内在矛盾在周期性爆发中暂时找到的自我修复机制。</div>
+
+<div class="case-box"><strong>【2008年次贷危机·资本论的远见】</strong>华尔街银行为了维持利润率的表面平稳→通过金融工程将风险极高的次贷包裹成AAA评级的衍生品出售→信用制度的膨胀短暂地将利润率的塌陷掩盖了→直到房价停止上涨、底层借款人无力偿还→整条信用链条从抵押贷款经纪商一直断裂到AIG→全球金融系统在数周内近乎瘫痪。马克思在第三卷中关于"信用制度表现为生产过剩和商业过度投机的主要杠杆"的论述在140年后被一件不差地兑现。这一洞察至今是金融市场分析的核心框架之一。<br><strong>【日常案例·为什么你总觉得工作越来越忙但工资不涨】</strong>因为c/v在上升——公司每年投进新的系统和设备取代人力、但存留下来的人力被要求承担多出来的机器维护和效率匹配——你的劳动强度增大（m'上升）但你的工资（v/人）没有相应比例增长。m'上升的代价只由你承担、不进入你的工资——这就是有机构成上升的日常生活体感。<br><strong>【国内案例·房地产高周转与信贷扩张的危机预演】</strong>2020年前后中国房地产企业普遍采取"高杠杆+高周转"模式——拿到地皮后以极短的建设周期预售回笼资金再拿下一块地。这在马克思的框架中=资本的流通时间被压缩到极限以最大化剩余价值产出。但当银行信贷收紧→G（货币资本）突然断流→整条G-W-P-W'-G'链条在多节点同时中断→恒大的债务违约和随后全行业的流动性危机正是三卷中的一个标准叙事。</div>
+
+<div class="warn"><strong>⚠ 频发误读：利润率下降 ≠ 利润总量下降。</strong>马克思说的下降是利润率（p'=m/(c+v)即每投入100元能收回的利润百分比）在下降。但因为资本总量(c+v)在持续膨胀——利润的绝对总金额依然可以上升（更薄的利润率×更大的总资本量=稍大的总利润）。分清率与量的区别是理解这一规律的第一步。</div>
+</div>
+
+<!-- ====== 第七章：跨章对比 ====== -->
+<div class="divider"></div>
+<h2 id="c7">第三卷第七篇 三位一体公式与阶级——分配关系的终极批判</h2>
+<div class="chapter">
+
+<h3>三位一体公式：资本—利润、土地—地租、劳动—工资</h3>
+<div class="def-box"><strong>三位一体公式</strong>——资产阶级经济学将社会总收入自动分成三份的"自然合理性"解释：资本的贡献=利润（利息）、土地的贡献=地租、劳动的贡献=工资。三种要素各得其所，谁也没有剥削谁。马克思指出：这根本不是"各要素贡献的公平报酬"——三种收入全都来源于同一个剩余价值m的分割。利润和地租只是同块蛋糕被切成了三份。</div>
+<div class="plain"><strong>通俗拆解：</strong>一块100元总产值的蛋糕。工人拿走了30元工资（v）。剩下70元属于m——其中工业资本家拿走了约40元（企业利润）、银行资本家拿了10元（贷款利息）、土地地主拿了20元（地租）。三位一体公式说是三要素各自贡献了各自所得——马克思说：蛋糕的70元全部是工人创造但未被支付的剩余劳动，只是后来在不同资本家集团和地主之间被分配了而已。<strong>三种收入的同一来源使得"资本家vs地主vs工人"不是三角制衡——而是两个不劳动阶级和一个劳动阶级之间的结构性对立。</strong></div>
+
+<h3>阶级——资本主义的终极社会关系</h3>
+<div class="plain">马克思在《资本论》第三卷末尾（也是全书正文本的最后一章）开始写"阶级"一章——手稿在此中断，未完成。他留下的残篇提出了一个极其锋利的问题：划分阶级的标准是什么？不是收入的绝对多少（一个工人和一个小店主可能赚一样多），而是<strong>收入的来源形式</strong>——你的收入来自出卖自己的劳动力（工资）、来自自有资本的运营（利润）、还是来自土地所有权（地租）。这三种收入来源将社会切割为三个阶级。这个以生产关系为基础的阶级定义是马克思对社会科学最持久的理论贡献之一——至今仍是阶级分析的核心标准。</div>
+
+<div class="case-box"><strong>【现代案例·硅谷工程师——工人阶级还是资产阶级？】</strong>年薪40万美元的硅谷软件工程师——收入极高，但收入来源=出卖自己的劳动时间给谷歌母公司Alphabet。他没有拥有任何构成Alphabet利润来源的AI模型专利或数据中心——他仍然是无产阶级。他高额年薪的假象=他的劳动力再生产的社会成本被加州高昂的房价和生活费推高了而并非他成为了资本家。<br><strong>【国内案例·灵活用工——产消者还是纯无产者】</strong>一个外卖骑手自备了电动车和手机——表面上他拥有"生产资料"——但平台通过算法定价和订单分配使他对每一单的可变收入完全没有控制权。他的"自有工具"是被算法严格限定了产出的，在实质上并不构成独立的资本。</div>
+</div>
+
+<div class="divider"></div>
+<h2 id="c8">第八章 资本主义演进的前沿——从工业革命I到AI时代</h2>
+<div class="chapter">
+
+<h3>第四次工业革命中的资本有机构成新形态</h3>
+<div class="plain"><strong>马克思如果活在今天会如何分析AI和自动化？</strong>AI不只是"不变资本c中的一种新机器"——它有潜力将c/v的比值推至人类历史上前所未有的高度：一家AI公司可能雇佣300个工程师和0个蓝领工人却能创造出过去需要三十万工人才能创造的总产值。v被压缩到极致，劳动者不是去了工厂——是被算法管理系统远程控制。这使马克思关于"利润率下降"和"相对过剩人口"的规律面临一种新的极端可能：当活劳动在经济中被挤到GDP贡献率的极小比例时——整个以雇佣劳动为基础的社会分配体系会在其自身逻辑无法维持运转的前提下走向结构性坍塌。<br><br>马克思的长期预言本质上是：一个将劳动力只当作成本去无限最小化的体系在走到极限之前必然触发社会关系的根本重组。AI将这一"极限"的时间表显著缩短。</div>
+
+<h3>平台资本主义——21世纪的劳动价值论变体</h3>
+<div class="plain">外卖平台、网约车、内容平台（YouTube/抖音）采用了一种极其精巧的新积累模式：平台自身不拥有任何传统意义上的"生产资料"——餐厅是别人的、车是司机的、视频是创作者自费拍摄的。——但平台垄断了通往消费者的全部流量入口。它不需要支付"不变资本c"来购买车队和厨房，也不需要支付"可变资本v"作为固定工资——<strong>它将c和v的成本全部外化给个体劳动者</strong>——自己只从每一笔交易中抽取20-30%的佣金（=m）。这是马克思当年把"产业资本"作为唯一分析对象时没有看到的资本积累的最极致的形式——资本从实体生产中脱出变成纯粹的流量抽成机器。</div>
+
+<div class="case-box"><strong>【案例·TikTok/抖音的创作者剩余价值】</strong>一个创作者花三天时间拍摄剪辑了一个爆款短视频→平台算法将其推送给500万人→平台在该视频中插入广告→广告收入约3万元。平台分给创作者约3000元（10%的分成），自己留存27000元。创作者作为一个独立承包人自担全部制作成本（c）和时间（v），而m的大部分被平台以"流量提供者"的身份抽走。这不是剥削的法律违规——它是平台资本主义下剩余价值抽成的新型合法形式。</div>
+</div>
+
+<div class="divider"></div>
+<h2 id="c9">第九章 全书体系对照与经济思想史对话</h2>
+
+<h3>9.1 《资本论》核心概念对比速查</h3>
+<table>
+<tr><th>概念对</th><th>定义</th><th>现实区分举例</th></tr>
+<tr><td>使用价值 / 交换价值</td><td>物的有用性 / 物在市场交换中的比例</td><td>水：极高使用价值 极低交换价值；钻石：相反</td></tr>
+<tr><td>具体劳动 / 抽象劳动</td><td>特定技能操作 / 人类体脑耗费一般</td><td>木匠锯木 vs 裁缝剪布 —— 操作不同但都"累了"</td></tr>
+<tr><td>不变资本c / 可变资本v</td><td>价值转移 / 价值增值</td><td>面粉（c）vs 面包师工资（v）</td></tr>
+<tr><td>绝对m / 相对m</td><td>延长劳动时间 / 提高生产率缩短必要时间</td><td>无偿加班 vs 引入AI替代人工</td></tr>
+<tr><td>简单再生产 / 扩大再生产</td><td>全部m被消费 / 部分m被转化为追加c+v</td><td>小卖部 vs 连锁超市</td></tr>
+<tr><td>第I部类 / 第II部类</td><td>生产生产资料的部门 / 生产消费资料的部门</td><td>宝钢（I）vs 蒙牛（II）</td></tr>
+</table>
+
+<h3>7.2 《资本论》vs斯密/边际革命/博弈论——五方对话</h3>
+<div class="derive">
+<strong>vs斯密《国富论》</strong>——斯密认为工资利润地租三者各得其所自然和谐。马克思：这个和谐是错觉——利润和地租是对同一块剩余价值的瓜分。斯密看到的是交换中各取所需、马克思看到的是在生产中已经决定了谁会取多少。<br>
+<strong>vs边际革命（Jevons/Menger/Walras）</strong>——边际论者用主观效用来解释价格、将生产和分配问题绕过。马克思反问：工厂里的权力关系在边际效用等于零的数学公式中去了哪里？<br>
+<strong>vs博弈论</strong>——工人的工资和利润的分配可以形式化为劳资双方的讨价还价博弈。马克思的贡献在于指出：这场博弈不是在一个平等的起点上开始的——一方不工作就得饿死、另一方不雇佣此人还可以去雇别人——双方的"威胁点"在博弈开始前已经被社会制度严重不对称地预设了。<br>
+<strong>vs曼昆《经济学原理》</strong>——曼昆将"利润=收入−成本"视为自然的会计恒等式。马克思追问：成本项中的"工资"本身就是生产关系的产物而非自然参数——将其作为给定参数来求解利润最大化恰恰回避了分配是如何被决定的。<br>
+<strong>vs Piketty《21世纪资本论》</strong>——Piketty用r>g的实证数据证明了马克思所预言财富向资本自动集中的趋势。但Piketty的规范方案（全球累进资本税）与马克思对社会制度的根本变革在手段上完全分道。
+</div>
+
+<h3>7.3 全书频发误解红字纠正清单</h3>
+<div class="warn">
+<strong>✗ "劳动价值论说商品的价值全由工人创造所以资本家都是贼"——</strong>马克思从未说"资本家贼"。他说的是利润在等价交换的合法形式下自然地从剩余劳动中产生——不需要诈骗、不需要违反交易规则。<br>
+<strong>✗ "剩余价值=资本家剥削工人所以应该消灭一切利润"——</strong>马克思分析了剩余价值的产生逻辑不等于给出了消灭利润的政策处方案。他区分了"理解世界"和"改变世界"的两种工作。<br>
+<strong>✗ "利润率下降=资本主义自动崩溃所以不用管"——</strong>马克思列出了六条反作用因素——利润率下降是趋势而非直线坠落，资本主义有大量自身修复机制延迟这一趋势。<br>
+<strong>✗ "资本论主张废除一切私有财产"——</strong>马克思主张的是废除生产资料的私人垄断性占有（即少数人独占工厂和土地），而非废除个人消费品（你的牙刷和你的衣服）。
+</div>
+
+<div class="summary">
+<h4>📋 全书八章完整复盘</h4>
+<p><strong>《资本论》三卷统一逻辑链：</strong>商品之所以可按比例交换→因为都凝结了抽象劳动（第一卷第一篇）→劳动力本身成为商品后→它在生产中创造的价值 > 它作为工资收回的价值 = 剩余价值m（第一卷第三至五篇）→m被竞争强制地再转化为追加资本c+v（第一卷第七篇）→社会总资本因此持续膨胀→但c的增长快于v→利润率趋向下降（第三卷）→同时在两大部类之间，无计划的生产导致交换结构失衡（第二卷）→商品无法卖出→信用链条断裂→危机周期性爆发→强制性的资本贬值和工人失业暂时将系统重新校准→下一轮积累重新开始。</p>
+<p><strong>全书最深刻的洞察不是"资本主义会崩溃"——而是</strong>"在资本主义的表面自由平等的商品交换之下存在着一个结构性的、被法律和市场形式全面合法化的剩余劳动无偿占有机制"。这个机制不依赖于任何个人的恶意，它在每一个劳动者与雇主的合法劳动合同中自动运行。理解这一机制——无论最终你接受还是拒绝马克思的规范结论——都是理解现代市场经济运行底层逻辑的不可或缺的思想资源。《资本论》提供的不只是一套政治立场，而是一套关于资本主义如何实际运作、它的增长引擎安放在哪里、它的脆弱带分布在哪些环节的系统诊断。</p>
+</div>
+
+<!-- ====== Chart.js ====== -->
+<script>
+(function(){
+function C(id,w,h){var c=document.getElementById(id);c.width=w;c.height=h;return{ctx:c.getContext('2d'),w:w,h:h}}
+function bg(c,w,h){c.fillStyle='#0d1117';c.fillRect(0,0,w,h)}
+
+// 图1: 商品价值二元结构
+(function(){
+var{ctx,w,h}=C('chart1',800,480);bg(ctx,w,h);
+var cx=w/2-80,cy=220;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+// 商品框
+ctx.strokeStyle='#e3b341';ctx.lineWidth=3;ctx.strokeRect(cx-200,cy-100,400,200);
+ctx.fillStyle='#e3b341';ctx.font='bold 16px sans-serif';ctx.textAlign='center';ctx.fillText('商品',cx,cy-115);
+// 左侧使用价值
+ctx.fillStyle='#3fb950';ctx.font='bold 14px sans-serif';ctx.fillText('使用价值',cx-120,cy-20);
+ctx.font='12px sans-serif';ctx.fillStyle='#8b949e';
+ctx.fillText('具体劳动创造',cx-120,cy+8);
+ctx.fillText('物理属性·满足需要',cx-120,cy+28);
+// 右侧交换价值
+ctx.fillStyle='#58a6ff';ctx.font='bold 14px sans-serif';ctx.fillText('交换价值',cx+120,cy-20);
+ctx.font='12px sans-serif';ctx.fillStyle='#8b949e';
+ctx.fillText('抽象劳动凝结',cx+120,cy+8);
+ctx.fillText('社会必要劳动时间',cx+120,cy+28);
+// 中分线
+ctx.strokeStyle='#30363d';ctx.setLineDash([4,4]);ctx.beginPath();ctx.moveTo(cx,cy-85);ctx.lineTo(cx,cy+85);ctx.stroke();ctx.setLineDash([]);
+// 底部
+ctx.fillStyle='#f85149';ctx.font='bold 14px in sans-serif';
+ctx.fillText('同一个劳动过程 → 两种社会视角 → 两个不同的经济属性',w/2,cy+130);
+})();
+
+// 图2: 剩余价值生成
+(function(){
+var{ctx,w,h}=C('chart2',800,480);bg(ctx,w,h);
+var ml=80,mb=70,mt=40;
+var cx=w/2-40,cy=250;
+// 竖条
+var bh=280,bw=90;
+// c段
+ctx.fillStyle='#58a6ff';ctx.fillRect(cx-bw/2,cy-bh,bw,bh*0.45);
+ctx.fillStyle='#fff';ctx.font='bold 13px sans-serif';ctx.textAlign='center';ctx.fillText('c',cx,cy-bh+50);
+ctx.fillText('不变资本',cx,cy-bh+72);
+// v段
+ctx.fillStyle='#e3b341';ctx.fillRect(cx-bw/2,cy-bh*0.55,bw,bh*0.25);
+ctx.fillStyle='#fff';ctx.fillText('v',cx,cy-bh*0.55+30);
+ctx.fillText('可变资本',cx,cy-bh*0.55+52);
+// m段
+ctx.fillStyle='#f85149';ctx.fillRect(cx-bw/2,cy-bh*0.3,bw,bh*0.3);
+ctx.fillStyle='#fff';ctx.fillText('m',cx,cy-bh*0.3+35);
+ctx.fillText('剩余价值',cx,cy-bh*0.3+58);
+// 文字标注
+ctx.fillStyle='#8b949e';ctx.font='13px sans-serif';ctx.textAlign='left';
+ctx.fillText('W = c + v + m',cx+80,cy-bh+40);
+ctx.fillText('价值转移·不增值',cx+80,cy-bh+80);
+ctx.fillText('工人创造·被部分返还',cx+80,cy-bh+140);
+ctx.fillText('工人创造·被无偿占有',cx+80,cy-bh+190);
+ctx.fillText('m\' = m/v',cx+80,cy-bh+210);
+// 底
+ctx.fillStyle='#f85149';ctx.font='bold 14px sans-serif';ctx.textAlign='center';
+ctx.fillText('全部利润、利息、地租最终来源于m',w/2,cy+70);
+})();
+
+// 图3: 资本积累趋势
+(function(){
+var{ctx,w,h}=C('chart3',800,480);bg(ctx,w,h);
+var ml=80,mr=40,mt=40,mb=60,pw=w-ml-mr,ph=h-mt-mb;
+ctx.strokeStyle='#30363d';ctx.lineWidth=1;
+ctx.beginPath();ctx.moveTo(ml,mt);ctx.lineTo(ml,h-mb);ctx.lineTo(w-mr,h-mb);ctx.stroke();
+ctx.fillStyle='#8b949e';ctx.font='13px sans-serif';ctx.textAlign='center';
+ctx.fillText('时间/积累轮数 →',w/2,h-18);ctx.fillText('%',20,h/2);
+// 资本份额上升
+ctx.strokeStyle='#e3b341';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+30,mt+220);ctx.quadraticCurveTo(ml+300,mt+180,ml+550,mt+80);ctx.stroke();
+ctx.fillStyle='#e3b341';ctx.font='bold 13px sans-serif';ctx.fillText('资本收入占比↑',ml+450,mt+70);
+// 劳动份额下降
+ctx.strokeStyle='#f85149';ctx.lineWidth=2.5;
+ctx.beginPath();ctx.moveTo(ml+30,mt+80);ctx.quadraticCurveTo(ml+300,mt+120,ml+550,mt+220);ctx.stroke();
+ctx.fillStyle='#f85149';ctx.fillText('劳动收入占比↓',ml+450,mt+230);
+// 箭头
+ctx.fillStyle='#8b949e';ctx.font='13px sans-serif';
+ctx.fillText('c/v↑ → v比重↓',ml+350,mt+150);
+})();
+
+// 图4: 两大部类
+(function(){
+var{ctx,w,h}=C('chart4',800,480);bg(ctx,w,h);
+// 左框
+ctx.strokeStyle='#58a6ff';ctx.lineWidth=3;ctx.strokeRect(50,60,320,320);
+ctx.fillStyle='#58a6ff';ctx.font='bold 15px sans-serif';ctx.textAlign='center';ctx.fillText('第I部类 生产资料',210,85);
+ctx.font='13px sans-serif';ctx.fillText('Ic + Iv + Im',210,110);
+ctx.fillText('钢厂·煤矿·机床·芯片设备',210,135);
+// 右框
+ctx.strokeStyle='#e3b341';ctx.lineWidth=3;ctx.strokeRect(430,60,320,320);
+ctx.fillStyle='#e3b341';ctx.font='bold 15px sans-serif';ctx.fillText('第II部类 消费资料',590,85);
+ctx.font='13px sans-serif';ctx.fillText('IIc + IIv + IIm',590,110);
+ctx.fillText('食品·服装·日用·住宅',590,135);
+// 交换箭头
+ctx.strokeStyle='#f85149';ctx.lineWidth=3;
+ctx.beginPath();ctx.moveTo(370,240);ctx.lineTo(430,240);ctx.stroke();
+ctx.beginPath();ctx.moveTo(430,260);ctx.lineTo(370,260);ctx.stroke();
+ctx.fillStyle='#f85149';ctx.font='bold 14px sans-serif';ctx.textAlign='center';
+ctx.fillText('I(v+m) ⇄ IIc',400,230);
+ctx.fillText('简单再生产：I(v+m) = IIc',400,300);
+ctx.fillText('扩大再生产：I(v+m) > IIc',400,325);
+})();
+
+// 图5: 危机传导
+(function(){
+var{ctx,w,h}=C('chart5',800,480);bg(ctx,w,h);
+var nodes=['利润率↓','投资萎缩','失业↑消费↓','商品过剩','部类失衡','信用断裂','危机爆发'];
+var xs=[120,260,380,500,600,680,720],ys=[100,180,280,360,300,180,100];
+for(var i=0;i<nodes.length;i++){
+ctx.fillStyle=i==0?'#e3b341':i==6?'#f85149':'#58a6ff';
+ctx.beginPath();ctx.arc(xs[i],ys[i],28,0,Math.PI*2);ctx.fill();
+ctx.fillStyle='#fff';ctx.font='bold 11px sans-serif';ctx.textAlign='center';ctx.fillText(nodes[i],xs[i],ys[i]+4);
+if(i<nodes.length-1){
+ctx.strokeStyle='#30363d';ctx.lineWidth=2;
+ctx.beginPath();ctx.moveTo(xs[i]+28,ys[i]+8);ctx.lineTo(xs[i+1]-28,ys[i+1]-8);ctx.stroke();
+}
+}
+ctx.fillStyle='#f85149';ctx.font='bold 15px sans-serif';ctx.fillText('四重危机叠加→资本内在界限的周期性爆发',w/2,430);
+})();
+
+// TOC
+var toc=document.getElementById('toc');
+document.querySelectorAll('h2[id]').forEach(function(h){var a=document.createElement('a');a.href='#'+h.id;a.textContent=h.textContent.trim();toc.appendChild(a)});
+})();
+</script>
+
+</main>
+</body>
+</html>

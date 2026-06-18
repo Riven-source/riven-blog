@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>发展心理学完整体系 · 毕生心理成长 · 从胎儿到终老</title>
+<style>
+:root{
+  --bg:#fcfbf8;--card:#fff;--border:#d5d0c8;--text:#1e1e16;--sub:#505048;
+  --accent:#1a6b3a;--accent2:#1a3a6b;--code-bg:#f5f2e8;
+  --warn-bg:#fff8f0;--warn-text:#6b3a00;--table-s:#f7f4ea;
+  --side-w:200px;--green:#2a7a3a;--blue:#1a4a6b;--gold:#b87830;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Noto Serif SC","STSong","Songti SC",Georgia,serif;background:var(--bg);color:var(--text);line-height:1.85;font-size:14.5px}
+.sidebar{position:fixed;left:0;top:0;width:var(--side-w);height:100vh;background:#1a1812;color:#b0a890;overflow-y:auto;padding:18px 12px;z-index:10}
+.sidebar h3{color:#e8e0d0;font-size:12px;margin-bottom:12px;border-bottom:1px solid#3a3428;padding-bottom:8px}
+.sidebar a{display:block;color:#908870;text-decoration:none;font-size:10.5px;padding:3px 0;transition:color .2s}
+.sidebar a:hover{color:#58a058}
+.main{margin-left:var(--side-w);max-width:860px;padding:32px 42px}
+h1{font-size:23px;text-align:center;margin-bottom:4px;color:#1a1408}
+.subtitle{text-align:center;color:var(--sub);font-size:12px;margin-bottom:32px}
+h2{font-size:18px;color:var(--accent);margin:40px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent)}
+h3{font-size:14.5px;color:var(--accent2);margin:24px 0 8px}
+h4{font-size:13px;color:#3a3418;margin:14px 0 6px}
+p{margin:7px 0;text-align:justify}
+.card{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:14px;margin:10px 0}
+.def{background:#f4f8f4;border-left:4px solid var(--green);padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:13px}
+.def strong{color:var(--accent)}
+.derive{background:var(--code-bg);border:1px solid var(--border);padding:12px 16px;margin:10px 0;border-radius:5px;font-family:"SF Mono","Menlo","Consolas",monospace;font-size:12px;white-space:pre-wrap;overflow-x:auto;line-height:1.7}
+.chart-wrap{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:16px;margin:12px 0;text-align:center}
+.chart-wrap canvas{max-width:100%;display:block;margin:0 auto}
+.fig-cap{font-size:10.5px;color:var(--sub);text-align:center;margin-top:6px;font-style:italic;line-height:1.6}
+.warn{background:var(--warn-bg);border-left:4px solid var(--warn-text);padding:10px 14px;margin:8px 0;border-radius:0 5px 5px 0;font-size:12px;color:var(--warn-text)}
+.example{background:#f0f8f0;border-left:4px solid #2a6a2a;padding:10px 14px;margin:10px 0;border-radius:0 5px 5px 0;font-size:12.5px}
+.example strong{color:#1a4a1a}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:12px}
+th{background:#e8e2d5;padding:7px 9px;text-align:left;font-weight:700;border:1px solid var(--border)}
+td{padding:7px 9px;border:1px solid var(--border)}
+tr:nth-child(even) td{background:var(--table-s)}
+.summary{background:#fdf9f2;border:2px solid var(--accent);border-radius:7px;padding:16px;margin:18px 0}
+.summary h4{color:var(--accent);margin-bottom:5px}
+.summary ul{padding-left:16px;font-size:12px}
+.compare th:first-child{background:#e0d8c8}
+@media print{.sidebar{display:none}.main{margin-left:0;max-width:100%;padding:14px}.card,.chart-wrap{break-inside:avoid}}
+@media(max-width:860px){.sidebar{display:none}.main{margin-left:0;padding:10px}}
+</style>
+</head>
+<body>
+
+<nav class="sidebar">
+  <h3>🌱 发展心理学<br>毕生成长</h3>
+  <a href="#c1">一、胎儿期与围产期</a>
+  <a href="#c2">二、婴幼儿期(0-3岁)</a>
+  <a href="#c3">三、童年早期(3-6岁)</a>
+  <a href="#c4">四、童年中期(6-12岁)</a>
+  <a href="#c5">五、青春期(12-18岁)</a>
+  <a href="#c6">六、青年期(18-40岁)</a>
+  <a href="#c7">七、中年期(40-65岁)</a>
+  <a href="#c8">八、老年期(65岁+)</a>
+  <a href="#c9">九、认知毕生发展</a>
+  <a href="#c10">十、人格毕生塑造</a>
+  <a href="#c11">十一、毕生发展整合</a>
+</nav>
+
+<main class="main">
+
+<h1>发展心理学完整体系 · 毕生心理成长</h1>
+<p class="subtitle">Lifespan Developmental Psychology · 从受精到终老的完整心理图谱<br>纯Canvas可视化 · 零外部依赖 · 自我认知与成长复盘的终身工具</p>
+
+<div class="def"><strong>发展心理学（Developmental Psychology）</strong>——研究人类从受孕到死亡全过程心理发展规律的科学。三大核心命题：①发展的连续性vs阶段性——是渐进量变还是阶段性质变？②遗传vs环境——先天基因与后天经验各自塑造发展多少？③稳定性vs可塑性——早期经历在多大程度上决定了成年后的人格？发展心理学不仅描述「什么年龄发生什么变化」，更追问「为什么会这样变」和「如何促进最佳发展」。</div>
+
+<!-- ====== 一 ====== -->
+<h2 id="c1">一、胎儿期与围产期——生命的心理起点</h2>
+
+<div class="def"><strong>胎儿期（Prenatal Period）</strong>——从受精到出生约280天(40周)的人类发育最初阶段。传统认为心理发展始于出生后，但现代发展心理学已经确认：胎儿在子宫内已具备感觉、学习与记忆的雏形能力。围产期是生理发育和心理潜能的共同奠基期。</div>
+
+<h3>1.1 孕期三阶段的发育里程碑</h3>
+<div class="derive">胚种期（受精-2周）：
+  受精卵分裂→囊胚着床于子宫壁→细胞开始分化为胚胎和胎盘
+  此阶段对外部致畸因子最敏感（许多女性此时尚不知已怀孕）
+
+胚胎期（3-8周）：
+  所有主要器官和身体系统开始形成→心脏开始跳动、神经系统初具雏形
+  致畸因子(Teratogens)的最大危险窗口——酒精(胎儿酒精综合症·FAS)、
+  药物、辐射、母体重度营养不良均可造成不可逆损伤
+  → 胚胎期是「全或无」的关键：发育正常→继续；严重受损→自然流产
+
+胎儿期（9周-出生）：
+  器官系统精细化→神经元大量增殖并开始迁移→大脑皮层皱褶开始形成
+  22-26周：达「生存阈值」——早产儿可在重症监护下存活
+  最后三个月：大脑皮层神经元连接开始形成基础回路→为出生后学习做准备
+
+胎儿的感知能力（现代胎儿研究的惊人发现）：
+  → 6个月胎儿的听觉系统已运作——能识别母语韵律和母亲的声音
+  → 胎儿期最后三个月能分辨「熟悉的故事」(母亲反复朗读的)与「陌生的故事」→语调和旋律的早期记忆
+  → 痛觉系统在24周后已具备→胎儿手术中检测到应激激素的强烈释放</div>
+
+<h3>1.2 围产期——分娩与早期纽带</h3>
+<div class="derive">分娩过程对母婴双方都是巨大的生理与心理事件：
+  母亲的催产素(Oxytocin)急剧释放→促进宫缩+产后母婴依恋的情感联结启动
+  新生儿的压力激素(Cortisol)短暂上升→有助于出生后呼吸系统的启动和警觉
+
+早期肌肤接触（Skin-to-Skin Contact）：
+  → 产后一小时内的母婴肌肤接触→婴心率和呼吸更稳定+哭声减少+母乳喂养启动率更高
+  → 触觉是最早发育、也是新生儿最成熟的感觉系统——出生时的触觉依赖是后续全部依恋行为的生理底层
+
+早产风险与神经发育：
+  早于32周出生→大脑发育被从子宫内环境强行切换至NICU外部环境
+  → 过度的光线、噪音、疼痛性医疗操作→应激系统被过度激活→长期影响HPA轴功能
+  → 袋鼠式护理(父母胸前长时间抱婴儿)被RCT证实可显著改善早产儿的神经系统发育预后</div>
+
+<div class="summary"><h4>📋 第一模块复盘</h4>
+<ul><li>孕期三阶段：胚种(0-2周)→胚胎(3-8周·最大致畸风险)→胎儿(9周-出生)</li><li>胎儿已具听觉学习能力；触觉是最早成熟的感官</li><li>产后早期母婴肌肤接触→多重生理心理益处</li></ul></div>
+
+<!-- ====== 二 ====== -->
+<h2 id="c2">二、婴幼儿期（0-3岁）——信任、语言与行走的奠基时代</h2>
+
+<div class="def"><strong>婴儿期（Infancy）</strong>——人类个体发展速度最快的时期，从完全依赖的反射性存在到初步具备自主移动、基本语言和社会性交往的独立小个体。三岁时的自我意识、语言能力和依恋模式在很大程度上塑造了此后数十年的社交与情感基础。</div>
+
+<h3>2.1 运动发育——从反射到自主行走</h3>
+<div class="derive">运动发育的两条轴线：
+
+大肌肉运动（Gross Motor）里程碑序列：
+  2-3月：抬头并支撑上半身→约6-7月：无支撑独立坐起→约9月：匍匐爬行/四肢爬行
+  →约12月：独立站立→约12-15月：独立行走→约18月：跑步→约2岁：双脚跳
+
+精细运动（Fine Motor）：
+  约4月：伸手抓物(手掌全握)→约9月：捏取(拇指与食指对捏小物体)→约18月：叠两至三块积木
+
+关键发现：运动发育的顺序具有跨文化高度一致性(顺序>时间)，但达到各里程碑的具体月龄
+受文化习俗和养育方式的影响显著——放在背上仰卧的婴儿比放在肚子上俯卧的婴儿更晚开始爬行。</div>
+
+<h3>2.2 依恋的形成——整个人际关系的底层模板</h3>
+<div class="derive">鲍尔比(Bowlby)依恋四阶段模型：
+
+① 前依恋期(0-2月)：婴儿用哭声、微笑吸引照料者→尚未区分特定照料人
+② 形成中的依恋(2-7月)：对主要照料者产生偏好(对之更多微笑/更易被安抚)
+③ 明确依恋期(7-24月)：分离焦虑出现→主要照料者离开时展示痛苦→「安全基地」概念建立
+④ 目标校正关系(2岁后)：开始理解照料者的心理状态→协商分离时间→「依恋关系内化」启动
+
+安斯沃斯(Ainsworth)——陌生情境测验中的三类型：
+  安全型(约65%)：用母亲为安全基地，分离时痛苦，重聚时快速寻慰并恢复探索
+  不安全-回避型(约20%)：分离时表面平静，重聚时回避或无视母亲
+  不安全-矛盾型(约15%)：分离时极度不安，重聚时既索求亲近又抗拒安抚
+
+早期依恋类型的长期预测力：
+  安全型→童年期社交能力更强+同伴关系更好+成年亲密关系更稳定
+  但注意：依恋模式并非终身不可变——后期的安全关系可修复早期的不安全依恋(「习得的安全性」)</div>
+
+<div class="chart-wrap"><canvas id="attachment" width="560" height="260"></canvas>
+<div class="fig-cap">图1：婴幼儿依恋发展阶段与安斯沃斯三类型分布，基于鲍尔比-安斯沃斯依恋理论复刻。核心推演：从无差别社会反应(0-2月)→辨别熟悉人(2-7月)→分离焦虑+安全基地(7-24月)→依恋关系内化(2岁+)。陌生人情境实验揭示了三种依恋类型——照料者的敏感性与反应一致性是决定婴儿依恋安全性的最关键因素。</div></div>
+
+<h3>2.3 语言爆发——从单字到句子的神奇跃进</h3>
+<div class="derive">语言发育的典型序列：
+  0-6月：咕咕声与咿呀声(所有婴儿的咿呀声都包含世界各种语言的全部音位)
+  6-10月：咿呀声逐渐收窄到母语中存在的音位(语言环境的音位过滤开始)
+  10-14月：第一个有意义的单词(通常指向重要的人/物——「妈妈」「奶」)
+  18-24月：词汇爆炸期——从50词飙升至200-300词(平均每周习得~10个新词)，双词句出现
+             →「妈妈去」「狗狗吃」——电报语(功能词省略，核心意义词保留)
+
+乔姆斯基的先天论：儿童拥有一套「语言习得装置(LAD)」——任何正常人类儿童在任何语言环境中都能在数年内掌握该语言的完整语法→语言能力具有强大的先天生物基础。但社会环境决定了习得的具体语言激活了哪些语法参数。
+
+维果茨基(Vygotsky)的社会文化语言观——最近发展区：
+儿童的语言与思维发展发生在「最近发展区(ZPD)」——即儿童独自不能完成但在成人或能力更强的同伴的帮助下可以完成的任务范围。语言最初是外部社会互动工具(与照料者的交流)→经过内化过程逐渐转化为儿童的内部思维工具(自言自语→内在思维)。维果茨基与乔姆斯基的对话：乔姆斯基强调语言的生物基础，维果茨基强调语言的社会起源——两者共同构成完整的语言发展解释框架。</div>
+
+<div class="summary"><h4>📋 第二模块复盘</h4>
+<ul><li>运动发育顺序跨文化一致；依恋三类型(安全·回避·矛盾)</li><li>2岁前后词汇爆炸(50→300词)；婴儿的LAD先天语法能力</li><li>照料者的敏感一致性=形成安全依恋的最可靠因素</li></ul></div>
+
+<!-- ====== 三 ====== -->
+<h2 id="c3">三、童年早期（3-6岁）——自我意识萌芽与想象力巅峰</h2>
+
+<div class="def"><strong>童年早期（Early Childhood）</strong>——皮亚杰理论中的「前运算阶段」、埃里克森理论中的「主动vs内疚」冲突期。这是自我概念首次成形的阶段，也是语言能力、社交技能、性别认同和初步道德感从零到有的关键窗口。</div>
+
+<h3>3.1 自我概念的形成</h3>
+<div class="derive">3-6岁自我认知的渐进突破：
+  3岁：能用「我」指代自己→标记自我与他人区别→但自我描述局限于具体的、可观察的特征
+       「我四岁」「我有红色的玩具车」——还不能用抽象的心理特质描述自己
+  4-5岁：开始使用心理词汇「喜欢」「害怕」「想」——自我描述从外部特征转向内部状态
+  5-6岁：开始社会比较——「我跑得比小明快」→自我评价不再孤立，开始参照他人
+
+性别认同的形成：
+  2-3岁：能将自己归类为男孩/女孩→性别标签初步建立
+  4-5岁：形成「性别恒常性」——理解性别不因外表改变而改变(男孩穿裙子仍然是男孩)
+  5-6岁：性别角色知识急剧扩展→对「男孩/女孩应该做什么」的刻板性达到顶峰
+         → 这一时期的性别角色信念高度僵化→约8-9岁后刻板性逐渐减弱
+
+埃里克森——主动vs内疚(3-6岁冲突)：
+  主动阶段：儿童积极发起活动(搭建积木城堡/扮演医生)→尝试掌控环境
+  若被过度批评→产生内疚感→不再敢于主动发起→退缩与过度依赖
+  这一阶段的核心教养建议：鼓励主动探索，对失败的回应是「再试一次」而非「你看你不行」</div>
+
+<h3>3.2 游戏——童年早期的核心学习方法</h3>
+<div class="derive">帕滕(Parten)的六阶段社会性游戏发展：
+  ① 无所事事(Unoccupied)：观看任何有趣的东西→无具体参与
+  ② 旁观者行为(Onlooker)：观察其他孩子游戏但不加入
+  ③ 独自游戏(Solitary)：独自玩耍，与其他孩子无关
+  ④ 平行游戏(Parallel)：在别的孩子旁边玩相似的玩具但不交流(2-3岁典型)
+  ⑤ 联合游戏(Associative)：分享玩具、交换材料，但没有统一共同目标
+  ⑥ 合作游戏(Cooperative)：有组织的群体活动→共同目标+角色分配+规则遵守(5岁+)
+
+假装游戏（Pretend Play）的认知功能：
+  3-6岁是假装游戏的巅峰期——儿童能够「把一根香蕉当作电话」进行象征性转化
+  → 假装游戏的核心认知成就：同时维持「真实世界」和「假装世界」两套心智表征不混乱
+  → 这项能力是高级抽象思维的最早训练→与后来的数理推理能力高度相关</div>
+
+<div class="summary"><h4>📋 第三模块复盘</h4>
+<ul><li>自我概念从具体→抽象；性别认同从标签→恒常性→角色知识</li><li>埃里克森：主动vs内疚→鼓励探索，宽容失败</li><li>假装游戏=双重心智表征→抽象思维的早期训练场</li></ul></div>
+
+<!-- ====== 四 ====== -->
+<h2 id="c4">四、童年中期（6-12岁）——能力感与同伴世界的崛起</h2>
+
+<div class="def"><strong>学龄期（Middle Childhood）</strong>——皮亚杰「具体运算阶段」、埃里克森「勤奋vs自卑」冲突期。学校成为核心社会化场景，同伴评价上升到与父母评价几乎同等重要的地位。认知进入逻辑运算阶段，但尚不能处理抽象假设。</div>
+
+<h3>4.1 认知转型——具体运算的到来</h3>
+<div class="derive">具体运算阶段(7-11岁)的核心能力跃进：
+
+守恒(Conservation)的建立：
+  液体守恒(7岁)：同量液体倒入不同形状容器→体积不变
+  数量守恒(6-7岁)：物体排列方式改变→数量不变
+  质量守恒(7-8岁)：泥团形状改变→质量不变
+  → 达到守恒意味着儿童理解了「变化的外表之下是恒定的实质」
+
+分类与序列化：
+  可以同时按颜色+形状两个维度将物品分类→前运算阶段只能按单维度分类
+  递移推理(Transitivity)：若A>B且B>C→则A>C→这是逻辑推理的真正起点
+
+信息加工能力的实证提升：
+  反应时持续变短→加工速度稳步提升
+  工作记忆广度从3±1组块扩展到5±1组块
+  选择性注意力能力显著提高→能在嘈杂教室中聚焦教师指令</div>
+
+<h3>4.2 同伴关系的质变</h3>
+<div class="derive">6-12岁同伴关系的核心变化：
+  从「玩伴」到「朋友」的概念深化——约7-8岁，儿童开始理解「朋友=互相信任+互相帮助」
+  而不是仅仅「跟我一起玩的」
+  同伴群体结构开始出现：
+    约8-9岁：同性别小团体形成→「男孩不跟女孩玩」的性别隔离最为强烈
+    约10-12岁：小团体开始融合→混合性别活动逐渐增加
+
+受欢迎儿童 vs 被拒斥儿童的特征(大量社会测量研究)：
+  受欢迎：友好、合作、轮流、高社交理解和调节能力
+  被拒斥-攻击性：高敌意归因偏误(总是认为别人对自己有敌意)→冲动→容易与他人冲突
+  被拒斥-退缩型：社交焦虑→不敢主动与同伴互动→被边缘化
+
+社会比较的升级——自尊的分化：
+  6岁之前：整体自尊(笼统的「我棒不棒」)
+  8岁后：自尊细分为「学业能力」「运动能力」「社交能力」「外貌」等不同领域
+  → 一个孩子可能觉得「我数学很差但我足球很棒」——自尊从单一变为多维
+
+科尔伯格(Kohlberg)道德发展——童年中期的道德转型：
+  前习俗水平(学前期至童年早期)：道德=逃避惩罚+服从权威——「不应该做因为会被罚」
+  习俗水平(童年中期至青春期)：道德=遵从社会规范+维持人际关系——「好孩子不做这个」
+  后习俗水平(部分成人)：道德=基于普遍的伦理原则——「不论法律如何，这件事本身不对」
+  童年中期处于从前习俗向习俗过渡的关键期——开始用「别人会怎么看我」来推理道德决策</div>
+
+<div class="chart-wrap"><canvas id="peerStatus" width="560" height="260"></canvas>
+<div class="fig-cap">图2：童年中期同伴地位分类——受欢迎、被拒斥、被忽视、有争议四类，基于社会测量学研究复刻。核心推演：同伴提名法将儿童的社会地位类别通过「最喜欢」和「最不喜欢」两个维度区分。被拒斥的儿童面临最高风险的后续社会适应困难(辍学、犯罪、成年心理问题)。干预窗口：社交技能训练+教师积极关注可显著改善被拒斥儿童的同伴地位。</div></div>
+
+<div class="summary"><h4>📋 第四模块复盘</h4>
+<ul><li>具体运算=守恒+分类+递移推理——逻辑的首次登场</li><li>同伴关系从玩伴→朋友的概念深化；自尊从单一→多维分化</li><li>被拒斥儿童=最高风险组→需社交技能干预</li></ul></div>
+
+<!-- ====== 五 ====== -->
+<h2 id="c5">五、青春期（12-18岁）——同一性的剧烈风暴</h2>
+
+<div class="def"><strong>青春期（Adolescence）</strong>——从童年到成年的过渡期，以身体（青春期生理变化）、认知（形式运算的出现）和社会角色（从依赖到自主）的三重剧变在极短时间内同时发生为标志。埃里克森将青春期核心危机定义为「同一性vs角色混乱」——「我是谁」的追问在此阶段达到人生最高强度。</div>
+
+<h3>5.1 脑的第二次重塑——突触修剪与髓鞘化</h3>
+<div class="derive">青春期大脑的「第二次关键期」——规模仅次于婴幼儿期的神经重构：
+
+灰质体积呈倒U型：童年至青春期早期→灰质体积增加→约11-12岁(女)·13-14岁(男)达峰值
+  →随后出现大规模的突触修剪(Synaptic Pruning)——「用进废退」原则大量裁撤未使用的神经连接
+  →最先成熟：枕叶(视觉)和感觉-运动皮层；最后成熟：前额叶(执行控制、冲动抑制、长期规划)
+
+边缘系统vs前额叶的发育时间差（青春期的「双系统模型」）：
+  边缘系统(情绪与社会奖励中枢·伏隔核+杏仁核)：青春期早期急剧活跃→对奖赏和社会评价高度敏感
+  前额叶(冲动控制+风险-收益评估)：成熟至25岁左右才大致完成
+  →后果：青少年的「情感油门」在15岁时已踩到底，但「理性刹车」要到25岁才完全装好
+
+这个时间差解释了为什么青少年极容易做出高风险行为——当下的社会奖赏
+(朋友的钦佩、恋爱的心动)对大脑的激活压倒远期后果的理性考量。</div>
+
+<h3>5.2 同一性危机与自我建构</h3>
+<div class="derive">玛西亚(Marcia)的同一性状态模型——在埃里克森的框架上导入了两个维度：
+  ①探索(Exploration)：是否积极尝试不同角色、价值观和可能性？
+  ②承诺(Commitment)：是否已做出明确选择并投入？
+
+同一性完成的四种状态：
+  同一性达成(Achieved)：经历充分探索后做出坚定承诺——「我试过，我选择了，我确认」
+  同一性延缓(Moratorium)：正在积极探索但尚未做出最终承诺——「我在试，还没确定」
+  同一性早闭(Foreclosure)：未经历探索就接受了他人的期望(顺从父母规划的职业/信仰)
+  同一性弥散(Diffused)：既不探索也不承诺——「无所谓，随它去吧」
+
+青少年的自我中心主义——「假想观众」与「个人神话」：
+  假想观众：感觉自己是所有人注意的焦点→对「别人怎么看我」极其敏感
+  个人神话：坚信自己的经历和情感是绝对独特的→「没有人理解我」
+  →这两个认知偏见随形式运算成熟和社会经验增加在成年早期自然消退</div>
+
+<div class="chart-wrap"><canvas id="identityStatus" width="560" height="260"></canvas>
+<div class="fig-cap">图3：玛西亚同一性状态模型——探索×承诺的四象限，基于发展心理学同一性研究复刻。核心推演：两个维度(高/低探索×高/低承诺)划分四种同一性状态。青春期→成年早期的理想路径是从早期弥散或延缓→经历探索→最终达成同一性的整合。停滞于早闭(从未自主探索过)或弥散(从未在任何方向上投入)的个体在成年后更易出现存在虚无感与决策困难。</div></div>
+
+<div class="summary"><h4>📋 第五模块复盘</h4>
+<ul><li>青春期大脑：边缘系统(油门)成熟>>前额叶(刹车)→双系统时间差→高风险行为倾</li><li>玛西亚四状态：达成·延缓·早闭·弥散——同一性探索是成年前的核心心理任务</li><li>假想观众+个人神话→随成年自然消退</li></ul></div>
+
+<!-- ====== 六 ====== -->
+<h2 id="c6">六、青年期（18-40岁）——亲密与事业的扎根时代</h2>
+
+<div class="def"><strong>成年早期（Early Adulthood）</strong>——埃里克森将「亲密vs孤独」定义为此阶段核心冲突。认知能力在此阶段达到巅峰平台（流体智力开始微降但完全被晶体智力的持续上升所补偿）。关键任务：建立稳定的亲密关系、确立职业方向、形成独立的成人身份。</div>
+
+<h3>6.1 亲密关系的形成</h3>
+<div class="derive">埃里克森——亲密vs孤独（18-40岁的核心心理冲突）：
+  成功解决：「亲密」=在保持自我边界的同时与他人深度交融的能力
+  失败解决：「孤独」=因害怕失去自我或受到伤害而无法与他人建立深度联系
+
+选择伴侣的三重维度（Sternberg爱情三角理论）：
+  激情(Passion)：强烈的性吸引力和浪漫欲望——通常是关系最早燃起的火花
+  亲密(Intimacy)：彼此深入了解、信任连接、分享脆弱→需要时间来发展
+  承诺(Commitment)：维持关系的长期决定/契约——关系的结构骨架
+
+  三种成分的不同组合产生不同类型的爱：
+    仅亲密=喜欢（友情）；仅激情=迷恋；仅承诺=空洞的爱
+    亲密+激情=浪漫的爱；亲密+承诺=伴侣的爱；激情+承诺=愚昧的爱
+    三者皆有=完美爱情（极其罕见且需要长期维系才能维持）
+
+莱文森(Levinson)——人生结构理论：
+  17-22岁：脱离家庭→初步独立→对人生方向进行第一次大规模探索
+  22-28岁：进入成人世界→建立第一个相当稳定的人生结构——职业起步+亲密关系
+  28-33岁：过渡期(「30岁过渡期」)——重新审视之前的全部决定→常见职业转换/离婚
+  33-40岁：安定期——重订人生结构→建立更深层的职业投资和家庭承诺</div>
+
+<h3>6.2 晶体智力的巅峰——认知的最优平衡期</h3>
+<div class="derive">20-40岁认知特征：
+  加工速度与工作记忆在约20-25岁达到终生的绝对峰值→此后缓慢下降
+  但晶体智力(知识·词汇·经验模式)在整个成人期持续上升→足以补偿流体智力的微降
+  → 25-40岁是「人的认知功能在广泛的现实任务中最为高效」的阶段——Gf足够高+Gc已大量积累
+
+思维模式的「后形式运算」演变——实用主义的出现：
+  青少年是绝对主义(非黑即白)→成年人发展出「辩证思维」——同时容纳互为矛盾的观点
+  例：「自由市场和管制都是必要的，关键是在具体情境下找到合适的平衡点」
+  → 这种包容性的长思维非逻辑运算所能及——是经验+反思的双重产物</div>
+
+<div class="summary"><h4>📋 第六模块复盘</h4>
+<ul><li>埃里克森：亲密vs孤独；Sternberg爱情三角(激情·亲密·承诺)</li><li>莱文森：20-40岁四阶段人生结构→探索→进入→过渡→安定</li><li>Gc持续上升补偿Gf微降→25-40岁=认知的综合最优期</li></ul></div>
+
+<!-- ====== 七 ====== -->
+<h2 id="c7">七、中年期（40-65岁）——生产性vs停滞的深层拷问</h2>
+
+<div class="def"><strong>中年期（Middle Adulthood）</strong>——埃里克森的「生产性vs停滞」冲突。身体的各项机能开始出现可察觉的下降，但心理成熟度和社会能力达到终生最佳。中年人通常处于「三明治世代」——需要同时照顾年迈父母和正在成长中的子女。</div>
+
+<h3>7.1 生产性——中年的核心心理任务</h3>
+<div class="derive">埃里克森——生产性(Generativity)vs停滞(Stagnation)：
+
+生产性=通过创造、指导、养育来「留下遗产」的需求
+  表现形式：养育子女、职业导师(Mentoring)、社区志愿服务、创造持久的作品/事业
+  「生产性是对未来世代的关心，是对下一代的投资」
+
+停滞=陷入自我中心、不再「向前付出」
+  不再关心任何大于自我的事物→局限于个人的日常舒适圈→无方向感的空虚
+
+中年危机的真相——被过度渲染的神话：
+  大规模纵向研究(Vaillant的Grant Study等)的一致结论：
+  仅约10-15%的成年人经历了「典型的中年危机」——大多数中年阶段是稳定的、
+  生产性的。中年阶段的生活满意度在多数人群的纵向追踪中并未出现剧降。
+  → 「中年危机」是一种文化叙事而非普遍的心理规律——它对少数人的真实性不影响统计学结论
+
+中年脑的可塑性：
+  虽然加工速度持续微降，但前额叶的整合模式发生了优化：
+  双侧前额叶在中年期的任务激活模式较青年期更平衡→从「单侧快速处理」向「双侧整合加工」的迁移
+  →中年大脑在处理高复杂度和需要整合多源信息的任务时表现更优</div>
+
+<div class="summary"><h4>📋 第七模块复盘</h4>
+<ul><li>生产性vs停滞←中年的核心心理任务</li><li>中年危机是文化叙事，非普遍心理规律(仅约10-15%经历)</li><li>中年脑=双侧前额叶优化整合+经验深度补偿加工速度</li></ul></div>
+
+<!-- ====== 八 ====== -->
+<h2 id="c8">八、老年期（65岁+）——自我完整vs绝望的终极回顾</h2>
+
+<div class="def"><strong>老年期（Late Adulthood）</strong>——埃里克森人生八阶段的终章：「自我完整vs绝望」。核心心理任务：回顾并接受自己一生的完整叙事——包括成功与失败、圆满与遗憾。达到完整的老人可以坦然面对死亡的终结；未能达到的老人陷入绝望、悔恨与对生命的怨恨。</div>
+
+<h3>8.1 认知老化——衰减与补偿并存</h3>
+<div class="derive">老化的选择性衰减：
+  加工速度：从约30岁起持续缓慢下降→70岁后下降幅度加速
+  工作记忆：下降速度与加工速度高度关联
+  长时记忆的三大子系统的不同命运：
+    语义记忆(事实知识)：保持良好，甚至持续增长(老人知道的词汇量 > 年轻人)
+    情景记忆(个人经历)：衰减显著——「昨天的事记不清，童年的事历历在目」
+    程序性记忆(技能)：保持极好——一生中习得的技能长期保留(骑车的记忆永久)
+
+  但流体智力(Gf)下降幅度远超晶体智力(Gc)的下降
+
+  老化的代偿——SOC模型(Baltes, 选择-优化-补偿)：
+    Selection(选择)：老人将认知资源集中在少数最看重的活动上(放弃次要活动)
+    Optimization(优化)：通过大量练习在选定的领域保持高水平
+    Compensation(补偿)：在下降的能力领域寻找替代路径
+    例：钢琴大师鲁宾斯坦的解释——为什么他老年仍弹得极好？
+    「我选择只演奏少数曲目(选择)→反复练习这些曲目(优化)→在快节奏段落前故意放慢
+    使紧随的快速音阶相对更快(补偿)」——SOC模型在实践中是完整且有效的。</div>
+
+<h3>8.2 自我完整——一生叙事的闭合</h3>
+<div class="derive">埃里克森——自我完整(Integrity)vs绝望(Despair)：
+
+自我完整=接受自己的一生——「如果让我再活一次，我仍愿意这样过」
+  标志：对过往不再懊悔，对死亡不再恐惧，对生命持有一种「一切恰到好处」的整合
+
+绝望=无法接受过往→怨恨、悔恨、遗憾构成晚年的主色调
+  「如果当初...」、「我这一辈子什么都没做成」→对死亡临近的极度恐惧
+  →这种恐惧往往投射为对周围人的苛责和挑剔(「你也不行」)
+
+社会情感选择理论(SST, Carstensen)的实证：
+  与年轻人的「未来导向」(多交新友、拓展)不同
+  老人的社交圈自动收窄→专注于少数几个最深层的亲近关系
+  →这不是「老人社交能力下降」，而是目标切换——当「时间有限」的感知被激活
+  (对所有老人都是现实)，人们主动选择「深而少」而非「广而多」的社会关系
+
+  临终前的心理特征(最大突破)：医疗专家和临终研究(库布勒-罗斯Kübler-Ross的五阶段模型——否认→愤怒→讨价还价→抑郁→接受)
+  普遍确认：多数临终老人情绪不是绝望或恐惧，而是「接受」(acceptance)——一种深刻的宁静。
+  大脑在离世前数周自然地降低了杏仁核(恐惧中枢)的过度活跃→生理层面同样在为告别做准备。
+  临终体验被大量报道为平静的、甚至安详的——恐惧主要来自「旁观者(亲属)」的投射而非临终者本身。</div>
+
+<div class="chart-wrap"><canvas id="lifespanMap" width="620" height="290"></canvas>
+<div class="fig-cap">图4：毕生心理发展全景阶段图谱——从胎儿到老龄的八大阶段，整合皮亚杰认知+埃里克森心理社会+认知能力演化。核心推演：人类发展在每一个阶段都有独特的核心心理任务——完成前阶段的积极发展产物成为下一阶段的基础和资源。早期失败并非终身定局；后期的修复和重新解决在每一阶段都是可能的。发展不是单向线性的上升或下降，而是终生可变的动态适应和重塑过程。</div></div>
+
+<div class="summary"><h4>📋 第八模块复盘</h4>
+<ul><li>语义记忆保存良好，情景记忆衰减；SOC模型=选择·优化·补偿</li><li>埃里克森终章：自我完整vs绝望——接受一生vs悔恨终老</li><li>SST：老年的社交收窄=主动优化而非被动衰退</li></ul></div>
+
+<!-- ====== 九 ====== -->
+<h2 id="c9">九、认知毕生发展——从Gf到Gc的动态平衡</h2>
+
+<div class="derive">流体智力(Gf)与晶体智力(Gc)的毕生轨迹：
+
+Gf——推理·解决问题·处理新颖信息——不依赖先前经验
+  上升期：出生→约25岁达到峰值
+  平台期：25-35岁
+  下降期：35岁后持续缓慢下降→65岁后下降明显加速
+
+Gc——知识·词汇·经验模式——依赖先前经验积累
+  上升期：出生→一直上升
+  → 整个成年期都在增长(没有峰值)
+  → 仅在临终前最后的短时期可能出现整体下降
+
+加工速度(Speed)与工作记忆(WM)：Gf下降的底层驱动因素
+  加工速度的衰减→处理信息放慢→新信息在工作记忆中流失→推理效率降低
+  →但日常生活的大多数问题不依赖顶级Gf——经验(Gc)可补偿大部分
+
+认知储备（Cognitive Reserve）：教育、智力活动、双语使用和认知刺激
+  在大脑中建立了「冗余网络」→在面对脑老化或轻微病理时→更强的抵抗力
+  →认知储备高的人即使脑中有轻度阿兹海默病理，临床表现出认知障碍也明显更迟
+
+  老年认知干预的实证(ACTIVE研究——最大规模的老年认知训练RCT)：
+  → 10小时认知训练(推理+加工速度+记忆)→五年后训练组仍显著优于控制组
+  → 认知训练的有效性在老龄群体中被证实——老人的脑同样具有显著可塑性
+
+老年人的记忆优化策略——外部辅助与内在代偿：
+  → 前瞻记忆下降(忘了要做的事)→用外部线索(便利贴+手机提醒)弥补
+  → 在自然情境中(熟悉的家庭环境)老人的记忆障碍远低于实验室→环境线索的巨大补偿作用
+  → 「知道自己会忘」的元记忆意识在老龄中仍然完好→利用策略弥补记忆比记忆本身更重要</div>
+
+<div class="chart-wrap"><canvas id="cognitiveCurve" width="560" height="270"></canvas>
+<div class="fig-cap">图5：毕生认知能力演化曲线——Gf(流体智力)·Gc(晶体智力)·加工速度的毕生轨迹对比，基于发展心理学纵向研究整合复刻。核心推演：Gf峰值在25岁附近→此后持续缓慢下降；Gc几乎终生上升→补偿Gf的下行；加工速度从约30岁缓慢衰减。60岁后的整体认知表现取决于Gc的积累程度——知识储备和实践智慧成为认知能力的最强支柱。</div></div>
+
+<div class="summary"><h4>📋 第九模块复盘</h4>
+<ul><li>Gf(推理)峰→降；Gc(知识)→终生上升→补偿Gf</li><li>认知储备=教育+智力活动→延迟临床痴呆表现</li><li>ACTIVE RCT→老年脑仍有可观可塑：认知训练有效</li></ul></div>
+
+<!-- ====== 十 ====== -->
+<h2 id="c10">十、人格毕生塑造——从气质到性格的演变</h2>
+
+<div class="def"><strong>人格的连续与变化</strong>——大五人格的毕生轨迹在不同的生命历程中呈现出稳定的平均变化趋势。成年后的人格并不像传统认为的「定型于童年」，而是持续、缓慢地在整个成年期演变。</div>
+
+<h3>10.1 大五人格的毕生变化趋势</h3>
+<div class="derive">大五人格维度的毕生组平均趋势(基于大规模跨国纵向研究)：
+
+尽责性C：青春期到中年期持续上升→约50-60岁达到人生最高→此后缓慢回落
+  解释：承担责任→工作+家庭的双重结构→持续提高自律和组织力
+
+宜人性A：青春期后持续上升→约50-70岁达峰值
+  老人比年轻人更合作、更善解人意、更不易产生敌意——情感调节能力的持续优化
+
+神经质N：青春期至成年早期相对高→约40岁后开始下降→老年最低
+  老人比年轻人的负面情绪更少也更稳定、焦虑降低→「情绪最稳定的时期是老年」
+
+外向性E：青年期高→中年后逐渐降低→老年期最低  (社交圈缩小的自选结果)
+开放性O：青年期高(探索期)→中年后逐渐降低→老年期最低
+
+人格的稳定性——「排列顺序的稳定性」（Rank-Order Stability）：
+  在同一人群中，非常早期(3-5岁)→成年的外向性水平有中等稳定度(r ~ .30-.40)
+  成年后的人格稳定度更高(每10年间成年大五维度r ~ .70-.80)→高于平均变化的稳定性
+  但人格不是冻结的——长期生活事件(婚姻、育儿、失业、重大创伤)会引发人格的显著变化</div>
+
+<div class="chart-wrap"><canvas id="personalityLife" width="560" height="270"></canvas>
+<div class="fig-cap">图6：大五人格三大维度的毕生平均趋势，基于跨国纵向研究元分析复刻。核心推演：尽责性持续上升至60岁达峰值；宜人性持续上升至老年；神经质约40岁后持续下降至老年最低。成年后人格的「绝对水平」在持续变化，但「个体在群体中的相对排序」具有中等以上的终年稳定性。人格的稳定与变化在任何年龄都是并存可塑的。</div></div>
+
+<h3>10.2 鲍姆林德教养风格——人格的家庭苗床</h3>
+<div class="derive">四种教养风格对儿童发展的长期影响：
+
+① 权威型（Authoritative）——高要求+高回应  (最佳发展结果)
+   明确规则与边界，同时积极倾听、解释规则的逻辑
+   结果：最高自尊、最佳学业、最强社交能力、最少问题行为。跨文化一致。
+
+② 专制型（Authoritarian）——高要求+低回应
+   「照我说的做，不要问为什么」→高控制低温暖
+   结果：服从但焦虑、低自尊、低社交自信
+
+③ 放任型（Permissive）——低要求+高回应
+   无限度溺爱→无规则约束
+   结果：冲动控制差、自我中心、学业成绩不高
+
+④ 忽视型（Uninvolved）——低要求+低回应（最不利于儿童发展）
+   父母在情感和物理上基本缺席→儿童在情感上自生自灭
+   结果：在各个维度上表现最差——是所有教养风格中损害最大、影响最广的
+   短期：学业全线崩盘+同伴关系破产+行为问题丛生
+   长期：成年后的亲密关系质量最低+自尊最低+心理障碍风险最高
+
+文化差异的关键限定：鲍姆林德的研究样本主要是欧美中产阶级家庭——
+权威型在那个文化环境中的最佳效应在其他文化中并非完全复制。
+在部分东亚文化中，专制型教养与儿童的学业成绩在某些研究中未呈负相关——
+可能是因为孝道文化与集体主义家庭价值观「软化」了专制型控制的负面影响。
+但无论文化背景如何，忽视型的破坏效应在所有文化研究中一致出现——
+完全没有教养比不完美的教养对儿童的损害大得多。</div>
+
+<div class="summary"><h4>📋 第十模块复盘</h4>
+<ul><li>尽责性上升至60岁，神经质下降至老年→成年后人格持续稳定地缓慢演变</li><li>教养风格四象限：权威型=最优(高要求·高回应)</li></ul></div>
+
+<!-- ====== 十一 ====== -->
+<h2 id="c11">十一、毕生发展整合——从起点到终点的完整闭环</h2>
+
+<div class="derive">发展心理学的四大统一洞察：
+
+洞察一：发展≠单向的「成长→衰退」
+  每个阶段都是获得与丧失并存的动态平衡——婴儿获得行走但丧失了胎儿的全自动营养；
+  老人丧失了加工速度但获得了情绪稳定与自我整合的智慧。
+
+洞察二：发展的可塑性持续终生
+  早期经验极其重要但不决定终局——后期的正面经历可以修复早期的伤害
+  (不安全的依恋可被后来的安全关系重塑；早期的认知延迟可被丰富环境干预逆转)
+
+洞察三：发展的个体差异是规律而不是例外
+  「正常发展」不是狭窄的单线——是多个可能的健康路径组成的广泛谱带
+  每个里程碑出现的时间在合理范围内的波动都是正常变异，不是病态
+
+洞察四：基因×环境的交互贯穿了整个生命历程
+  没有任何心理特征可以完全归因于基因或完全归因于环境
+  基因设定了潜在反应范围——环境决定了该范围内被实现的具体水平和方向
+  好的环境使优良基因潜能的释放成为可能
+  坏的环境使基因的风险脆弱性显性化
+
+埃里克森的八阶段全景速览：
+  ① 信任vs不信任(0-1岁)  ② 自主vs羞耻(1-3岁)  ③ 主动vs内疚(3-6岁)
+  ④ 勤奋vs自卑(6-12岁)    ⑤ 同一性vs混乱(12-18岁) ⑥ 亲密vs孤独(18-40岁)
+  ⑦ 生产性vs停滞(40-65岁) ⑧ 完整vs绝望(65岁+)
+  每一阶段的积极性解决都为下一阶段的成功提供资源
+  失败的非灾难性解决可以在后期人生阶段中以新的方式重新面对和妥善处理</div>
+
+<div class="chart-wrap"><canvas id="eriksonStages" width="620" height="290"></canvas>
+<div class="fig-cap">图7：埃里克森人生八阶段全景图谱——从信任到完整的毕生心理社会任务，基于发展心理学标准图示复刻。核心推演：八个阶段各自对应一个核心心理社会危机——每个危机的成功解决产生一种「基本力量/美德」，成为下一阶段的资源和基础。未解决的危机在后期阶段可能会以新的形式重新浮现——发展是非线性、层层叠叠的终身过程，任何年龄都有修复的可能性。</div></div>
+
+<div class="summary" style="background:#f6fdf6;border-color:#1a6b3a">
+<h4 style="font-size:15px">🌱 发展心理学毕生全景总纲——从受精到终老的完整图谱</h4>
+<p><strong>八阶段纵轴：</strong>胎儿(基因蓝图×宫内环境奠定全部生理心理地基)→婴儿(信任+依恋+语言生根)→童年早期(自我意识觉醒+前运算思维+假装→抽象萌芽)→童年中期(具体运算+同伴地位分化+勤奋感建立)→青春期(脑重塑+同一性风暴+形式的运算)→成年早期(亲密扎根+晶体智力澎湃上升+人生结构建立)→中年(生产性投入+认知灵活平衡+双侧前额优化)→老年(自我整合回顾+情景记忆选择性减法+情绪稳态抵达终生最佳)</p>
+<p><strong>五大横向恒常规律：</strong>①发展≠单向→获与失共存②可塑性终生→早期不决定终局③个体差异=规律←非病态④基因×环境贯彻全程←没有孤立的纯基因或纯环境效应⑤每个阶段的积极解决积累为下一阶段的基础←失败可在后续修复</p>
+<p><strong>每个人都是自己整个生命周期所有阶段的叠加产物——理解每一个阶段不是回忆往事，而是更完整地理解自己今天为什么会如此：今天的焦虑或许是青少年同一性未完成的回响；今天的亲密恐惧或许映射了婴幼儿期不安全的依恋模板；今天的坚强或许是童年中期同龄认可累积的力量。发展不是已经完成的过去，而是仍然在今天的你我体内持续流淌的底层代码。</strong></p>
+</div>
+
+</main>
+
+<script>
+class PC{
+  constructor(id,w,h){this.c=document.getElementById(id);if(!this.c)return;this.ctx=this.c.getContext('2d');this.w=this.c.width=w;this.h=this.c.height=h}
+  clr(){this.ctx.fillStyle='#fff';this.ctx.fillRect(0,0,this.w,this.h)}
+  g(x0,x1,y0,y1){const c=this.ctx,p={t:30,r:22,b:45,l:55},pw=this.w-p.l-p.r,ph=this.h-p.t-p.b;this.xs=v=>p.l+(v-x0)/(x1-x0)*pw;this.ys=v=>p.t+(y1-v)/(y1-y0)*ph;c.strokeStyle='#e8e4d8';c.lineWidth=.5;c.beginPath();for(let i=0;i<=5;i++){let y=y0+(y1-y0)*i/5;c.moveTo(p.l,this.ys(y));c.lineTo(this.w-p.r,this.ys(y))}for(let i=0;i<=10;i++){let x=x0+(x1-x0)*i/10;c.moveTo(this.xs(x),p.t);c.lineTo(this.xs(x),this.h-p.b)}c.stroke();c.strokeStyle='#555';c.lineWidth=1.5;c.beginPath();c.moveTo(p.l,p.t);c.lineTo(p.l,this.h-p.b);c.moveTo(p.l,this.h-p.b);c.lineTo(this.w-p.r,this.h-p.b);c.stroke()}
+  ln(pts,color,w=2.5,d=null){if(pts.length<2)return;var c=this.ctx;c.save();c.strokeStyle=color;c.lineWidth=w;if(d)c.setLineDash(d);c.beginPath();c.moveTo(this.xs(pts[0][0]),this.ys(pts[0][1]));for(let i=1;i<pts.length;i++)c.lineTo(this.xs(pts[i][0]),this.ys(pts[i][1]));c.stroke();c.setLineDash([]);c.restore()}
+  txt(x,y,t,c='#333',s=11,a='center'){this.ctx.fillStyle=c;this.ctx.font=`${s}px sans-serif`;this.ctx.textAlign=a;this.ctx.fillText(t,x,y)}
+  rect(x,y,w,h,cl,sc='#555'){this.ctx.fillStyle=cl;this.ctx.fillRect(x,y,w,h);this.ctx.strokeStyle=sc;this.ctx.lineWidth=1.5;this.ctx.strokeRect(x,y,w,h)}
+}
+
+// 图1: 依恋发展阶段
+(function(){
+  var k=new PC('attachment',560,260);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('依恋发展阶段与安斯沃斯三种依恋类型',280,16);
+  var stages=['前依恋期','形成中的依恋','明确的依恋','目标校正关系'];
+  stages.forEach((s,i)=>{var x=40+i*130;c.fillStyle='#f4f8f4';c.fillRect(x,38,110,30);c.strokeStyle='#1a6b3a';c.lineWidth=1.5;c.strokeRect(x,38,110,30);c.fillStyle='#333';c.font='9px sans-serif';c.textAlign='center';c.fillText(s,x+55,57)});
+  c.fillText('0-2月',95,82);c.fillText('2-7月',145+55,82);c.fillText('7-24月',275+55,82);c.fillText('2岁+',405+55,82);
+  // Attachment types - pie chart
+  var cx=280,cy=160,r=65,a=0;
+  var types=[[0.65,'安全型65%','#2a7a3a'],[0.65,0.85,'回避20%','#1a4a6b'],[0.85,1,'矛盾15%','#b87830']];
+  types.forEach(t=>{c.fillStyle=t[2];c.beginPath();c.moveTo(cx,cy);c.arc(cx,cy,r,t[0]*Math.PI*2,t[1]*Math.PI*2);c.closePath();c.fill();c.fillStyle='#fff';c.font='9px bold sans-serif';var midA=(t[0]+t[1])/2*Math.PI*2;c.fillText(t[1],cx+Math.cos(midA)*r*0.55,cy+Math.sin(midA)*r*0.55)});
+  c.fillStyle='#555';c.font='11px bold sans-serif';c.fillText('陌生情境测验：三种依恋类型',280,240);
+})();
+
+// 图2: 同伴地位
+(function(){
+  var k=new PC('peerStatus',560,260);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('童年中期社会测量同伴地位分类（社会测量学研究）',280,16);
+  k.g(0,1,0,1,'最不喜欢(Low Likeability←)','最喜欢(High Liked→)');
+  c.fillStyle='rgba(42,122,58,0.2)';c.fillRect(k.xs(0.7),k.ys(0.7),k.xs(1)-k.xs(0.7),k.ys(0)-k.ys(0.7));
+  c.fillStyle='rgba(184,120,48,0.2)';c.fillRect(k.xs(0),k.ys(1),k.xs(0.7)-k.xs(0),k.ys(0.7)-k.ys(1));
+  c.fillStyle='rgba(180,48,48,0.2)';c.fillRect(k.xs(0),k.ys(0.7),k.xs(0.3)-k.xs(0),k.ys(0.3)-k.ys(0.7));
+  c.fillStyle='rgba(120,120,120,0.2)';c.fillRect(k.xs(0.3),k.ys(1),k.xs(0.5)-k.xs(0.3),k.ys(0.5)-k.ys(1));
+  c.fillStyle='#2a7a3a';c.font='10px bold sans-serif';c.textAlign='center';c.fillText('受欢迎(高喜·高排斥)',480,70);
+  c.fillStyle='#b87830';c.fillText('有争议(高喜·高排斥)',300,80);
+  c.fillStyle='#b03030';c.fillText('被拒斥(高排斥·低喜)',150,185);
+  c.fillStyle='#888';c.fillText('被忽视(低喜·低排)',200,270);
+  c.fillStyle='#b03030';c.font='9px bold sans-serif';c.fillText('最高风险组：未来适应困难',130,195);
+  c.fillStyle='#555';c.font='9px sans-serif';c.fillText('以同伴提名(最喜欢/最不喜欢)确定二维坐标',280,230);
+})();
+
+// 图3: 同一性状态
+(function(){
+  var k=new PC('identityStatus',560,260);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('玛西亚同一性状态模型：探索×承诺的四象限',280,16);
+  k.g(0,1,0,1,'探索(Exploration)→','承诺(Commitment)→');
+  c.fillStyle='rgba(42,122,58,0.2)';c.fillRect(k.xs(0.6),k.ys(0.6),k.xs(1)-k.xs(0.6),k.ys(0)-k.ys(0.6));
+  c.fillStyle='rgba(26,74,107,0.2)';c.fillRect(k.xs(0),k.ys(0.6),k.xs(0.4)-k.xs(0),k.ys(0)-k.ys(0.6));
+  c.fillStyle='rgba(184,120,48,0.2)';c.fillRect(k.xs(0.6),k.ys(1),k.xs(1)-k.xs(0.6),k.ys(0.6)-k.ys(1));
+  c.fillStyle='rgba(180,48,48,0.2)';c.fillRect(k.xs(0),k.ys(1),k.xs(0.4)-k.xs(0),k.ys(0.6)-k.ys(1));
+  c.fillStyle='#2a7a3a';c.font='11px bold sans-serif';c.fillText('达成(高探索·高承诺)',450,60);
+  c.fillStyle='#1a4a6b';c.fillText('早闭(低探索·高承诺)',180,60);
+  c.fillStyle='#b87830';c.fillText('延缓(高探索·低承诺)',450,200);
+  c.fillStyle='#b03030';c.fillText('弥散(低探索·低承诺)',180,200);
+  c.fillStyle='#2a7a3a';c.font='9px sans-serif';c.fillText('← 理想的最终状态',480,75);
+})();
+
+// 图4: 毕生阶段图谱
+(function(){
+  var k=new PC('lifespanMap',620,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('毕生心理发展全景阶段图谱——从胎儿到终老',310,16);
+  var stages=[{x:10,t:'胎儿期',l:'0-40w',sub:'感觉·学习根基',c:'#e8f0e8'},{x:70,t:'婴儿期',l:'0-2岁',sub:'信任·依恋·语言',c:'#e8f0e8'},{x:135,t:'童早期',l:'3-6岁',sub:'主动感·自我',c:'#f0f4e8'},{x:200,t:'童中期',l:'6-12岁',sub:'勤奋·同伴·守恒',c:'#f0f4e8'},{x:265,t:'青春期',l:'12-18',sub:'同一性·脑重塑',c:'#f8f0f0'},{x:335,t:'青年期',l:'18-40',sub:'亲密·事业·Gc↑',c:'#e8f0f4'},{x:405,t:'中年期',l:'40-65',sub:'生产性·双侧优化',c:'#e8f0f4'},{x:480,t:'老年期',l:'65+',sub:'完整·SOC·情绪稳态',c:'#f0e8f0'}];
+  stages.forEach(s=>{c.fillStyle=s.c;c.fillRect(s.x,50,55,65);c.strokeStyle='#555';c.lineWidth=1.5;c.strokeRect(s.x,50,55,65);c.fillStyle='#333';c.font='8px sans-serif';c.textAlign='center';c.fillText(s.t,s.x+27,68);c.fillText(s.l,s.x+27,84);c.fillText(s.sub,s.x+27,106)});
+  // Connecting arrow
+  c.strokeStyle='#1a6b3a';c.lineWidth=2;c.beginPath();c.moveTo(65,82);c.lineTo(530,82);c.stroke();
+  c.font='9px bold sans-serif';
+  c.fillStyle='#1a6b3a';c.fillText('发展不是单行线→终身的可塑与补偿——任何时期的修复都是可能且有效的',310,140);
+})();
+
+// 图5: 认知曲线
+(function(){
+  var k=new PC('cognitiveCurve',560,270);if(!k.c)return;k.clr();
+  k.g(0,80,0,100,'年龄(岁)','能力水平');
+  k.ln([[0,5],[5,20],[10,40],[18,80],[22,95],[30,88],[40,78],[50,65],[60,50],[70,38],[80,28]],'#1a4a6b',3);
+  k.ln([[0,2],[5,5],[10,12],[18,25],[25,40],[40,58],[55,72],[70,82],[80,85]],'#1a6b3a',3);
+  k.ln([[0,5],[5,25],[10,50],[18,90],[25,100],[30,96],[40,85],[50,72],[60,58],[70,42],[80,28]],'#888',1.5,[3,3]);
+  var c=k.ctx;c.fillStyle='#1a4a6b';c.font='10px sans-serif';c.textAlign='left';c.fillText('Gf(流体)',350,130);
+  c.fillStyle='#1a6b3a';c.fillText('Gc(晶体)',350,90);
+  c.fillStyle='#888';c.fillText('加工速度',350,170);
+  c.fillStyle='#555';c.font='11px bold sans-serif';c.textAlign='center';c.fillText('Gf峰≈25y→缓慢↓ | Gc→终生↑ | Gc补偿Gf下行',280,16);
+})();
+
+// 图6: 人格毕生趋势
+(function(){
+  var k=new PC('personalityLife',560,270);if(!k.c)return;k.clr();
+  k.g(0,80,0,100,'年龄(岁)','人格特质平均水平');
+  k.ln([[10,40],[20,55],[35,72],[50,82],[65,85],[80,80]],'#1a6b3a',3);
+  k.ln([[10,45],[20,52],[35,65],[50,76],[65,84],[80,86]],'#2a7a3a',3);
+  k.ln([[10,68],[20,62],[35,55],[50,48],[65,40],[80,35]],'#1a4a6b',3);
+  var c=k.ctx;c.fillStyle='#1a6b3a';c.font='10px sans-serif';c.textAlign='left';c.fillText('尽责性C',370,110);
+  c.fillStyle='#2a7a3a';c.fillText('宜人性A',370,80);
+  c.fillStyle='#1a4a6b';c.fillText('神经质N',370,140);
+  c.fillText('→ 老人=最低神经质+最高宜人性',370,230);
+  c.fillStyle='#555';c.font='11px bold sans-serif';c.textAlign='center';c.fillText('大五人格三大维度的毕生平均趋势（跨国纵向研究元分析）',280,16);
+})();
+
+// 图7: 埃里克森八阶段
+(function(){
+  var k=new PC('eriksonStages',620,290);if(!k.c)return;k.clr();
+  var c=k.ctx;c.fillStyle='#555';c.font='12px bold sans-serif';c.textAlign='center';c.fillText('埃里克森人生八阶段——毕生心理社会任务图谱',310,16);
+  var stages=[
+    {x:5,y:40,l:'① 信任vs不信任',a:'0-1岁',v:'希望',c:'#e8f0e8'},
+    {x:5,y:90,l:'② 自主vs羞耻',a:'1-3岁',v:'意志',c:'#e8f0e8'},
+    {x:5,y:140,l:'③ 主动vs内疚',a:'3-6岁',v:'目的',c:'#f0f4e8'},
+    {x:5,y:190,l:'④ 勤奋vs自卑',a:'6-12岁',v:'能力',c:'#f0f4e8'},
+    {x:320,y:40,l:'⑤ 同一性vs混乱',a:'12-18岁',v:'忠诚',c:'#f8f0f0'},
+    {x:320,y:90,l:'⑥ 亲密vs孤独',a:'18-40岁',v:'爱',c:'#e8f0f4'},
+    {x:320,y:140,l:'⑦ 生产性vs停滞',a:'40-65岁',v:'关怀',c:'#e8f0f4'},
+    {x:320,y:190,l:'⑧ 完整vs绝望',a:'65岁+',v:'智慧',c:'#f0e8f0'}
+  ];
+  stages.forEach(s=>{c.fillStyle=s.c;c.fillRect(s.x,s.y,280,40);c.strokeStyle='#555';c.lineWidth=1.5;c.strokeRect(s.x,s.y,280,40);c.fillStyle='#333';c.font='11px bold sans-serif';c.fillText(s.l,s.x+140,s.y+16);c.fillText(s.a+'  美德：'+s.v,s.x+140,s.y+32)});
+  c.strokeStyle='#1a6b3a';c.lineWidth=2;c.beginPath();c.moveTo(150,90);c.lineTo(320,90);c.stroke();
+  c.beginPath();c.moveTo(150,140);c.lineTo(320,140);c.stroke();
+  c.fillStyle='#1a6b3a';c.font='9px bold sans-serif';c.fillText('前一阶段的积极性解决为下一阶段的成功提供资源',310,255);
+})();
+
+console.log('✅ 发展心理学毕生体系 · 7张Canvas · 零外部依赖');
+</script>
+</body>
+</html>
